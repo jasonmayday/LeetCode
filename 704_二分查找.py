@@ -37,4 +37,4 @@ class Solution:
 
 sol = Solution()
 result = sol.search(nums,target)
-print(results)
+print(result)
