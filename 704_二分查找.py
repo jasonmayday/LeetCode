@@ -17,6 +17,7 @@ https://leetcode-cn.com/problems/binary-search/
 '''
 
 nums = [-1,0,3,5,9,12]
+target = 9
 from typing import List
 
 class Solution:
@@ -35,5 +36,5 @@ class Solution:
         return -1
 
 sol = Solution()
-s = sol.search(nums)
+s = sol.search(nums,target)
 print(s)
