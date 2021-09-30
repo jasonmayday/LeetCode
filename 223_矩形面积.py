@@ -22,3 +22,7 @@ class Solution:
         overlapHeight = min(ay2, by2) - max(ay1, by1)
         overlapArea = max(overlapWidth, 0) * max(overlapHeight, 0)
         return area1 + area2 - overlapArea
+
+sol = Solution()
+result = sol.computeArea(-3, 0, 3, 4, 0, -1, 9, 2)
+print(result)
