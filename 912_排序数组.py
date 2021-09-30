@@ -34,5 +34,5 @@ class Solution:
         return newnums
 
 sol = Solution()
-s = sol.sortArray(nums)
-print(s)
+result = sol.sortArray(nums)
+print(result)
