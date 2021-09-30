@@ -36,5 +36,5 @@ class Solution:
         return -1
 
 sol = Solution()
-s = sol.search(nums,target)
-print(s)
+result = sol.search(nums,target)
+print(results)
