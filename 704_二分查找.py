@@ -22,16 +22,17 @@ from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        low, high = 0, len(nums) - 1
+        low = 0                # 最小数下标
+        high = len(nums) - 1   # 最大数下标
         while low <= high:
-            mid = (high - low) // 2 + low
+            mid = (high - low) // 2 + low    # 中间数下标
             # use mid = (high - low) // 2 + low instead of (low + high) // 2 because it avoid overflow
-            num = nums[mid]
-            if num == target:
+            mid_num = nums[mid]
+            if mid_num == target:   # 如果中间数下标等于target, 返回
                 return mid
-            elif num > target:
+            elif mid_num > target:  # 如果target在中间数左边, 移动high下标
                 high = mid - 1
-            else:
+            else:                   # 如果target在中间数右边, 移动low下标
                 low = mid + 1
         return -1
 
