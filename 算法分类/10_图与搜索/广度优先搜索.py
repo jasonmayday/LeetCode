@@ -1,3 +1,12 @@
+'''
+假设你经营着一个芒果农场，需要寻找芒果销售商，以便将芒果卖给他。在Facebook，你与
+芒果销售商有联系吗？为此，你可在朋友中查找。
+
+创建一个朋友名单。
+依次检查名单中的每个人，看看他是否是芒果销售商。
+'''
+
+
 graph = {}
 graph["you"] = ["alice", "bob", "claire"]
 graph["bob"] = ["anuj", "peggy"]
@@ -18,7 +27,7 @@ def search(name):
     search_queue += graph[name]    # 将当前节点的邻居都加入到这个搜索队列中
     searched = []    # 该数组用于记录检查过的节点，以避免出现死循环
     while search_queue:    # 若队列不为空
-        person = search_queue.popleft()    # 弹出队列中第一个节点
+        person = search_queue.popleft()    # 移去并弹出队列中第一个节点
         if not person in searched:    # 判断该节点是否被检查过了，若检查过则跳过。
             if is_target_node(person):    # 检查该节点是否为目标节点。
                 print(person + " is target node!")    # 若是，则输出节点信息并返回。
