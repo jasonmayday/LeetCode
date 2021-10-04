@@ -28,7 +28,7 @@ https://leetcode-cn.com/problems/search-insert-position/
 
 '''
 nums = [1,3,5,6,9,13,18,24,28,32,36,39,41,46,53,57,62,70,78,84]
-target = 39
+target = 10
 
 from typing import List
 class Solution:
@@ -37,8 +37,7 @@ class Solution:
         left, right = 0, len(nums) - 1
 
         while left <= right:
-            middle = (left + right) // 2
-
+            middle = (right - left) // 2 + left
             if nums[middle] < target:
                 left = middle + 1
             elif nums[middle] > target:
@@ -46,3 +45,7 @@ class Solution:
             else:
                 return middle
         return right + 1
+        
+sol = Solution()
+result = sol.searchInsert(nums,target)
+print(result)
