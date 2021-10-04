@@ -1,12 +1,24 @@
 # LeetCode
-My LeetCode Solutions
+## leetcode_solutions
+
+
 
 ## Algorithms:
 ### 1. 数组
-| First Header  | Second Header |
+|  题目分类      |     题目编号    |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| 数组的遍历            |485、495、414、628|
+| 统计数组中的元素      |645、697、448、442、41、274|
+| 数组的改变、移动      |453、665、283|
+| 二维数组及滚动数组    | 118、119、661、598、419|
+| 数组的旋转           | 189、396|
+| 特定顺序遍历二维数组  | 54、59、498|
+| 二维数组变换         | 566、48、73、289|
+| 前缀和数组           | 303、304、238|
+
+
+
+
 
 ### 2. 字符串
 | First Header  | Second Header |
