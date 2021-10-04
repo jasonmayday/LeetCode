@@ -35,7 +35,7 @@ class Solution:
         n = len(s)      # n为字符串长度
         res = ''
         for i in range(n):
-            if i%K == 0 and i!=0:  # 第i位：如果 i/k 的余数为0， 且i不等于0
+            if i%K == 0 and i!=0:  # 第i位：如果 i/k 的余数为0， 且i不等于0.  (i = 4, 8)
                 res = '-' + res
             res = s[i] + res
         return res
@@ -45,4 +45,3 @@ result = sol.licenseKeyFormatting(S,K)
 print (result)
 
 # 5F3Z-2E9W
-
