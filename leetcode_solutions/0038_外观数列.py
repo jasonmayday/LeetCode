@@ -49,16 +49,16 @@ class Solution:
     def get_next(self,s):
         length = len(s)
         num = 1
-        catch = s[0] #取出第一位
+        catch = s[0] # 取出第一位
         ans = ""
-        for i in range(1,length):#从第二位开始比较
-            if s[i] == catch: #如果与当前catch到的值相同，数量自增
+        for i in range(1,length): # 从第二位开始比较
+            if s[i] == catch: # 如果与当前catch到的值相同，数量自增
                 num += 1
             else:
-                ans = ans + str(num) + str(catch) #如果不同，将上一个数的数量和自身追加至字符串
-                catch = s[i]                      #重新取新的比较字符
+                ans = ans + str(num) + str(catch) # 如果不同，将上一个数的数量和自身追加至字符串
+                catch = s[i]                      # 重新取新的比较字符
                 num = 1
-        ans += str(num) + str(catch)              #将最后一种字符追加至字符串
+        ans += str(num) + str(catch)              # 将最后一种字符追加至字符串
         return ans
 
     def countAndSay(self, n: int) -> str:
