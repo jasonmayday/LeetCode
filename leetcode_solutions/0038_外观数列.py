@@ -46,12 +46,12 @@ countAndSay(4) = 读 "21" = 一 个 2 + 一 个 1 = "12" + "11" = "1211"
 n = 8
 
 class Solution:
-    def get_next(self,s):
+    def get_next(self, s):
         length = len(s)
         num = 1
         catch = s[0] # 取出第一位
         ans = ""
-        for i in range(1,length): # 从第二位开始比较
+        for i in range(1, length): # 从第二位开始比较
             if s[i] == catch: # 如果与当前catch到的值相同，数量自增
                 num += 1
             else:
