@@ -41,19 +41,22 @@ class Solution:
         """
         if not matrix:
             return False
-        rows = len(matrix)
-        cols = len(matrix[0])
-
-        row = 0
-        col = cols - 1 
-
-        while 0 <= row < rows and 0 <= col < cols:
-            if matrix[row][col] < target:
-                row += 1
-            elif  matrix[row][col] > target:
-                col -= 1
+        rows = len(matrix)     #  矩阵长度，也就是行数
+        cols = len(matrix[0])  #  某一行的数量，也就是列数
+        
+        #  从右上角开始寻找：
+        row = 0                #  第一行
+        col = cols - 1         #  最右边一列
+        
+        while 0 <= row < rows and 0 <= col < cols:  #  在矩阵内寻找
+            if matrix[row][col] < target:     #  如果当前值小于目标值:
+                row += 1                      #  跳到下一行（向下找）
+            elif  matrix[row][col] > target:  #  如果当前值大于目标值：
+                col -= 1                      #  跳到上一列（向左找）
             else:
                 return True
         return False
 
-
+sol = Solution()
+result = sol.searchMatrix(matrix, target)
+print (result)  
