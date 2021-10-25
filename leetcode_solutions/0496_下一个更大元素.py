@@ -29,4 +29,23 @@ nums1和nums2中所有整数 互不相同
 nums1 中的所有整数同样出现在 nums2 中
 
 '''
+from typing import List
+nums1 = [4,1,2]
+nums2 = [1,3,4,2]
 
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        dist = {}
+        for i in range(len(nums2)):
+            for j in range(i + 1, len(nums2)):
+                if nums2[j] > nums2[i]:
+                    dist[nums2[i]] = nums2[j]
+                    break
+        res = []
+        for n in nums1:
+            res.append(dist.get(n, -1))
+        return res
+
+sol = Solution()
+result = sol.nextGreaterElement(nums1, nums2)
+print(result)
