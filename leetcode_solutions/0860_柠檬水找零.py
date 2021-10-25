@@ -35,23 +35,27 @@ https://leetcode-cn.com/problems/lemonade-change/
 '''
 
 #  贪心算法：遇到找钱的时候能找10块的优先找10块，因为5块不管是客户用10块还是20都是能找零的。
+from typing import List
 
-from collections import defaultdict
 bills = [5,5,5,10,20]
-
 class Solution:
-    def lemonadeChange(self, bills):
-        dic = defaultdict(int)  #  defaultdict的作用是在于，当字典里的key不存在但被查找时，返回的不是keyError而是一个默认值，int对应0
-        for i in bills:
-            dic[i] += 1     #  
-            diff = i - 5    #  要找给顾客的钱
-            while diff:
-                if diff >= 10 and dic[10]:   # d
-                    dic[10] -= 1
-                    diff -= 10
-                elif diff >= 5 and dic[5]:
-                    dic[5] -= 1
-                    diff -= 5
+    def lemonadeChange(self, bills: List[int]) -> bool:
+        five, ten, twenty = 0, 0, 0
+        for bill in bills:
+            if bill == 5:
+                five += 1
+            elif bill == 10:
+                if five < 1: return False
+                five -= 1
+                ten += 1
+            else:
+                if ten > 0 and five > 0:
+                    ten -= 1
+                    five -= 1
+                    twenty += 1
+                elif five > 2:
+                    five -= 3
+                    twenty += 1
                 else:
                     return False
         return True
@@ -59,3 +63,23 @@ class Solution:
 sol = Solution()
 result = sol.lemonadeChange(bills)
 print(result)
+
+'''
+from collections import defaultdict
+class Solution:
+    def lemonadeChange(self, bills):
+        dic = defaultdict(int)  #  defaultdict的作用是在于，当字典里的key不存在但被查找时，返回的不是keyError而是一个默认值，int对应0
+        for i in bills:
+            dic[i] += 1      
+            diff = i - 5    #  要找给顾客的钱
+            while diff:
+                if diff >= 10 and dic[10]:   # 如果顾客给20块，而且自己有10块：
+                    dic[10] -= 1             # 给顾客找一张10块
+                    diff -= 10               # 少一张10块
+                elif diff >= 5 and dic[5]:   # 如果顾客给10块，而且自己有5块：
+                    dic[5] -= 1              # 给顾客找一张5块
+                    diff -= 5                # 少一张5块
+                else:                        # 如果没有要找的钱
+                    return False
+        return True
+'''
