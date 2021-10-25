@@ -32,7 +32,10 @@ class Solution:
         day, month, year = date.split(' ')
         MonthDict = {"Jan":"01", "Feb":"02", "Mar":"03", "Apr":"04", "May":"05", "Jun":"06", "Jul":"07", "Aug":"08", "Sep":"09", "Oct":"10", "Nov":"11", "Dec":"12"}
         month = MonthDict[month]
-        day = day[:2] if day[1].isdigit() else '0' + str(day[0])
+        if day[1].isdigit():
+            day = day[:2]
+        else:
+            day = '0' + str(day[0])
         return '-'.join([year,month,day])
 
 sol = Solution()
