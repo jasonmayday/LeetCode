@@ -50,3 +50,22 @@ listB 中节点数目为 n
 如果 listA 和 listB 有交点，intersectVal == listA[skipA + 1] == listB[skipB + 1]
 
 '''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+#  利用 两链表长度和相等 的性质来使得两个遍历指针同步
+#  先遍历其中一个链表，当到底末端后跳到另一链表，最后
+#    若两链表没有公共结点，那么两个链表指针都会走过 s1 + s2个结点，同时到达两链表末尾
+#    若有公共结点，由于最后会同时走到两链表终点，所以倒退回去，两个指针一定会在第一个公共结点处相遇
+#    若两链表等长，那确实不会跳到另一链表，不过链表等长本身指针就是同步的，同样也能找到公共结点
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        A, B = headA, headB
+        while A != B:
+            A = A.next if A else headB
+            B = B.next if B else headA
+        return A
