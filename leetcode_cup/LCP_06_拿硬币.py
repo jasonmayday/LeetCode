@@ -14,8 +14,18 @@ https://leetcode-cn.com/problems/na-ying-bi/
 
 '''
 from typing import List
+coins = [2, 3, 10]
 
 class Solution:
     def minCount(self, coins: List[int]) -> int:
-        return sum([(x+1)//2 for x in coins])
+        count = 0
+        for i in coins:
+            if i % 2 == 0:
+                count += (i // 2)
+            else:
+                count += (i // 2 + 1)
+        return count
 
+sol = Solution()
+result = sol.minCount(coins)
+print(result)
