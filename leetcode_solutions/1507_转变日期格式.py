@@ -29,13 +29,13 @@ date = "20th Oct 1991"
 
 class Solution:
     def reformatDate(self, date: str) -> str:
-        day, month, year = date.split(' ')
+        day, month, year = date.split(' ')  #  将字符串分割为三个字符串
         MonthDict = {"Jan":"01", "Feb":"02", "Mar":"03", "Apr":"04", "May":"05", "Jun":"06", "Jul":"07", "Aug":"08", "Sep":"09", "Oct":"10", "Nov":"11", "Dec":"12"}
         month = MonthDict[month]
-        if day[1].isdigit():
-            day = day[:2]
-        else:
-            day = '0' + str(day[0])
+        if day[1].isdigit():    #  如果day的第二个字符是数字，比如26th：
+            day = day[:2]       #  新的day是之前day的前两个字符
+        else:                              #  如果day的第二个字符不是数字，比如6th:
+            day = '0' + str(day[0])        #  那么新的day是0加上以之前day的第一个字符
         return '-'.join([year,month,day])
 
 sol = Solution()
