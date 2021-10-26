@@ -40,21 +40,22 @@ for (int i = 0; i < len; i++) {
 0 <= val <= 100
 
 '''
-nums = [0,1,2,2,3,0,4,2], val = 2
+nums = [0,1,2,2,3,0,4,2]
+val = 2
 
 from typing import List
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        a = 0
-        b = 0
+        fast = 0   # 右边的指针
+        slow = 0   # 左边的指针
 
-        while a < len(nums):
-            if nums[a] != val:
-                nums[b] = nums[a]
-                b += 1
-            a += 1
+        while fast < len(nums):           # nums[fast] 从数组第一个数遍历到最后一个数。
+            if nums[fast] != val:         # 让fast指针向后移动，如果nums[fast]不等于val
+                nums[slow] = nums[fast]   # 把fast位置的数字拷贝到slow指向的位置
+                slow += 1                 # 然后slow指向下一个位置
+            fast += 1                     # 继续让fast指针向后移动
 
-        return b
+        return slow                       # 不重复的数字数就是slow的位置
 
 sol = Solution()
 result = sol.removeElement(nums, val)
