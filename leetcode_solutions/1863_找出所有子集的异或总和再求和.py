@@ -44,3 +44,27 @@ https://leetcode-cn.com/problems/sum-of-all-subset-xor-totals/
 1 <= nums[i] <= 20
 
 '''
+nums = [3,4,5,6,7,8]
+
+from typing import List
+
+class Solution:
+    def subsetXORSum(self, nums: List[int]) -> int:
+        res = 0
+        n = len(nums)           # 用 n 表示 nums 的长度
+        def dfs(value, idx):    # 用函数 dfs(value, idx) 来递归枚举数组 nums 的子集，dfs = Depth-First-Search = 深度优先搜索算法
+            nonlocal res        # value代表当前选取部分的异或值，idx代表递归的当前位置
+            if idx == n:        # idx == n，终止递归
+                res += value
+                return
+            # 考虑选择当前数字
+            dfs(value ^ nums[idx], idx + 1)
+            # 考虑不选择当前数字
+            dfs(value, idx + 1)
+        
+        dfs(0, 0)
+        return res
+
+sol = Solution()
+result = sol.subsetXORSum(nums)
+print(result)
