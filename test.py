@@ -1,5 +1,7 @@
-paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
-for c in "!?',;.":
-    paragraph = paragraph.replace(c, " ")
+n = 46
 
-print(paragraph)
+import collections
+
+counter1 = collections.Counter(str(n))
+
+print(counter1)
