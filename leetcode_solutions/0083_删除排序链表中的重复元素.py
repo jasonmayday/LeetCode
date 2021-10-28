@@ -6,11 +6,16 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
 返回同样按升序排列的结果链表。
 
 示例 1：
-1 
+1 → 1 → 2
+    ⇩ 
+  1 → 2
 输入：head = [1,1,2]
 输出：[1,2]
 
 示例 2：
+1 → 1 → 2 → 3 → 3
+        ⇩ 
+    1 → 2 → 3
 输入：head = [1,1,2,3,3]
 输出：[1,2,3]
 
@@ -20,3 +25,25 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
 题目数据保证链表已经按升序排列
 
 '''
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+head = [1,1,2,3,3]
+
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        if not head or not head.next: return head
+        cur = head
+        while cur.next:
+            if cur.val == cur.next.val:
+                cur.next = cur.next.next
+            else: cur = cur.next
+
+        return head
+
+sol = Solution()
+result = sol.deleteDuplicates(head)
+print (result)
