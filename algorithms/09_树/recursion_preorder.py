@@ -18,7 +18,7 @@ class BinaryTree(object):
     def __init__(self, root):
         self.root = Node(root)   # 当传递一个根节点，调用类 node 的构造函数（__init__ 函数）时，会创建二叉树
 
-    def print_tree(self,traversal_type):
+    def print_tree(self, traversal_type):
         if traversal_type == "preorder":
             return self.preorder_print(tree.root, "")
         else:
@@ -33,8 +33,6 @@ class BinaryTree(object):
             traversal = self.preorder_print(start.right, traversal) # 递归处理右子树，递归调用前序函数，此行仅在左子树不存在时才有效
         return traversal                                            # 遍历将包含一个字符串
     
-
-
 tree = BinaryTree(1)
 tree.root.left = Node(2)
 tree.root.right = Node(3)
