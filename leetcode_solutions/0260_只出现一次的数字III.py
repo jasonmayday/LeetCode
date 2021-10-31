@@ -35,6 +35,17 @@ class Solution:
         freq = Counter(nums)
         return [num for num, occ in freq.items() if occ == 1]
 '''
+
+'''
+异或解法：
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        single_number = 0
+        for num in nums:
+            single_number ^= num
+        return single_number
+
+'''
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
         res = []                          # 新建一个数组
