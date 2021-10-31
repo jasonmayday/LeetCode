@@ -1,5 +1,5 @@
-https://blog.csdn.net/u014745194/article/details/72782962
-def bubbleSort(arr):
+
+def bubble_sort(arr):
     n = len(arr) # n为列表的长度
  
     # 遍历所有数组元素
@@ -10,10 +10,10 @@ def bubbleSort(arr):
             if arr[j] > arr[j+1] :
                 arr[j], arr[j+1] = arr[j+1], arr[j]
  
-arr = [64, 34, 25, 12, 22, 11, 90]
- 
-bubbleSort(arr)
- 
-print ("排序后的数组:")
-for i in range(len(arr)):
-    print ("%d" %arr[i]),
+if __name__ == '__main__':
+    import random
+    random.seed(10)
+    arr = [random.randint(0,100) for _ in range(20)]
+    print("原始数据：", arr)
+    bubble_sort(arr)
+    print("插入排序：", arr)
