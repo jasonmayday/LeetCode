@@ -1,0 +1,1 @@
+courses = ('math', 'phys', 'chem')
