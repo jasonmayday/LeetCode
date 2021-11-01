@@ -54,7 +54,6 @@ class Solution(object):
         postorder(root)
         return res
 
-
 sol = Solution()
 result = sol.postorderTraversal(root)
 print (result)  
