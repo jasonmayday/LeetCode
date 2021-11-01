@@ -27,19 +27,19 @@ root.right.right = TreeNode(7)
 root.right.right.right = TreeNode(8)
 
 class Solution(object):
-    # 前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树
+    # 前序遍历 (Pre-Order Traversal)：根结点 ---> 左子树 ---> 右子树
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res,stack = [],[]
         while stack or root:
             while root:
+                res.append(root.val)
                 stack.append(root)
                 root = root.left
             root = stack.pop()
-            res.append(root.val)
             root = root.right
         return res
         
-    # 中序遍历 (In-Order Traversal) ：左子树 ---> 根结点 ---> 右子树
+    # 中序遍历 (In-Order Traversal)：左子树 ---> 根结点 ---> 右子树
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         res,stack = [],[]
         while stack or root:
@@ -51,17 +51,17 @@ class Solution(object):
             root = root.right
         return res
         
-    # 后序遍历 (Post-Order Traversal) ：左子树 ---> 右子树 ---> 根结点
+    # 后序遍历 (Post-Order Traversal)：左子树 ---> 右子树 ---> 根结点
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         res,stack = [],[]
         while stack or root:
             while root:
+                res.append(root.val)
                 stack.append(root)
-                root = root.left
+                root = root.right
             root = stack.pop()
-            res.append(root.val)
-            root = root.right
-        return res
+            root = root.left
+        return res[::-1]
 
 sol = Solution()
 result1 = sol.preorderTraversal(root)
