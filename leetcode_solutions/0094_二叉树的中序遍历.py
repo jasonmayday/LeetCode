@@ -1,22 +1,34 @@
 '''
 给定一个二叉树，返回它的 后序 遍历。
 
-示例:
+示例 1：
+输入：root = [1,null,2,3]
+输出：[1,3,2]
 
-输入: [1,null,2,3]  
-   1
-    \
-     2
-    /
-   3 
+示例 2：
+输入：root = []
+输出：[]
 
-输出: [3,2,1]
+示例 3：
+输入：root = [1]
+输出：[1]
 
-进阶: 递归算法很简单，你可以通过迭代算法完成吗？
+示例 4：
+输入：root = [1,2]
+输出：[2,1]
+
+示例 5：
+输入：root = [1,null,2]
+输出：[1,2]
+
+提示：
+树中节点数目在范围 [0, 100] 内
+-100 <= Node.val <= 100
 
 '''
-# 后序遍历：按照访问左子树——右子树——根节点
+# 中序遍历：左子树——根节点——右子树
 
+# Definition for a binary tree node.
 from typing import List
 
 # Definition for a binary tree node.
@@ -43,20 +55,17 @@ root.right.right.right = TreeNode(8)
                 ↘
                   8
 '''
-# 递归
 class Solution(object):
-    def postorderTraversal(self, root: TreeNode) -> List[int]:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
-        def postorder(root):
+        def inorder(root):
             if root:
-                postorder(root.left)
-                postorder(root.right)
+                inorder(root.left)
                 res.append(root.val)
-        postorder(root)
+                inorder(root.right)
+        inorder(root)
         return res
 
-# 迭代
-
 sol = Solution()
-result = sol.postorderTraversal(root)
+result = sol.inorderTraversal(root)
 print (result)  
