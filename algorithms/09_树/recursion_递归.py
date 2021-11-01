@@ -8,7 +8,6 @@
                   8
 '''
 
-# Definition for a binary tree node.
 from typing import List
 
 # Definition for a binary tree node.
@@ -61,10 +60,29 @@ class Solution(object):
         postorder(root)
         return res
 
+    # 另一个版本的递归实现
+    # 前序递归
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+        return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
+    
+    # 中序递归 
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []    
+        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+    
+    # 后序递归
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []      
+        return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
+
 sol = Solution()
 result1 = sol.preorderTraversal(root)
 result2 = sol.inorderTraversal(root)
 result3 = sol.postorderTraversal(root)
-print (result1) 
-print (result2) 
-print (result3)  
+print ("前序遍历结果: ", result1) 
+print ("中序遍历结果: ", result2) 
+print ("后序遍历结果: ", result3)  
