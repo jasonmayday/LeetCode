@@ -46,7 +46,15 @@ root.left.right = TreeNode(5)
 root.right.left = TreeNode(6)
 root.right.right = TreeNode(7)
 root.right.right.right = TreeNode(8)
-
+'''
+       1
+     ↙   ↘
+   2       3
+ ↙  ↘    ↙  ↘
+4    5   6    7
+                ↘
+                  8
+'''
 class Solution(object):
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
