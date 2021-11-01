@@ -8,8 +8,6 @@
                   8
 '''
 
-# 前序遍历：根结点 ---> 左子树 ---> 右子树
-
 # Definition for a binary tree node.
 from typing import List
 
@@ -30,6 +28,7 @@ root.right.right = TreeNode(7)
 root.right.right.right = TreeNode(8)
 
 class Solution(object):
+    # 前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
         def preorder(root):
@@ -40,25 +39,32 @@ class Solution(object):
         preorder(root)
         return res
 
-    def preorderTraversal(self, root: TreeNode) -> List[int]:
+    # 中序遍历 (In-Order Traversal) ：左子树 ---> 根结点 ---> 右子树
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
-        def preorder(root):
+        def inorder(root):
             if root:
+                inorder(root.left)
                 res.append(root.val)
-                preorder(root.left)
-                preorder(root.right)
-        preorder(root)
+                inorder(root.right)
+        inorder(root)
         return res    
-      
-    def preorderTraversal(self, root: TreeNode) -> List[int]:
+
+    # 后序遍历 (Post-Order Traversal) ：左子树 ---> 右子树 ---> 根结点
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
-        def preorder(root):
+        def postorder(root):
             if root:
+                postorder(root.left)
+                postorder(root.right)
                 res.append(root.val)
-                preorder(root.left)
-                preorder(root.right)
-        preorder(root)
+        postorder(root)
         return res
+
 sol = Solution()
-result = sol.preorderTraversal(root)
-print (result)  
+result1 = sol.preorderTraversal(root)
+result2 = sol.inorderTraversal(root)
+result3 = sol.postorderTraversal(root)
+print (result1) 
+print (result2) 
+print (result3)  
