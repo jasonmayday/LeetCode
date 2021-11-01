@@ -43,6 +43,7 @@ root.right.right.right = TreeNode(8)
                 ↘
                   8
 '''
+# 递归
 class Solution(object):
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
@@ -53,6 +54,8 @@ class Solution(object):
                 res.append(root.val)
         postorder(root)
         return res
+
+# 迭代
 
 sol = Solution()
 result = sol.postorderTraversal(root)
