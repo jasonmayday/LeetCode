@@ -21,8 +21,6 @@
 
 """Basic example of an adapter class to provide a stack interface to Python's list."""
 
-from ..exceptions import Empty
-
 class ArrayStack:
   """LIFO Stack implementation using a Python list as underlying storage."""
 
