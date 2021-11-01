@@ -17,7 +17,6 @@
 '''
 # 后序遍历：按照访问左子树——右子树——根节点
 
-# Definition for a binary tree node.
 from typing import List
 
 # Definition for a binary tree node.
@@ -35,7 +34,15 @@ root.left.right = TreeNode(5)
 root.right.left = TreeNode(6)
 root.right.right = TreeNode(7)
 root.right.right.right = TreeNode(8)
-
+'''
+       1
+     ↙   ↘
+   2       3
+ ↙  ↘    ↙  ↘
+4    5   6    7
+                ↘
+                  8
+'''
 class Solution(object):
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
