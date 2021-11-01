@@ -56,17 +56,16 @@ root.right.right.right = TreeNode(8)
                   8
 '''
 class Solution(object):
-    def postorderTraversal(self, root: TreeNode) -> List[int]:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
-        def postorder(root):
+        def inorder(root):
             if root:
-                postorder(root.left)
+                inorder(root.left)
                 res.append(root.val)
-                postorder(root.right)
-        postorder(root)
+                inorder(root.right)
+        inorder(root)
         return res
 
-
 sol = Solution()
-result = sol.postorderTraversal(root)
+result = sol.inorderTraversal(root)
 print (result)  
