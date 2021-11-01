@@ -27,18 +27,22 @@ https://leetcode-cn.com/problems/reverse-integer/
 -2^31 <= x <= 2^31-1
 
 '''
-
-
-def reverse_force(self, x: int) -> int:
+x = -210
+class Solution:
+    def reverse(self, x: int) -> int:
         if -10 < x < 10:
             return x
         str_x = str(x)
-        if str_x[0] != "-":
-            str_x = str_x[::-1]
-            x = int(str_x)
-        else:
-            str_x = str_x[:0:-1]
-            x = int(str_x)
-            x = -x
+        if str_x[0] != "-":        # 如果是正数
+            str_x = str_x[::-1]    # a[::-1] end to beginning, counting down by 1，e.g. 210 → 012
+            x = int(str_x)         # 转化为整数，解决末尾是0的问题，e.g. 012 → 12
+        else:                      # 如果是负数
+            str_x = str_x[:0:-1]   # a[:0:-1]: 去除首位字符、并反转第 1-n 位字符, e.g. -210 → 012
+            x = int(str_x)         # 转化为整数，e.g. 012 → 12
+            x = -x                 # e.g. 12 → -12
         return x if -2147483648 < x < 2147483647 else 0
+
+sol = Solution()
+result = sol.reverse(x)
+print(result)
 
