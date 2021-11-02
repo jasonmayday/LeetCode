@@ -1,4 +1,4 @@
-# Definition for singly-linked list.
+
 
 '''单链表的结点'''
 class Node:   # 节点类
@@ -179,7 +179,6 @@ def main():
     List1.traversal()
 
     print("删除元素5：")
-    print(List1.delete_node(5))
     List1.traversal()
 
     print("修改第5个位置的元素为7: ")
@@ -188,7 +187,6 @@ def main():
 
     print("查找元素1:")
     print(List1.search_node_is_exist(1))
-
 
 if __name__ == "__main__":
     main()
