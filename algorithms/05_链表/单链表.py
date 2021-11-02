@@ -36,7 +36,7 @@ class SingleLinkedList():
     '''添加节点'''
     # 在链表的头部添加元素
     def add_first(self, val):
-        node = Node(val)
+        node = Node(val)        # 创建一个新节点
         node.next = self.head   # 新节点指针指向原头部节点
         self.head = node        # 头部节点指针修改为新节点
     
@@ -46,32 +46,50 @@ class SingleLinkedList():
         if self.is_empty():    # 先判断是否为空链表
             self.head = node   # 空链表，head 指向新节点
         else:
-            cur = self.head    # 不是空链表：则找到尾部，将尾部next节点指向新节点
-            while cur.next is not None:
+            cur = self.head    # 不是空链表：
+            while cur.next is not None:  # 遍历到最后一个节点
                 cur = cur.next
-            cur.next = node
+            cur.next = node              # 创建新节点并连接到最后
 
     # 在指定位置添加元素 
-    def insert_node(self, index, val):
-        node = Node(val)
-        if index < 0 or index > self.length():  # 位置超出链表范围，返回错误
-            return False
-        elif index == 0:               # 指定位置在为第一个元素之前：
-            self.add_fist()            # 在头部插入
-        elif index == self.length():   # 指定位置在尾部：
-            self.add_last()            # 在链表的尾部添加元素
-        else:                          # else: 插入位置在链表中间
+    def add(self, index, val):
+        if index < 0:                      # 如果位置在0或者之前，调用头插法
+            self.add_first(val)
+        elif index > self.length() - 1:    # 如果位置在原链表长度之后，调用尾插法
+            self.add_last(val)
+        else:
             cur = self.head
             count = 0
             while count < index - 1:
-                cur = cur.next
                 count += 1
-            node.next = cur.next
-            cur.next = node
+                cur = cur.next
+            newest = Node(val)
+            newest.next = cur.next
+            cur.next = newest
 
     '''删除节点'''
+    # 删除头结点
+    def delete_head(self):
+        cur = self.head
+        if self.head is not None:
+            self.head = self.head.next
+            cur.next = None
+        return cur
+
+    # 删除尾节点
+    def delete_tail(self):
+        cur = self.head
+        if self.head is not None:
+            if self.head.next is None:  # 如果头结点是唯一的节点
+                self.head = None
+            else:
+                while cur.next.next is not None:
+                    cur = cur.next
+                cur.next, cur = (None, cur.next)
+        return cur
+
     # 删除指定结点
-    def remove_node(self, val):
+    def delete_node(self, val):
         cur = self.head  # 指针指向的结点
         pre = None       # 指针指向结点的前一个
         if self.head == val:              # 找到指定元素
@@ -82,7 +100,18 @@ class SingleLinkedList():
                 cur = cur.next            # 继续按链表后移节点
             pre.next = cur.next           # 将删除位置前一个节点的next指向删除位置的后一个节点
 
-    '''查找功能'''
+    '''修改节点'''
+    # 修改指定位置的元素
+    def modify(self, index, val):
+        cur = self.head
+        if index < 0 or index > self.length():
+            return False
+        for i in range(index - 1):
+            cur = cur.next
+        cur.val = val
+        return cur
+
+    '''其他功能'''
     # 查找指定结点是否存在
     def search_node_is_exist(self, val):
         cur = self.head
@@ -95,31 +124,71 @@ class SingleLinkedList():
 
     # 遍历整个链表
     def traversal(self):
-        cur = self.head         # 获取head指针
-        while cur is not None:  # 循环遍历
-            print(cur.val)      # 返回value
-            cur = cur.next      # 指针后移
-        # print("\n")
+        cur = self.head               # 获取head指针
+        while cur is not None:        # 循环遍历
+            print(cur.val, end = " ") # 返回value
+            cur = cur.next            # 指针后移
+        print("\n")
+     
+    # 反转整个链表
+    def reverse_list(self):
+        cur, prev = self.head, None
+        while cur:
+            cur.next, prev, cur = prev, cur, cur.next
+        self.head = prev
 
 '''创建链表'''
-if __name__ == '__main__':
-    l1 = SingleLinkedList()
-    l1.add_first(1)
-    l1.add_last(2)
-    l1.add_last(4)
-    l1.insert_node(2, 3)
-    l1.traversal()
-    # 1 2 3 4
+def main():
+    List1 = SingleLinkedList()
+    print("链表是否为空：", List1.is_empty())
 
-    print(l1.is_empty())
-    # False
+    List1.add_first(2)
+    List1.add_first(1)
+    List1.add_last(3)
+    List1.add_last(4)
+    List1.add_last(5)
 
-    print(l1.length())
-    # 4
+    length_of_list1 = List1.length()
+    print("插入节点后，List1 的长度为：", length_of_list1)
 
-    l1.remove_node(4)
-    print(l1.search_node_is_exist(3))
-    # True
+    print("遍历并打印整个链表: ")
+    List1.traversal()
 
-    l1.traversal()
-    # 1 2 3
+    print("反转整个链表: ")
+    List1.reverse_list()
+    List1.traversal()
+
+    print("删除头节点: ")
+    List1.delete_head()
+    List1.traversal()
+
+    print("删除尾节点: ")
+    List1.delete_tail()
+    List1.traversal()
+
+    print("在第二个位置插入5: ")
+    List1.add(1, 5)
+    List1.traversal()
+
+    print("在第-1个位置插入100：")
+    List1.add(-1, 100)
+    List1.traversal()
+
+    print("在第100个位置插入2：")
+    List1.add(100, 2)
+    List1.traversal()
+
+    print("删除元素5：")
+    print(List1.delete_node(5))
+    List1.traversal()
+
+    print("修改第5个位置的元素为7: ")
+    List1.modify(5, 7)
+    List1.traversal()
+
+    print("查找元素1:")
+    print(List1.search_node_is_exist(1))
+
+
+if __name__ == "__main__":
+    main()
