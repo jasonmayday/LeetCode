@@ -25,13 +25,22 @@
 解释：因为第四行不完整，所以返回 3 。
 
 '''
+
+n = 8
+
+# 二分法
+
 class Solution:
     def arrangeCoins(self, n: int) -> int:
         left, right = 1, n
         while left < right:
             mid = (left + right + 1) // 2
-            if mid * (mid + 1) <= 2 * n:
+            if mid * (mid + 1) <= 2 * n:   # 因为k个完整阶梯行所需的硬币数量为 [k*(k+1)]/2
                 left = mid
             else:
                 right = mid - 1
         return left
+
+sol = Solution()
+result = sol.arrangeCoins(n)
+print(result)
