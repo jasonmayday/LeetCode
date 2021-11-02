@@ -1,3 +1,8 @@
-s = 2876
+strs = ["flower","flow","flight"]
 
-print (len(s))
+s = strs[0]
+i = 1
+print (s)
+print (str[i])
+print (strs[i].find(s))
+  
