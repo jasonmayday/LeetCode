@@ -51,11 +51,12 @@ listB 中节点数目为 n
 
 '''
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+        
 #  利用 两链表长度和相等 的性质来使得两个遍历指针同步
 #  先遍历其中一个链表，当到底末端后跳到另一链表，最后
 #    若两链表没有公共结点，那么两个链表指针都会走过 s1 + s2个结点，同时到达两链表末尾
