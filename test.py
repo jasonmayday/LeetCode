@@ -1,5 +1,5 @@
-haystack = "hello"
-needle = "ll"
+s = "123456"
 
-print (len(haystack))
-print (len(needle))
+i = len(s) - 1
+
+print (i)
