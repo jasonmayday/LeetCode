@@ -33,6 +33,7 @@ class Solution:
             a += str(i)
         return [int(i) for i in str(int(a) + 1)]
 
-sol = Solution()
-result = sol.plusOne(digits)
-print (result)  
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.plusOne(digits)
+    print (result)  
