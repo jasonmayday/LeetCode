@@ -26,6 +26,29 @@ l1 和 l2 均按 非递减顺序 排列
 
 '''
 
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+# 将传入的数组转化为链表
+def create_linked_list(arr):
+    head = ListNode(arr[0])
+    cur = head
+    for i in range(1, len(arr)):
+        cur.next = ListNode(arr[i])
+        cur = cur.next
+    return head
+
+# 传入链表头节点，以数组形式返回
+def print_linked_list(head):
+    cur = head
+    res = []
+    while cur:
+        res.append(cur.val)
+        cur = cur.next
+    return res
+
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         if not l1: return l2  # 终止条件，直到两个链表都空
@@ -36,3 +59,11 @@ class Solution:
         else:
             l2.next = self.mergeTwoLists(l1,l2.next)
             return l2
+
+if __name__ == "__main__":
+    head1 = create_linked_list([1, 2, 4])
+    head2 = create_linked_list([1, 3, 4])
+    solution = Solution()
+    sorted_lists = solution.mergeTwoLists(head1, head2)
+    print(print_linked_list(sorted_lists))
+
