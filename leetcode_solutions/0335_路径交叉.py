@@ -64,6 +64,7 @@ class Solution:
                 return True
         return False
 
-sol = Solution()
-result = sol.isSelfCrossing(distance)
-print (result) 
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.isSelfCrossing(distance)
+    print (result) 
