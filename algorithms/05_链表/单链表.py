@@ -1,7 +1,7 @@
 
 
 '''单链表的结点'''
-class Node:   # 节点类
+class ListNode:   # 节点类
     def __init__(self, val = 0, next = None):  # 初始化节点
         self.val = val     # val存放数据元素
         self.next = next   # 保存当前节点中下一个节点的引用
@@ -36,13 +36,13 @@ class SingleLinkedList():
     '''添加节点'''
     # 在链表的头部添加元素
     def add_first(self, val):
-        node = Node(val)        # 创建一个新节点
+        node = ListNode(val)        # 创建一个新节点
         node.next = self.head   # 新节点指针指向原头部节点
         self.head = node        # 头部节点指针修改为新节点
     
     # 在链表的尾部添加元素
     def add_last(self, val):
-        node = Node(val)       # 创建一个新节点
+        node = ListNode(val)       # 创建一个新节点
         if self.is_empty():    # 先判断是否为空链表
             self.head = node   # 空链表，head 指向新节点
         else:
@@ -63,7 +63,7 @@ class SingleLinkedList():
             while count < index - 1:
                 count += 1
                 cur = cur.next
-            newest = Node(val)
+            newest = ListNode(val)
             newest.next = cur.next
             cur.next = newest
 
