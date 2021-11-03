@@ -17,56 +17,96 @@ B: |b1| → |b2| → |b3|
 
 示例 1：
 https://assets.leetcode.com/uploads/2018/12/13/160_example_1.png
-输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
-输出：Intersected at '8'
-解释：相交节点的值为 8 （注意，如果两个链表相交则不能为 0）。
-从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,0,1,8,4,5]。
-在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。
+    输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
+    输出：Intersected at '8'
+    解释：相交节点的值为 8 （注意，如果两个链表相交则不能为 0）。
+    从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,0,1,8,4,5]。
+    在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。
 
 示例 2：
 https://assets.leetcode.com/uploads/2018/12/13/160_example_2.png
-输入：intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
-输出：Intersected at '2'
-解释：相交节点的值为 2 （注意，如果两个链表相交则不能为 0）。
-从各自的表头开始算起，链表 A 为 [0,9,1,2,4]，链表 B 为 [3,2,4]。
-在 A 中，相交节点前有 3 个节点；在 B 中，相交节点前有 1 个节点。
+    输入：intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
+    输出：Intersected at '2'
+    解释：相交节点的值为 2 （注意，如果两个链表相交则不能为 0）。
+    从各自的表头开始算起，链表 A 为 [0,9,1,2,4]，链表 B 为 [3,2,4]。
+    在 A 中，相交节点前有 3 个节点；在 B 中，相交节点前有 1 个节点。
 
 示例 3：
 https://assets.leetcode.com/uploads/2018/12/13/160_example_3.png
-输入：intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
-输出：null
-解释：从各自的表头开始算起，链表 A 为 [2,6,4]，链表 B 为 [1,5]。
-由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
-这两个链表不相交，因此返回 null 。
+    输入：intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
+    输出：null
+    解释：从各自的表头开始算起，链表 A 为 [2,6,4]，链表 B 为 [1,5]。
+    由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
+    这两个链表不相交，因此返回 null 。
  
 提示：
-listA 中节点数目为 m
-listB 中节点数目为 n
-0 <= m, n <= 3 * 104
-1 <= Node.val <= 105
-0 <= skipA <= m
-0 <= skipB <= n
-如果 listA 和 listB 没有交点，intersectVal 为 0
-如果 listA 和 listB 有交点，intersectVal == listA[skipA + 1] == listB[skipB + 1]
+    listA 中节点数目为 m
+    listB 中节点数目为 n
+    0 <= m, n <= 3 * 10^4
+    1 <= Node.val <= 10^5
+    0 <= skipA <= m
+    0 <= skipB <= n
+    如果 listA 和 listB 没有交点，intersectVal 为 0
+    如果 listA 和 listB 有交点，intersectVal == listA[skipA + 1] == listB[skipB + 1]
 
 '''
-
 
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
-        
-#  利用 两链表长度和相等 的性质来使得两个遍历指针同步
-#  先遍历其中一个链表，当到底末端后跳到另一链表，最后
-#    若两链表没有公共结点，那么两个链表指针都会走过 s1 + s2个结点，同时到达两链表末尾
-#    若有公共结点，由于最后会同时走到两链表终点，所以倒退回去，两个指针一定会在第一个公共结点处相遇
-#    若两链表等长，那确实不会跳到另一链表，不过链表等长本身指针就是同步的，同样也能找到公共结点
+
+def create_linked_list(arr):
+    head_node = None
+    p_node = None
+    for a in arr:
+        new_node = ListNode(a)
+        if head_node is None:
+            head_node = new_node
+            p_node = new_node
+        else:
+            p_node.next = new_node
+            p_node = new_node
+    return head_node
+
+def print_linked_list(head):
+    cur = head
+    res = []
+    while cur:
+        res.append(cur.val)
+        cur = cur.next
+    return res
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
-        A, B = headA, headB
-        while A != B:
-            A = A.next if A else headB
-            B = B.next if B else headA
-        return A
+        # curr1指向链表A的头结点，curr2指向链表B的头结点
+        curr1, curr2 = headA, headB
+        while curr1 != curr2:
+            # curr1 = curr1.next if curr1 else headB
+            if curr1:
+                curr1 = curr1.next
+            else:
+                # 当 curr1 到达链表的尾部时，将它重定位到链表 B 的头结点
+                curr1 = headB
+            # curr2 = curr2.next if curr2 else headA
+            if curr2:
+                curr2 = curr2.next
+            else:
+                # 当 curr2 到达链表的尾部时，将它重定位到链表 A 的头结点。
+                curr2 = headA
+
+        return curr1
+"""
+A和B两个链表长度可能不同，但是A+B和B+A的长度是相同的，所以遍历A+B和遍历B+A一定是同时结束。 
+如果A,B相交的话A和B有一段尾巴是相同的，所以两个遍历的指针一定会同时到达交点 如果A,B不相交的话两个指针就会同时到达A+B（B+A）的尾节点
+"""
+
+if __name__ == "__main__":
+    a = [4,1,8,4,5]
+    b = [5,0,1,8,4,5]
+    head_a = create_linked_list(a)
+    head_b = create_linked_list(b)
+    head_a.next.next = head_b.next.next.next   # skipA = 2, skipB = 3，在 '8' 处相交
+    sol = Solution()
+    result = sol.getIntersectionNode(head_a, head_b)
+    print (print_linked_list(result))
