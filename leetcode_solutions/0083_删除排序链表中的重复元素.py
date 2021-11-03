@@ -26,29 +26,28 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
 
 '''
 
-
-'''定义节点'''
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-class SingleLinkedList():
-    def __init__(self):   # 初始化链表
-        self.head = None  # 先初始化一个头节点为空
-    
-    def add_first(self, val):
-        node = ListNode(val)    # 创建一个新节点
-        node.next = self.head   # 新节点指针指向原头部节点
-        self.head = node        # 头部节点指针修改为新节点
+#将传入的数组转化为链表
+def create_linked_list(arr):
+    head = ListNode(arr[0])
+    cur = head
+    for i in range(1, len(arr)):
+        cur.next = ListNode(arr[i])
+        cur = cur.next
+    return head
 
-
-head = SingleLinkedList()
-head.add_first(3)
-head.add_first(3)
-head.add_first(2)
-head.add_first(1)
-head.add_first(1)
+#传入链表头节点，以数组形式返回
+def print_linked_list(head):
+    cur = head
+    res = []
+    while cur:
+        res.append(cur.val)
+        cur = cur.next
+    return res
 
 class Solution:
     def deleteDuplicates(self, head) -> ListNode:
@@ -69,6 +68,10 @@ class Solution:
             head = head.next
         return dummy.next
 
-sol = Solution()
-result = sol.deleteDuplicates(head)
-print (result)
+if __name__ == "__main__":
+    head = create_linked_list([1, 1, 2, 3, 3])
+    sol = Solution()
+    result = sol.deleteDuplicates(head)
+    print(print_linked_list(result))
+
+
