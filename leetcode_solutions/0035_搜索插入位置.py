@@ -46,6 +46,7 @@ class Solution:
                 return middle
         return right + 1
         
-sol = Solution()
-result = sol.searchInsert(nums,target)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.searchInsert(nums,target)
+    print(result)
