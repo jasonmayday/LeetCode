@@ -42,7 +42,8 @@ class Solution:
             x = -x                 # e.g. 12 → -12
         return x if -2147483648 < x < 2147483647 else 0
 
-sol = Solution()
-result = sol.reverse(x)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.reverse(x)
+    print(result)
 
