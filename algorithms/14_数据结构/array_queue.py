@@ -1,25 +1,4 @@
-# Copyright 2013, Michael H. Goldwasser
-#
-# Developed for use with the book:
-#
-#    Data Structures and Algorithms in Python
-#    Michael T. Goodrich, Roberto Tamassia, and Michael H. Goldwasser
-#    John Wiley & Sons, 2013
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from ..exceptions import Empty
 
 class ArrayQueue:
   """FIFO queue implementation using a Python list as underlying storage."""
@@ -78,3 +57,19 @@ class ArrayQueue:
       self._data[k] = old[walk]            # intentionally shift indices
       walk = (1 + walk) % len(old)         # use old size as modulus
     self._front = 0                        # front has been realigned
+
+if __name__ == '__main__':
+  Q = ArrayQueue()                 # contents: [ ]
+  Q.enqueue(5)                     # contents: [5]
+  Q.enqueue(3)                     # contents: [5, 3]
+  print(len(Q))                    # contents: [5, 3];     outputs 2
+  print(Q.dequeue())               # contents: [3];        outputs 5
+  print(Q.is_empty())              # contents: [3];        outputs False
+  print(Q.dequeue())               # contents: [ ];        outputs 3
+  print(Q.is_empty())              # contents: [ ];        outputs True
+  Q.enqueue(7)                     # contents: [7]
+  Q.enqueue(9)                     # contents: [7, 9]
+  print(Q.first())                 # contents: [7, 9]      outputs 7
+  Q.enqueue(4)                     # contents: [7, 9, 4]
+  print(len(Q))                    # contents: [7, 9, 4];  outputs 3
+  print(Q.dequeue())               # contents: [9, 4];     outputs 7
