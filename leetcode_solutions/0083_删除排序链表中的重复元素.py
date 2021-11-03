@@ -31,7 +31,7 @@ class ListNode:
         self.val = val
         self.next = next
 
-#将传入的数组转化为链表
+# 将传入的数组转化为链表
 def create_linked_list(arr):
     head = ListNode(arr[0])
     cur = head
@@ -40,7 +40,7 @@ def create_linked_list(arr):
         cur = cur.next
     return head
 
-#传入链表头节点，以数组形式返回
+# 传入链表头节点，以数组形式返回
 def print_linked_list(head):
     cur = head
     res = []
