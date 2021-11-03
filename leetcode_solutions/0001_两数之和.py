@@ -57,6 +57,7 @@ class Solution:
             hashtable[nums[i]] = i                    # 若不存在 target-x, 将当前数和索引放入哈希表
         return []
 
-sol = Solution()
-result = sol.twoSum(nums, target)
-print (result) 
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.twoSum(nums, target)
+    print (result) 
