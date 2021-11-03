@@ -35,9 +35,10 @@ head = [1,1,2,3,3]
 
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
-        if not head or not head.next: return head
-        cur = head
-        while cur.next:
+        if not head or not head.next: 
+            return head
+        cur = head                        # 指针 cur 指向链表的头节点
+        while cur.next:                   # 随后开始对链表进行遍历
             if cur.val == cur.next.val:
                 cur.next = cur.next.next
             else: cur = cur.next
