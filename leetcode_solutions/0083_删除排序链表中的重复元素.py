@@ -25,25 +25,49 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
 题目数据保证链表已经按升序排列
 
 '''
-# Definition for singly-linked list.
+
+
+'''定义节点'''
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-head = [1,1,2,3,3]
+class SingleLinkedList():
+    def __init__(self):   # 初始化链表
+        self.head = None  # 先初始化一个头节点为空
+    
+    def add_first(self, val):
+        node = ListNode(val)    # 创建一个新节点
+        node.next = self.head   # 新节点指针指向原头部节点
+        self.head = node        # 头部节点指针修改为新节点
+
+
+head = SingleLinkedList()
+head.add_first(3)
+head.add_first(3)
+head.add_first(2)
+head.add_first(1)
+head.add_first(1)
 
 class Solution:
-    def deleteDuplicates(self, head: ListNode) -> ListNode:
-        if not head or not head.next: 
-            return head
-        cur = head                        # 指针 cur 指向链表的头节点
-        while cur.next:                   # 随后开始对链表进行遍历
-            if cur.val == cur.next.val:
-                cur.next = cur.next.next
-            else: cur = cur.next
-
+    def deleteDuplicates(self, head) -> ListNode:
+        # 解法一：递归
+        if not head or not head.next: return head
+        head.next=self.deleteDuplicates(head.next)
+        if head.val==head.next.val:
+            head.next = head.next.next
         return head
+
+class Solution:
+    def deleteDuplicates(self, head) -> ListNode:        
+        # 解法二：遍历
+        dummy = ListNode(next=head)
+        while head:
+            while head.next and head.val==head.next.val:
+                head.next = head.next.next
+            head = head.next
+        return dummy.next
 
 sol = Solution()
 result = sol.deleteDuplicates(head)
