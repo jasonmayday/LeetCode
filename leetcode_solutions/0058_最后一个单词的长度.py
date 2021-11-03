@@ -23,7 +23,7 @@ https://leetcode-cn.com/problems/length-of-last-word/
     s 中至少存在一个单词
 
 '''
-s = "   fly me   to   the moon  "
+s = " Hello World "
 
 # 解法1：字符串操作
 class Solution:
@@ -33,11 +33,11 @@ class Solution:
 # 解法2：指针遍历
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        i = len(s) - 1                         # i为字符串最后一位的位置，因为计数从0开始所以减一
-        while i >= 0 and s[i] == ' ': i -= 1
-        j = i 
-        while j >= 0 and s[j] != ' ': j -= 1
-        return i-j
+        i = len(s) - 1                         # i为字符串最后一位的位置，因为计数从0开始所以减一。
+        while i >= 0 and s[i] == ' ': i -= 1   # 指针 i 位置从最后一位开始，如果有空格，指针 i 位置左移一位，结束时 i 位置为字符串最后一个字母
+        j = i                                  # 指针 j 从 i 的位置开始
+        while j >= 0 and s[j] != ' ': j -= 1   # 如果不是空格（为字母），指针 j 位置左移一位
+        return i - j                           # 指针位置 i - j 即为最后一个单词长度
 
 sol = Solution()
 result = sol.lengthOfLastWord(s)
