@@ -18,11 +18,20 @@ https://leetcode-cn.com/problems/delete-node-in-a-linked-list/
 解释：给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -> 5 -> 9.
 
 '''
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+# 传入链表头节点，以数组形式返回
+def print_linked_list(head):
+    cur = head
+    res = []
+    while cur:
+        res.append(cur.val)
+        cur = cur.next
+    return res
 
 class Solution:
     def deleteNode(self, node):
@@ -32,3 +41,19 @@ class Solution:
         """
         node.val = node.next.val
         node.next = node.next.next
+
+if __name__ == "__main__":
+    head  = ListNode(4)
+    node1 = ListNode(5)
+    node2 = ListNode(1)
+    node3 = ListNode(9)
+    head.next  = node1
+    node1.next = node2
+    node2.next = node3
+    
+    sol = Solution()
+    result = sol.deleteNode(node1)
+
+    while head:
+        print (head.val)
+        head = head.next
