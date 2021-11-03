@@ -23,7 +23,6 @@ https://leetcode-cn.com/problems/climbing-stairs/
 3.  2 阶 + 1 阶
 
 '''
-n = 20
 
 class Solution(object):
     def climbStairs(self, n):
@@ -36,6 +35,8 @@ class Solution(object):
             dp[i] = dp[i-1] + dp[i-2]
         return dp[-1]
 
-sol = Solution()
-result = sol.climbStairs(n)
-print(result)
+if __name__ == "__main__":
+    n = 20
+    sol = Solution()
+    result = sol.climbStairs(n)
+    print(result)
