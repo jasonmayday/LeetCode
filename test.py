@@ -1,5 +1,3 @@
-s = "123456"
+t = 2.74
 
-i = len(s) - 1
-
-print (i)
+print (int(t)+1)
