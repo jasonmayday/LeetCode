@@ -1,5 +1,5 @@
-str = "dog cat cat dog"
+haystack = "hello"
+needle = "ll"
 
-li = str.split(' ')
-
-print (li)
+print (len(haystack))
+print (len(needle))
