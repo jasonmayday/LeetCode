@@ -11,6 +11,7 @@ class ListNode:   # 节点类
 class SingleLinkedList():
     def __init__(self):   # 初始化链表
         self.head = None  # 先初始化一个头节点为空
+        self.size = 0
 
     '''展示功能'''
     # 判断链表是否为空
@@ -114,17 +115,17 @@ class SingleLinkedList():
     '''其他功能'''
     # 查找指定结点是否存在
     def search_node_is_exist(self, val):
-        cur = self.head
+        cur = self.head         # 初始化指针
         while cur is not None:
             if cur.val == val:
                 return True
             else:
                 cur = cur.next
-        return False
+        return False            # 若遍历完整个单链表后未找到 val，则返回 False
 
     # 遍历整个链表
     def traversal(self):
-        cur = self.head               # 获取head指针
+        cur = self.head               # 获取 head 指针，初始化遍历所需指针
         while cur is not None:        # 循环遍历
             print(cur.val, end = " ") # 返回value
             cur = cur.next            # 指针后移
