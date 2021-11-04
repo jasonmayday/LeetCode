@@ -67,13 +67,14 @@ class Solution(object):
             root = root.left
         return res[::-1]
 
-sol = Solution()
-result1 = sol.preorderTraversal(root)
-result2 = sol.inorderTraversal(root)
-result3 = sol.postorderTraversal(root)
-print ("前序遍历结果: ", result1) 
-print ("中序遍历结果: ", result2) 
-print ("后序遍历结果: ", result3)  
+if __name__ == "__main__":
+    sol = Solution()
+    result1 = sol.preorderTraversal(root)
+    result2 = sol.inorderTraversal(root)
+    result3 = sol.postorderTraversal(root)
+    print ("前序遍历结果: ", result1) 
+    print ("中序遍历结果: ", result2) 
+    print ("后序遍历结果: ", result3)  
 
 
 
