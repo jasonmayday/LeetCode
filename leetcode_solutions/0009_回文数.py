@@ -27,11 +27,14 @@ https://leetcode-cn.com/problems/palindrome-number/
     -2^31 <= x <= 2^31-1
 
 '''
-x = 56765
+
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         return x >= 0 and int(str(x)[::-1]) == x    # 如果数字大于0而且反过来等于原来数字，返回True
                                                     # a[::-1] end to beginning, counting down by 1，e.g. 210 → 012
-sol = Solution()
-result = sol.isPalindrome(x)
-print (result) 
+
+if __name__ == "__main__":
+    x = 56765
+    sol = Solution()
+    result = sol.isPalindrome(x)
+    print (result)
