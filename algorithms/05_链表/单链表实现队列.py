@@ -1,9 +1,13 @@
+'''
+
+'''
+
 class LNode(object):
     def __init__(self,x):
         self.data = x
         self.next = None
 
-class MyQueue(object):
+class LinkedQueue(object):
     def __init__(self):
         """分配头结点"""
         self.pHead = None
@@ -58,7 +62,7 @@ class MyQueue(object):
             return None
         return self.pEnd.data
 
-queue = MyQueue()
+queue = LinkedQueue()
 queue.enQueue(1)
 queue.enQueue(2)
 
