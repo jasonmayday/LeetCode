@@ -1,3 +1,8 @@
+'''
+使链表尾部节点的 "next" 指针指向链表的头部，这种结构为循环链表
+
+'''
+
 class Node():
     """节点类"""
     def __init__(self, item, per=None, next=None):
