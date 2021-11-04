@@ -37,7 +37,7 @@ class SingleLinkedList():
     # 在链表的头部添加元素
     def add_first(self, val):
         node = ListNode(val)    # 创建一个新节点
-        node.next = self.head   # 新节点指针指向原头部节点
+        node.next = self.head   # 新节点指针 next 指向原头部节点
         self.head = node        # 头部节点指针修改为新节点
     
     # 在链表的尾部添加元素
@@ -70,10 +70,10 @@ class SingleLinkedList():
     '''删除节点'''
     # 删除头结点
     def delete_head(self):
-        cur = self.head
-        if self.head is not None:
-            self.head = self.head.next
-            cur.next = None
+        cur = self.head                   # 指针指向链表头部
+        if self.head is not None:         # 确认有头部节点
+            self.head = self.head.next    # 把原头部节点指向的下一节点定义为新的头部节点
+            cur.next = None               # 删除
         return cur
 
     # 删除尾节点
