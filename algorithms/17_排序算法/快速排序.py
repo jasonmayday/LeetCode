@@ -1,6 +1,6 @@
 '''
 快速排序(Quick Sort)是对冒泡排序的一种改进。
-其的基本思想: 选一基准元素，依次将剩余元素中小于该基准元素的值放置其左侧，大于等于该基准元素的值放置其右侧；
+基本思想: 选一基准元素，依次将剩余元素中小于该基准元素的值放置其左侧，大于等于该基准元素的值放置其右侧；
 然后，取基准元素的前半部分和后半部分分别进行同样的处理；以此类推，直至各子序列剩余一个元素时，即排序完成（类比二叉树的思想)。
 
 算法实现步骤
@@ -9,8 +9,10 @@
     然后，左边和右边的数据可以独立排序。对于左侧的数组数据，又可以取一个分界值，将该部分数据分成左右两部分，同样在左边放置较小值，右边放置较大值。右侧的数组数据也可以做类似处理。
     重复上述过程，通过递归（recursive）将左侧部分排好序后，再递归排好右侧部分的顺序。当左、右两个部分各数据排序完成后，整个数组的排序也就完成了。
 '''
+
 from typing import List
 
+# 解法1：
 def partition(arr: List[int], low: int, high: int):
     pivot, j = arr[low], low
     for i in range(low + 1, high + 1):
@@ -21,7 +23,7 @@ def partition(arr: List[int], low: int, high: int):
     return j 
 
 def quick_sort_between(arr: List[int], low: int, high: int):
-    if high-low <= 1: # 递归结束条件
+    if high - low <= 1: # 递归结束条件
         return
 
     m = partition(arr, low, high)  # arr[m] 作为划分标准
@@ -35,6 +37,47 @@ def quick_sort(arr:List[int]):
     :return: 快速排序是就地排序(in-place)
     """
     quick_sort_between(arr,0, len(arr) - 1)
+
+
+# 解法2：
+def quick_sort(arr):      
+    if len(arr) <= 1:    # 边界条件
+        return arr
+    else:
+        pivot = arr[len(arr) // 2]              # 取数组的中间的数为基准数
+    left = []
+    right = []
+    middle = [pivot]             # 定义空列表，分别存储小于/大于/等于基准数的元素
+    for i in range(1, len(arr)): # 遍历数组，把元素归类到3个列表中
+        if arr[i] > pivot:
+            right.append(arr[i])
+        elif arr[i] < pivot:
+            left.append(arr[i])
+        else:
+            middle.append(arr[i])
+    return quick_sort(left) + middle + quick_sort(right) #对左右子列表快排，拼接3个列表并返回
+
+
+# 解法3：
+def quick_sort_3(arr:List[int], start, end):
+    if start >= end:    # 递归的退出条件
+        return
+    mid = arr[start]    # 设定起始元素为要寻找位置的基准元素
+    low = start         # low为序列左边的由左向右移动的游标
+    high = end          # high为序列右边的由右向左移动的游标
+    while low < high:   
+        while low < high and arr[high] >= mid:  # 如果low与high未重合，high指向的元素不比基准元素小，则high向左移动
+            high -= 1
+        arr[low] = arr[high]                   # 将high指向的元素放到low的位置上
+
+        while low < high and arr[low] < mid:    # 如果low与high未重合，low指向的元素比基准元素小，则low向右移动
+            low += 1
+        arr[high] = arr[low]                   # 将low指向的元素放到high的位置上
+    # 退出循环后，low与high重合，此时所指位置为基准元素的正确位置
+    arr[low] = mid                  # 将基准元素放到该位置
+    quick_sort_3(arr, start, low-1)   # 对基准元素左边的子序列进行快速排序
+    quick_sort_3(arr, low+1, end)     # 对基准元素右边的子序列进行快速排序
+
 
 if __name__ == '__main__':
     import random
