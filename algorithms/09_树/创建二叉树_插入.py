@@ -1,12 +1,13 @@
 from queue import Queue
 
+
 class BinaryTree(object):
     def __init__(self, data):
         self.left = None  ## 左子节点数据
         self.right = None  ## 右子节点数据
         self.data = data  ## 节点的值
 
-    ## 向二叉树中插入一个元素
+    '''插入元素'''
     def insert(self, value):
         node = BinaryTree(value)  ## 添加一个元素即添加一个节点
         if self.data:
@@ -23,7 +24,7 @@ class BinaryTree(object):
                     self.right = node
         else:
             self.data = value
-
+    
     ## 前序遍历
     def preorder_traversal(self, root):
         preorder_traversal_list = []
