@@ -12,7 +12,7 @@
 from typing import List
 
 def bubble_sort(arr: List[int]):
-    n = len(arr) # n为列表的长度
+    n = len(arr) # n 为列表的长度
  
     # 遍历所有数组元素
     for i in range(n):
