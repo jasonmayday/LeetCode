@@ -60,6 +60,58 @@ class Solution(object):
         postorder(root)
         return res
 
+    # 层次遍历（广度优先 Breath First Search）
+    def BFS(self, root: TreeNode) -> List[int]:
+        res = []
+        if root:
+            queue = [root]
+            while queue:
+                currentNode = queue.pop(0)
+                res.append(currentNode.val)
+                if currentNode.left:
+                    queue.append(currentNode.left)
+                if currentNode.right:
+                    queue.append(currentNode.right)
+        return res
+
+
+    # 深度优先（Deep First Search）
+    def DFS(self, root: TreeNode) -> List[int]:
+        res = []
+        if root:
+            stack = [root]
+            while stack:
+                currentNode = stack.pop()
+                res.append(currentNode.val)
+                if currentNode.right:
+                    stack.append(currentNode.right)
+                if currentNode.left:
+                    stack.append(currentNode.left)
+        return res
+
+if __name__ == "__main__":
+    sol = Solution()
+    result1 = sol.preorderTraversal(root)
+    result2 = sol.inorderTraversal(root)
+    result3 = sol.postorderTraversal(root)
+    result4 = sol.BFS(root)
+    result5 = sol.DFS(root)
+    print ("前序遍历结果: ", result1) 
+    print ("中序遍历结果: ", result2) 
+    print ("后序遍历结果: ", result3) 
+    print ("广度优先结果: ", result4) 
+    print ("深度优先结果: ", result5) 
+
+
+
+
+
+
+
+
+
+
+'''
     # 另一个版本的递归实现
     # 前序递归
     def preorderTraversal(self, root: TreeNode) -> List[int]:
@@ -78,12 +130,5 @@ class Solution(object):
         if not root:
             return []      
         return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
+'''
 
-if __name__ == "__main__":
-    sol = Solution()
-    result1 = sol.preorderTraversal(root)
-    result2 = sol.inorderTraversal(root)
-    result3 = sol.postorderTraversal(root)
-    print ("前序遍历结果: ", result1) 
-    print ("中序遍历结果: ", result2) 
-    print ("后序遍历结果: ", result3)  
