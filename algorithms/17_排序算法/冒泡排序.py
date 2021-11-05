@@ -9,8 +9,9 @@
     3. 针对所有的元素重复以上的步骤，除了最后一个；
     4. 重复步骤1~3，直到没有任何一对元素需要比较，那么排序完成。
 '''
+from typing import List
 
-def bubble_sort(arr):
+def bubble_sort(arr: List[int]):
     n = len(arr) # n为列表的长度
  
     # 遍历所有数组元素
