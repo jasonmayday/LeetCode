@@ -9,11 +9,11 @@
     3. 如果该元素（已排序）大于新元素，将该元素移到下一位置；
     4. 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；
     5. 将新元素插入到该位置后；
-    重复步骤2~5。
+    6. 重复步骤2~5。
 '''
 from typing import List
 
-def insertion_sort(arr):
+def insertion_sort(arr: List[int]):
     for i in range(1, len(arr)):   # 从第二个元素开始比较，i表示当前的要插入的元素
         value = arr[i]
         j = i - 1
