@@ -35,9 +35,9 @@ from typing import List
 class Solution:
     # 解法1：排序
     def missingNumber(self, nums: List[int]) -> int:
-        nums.sort()                       # 将数组排序之后
-        for i, num in enumerate(nums):    # 即可根据数组中每个下标处的元素是否和下标相等，得到丢失的数字。
-            if num != i:
+        nums.sort()                       # 将数组排序
+        for i, num in enumerate(nums):    # enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。
+            if num != i:                  # 根据数组中每个下标处的元素是否和下标相等，得到丢失的数字。
                 return i
         return len(nums)
 
