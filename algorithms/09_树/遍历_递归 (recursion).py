@@ -60,10 +60,19 @@ class Solution(object):
         postorder(root)
         return res
 
+    '''
+    如果是在树中用BFS与DFS，因为一个节点顶多有两个子节点，我们已经明确知道这个节点除了子节点以外不会再有相邻节点，
+    因此在搜索过程中也不会遇到重复的节点，所以不需要加集合searched。
+    只需要按照BFS与DFS的思想与所用数据结构，遍历即可。
+
+    而如果要再图中使用DFS或者BFS，需要加一个集合searched，里面是已经遍历过的点。
+    '''
     # 层次遍历（广度优先 Breath First Search）
     def BFS(self, root: TreeNode) -> List[int]:
         res = []
-        if root:
+        if root is None: # 递归结束条件：节点是None，结束函数调用
+            return
+        else:
             queue = [root]
             while queue:
                 currentNode = queue.pop(0)
@@ -78,7 +87,9 @@ class Solution(object):
     # 深度优先（Deep First Search）
     def DFS(self, root: TreeNode) -> List[int]:
         res = []
-        if root:
+        if root is None: # 递归结束条件：节点是None，结束函数调用
+            return
+        else:
             stack = [root]
             while stack:
                 currentNode = stack.pop()
