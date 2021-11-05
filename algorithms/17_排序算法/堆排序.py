@@ -28,8 +28,8 @@ def heap_sort(arr:List[int]):
 # 测试数据
 if __name__ == '__main__':
     import random
-    random.seed(54)
-    arr = [random.randint(0,100) for _ in range(10)]
+    random.seed(10)
+    arr = [random.randint(0,100) for _ in range(20)]
     print("原始数据：", arr)
     heap_sort(arr)
     print("堆排序结果：", arr)
