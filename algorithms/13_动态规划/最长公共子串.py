@@ -9,10 +9,10 @@ Longest Common Substring (LCS) 问题就是求两个字符串最长公共子串�
 '''
 
 
-def find_lcsubstr(s1, s2): 
-	m=[[0 for i in range(len(s2)+1)]  for j in range(len(s1)+1)]  # 生成0矩阵，为方便后续计算，比字符串长度多了一列
-	mmax=0    # 最长匹配的长度
-	p=0       # 最长匹配对应在s1中的最后一位
+def LongestCommonSubstring(s1, s2): 
+	m = [[0 for i in range(len(s2)+1)]  for j in range(len(s1)+1)]  # 生成0矩阵，为方便后续计算，比字符串长度多了一列
+	mmax = 0    # 最长匹配的长度
+	p = 0       # 最长匹配对应在s1中的最后一位
 	for i in range(len(s1)):
 		for j in range(len(s2)):
 			if s1[i]==s2[j]:
@@ -22,7 +22,19 @@ def find_lcsubstr(s1, s2):
 					p=i+1
 	return s1[p-mmax:p],mmax   # 返回最长子串及其长度
 
+def longestCommonSubstring(self, A, B):
+    ans = 0
+    for i in range(len(A)):
+        for j in range(len(B)):
+            l = 0
+            while i + l < len(A) and j + l < len(B) \
+                and A[i + l] == B[j + l]:
+                l += 1
+            if l > ans:
+                ans = l
+    return ans
+
 if __name__ == '__main__':
     s1 = 'abcdfg'
     s2 = 'abdfg'
-    print (find_lcsubstr ('abcdfg','abdfg'))
+    print (LongestCommonSubstring ('abcdfg','abdfg'))
