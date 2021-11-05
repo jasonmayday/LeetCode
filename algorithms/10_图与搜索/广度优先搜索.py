@@ -1,40 +1,28 @@
-'''
-假设你经营着一个芒果农场，需要寻找芒果销售商，以便将芒果卖给他。在Facebook，你与
-芒果销售商有联系吗？为此，你可在朋友中查找。
 
-创建一个朋友名单。
-依次检查名单中的每个人，看看他是否是芒果销售商。
-'''
-
-
-graph = {}
-graph["you"] = ["alice", "bob", "claire"]
-graph["bob"] = ["anuj", "peggy"]
-graph["alice"] = ["peggy"]
-graph["claire"] = ["thom", "jonny"]
-graph["anuj"] = []
-graph["peggy"] = []
-graph["thom"] = []
-graph["jonny"] = []
-
-from collections import deque    # 在python中，可以用deque创建一个双端队列
-
-def is_target_node(name):    # 用于检测目标节点thom的简易方式：判断节点最后一个字符是否为m
-      return name[-1] == 'm' 
-
-def search(name):
-    search_queue = deque()    # 创建一个队列
-    search_queue += graph[name]    # 将当前节点的邻居都加入到这个搜索队列中
-    searched = []    # 该数组用于记录检查过的节点，以避免出现死循环
-    while search_queue:    # 若队列不为空
-        person = search_queue.popleft()    # 移去并弹出队列中第一个节点
-        if not person in searched:    # 判断该节点是否被检查过了，若检查过则跳过。
-            if is_target_node(person):    # 检查该节点是否为目标节点。
-                print(person + " is target node!")    # 若是，则输出节点信息并返回。
-                return True
-            else:
-                search_queue += graph[person]  # 若不是目标节点。将该节点的邻居都压入搜索队列
-                searched.append(person)    # 将该节点加入已搜索的数组中
+def BFS(graph, s):
+    queue = []       # 建立队列
+    queue.append(s)  # 将当前节点的邻居都加入到这个搜索队列中
+    seen = []        # 该数组用于记录遍历过的节点，以避免出现死循环
+    seen.append(s)
+    while queue:  # 若队列不为空
+        vertex = queue.pop(0)    # 队列，先进先出，移去并弹出队列中第一个节点
+        nodes = graph[vertex]
+        for w in nodes:
+            if w not in seen:    # 判断该节点是否被检查过了，若检查过则跳过。
+                queue.append(w)  # 若不是目标节点。将该节点的邻居都压入搜索队列
+                seen.append(w)   # 将该节点加入已搜索的数组中
+        print(vertex)
     return False    # 搜索列表为空，循环结束，则没有目标节点，返回失败。
 
-search("you")
+if __name__ == '__main__':
+    # 图节点
+    graph = {
+    
+        'A': ['B', 'C'],
+        'B': ['A', 'C', 'D'],
+        'C': ['A', 'B', 'D', 'E'],
+        'D': ['B', 'C', 'E', 'F'],
+        'E': ['C', 'D'],
+        'F': ['D']
+    }
+    BFS(graph, 'A')
