@@ -1,8 +1,15 @@
-class MyStack(object):
+'''
+
+'''
+
+class ArrayStack(object):
     """模拟栈"""
 
     def __init__(self):
         self.items = []
+    
+    def __len__(self):
+        return len(self.items)
 
     def is_empty(self):
         """判断是否为空"""
@@ -15,7 +22,6 @@ class MyStack(object):
     def push(self, item):
         """压栈(加入元素)"""
         self.items.append(item)
-
 
     def pop(self):
         """弹栈(弹出元素)"""
@@ -32,16 +38,21 @@ class MyStack(object):
         else:
             return None
 
-s = MyStack()
-s.push(4)
-print("栈顶元素为："+str(s.top()))
-print("栈大小为："+str(s.size()))
-s.pop()
-print("弹栈成功")
-s.pop()
-"""
-栈顶元素为：4
-栈大小为：1
-弹栈成功
-栈已经为空
-"""
+if __name__ == '__main__':
+  S = ArrayStack()                 # contents: [ ]
+  S.push(5)                        # contents: [5]
+  S.push(3)                        # contents: [5, 3]
+  print(len(S))                    # contents: [5, 3];      outputs 2
+  print(S.pop())                   # contents: [5];         outputs 3
+  print(S.is_empty())              # contents: [5];         outputs False
+  print(S.pop())                   # contents: [ ];         outputs 5
+  print(S.is_empty())              # contents: [ ];         outputs True
+  S.push(7)                        # contents: [7]
+  S.push(9)                        # contents: [7, 9]
+  print(S.top())                   # contents: [7, 9];      outputs 9
+  S.push(4)                        # contents: [7, 9, 4]
+  print(len(S))                    # contents: [7, 9, 4];   outputs 3
+  print(S.pop())                   # contents: [7, 9];      outputs 4
+  S.push(6)                        # contents: [7, 9, 6]
+  S.push(8)                        # contents: [7, 9, 6, 8]
+  print(S.pop())                   # contents: [7, 9, 6];   outputs 8
