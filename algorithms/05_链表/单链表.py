@@ -6,6 +6,18 @@ class ListNode:   # 节点类
         self.val = val     # val存放数据元素
         self.next = next   # 保存当前节点中下一个节点的引用
         # 每个节点包含两个部分，一部分存放数据变量的val，另一部分存放下一个节点的位置信息next。
+    
+    def getData(self):
+        return self.data
+    
+    def getNext(self):
+        return self.next
+    
+    def setData(self, newdata):
+        self.data = newdata
+    
+    def setNext(self, newnext):
+        self.next = newnext
 
 '''单链表'''
 class SingleLinkedList():

@@ -3,9 +3,8 @@
 '''
 
 
-
-
 array = [10, 5, 2, 3, 42, 12, 23, 31, 8, 17, 27]
+
 def quicksort(array):
     if len(array) < 2:
         return array        # 基线条件：为空或只包含一个元素的数组是“有序”的
