@@ -38,20 +38,21 @@ class MyQueue(object):
         return self.rear - self.front
         # return len(self.items)	# 看大小
 
+if __name__ == "__main__":
+    queue = MyQueue()
+    queue.enQueue(1)
+    queue.enQueue(2)
+    
+    print("队列头元素为："+str(queue.getFront()))
+    print("队列尾元素为："+str(queue.getBack()))
+    print("队列的大小为："+str(queue.size()))
+    
+    queue.deQueue()
 
-queue = MyQueue()
-queue.enQueue(1)
-queue.enQueue(2)
+    print("队列头元素为："+str(queue.getFront()))
+    print("队列尾元素为："+str(queue.getBack()))
+    print("队列的大小为："+str(queue.size()))
 
-print("队列头元素为："+str(queue.getFront()))
-print("队列尾元素为："+str(queue.getBack()))
-print("队列的大小为："+str(queue.size()))
-
-queue.deQueue()
-# queue.deQueue()
-print("队列头元素为："+str(queue.getFront()))
-print("队列尾元素为："+str(queue.getBack()))
-print("队列的大小为："+str(queue.size()))
 """
 队列头元素为：1
 队列尾元素为：2

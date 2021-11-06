@@ -50,7 +50,8 @@ class Solution:
             return True
         else:
             return False
-
-sol = Solution()
-result = sol.isValid(s)
-print (result)
+            
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.isValid(s)
+    print (result)
