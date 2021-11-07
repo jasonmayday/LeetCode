@@ -48,7 +48,7 @@ class Solution:
             if i not in s:                # 不在哈希集合中的数字即为丢失的数字
                 return i
 
-    # 解法3：哈希集合
+    # 解法3：数学
     def missingNumber(self, nums: List[int]) -> int:
         n = len(nums)
         total = n * (n + 1) // 2          # 将从 0 到 n 的全部整数之和记为 total，根据高斯求和公式，有 total = n*(n+1)/2
