@@ -31,6 +31,7 @@ class Solution:
             res = len(candies) // 2
         return res
 
-sol = Solution()
-result = sol.distributeCandies(candies)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.distributeCandies(candies)
+    print(result)
