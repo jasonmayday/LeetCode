@@ -20,7 +20,7 @@ def bubble_sort(arr: List[int]):
         # Last i elements are already in place
         for j in range(0, n-i-1):
             if arr[j] > arr[j+1] :
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+                arr[j], arr[j+1] = arr[j+1], arr[j] # Python允许同时赋值。执行语句a, b = b, a，相当于同时执行两条赋值语句
  
 if __name__ == '__main__':
     import random

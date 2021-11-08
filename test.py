@@ -1,7 +1,10 @@
+nums = [17, 20, 26, 31, 44, 54, 55, 77, 93]
+n = len(nums)
+print (n)
 
-nums1 = [1,2,3,0,0,0]
-m = 3
-nums2 = [2,5,6]
-nums1[m:] = nums2
+mid = n // 2
+print (mid)
 
-print (nums1)
+
+
+print (nums[:mid])
