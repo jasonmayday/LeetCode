@@ -7,10 +7,10 @@
 
 def selection_sort(arr):
     for i in range(len(arr)):  # 第一层for表示循环选择的遍数
-        min_index = i              # 将起始元素设为最小元素
+        min_index = i          # 将起始元素设为最小元素
         min_val = arr[i]
         for j in range(i, len(arr)):  # 第二层for表示最小元素和后面的元素逐个比较
-            if arr[j] < min_val:   # 如果当前元素比最小元素小，则把当前元素角标记为最小元素角标
+            if arr[j] < min_val:      # 如果当前元素比最小元素小，则把当前元素角标记为最小元素角标
                 min_val = arr[j]
                 min_index = j             # 查找一遍后将最小元素与起始元素互换
         arr[min_index], arr[i] = arr[i], arr[min_index]

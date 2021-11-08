@@ -17,7 +17,6 @@ def merge_sort(array):
     right_array = merge_sort(array[len(array)//2:])
     return merge(left_array, right_array)            # 使用递归运算
  
- 
 def merge(left_array, right_array):  # 合并操作，将两个有序数组 left[] 和 right[] 合并成一个大的有序数组
     left_index, right_index, merge_array = 0, 0, list()  # left 与 right 的下标指针
     while left_index < len(left_array) and right_index < len(right_array):

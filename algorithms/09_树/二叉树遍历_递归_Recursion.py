@@ -17,15 +17,6 @@ class TreeNode:
         self.left = left
         self.right = right
 
-root = TreeNode(1)
-root.left = TreeNode(2)
-root.right = TreeNode(3)
-root.left.left = TreeNode(4)
-root.left.right = TreeNode(5)
-root.right.left = TreeNode(6)
-root.right.right = TreeNode(7)
-root.right.right.right = TreeNode(8)
-
 class Solution(object):
     # 前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树
     def preorderTraversal(self, root: TreeNode) -> List[int]:
@@ -65,8 +56,18 @@ class Solution(object):
     # 深度优先（Deep First Search）
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+    root.right.right.right = TreeNode(8)
+
     sol = Solution()
+
     result1 = sol.preorderTraversal(root)
     result2 = sol.inorderTraversal(root)
     result3 = sol.postorderTraversal(root)

@@ -5,6 +5,7 @@ class TreeNode(object):
         self.right = right
         self.parent = parent
         self.color = color
+
 class RBTree(object):
     def __init__(self):
         self.root = None
@@ -28,6 +29,7 @@ class RBTree(object):
         while temp_node.left:
             temp_node = temp_node.left
         return temp_node
+
     def findMax(self, node):
         """
         找到以 node 节点为根节点的树的最大值节点 并返回
@@ -38,6 +40,7 @@ class RBTree(object):
         while temp_node.right:
             temp_node = temp_node.right
         return temp_node
+
     def transplant(self, tree, node_u, node_v):
         """
         用 v 替换 u
@@ -55,6 +58,7 @@ class RBTree(object):
         # 加一下为空的判断
         if node_v:
             node_v.parent = node_u.parent
+
     def left_rotate(self, node):
         '''
              * 左旋示意图：对节点x进行左旋
@@ -90,6 +94,7 @@ class RBTree(object):
                 parent.left = right
             else:
                 parent.right = right
+
     def right_rotate(self, node):
         '''
              * 左旋示意图：对节点y进行右旋
@@ -125,6 +130,7 @@ class RBTree(object):
                 parent.left = left
             else:
                 parent.right = left
+
     def insert(self, node):
         # 找到最接近的节点
         temp_root = self.root
@@ -150,6 +156,7 @@ class RBTree(object):
             node.parent = temp_node
         # 调整树
         self.insert_fixup(node)
+
     def insert_fixup(self, node):
         if node.value == self.root.data:
             return
@@ -197,6 +204,7 @@ class RBTree(object):
                 return
         # 最后记得把根节点的颜色改为黑色 保证红黑树特性
         self.root.color = "BLACK"
+        
     def delete(self, node):
         # 找到以该节点为根节点的右子树的最小节点
         node_color = node.color

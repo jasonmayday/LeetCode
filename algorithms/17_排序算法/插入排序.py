@@ -14,14 +14,13 @@
 from typing import List
 
 def insertion_sort(arr: List[int]):
-    for i in range(1, len(arr)):   # 从第二个元素开始比较，i表示当前的要插入的元素
-        value = arr[i]
-        j = i - 1
-        # 把arr[i]插入到arr[0:i]中，arr[0:i]是有序的
-        while j >= 0 and arr[j] > value:  # 如果满足条件,arr[j]就往后移
-            arr[j + 1] = arr[j]
-            j -= 1
-        arr[j+1] = value   
+    for index in range(1, len(arr)):   # 从第二个元素开始比较，i表示当前的要插入的元素
+        currentvalue = arr[index]
+        position = index
+        while position > 0 and arr[position - 1] > currentvalue: 
+            arr[position] = arr[position -1]
+            position -= 1
+        arr[position] = currentvalue   
 
 if __name__ == '__main__':
     import random
