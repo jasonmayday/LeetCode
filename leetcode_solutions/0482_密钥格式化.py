@@ -25,10 +25,6 @@ S 非空
 '''
 
 
-
-S = "5F3Z-2e-9-w"  # S：字符串
-K = 4              # K：数字，每个新分组的字符数
-
 class Solution:
     def licenseKeyFormatting(self, S: str, K: int) -> str:
         s = S.upper().replace('-','')[::-1]   # 转为大写，并删除"-"
@@ -40,8 +36,11 @@ class Solution:
             res = s[i] + res
         return res
 
-sol = Solution()
-result = sol.licenseKeyFormatting(S,K)
-print (result)
+if __name__ == "__main__":
+    S = "5F3Z-2e-9-w"  # S：字符串
+    K = 4              # K：数字，每个新分组的字符数
+    sol = Solution()
+    result = sol.licenseKeyFormatting(S,K)
+    print (result)
 
 # 5F3Z-2E9W
