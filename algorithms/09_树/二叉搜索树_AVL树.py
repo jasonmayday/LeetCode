@@ -1,3 +1,12 @@
+'''
+我们了解了二叉搜索树的构建过程。我们已经知道，当二叉搜索树不平衡时，get和put等操作的性能可能降到。
+一种特殊的二叉搜索树，它能自动维持平衡。这种树叫作AVL树，以其发明者G. M. Adelson-Velskii和E. M. Landis的姓氏命名。
+
+AVL树实现映射抽象数据类型的方式与普通的二叉搜索树一样，唯一的差别就是性能。实现AVL树时，要记录每个节点的平衡因子。
+我们通过查看每个节点左右子树的高度来实现这一点。更正式地说，我们将平衡因子定义为左右子树的高度之差。
+
+'''
+
 class BinarySearchTree:
     def __init__(self):
         self.root = None
@@ -14,9 +23,9 @@ class BinarySearchTree:
 
     def put(self, key, val):
         if self.root:
-            self._put(key, val, self.root)  # 已有根节点，插入节点时，调用_put方法
+            self._put(key, val, self.root)   # 已有根节点，插入节点时，调用_put方法
         else:
-            self.root = TreeNode(key, val)  # 无根节点，插入值直接赋值给根节点
+            self.root = TreeNode(key, val)   # 无根节点，插入值直接赋值给根节点
         self.size += 1
 
     def _put(self, key, val, currentnode):   # 插入的值应该是不允许重复的
@@ -33,9 +42,9 @@ class BinarySearchTree:
                 currentnode.rightchild = TreeNode(key, val, parent=currentnode)
                 self.updatebalance(currentnode.rightchild)
 
-    def updatebalance(self, node):
+    def updatebalance(self, node):  # 更新平衡因子
         if node.balancefactor > 1 or node.balancefactor < -1:
-            self.rebalance(node)  # 平衡因子超出，就重新平衡
+            self.rebalance(node)    # 平衡因子超出，就重新平衡
             return
         if node.parent is not None:
             if node.isleftchild():
@@ -80,7 +89,8 @@ class BinarySearchTree:
         rotroot.parent = newroot
         rotroot.balancefactor = rotroot.balancefactor + 1 - min(newroot.balancefactor, 0)  # 计算平衡因子
         newroot.balancefactor = newroot.balancefactor + 1 + max(rotroot.balancefactor, 0)
-
+    
+    '''实现再平衡'''
     def rebalance(self, node):
         if node.balancefactor < 0:  # 右重子树
             if node.rightchild.balancefactor > 0:
