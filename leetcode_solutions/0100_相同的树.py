@@ -22,16 +22,29 @@ https://leetcode-cn.com/problems/same-tree/
     -10^4 <= Node.val <= 10^4
 
 '''
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 class Solution:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
-        if p is None or q is None:
+        if p is None or q is None:      # 递归终止条件：两个节点有None，如果两个节点都为None则返回True，否则返回False
             return p == q
         if p.val == q.val:
-            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-        return False
+            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)    # 递归条件：两个节点的val值相同，则递归判断他们的左子树、右子树是否相同
+        return False    # 两个节点的val值不同，返回False
 
-作者：mazheng
-链接：https://leetcode-cn.com/problems/same-tree/solution/shen-du-you-xian-bian-li-tong-yong-si-lu-08n7/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+if __name__ == "__main__":
+    p = TreeNode(1)
+    p.left = TreeNode(2)
+    p.right = TreeNode(3)
+
+    q = TreeNode(1)
+    q.left = TreeNode(2)
+    q.right = TreeNode(3)
+
+    sol = Solution()
+    result = sol.isSameTree(p, q)
+    print (result)  
