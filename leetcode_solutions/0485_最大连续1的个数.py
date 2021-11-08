@@ -26,6 +26,7 @@ class Solution:
         maxCount = max(maxCount, count)
         return maxCount
 
-sol = Solution()
-result = sol.findMaxConsecutiveOnes([1,1,0,1,1,1,0,0,1,1])
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.findMaxConsecutiveOnes([1,1,0,1,1,1,0,0,1,1])
+    print(result)
