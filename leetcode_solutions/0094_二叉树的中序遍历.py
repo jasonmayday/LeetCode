@@ -66,6 +66,7 @@ class Solution(object):
         inorder(root)
         return res
 
-sol = Solution()
-result = sol.inorderTraversal(root)
-print (result)  
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.inorderTraversal(root)
+    print (result)  
