@@ -27,7 +27,8 @@ class Solution:
             w -= 1
         return [area // w, w]
 
-sol = Solution()
-result = sol.constructRectangle(area)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.constructRectangle(area)
+    print(result)
 
