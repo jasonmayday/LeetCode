@@ -25,12 +25,26 @@ https://leetcode-cn.com/problems/min-stack/
     minStack.top();      --> 返回 0.
     minStack.getMin();   --> 返回 -2.
  
-
 提示：
+    pop、top 和 getMin 操作总是在 非空栈 上调用。
 
-pop、top 和 getMin 操作总是在 非空栈 上调用。
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/min-stack
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 '''
+
+class MinStack:
+    def __init__(self):
+        self.stack = []
+        self.min_stack = [math.inf]
+
+    def push(self, x: int) -> None:
+        self.stack.append(x)
+        self.min_stack.append(min(x, self.min_stack[-1]))
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.min_stack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.min_stack[-1]
