@@ -52,7 +52,7 @@ class BiTree(object):
             print(e)
         return bt
 
-# 方法1：自顶向下的递归      
+"""方法1：自顶向下的递归"""
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         def height(root: TreeNode) -> int:
@@ -66,7 +66,7 @@ class Solution:
         #               判断 当前子树 是否是平衡树                and        先序遍历递归，判断当前子树的左(右)子树是否是平衡树
         return abs(height(root.left) - height(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
 
-# 方法1：自顶向下的递归（另一种写法）
+"""方法1：自顶向下的递归（另一种写法）"""
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         if not root:
@@ -79,7 +79,9 @@ class Solution:
             return 0
         return max(self.depth(root.left), self.depth(root.right)) + 1
 
-# 方法2：自底向上的递归
+"""方法2：自底向上的递归"""
+"""对二叉树做后序遍历：左子树 -> 右子树 -> 根结点，先访问左子树再访问右子树，在比较左右子树
+   从底至顶返回子树最大高度，若判定某子树不是平衡树则 “剪枝” ，直接向上返回。"""
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         return self.recur(root) != -1       # 若 recur(root) != -1 ，则说明此树平衡，返回 true ；否则返回 false
