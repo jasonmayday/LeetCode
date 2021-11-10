@@ -23,6 +23,7 @@ https://leetcode-cn.com/problems/path-sum/
     -1000 <= targetSum <= 1000
 
 '''
+from typing import Optional
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -30,5 +31,34 @@ class TreeNode:
         self.left = left
         self.right = right
 
+"""DFS"""
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        if not root: return False
+        if not root.left and not root.right:
+            return sum == root.val
+        return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)
+
+
+
+if __name__ == "__main__":
+    root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+
+    root = TreeNode(5)
+    root.left = TreeNode(4)
+    root.right = TreeNode(8)
+    root.right.left = TreeNode(15)
+    root.right.right = TreeNode(7)
+    
+    targetSum = 22
+
+    sol = Solution()
+    result = sol.hasPathSum(root)
+    print (result)  
+    '''
+        3
+       / \
+      9   20
+         / \
+        15  7
+    ''' 
