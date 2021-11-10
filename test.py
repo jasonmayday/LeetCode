@@ -1,10 +1,7 @@
-nums = [17, 20, 26, 31, 44, 54, 55, 77, 93]
-n = len(nums)
-print (n)
-
-mid = n // 2
-print (mid)
 
 
+s = "A man, a plan, a canal: Panama"
 
-print (nums[:mid])
+sgood = "".join(ch.lower() for ch in s if ch.isalnum())
+
+print (sgood)
