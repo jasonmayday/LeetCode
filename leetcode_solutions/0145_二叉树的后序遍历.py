@@ -55,8 +55,19 @@ class Solution(object):
         postorder(root)
         return res
 
-# 迭代
+# 迭代    
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        res,stack = [],[]
+        while stack or root: 
+            while root:
+                res.append(root.val)
+                stack.append(root)
+                root = root.right
+            root = stack.pop()
+            root = root.left
+        return res[::-1]
 
-sol = Solution()
-result = sol.postorderTraversal(root)
-print (result)  
+if __name__ == "__main__":
+  sol = Solution()
+  result = sol.postorderTraversal(root)
+  print (result)  
