@@ -17,7 +17,7 @@ https://leetcode-cn.com/problems/pascals-triangle/
 1 <= numRows <= 30
 
 '''
-numRows = 15
+
 from typing import List
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
@@ -32,6 +32,8 @@ class Solution:
             ret.append(row)
         return ret
 
-sol = Solution()
-result = sol.generate(numRows)
-print(result)
+if __name__ == "__main__":
+    numRows = 15
+    sol = Solution()
+    result = sol.generate(numRows)
+    print(result)
