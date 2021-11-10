@@ -32,4 +32,8 @@ class Tree:
 
         return level(0)
 
-    binary_tree = list_to_binarytree([3,9,20,None,None,15,7])
+if __name__ == "__main__":
+    nums = [5,4,8,11,None,13,4,7,2,None,None,None,1]
+    tree = Tree()
+    root = tree.list_to_binarytree(nums)
+    
