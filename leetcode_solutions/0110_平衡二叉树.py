@@ -52,41 +52,61 @@ class BiTree(object):
             print(e)
         return bt
 
-# https://leetcode-cn.com/problems/balanced-binary-tree/solution/balanced-binary-tree-di-gui-fang-fa-by-jin40789108/
-
-# 方法一：自顶向下的递归      
+# 方法1：自顶向下的递归      
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         def height(root: TreeNode) -> int:
-            if not root:
+            if not root:    # 当 root 为空，即越过叶子节点，则返回高度 0
                 return 0
-            return max(height(root.left), height(root.right)) + 1
+            return max(height(root.left), height(root.right)) + 1   # 终止条件： 当 root 为空，即越过叶子节点，则返回高度 0
 
-        if not root:
+        if not root:        # 若树根节点 root 为空，则直接返回 true
             return True
+        # 所有子树都需要满足平衡树性质，因此者使用 and 逻辑
+        #               判断 当前子树 是否是平衡树                and        先序遍历递归，判断当前子树的左(右)子树是否是平衡树
         return abs(height(root.left) - height(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
 
-# 方法二：自底向上的递归
+# 方法1：自顶向下的递归（另一种写法）
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
-        def height(root: TreeNode) -> int:
-            if not root:
-                return 0
-            leftHeight = height(root.left)
-            rightHeight = height(root.right)
-            if leftHeight == -1 or rightHeight == -1 or abs(leftHeight - rightHeight) > 1:
-                return -1
-            else:
-                return max(leftHeight, rightHeight) + 1
+        if not root:
+            return True
+        return abs(self.depth(root.left) - self.depth(root.right)) <= 1 and \
+            self.isBalanced(root.left) and self.isBalanced(root.right)              # 三者全部成立才为True
 
-        return height(root) >= 0
+    def depth(self, root):
+        if not root: 
+            return 0
+        return max(self.depth(root.left), self.depth(root.right)) + 1
+
+# 方法2：自底向上的递归
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        return self.recur(root) != -1       # 若 recur(root) != -1 ，则说明此树平衡，返回 true ；否则返回 false
+
+    def recur(self, root):
+        if not root: 
+            return 0        # 递归终止条件1：当越过叶子节点时，返回高度 0
+        
+        left = self.recur(root.left)
+        if left == -1: 
+            return -1       # 递归终止条件2：当左子树高度 == -1 时，代表此子树的左子树不是平衡树，因此直接返回 -1
+        
+        right = self.recur(root.right)
+        if right == -1: 
+            return -1       # 递归终止条件2：当右子树高度 == -1 时，代表此子树的右子树不是平衡树，因此直接返回 -1
+        
+        if abs(left - right) < 2:           # 递归返回值：当节点root 左 / 右子树的高度差 < 2
+            return max(left, right) + 1     # 则返回以节点root为根节点的子树的最大高度，即节点 root 的左右子树中最大高度加 1
+        else:                               # 当节点root 左/右子树的高度差 ≥ 2:
+            return -1                       # 则返回 -1，代表 此子树不是平衡树
 
 if __name__ == "__main__":
     data = [1,2,2,3,3,None,None,4,4]
     data_list = list(data)
     btree = BiTree(data_list)
     root = btree.createBiTree()
-
+    
     sol = Solution()
     result = sol.isBalanced(root)
     print (result)
