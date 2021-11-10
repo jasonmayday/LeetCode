@@ -24,6 +24,7 @@ class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         return reduce(lambda x, y: x ^ y, nums)
 
-sol = Solution()
-result = sol.singleNumber(nums)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.singleNumber(nums)
+    print(result)
