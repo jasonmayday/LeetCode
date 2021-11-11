@@ -1,12 +1,12 @@
 '''
-
+Python的list及其操作提供了与栈的使用方式有关的功能，可以直接作为栈来使用
 '''
 
 class ArrayStack(object):
     """模拟栈"""
 
     def __init__(self):
-        self.items = []
+        self.items = []         # 建立空栈对应于创建一个空表[]
     
     def __len__(self):
         return len(self.items)
@@ -19,7 +19,7 @@ class ArrayStack(object):
         """返回栈的大小"""
         return len(self.items)
 
-    def push(self, item):
+    def push(self, item):       # 压入元素操作在表的尾端进行，对应于append命令
         """压栈(加入元素)"""
         self.items.append(item)
 
