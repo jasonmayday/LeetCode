@@ -3,24 +3,25 @@
 
 '''
 
+"""节点类"""
 class Node():
-    """节点类"""
     def __init__(self, item, per=None, next=None):
         self.per = per
         self.item = item
         self.next = next
 
+"""循环链表"""
 class LinkList():
-    """循环链表"""
+
     def __init__(self, node=None):
         self.head = node
 
+    """判断链表是否为空"""
     def is_empty(self):
-        """判断链表是否为空"""
         return True if self.head else False
-    
+
+    """返回链表长度"""
     def length(self):
-        """返回链表长度"""
         num = 0
         node = self.head
         if node == None:
@@ -30,23 +31,13 @@ class LinkList():
             node = node.next
             num += 1
         return num
-    
+
+    """链表头部添加"""
     def add(self, item):
-        """链表头部添加"""
         self.head = Node(item, per=self.head.per, next=self.head)
-    
-    def travel(self):
-        """遍历整个链表"""
-        node = self.head
-        if node == None:
-            return
-        print(node.item)
-        while node.next!=self.head:
-            node = node.next
-            print(node.item)
-    
+
+    """链表尾部添加元素"""
     def addend(self, item):
-        """链表尾部添加元素"""
         node = self.head
         if node == None:
             node = Node(item)
@@ -57,9 +48,9 @@ class LinkList():
         while node.next:
             node = node.next
         node.next = Node(item, node, node.next)
-    
+
+    """指定位置添加"""
     def insert(self, index, item):
-        """指定位置添加"""
         if index == 0:
             self.add(item)
             return
@@ -70,9 +61,9 @@ class LinkList():
             node.next = None(item, node, node.next)
         except:
             assert "索引超出范围"
-    
+
+    """删除指定节点"""
     def remove(self, index):
-        """删除指定节点"""
         if index == 0:
             self.head = self.head.next
             return
@@ -84,9 +75,9 @@ class LinkList():
             node.next.per=node
         except:
             assert "索引超出范围"
-    
+
+    """查找节点是否存在"""
     def search(self, item):
-        """查找节点是否存在"""
         index = 0
         node = self.head
         while node.next:
@@ -95,3 +86,13 @@ class LinkList():
             index += 1
             node = node.next
         return "该元素不存在"
+
+    """遍历整个链表"""    
+    def travel(self):
+        node = self.head
+        if node == None:
+            return
+        print(node.item)
+        while node.next!=self.head:
+            node = node.next
+            print(node.item)
