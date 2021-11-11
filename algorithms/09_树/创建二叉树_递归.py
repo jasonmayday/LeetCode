@@ -14,7 +14,7 @@ class BiTree(object):
             #步进获取下一个元素
             next_data = next(self.it)
             #如果当前列表元素为'#', 则认为其为 None
-            if next_data is "#":
+            if next_data == "#":
                 bt = None
             else:
                 bt = TreeNode(next_data)
