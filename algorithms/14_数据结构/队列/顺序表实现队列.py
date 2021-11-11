@@ -1,3 +1,5 @@
+
+
 class MyQueue(object):
     """队列"""
     def __init__(self):
