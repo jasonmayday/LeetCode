@@ -11,21 +11,27 @@ class Deque:
     def __init__(self):
         self.items = []
     
+    '''判断队列是否为空'''
     def isEmpty(self):
         return self.items == []
     
+    '''在队头添加元素'''
     def addFront(self, item):
         self.items.append(item)     # 用append方法添加元素
     
+    '''在队尾添加元素'''
     def addRear(self, item):        # 用insert方法添加元素，因为append方法只能在列表的最后添加元素
         self.items.insert(0, item)
     
+    '''从队头删除元素'''
     def removeFront(self):
         return self.items.pop()     # 使用 pop 方法移除列表中的最后一个元素
     
+    '''从队尾删除元素'''
     def removeRear(self):
         return self.items.pop(0)    # 使用 pop(0) 方法移除列表中的第一个元素
     
+    '''返回队列大小'''
     def size(self):
         return len(self.items)
 
