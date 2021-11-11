@@ -1,7 +1,3 @@
+n = 11111111111111111111111111111101
 
-
-s = "A man, a plan, a canal: Panama"
-
-sgood = "".join(ch.lower() for ch in s if ch.isalnum())
-
-print (sgood)
+print ((n & 1))

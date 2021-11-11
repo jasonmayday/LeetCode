@@ -14,7 +14,7 @@
 
 '''
 from typing import List
-from collections import defaultdict
+from collections import Counter
 
 L = 10
 nums = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
@@ -23,6 +23,7 @@ class Solution:
     def findRepeatedDnaSequences(self, s: str) -> List[str]:
         return [t for t, v in Counter(s[i: i + 10] for i in range(len(s) - 9)).items() if v > 1]
 
-sol = Solution()
-result = sol.findRepeatedDnaSequences(nums)
-print (result)  
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.findRepeatedDnaSequences(nums)
+    print (result)  
