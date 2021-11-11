@@ -1,4 +1,6 @@
-
+"""
+单链表的结点是一个二元组，元素域value保存着作为表元素的数据项，链接域next里保存同一个表里的下一个节点的标识
+"""
 
 '''单链表的结点'''
 class ListNode:   # 节点类
@@ -66,9 +68,9 @@ class SingleLinkedList():
 
     # 在指定位置添加元素 
     def add(self, index, val):
-        if index < 0:                      # 如果位置在0或者之前，调用头插法
+        if index < 0:                       # 如果位置在 0 或者之前，调用头插法
             self.add_first(val)
-        elif index > self.length() - 1:    # 如果位置在原链表长度之后，调用尾插法
+        elif index > self.length() - 1:     # 如果位置在原链表长度之后，调用尾插法
             self.add_last(val)
         else:
             cur = self.head
@@ -145,9 +147,12 @@ class SingleLinkedList():
      
     # 反转整个链表
     def reverse_list(self):
-        cur, prev = self.head, None
+        cur  = self.head
+        prev = None
         while cur:
-            cur.next, prev, cur = prev, cur, cur.next
+            cur.next = prev
+            prev     = cur
+            cur      = cur.next
         self.head = prev
 
 '''创建链表'''
