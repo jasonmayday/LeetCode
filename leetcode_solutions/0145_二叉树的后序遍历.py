@@ -68,6 +68,6 @@ class Solution(object):
         return res[::-1]
 
 if __name__ == "__main__":
-  sol = Solution()
-  result = sol.postorderTraversal(root)
-  print (result)  
+    sol = Solution()
+    result = sol.postorderTraversal(root)
+    print (result)  
