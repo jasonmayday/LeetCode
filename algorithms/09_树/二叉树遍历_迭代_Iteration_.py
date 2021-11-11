@@ -76,8 +76,8 @@ class Solution(object):
     而如果要再图中使用DFS或者BFS，需要加一个集合searched，里面是已经遍历过的点。
     '''
     
-    '''层次遍历（广度优先 Breath First Search）'''
-    # 每次都从左到右、从上到下的去遍历一个图，那么就需要把一行中最左边先进来的先输出，最右边后进来的后输出。所以会用到队列。
+    ''' 层次遍历（广度优先 Breath First Search）
+        每次都从左到右、从上到下的去遍历一个图，那么就需要把一行中最左边先进来的先输出，最右边后进来的后输出。所以会用到队列。'''
     def BFS(self, root: TreeNode) -> List[int]:
         res = []         
         if root is None:
@@ -94,8 +94,8 @@ class Solution(object):
         return res
 
 
-    '''深度优先（Deep First Search）'''
-    # 从图的最上边先按照一条道深挖到最下面，在挖到底以后就需要再逐个返回到上面的顶点，再去遍历父节点是不是还有别的子节点。后进先出的模式，所以需要用到栈。'''
+    ''' 深度优先 (Deep First Search)
+        从图的最上边先按照一条道深挖到最下面，在挖到底以后就需要再逐个返回到上面的顶点，再去遍历父节点是不是还有别的子节点。后进先出的模式，所以需要用到栈。'''
     def DFS(self, root: TreeNode) -> List[int]:
         res = []
         if root is None: 
