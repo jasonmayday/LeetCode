@@ -18,7 +18,15 @@ class TreeNode:
         self.right = right
 
 class Solution(object):
-    # 前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树
+    '''广度优先（ Breath First Search）层次遍历'''
+    #  使用队列实现树的层次遍历
+
+    '''深度优先遍历 Depth First Search，DFS，主要有三种子方法:
+       前序遍历
+       中序遍历
+       后序遍历'''
+
+    '''前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树'''
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
         def preorder(root):
@@ -29,7 +37,7 @@ class Solution(object):
         preorder(root)
         return res
 
-    # 中序遍历 (In-Order Traversal) ：左子树 ---> 根结点 ---> 右子树
+    '''中序遍历 (In-Order Traversal) ：左子树 ---> 根结点 ---> 右子树'''
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
         def inorder(root):
@@ -40,7 +48,7 @@ class Solution(object):
         inorder(root)
         return res    
 
-    # 后序遍历 (Post-Order Traversal) ：左子树 ---> 右子树 ---> 根结点
+    '''后序遍历 (Post-Order Traversal) ：左子树 ---> 右子树 ---> 根结点'''
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
         def postorder(root):
@@ -50,11 +58,6 @@ class Solution(object):
                 res.append(root.val)
         postorder(root)
         return res
-    
-    # 层次遍历（广度优先 Breath First Search）
-
-    # 深度优先（Deep First Search）
-
 
 if __name__ == "__main__":  
     root = TreeNode(1)
