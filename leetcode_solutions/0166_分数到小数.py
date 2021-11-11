@@ -60,6 +60,8 @@ class Solution:
             d[numerator] = idx + 1  # 新被除数位置
             idx += 1
         return ans
-sol = Solution()
-result = sol.fractionToDecimal(numerator, denominator)
-print(result)
+
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.fractionToDecimal(numerator, denominator)
+    print(result)
