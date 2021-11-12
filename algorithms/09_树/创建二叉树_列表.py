@@ -18,22 +18,44 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
-        
-class Tree:    
-    def list_to_binarytree(nums):
-        def level(index):
-            if index >= len(nums) or nums[index] is None:
-                return None
+    
+    def __str__(self):
+        #测试基本功能，输出字符串
+        return str(self.val)   
 
-            root = TreeNode(nums[index])
-            root.left = level(2 * index + 1)
-            root.right = level(2 * index + 2)
-            return root
+"""迭代构建"""        
+def list_to_binarytree(nums):
+    if not nums:
+        return 
+    root=TreeNode(nums[0])
+    seq=[root]
+    i=1
+    while i<len(nums):
+        node=seq.pop(0)
+        node.left=TreeNode(nums[i])
+        if nums[i]:
+            seq.append(node.left)
+        node.right=TreeNode(nums[i+1])
+        i+=1
+        if i<len(nums):
+            node.right=TreeNode(nums[i])
+            if nums[i]:
+                seq.append(node.right)
+        i+=1
+    return root
 
-        return level(0)
+"""递归构建"""
+def list_to_binarytree(nums):
+    def level(index):
+        if index >= len(nums) or nums[index] is None:
+            return None
+        root = TreeNode(nums[index])
+        root.left = level(2 * index + 1)
+        root.right = level(2 * index + 2)
+        return root
+    return level(0)
 
 if __name__ == "__main__":
     nums = [5,4,8,11,None,13,4,7,2,None,None,None,1]
-    tree = Tree()
-    root = tree.list_to_binarytree(nums)
+    root = list_to_binarytree(nums)
     
