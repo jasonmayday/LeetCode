@@ -24,6 +24,7 @@ class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         return len(nums) != len(set(nums))   # 如果数组的长度不等于元素集，则说明有重复的元素。set() 函数创建一个无序不重复元素集，可进行关系测试
 
-sol = Solution()
-result = sol.containsDuplicate(nums)
-print (result) 
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.containsDuplicate(nums)
+    print (result) 

@@ -36,8 +36,12 @@ https://leetcode-cn.com/problems/power-of-two/
 
 
 class Solution:
-
-    BIG = 2**30
-
+    BIG = 2 ** 30
     def isPowerOfTwo(self, n: int) -> bool:
         return n > 0 and Solution.BIG % n == 0
+
+if __name__ == "__main__":
+    n = 512
+    sol = Solution()
+    result = sol.isPowerOfTwo(n)
+    print(result)

@@ -34,6 +34,7 @@ class Solution:
                     hash[nums[i]] = i        # 将索引更新为当前索引
         return False
 
-sol = Solution()
-result = sol.containsNearbyDuplicate(nums, k)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.containsNearbyDuplicate(nums, k)
+    print(result)
