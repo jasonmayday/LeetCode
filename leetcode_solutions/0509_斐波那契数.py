@@ -32,6 +32,7 @@ class Solution:
             F.append(F[i-1]+F[i-2])
         return F[n]
 
-sol = Solution()
-result = sol.fib(n)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.fib(n)
+    print(result)

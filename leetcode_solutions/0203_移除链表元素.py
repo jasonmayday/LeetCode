@@ -50,8 +50,6 @@ def print_linked_list(head):
     return list
 
 
-
-
 """递归法"""
 class Solution:
     def removeElements(self, head: ListNode, val: int) -> ListNode:
@@ -72,7 +70,7 @@ class Solution:
         dummy.next = head
         p = dummy
         while p is not None:                    # 向前探一个节点，检查是否等于val
-            if p.next and p.next.val == val:    # 如果val相等
+            if p.next and p.next.val == val:    # 如果 val 相等
                 p.next = p.next.next            # 跳过 p.next 节点
             else:
                 p = p.next

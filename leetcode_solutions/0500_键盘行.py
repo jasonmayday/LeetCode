@@ -42,9 +42,10 @@ class Solution:
         #                set(word.lower()).issubset(x)   是子集：            传入：集合            返回：Ture/False
         #                any(iterable)                   是任意一行的子集：   传入：T/F的可迭代对象  返回：存在Ture就返回True，否则返回False
 
-sol = Solution()
-result = sol.findWords(words)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.findWords(words)
+    print(result)
 
 
 '''

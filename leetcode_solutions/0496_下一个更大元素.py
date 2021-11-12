@@ -46,6 +46,7 @@ class Solution:
             res.append(dist.get(n, -1))
         return res
 
-sol = Solution()
-result = sol.nextGreaterElement(nums1, nums2)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.nextGreaterElement(nums1, nums2)
+    print(result)
