@@ -212,6 +212,6 @@ if __name__ == '__main__':
     bst.delete(4)
     print(bst)
 
-    # min max
-    print(bst.get_max())
-    print(bst.get_min())
+    # 获取最大值和最小值
+    print("二叉树中的最大值：", bst.get_max())
+    print("二叉树中的最小值：", bst.get_min())
