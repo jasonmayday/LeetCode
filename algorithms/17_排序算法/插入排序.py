@@ -18,7 +18,7 @@ def insertion_sort(arr: List[int]):
         currentvalue = arr[index]
         position = index
         while position > 0 and arr[position - 1] > currentvalue: 
-            arr[position] = arr[position -1]
+            arr[position] = arr[position -1]    # 反序逐个后移元素，确定插入位置
             position -= 1
         arr[position] = currentvalue   
 
