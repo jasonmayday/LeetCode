@@ -43,7 +43,7 @@ class LinkedQueue(object):
     def deQueue(self):
         """出队列，删除首元素"""
         if self.pHead == None:
-            print("出队列失败，队列已经为空")
+            print ("出队列失败，队列已经为空")
         self.pHead = self.pHead.next
         if self.pHead == None:
             self.pEnd = None
@@ -51,34 +51,35 @@ class LinkedQueue(object):
     def getFront(self):
         """返回队列首元素"""
         if self.pHead == None:
-            print("获取队列首元素失败，队列已经为空")
+            print ("获取队列首元素失败，队列已经为空")
             return None
         return self.pHead.data
 
     def getBack(self):
     	"""返回队列尾元素"""
         if self.pEnd == None:
-            print("获取队列尾元素失败，队列已经为空")
+            print ("获取队列尾元素失败，队列已经为空")
             return None
         return self.pEnd.data
 
-queue = LinkedQueue()
-queue.enQueue(1)
-queue.enQueue(2)
+if __name__ == "__main__":
+    queue = LinkedQueue()
+    queue.enQueue(1)
+    queue.enQueue(2)
 
-print("队列头元素为："+str(queue.getFront()))
-print("队列尾元素为："+str(queue.getBack()))
-print("队列的大小为："+str(queue.size()))
+    print("队列头元素为："+str(queue.getFront()))
+    print("队列尾元素为："+str(queue.getBack()))
+    print("队列的大小为："+str(queue.size()))
 
-queue.deQueue()
-print("队列头元素为："+str(queue.getFront()))
-print("队列尾元素为："+str(queue.getBack()))
-print("队列的大小为："+str(queue.size()))
-"""
-队列头元素为：1
-队列尾元素为：2
-队列的大小为：2
-队列头元素为：2
-队列尾元素为：2
-队列的大小为：1
-"""
+    queue.deQueue()
+    print("队列头元素为："+str(queue.getFront()))
+    print("队列尾元素为："+str(queue.getBack()))
+    print("队列的大小为："+str(queue.size()))
+    """
+    队列头元素为：1
+    队列尾元素为：2
+    队列的大小为：2
+    队列头元素为：2
+    队列尾元素为：2
+    队列的大小为：1
+    """

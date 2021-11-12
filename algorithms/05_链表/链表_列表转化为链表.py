@@ -42,6 +42,6 @@ def length(node):
 
 
 if __name__ == "__main__":
-    node = listToLinkedlist([99,1,34,2,6,1,35,657,5,3,8,7])
-    print (traverse(node))
+    node = create_linked_list([99,1,34,2,6,1,35,657,5,3,8,7])
+    print (print_linked_list(node))
     print (length(node))
