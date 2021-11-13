@@ -55,7 +55,23 @@ def list_to_binarytree(nums):
         return root
     return level(0)
 
+def BFS(root):
+    res = []         
+    if root is None:
+        return
+    else:
+        queue = [root] # 每次输出一行，所用数据结构为队列
+        while queue:
+            currentNode = queue.pop(0)   # 弹出元素
+            res.append(currentNode.val)  # 打印元素值
+            if currentNode.left:
+                queue.append(currentNode.left)
+            if currentNode.right:
+                queue.append(currentNode.right)
+    return res
+    
 if __name__ == "__main__":
     nums = [5,4,8,11,None,13,4,7,2,None,None,None,1]
     root = list_to_binarytree(nums)
+    print (BFS(root))
     
