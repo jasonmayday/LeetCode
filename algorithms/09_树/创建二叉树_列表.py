@@ -50,9 +50,9 @@ def list_to_binarytree(nums):
         if index >= len(nums) or nums[index] is None:
             return None
         root = TreeNode(nums[index])
-        root.left = level(2 * index + 1)
-        root.right = level(2 * index + 2)
-        return root
+        root.left = level(2 * index + 1)    # 往左递推  # 从根开始一直到最左，直至为空
+        root.right = level(2 * index + 2)   # 往右回溯  # 再返回上一个根，回溯右
+        return root     # 再返回根
     return level(0)
 
 def BFS(root):
