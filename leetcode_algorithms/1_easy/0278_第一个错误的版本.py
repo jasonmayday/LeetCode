@@ -6,15 +6,21 @@
 
 你可以通过调用 bool isBadVersion(version) 接口来判断版本号 version 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用 API 的次数。
 
- 
 示例 1：
-输入：n = 5, bad = 4
-输出：4
-解释：
-调用 isBadVersion(3) -> false 
-调用 isBadVersion(5) -> true 
-调用 isBadVersion(4) -> true
-所以，4 是第一个错误的版本。
+    输入：n = 5, bad = 4
+    输出：4
+    解释：
+    调用 isBadVersion(3) -> false 
+    调用 isBadVersion(5) -> true 
+    调用 isBadVersion(4) -> true
+    所以，4 是第一个错误的版本。
+
+示例 2：
+    输入：n = 1, bad = 1
+    输出：1
+
+提示：
+    1 <= bad <= n <= 2^31 - 1
 
 '''
 n = 5
@@ -30,3 +36,4 @@ class Solution:
             else :
                 left = mid + 1
         return left
+

@@ -45,6 +45,7 @@ class Solution:
                 return False
         return True
 
-sol = Solution()
-result = sol.wordPattern(pattern, str)
-print (result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.wordPattern(pattern, str)
+    print (result)
