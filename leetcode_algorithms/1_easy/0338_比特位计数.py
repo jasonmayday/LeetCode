@@ -30,9 +30,11 @@ https://leetcode-cn.com/problems/counting-bits/
     你能不使用任何内置函数解决此问题吗？（如，C++ 中的 __builtin_popcount ）
 
 """
+# https://leetcode-cn.com/problems/counting-bits/solution/yi-bu-bu-fen-xi-tui-dao-chu-dong-tai-gui-3yog/
+
 from typing import List
 
-'''方法一：遍历 与 统计'''
+'''方法1：遍历 与 统计'''
 class Solution:
     def countBits(self, num: int) -> List[int]:
         res = []
@@ -41,7 +43,7 @@ class Solution:
         return res
 
 
-'''方法二：递归'''
+'''方法2：递归'''
 class Solution(object):
     def countBits(self, num):
         res = []
@@ -56,7 +58,14 @@ class Solution(object):
             return self.count(num - 1) + 1
         return self.count(num // 2)
 
-# https://leetcode-cn.com/problems/counting-bits/solution/yi-bu-bu-fen-xi-tui-dao-chu-dong-tai-gui-3yog/
+'''方法3：动态规划'''
+class Solution:
+    def countBits(self, num):
+        res = [0] * (num + 1)
+        for i in range(1, num + 1):
+            res[i] = res[i >> 1] + (i & 1)
+        return res
+
 
 if __name__ == "__main__":
     n = 10000
