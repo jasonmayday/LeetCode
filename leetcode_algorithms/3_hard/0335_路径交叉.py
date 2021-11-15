@@ -40,7 +40,7 @@ https://assets.leetcode.com/uploads/2021/03/14/selfcross3-plane.jpg
 
 '''
 
-distance = [2,1,1,2]
+
 
 from typing import List
 class Solution:
@@ -65,6 +65,7 @@ class Solution:
         return False
 
 if __name__ == "__main__":
+    distance = [2,1,1,2]
     sol = Solution()
     result = sol.isSelfCrossing(distance)
     print (result) 
