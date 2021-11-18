@@ -33,6 +33,7 @@ class Solution:
             num = num // 16
         return ''.join(reversed(ans))
 
-sol = Solution()
-result = sol.toHex(2789542333)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.toHex(2789542333)
+    print(result)
