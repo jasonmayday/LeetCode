@@ -41,6 +41,7 @@ class Solution:
                 right = mid - 1
         return left
 
-sol = Solution()
-result = sol.arrangeCoins(n)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.arrangeCoins(n)
+    print(result)
