@@ -33,6 +33,7 @@ class Solution:
             res += num - min_num
         return res
 
-sol = Solution()
-result = sol.minMoves(nums)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.minMoves(nums)
+    print(result)
