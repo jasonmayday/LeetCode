@@ -22,6 +22,7 @@ class Solution:
                 ans += 1
         return ans
 
-sol = Solution()
-result = sol.countSegments(s)
-print (result)  
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.countSegments(s)
+    print (result)  
