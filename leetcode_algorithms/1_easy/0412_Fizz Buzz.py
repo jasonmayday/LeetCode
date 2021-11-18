@@ -38,6 +38,7 @@ class Solution:
                 ans.append("Buzz")
         return ans
 
-sol = Solution()
-result = sol.fizzBuzz(n)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.fizzBuzz(n)
+    print(result)
