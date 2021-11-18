@@ -33,6 +33,7 @@ class Solution:
                     return nums[i]
         return nums[0]
 
-sol = Solution()
-result = sol.thirdMax(nums)
-print (result)  
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.thirdMax(nums)
+    print (result)  
