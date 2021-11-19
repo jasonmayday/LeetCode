@@ -41,6 +41,7 @@ class Solution(object):
         return res
         
     '''中序遍历 (In-Order Traversal)：左子树 ---> 根结点 ---> 右子树'''
+    """二叉搜索树采用中序遍历，就是一个有序数组。"""
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         res,stack = [],[]       # 利用栈进行临时存储
         while stack or root:    # stack为空且root为null时，说明已经遍历结束
