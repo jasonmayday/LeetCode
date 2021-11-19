@@ -19,7 +19,7 @@ https://leetcode-cn.com/problems/single-number-iii/
 输出：[1,0]
 
 提示：
-2 <= nums.length <= 3 * 104
+2 <= nums.length <= 3 * 10^4
 -231 <= nums[i] <= 231 - 1
 除两个只出现一次的整数外，nums 中的其他数字都出现两次
 

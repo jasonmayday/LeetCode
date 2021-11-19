@@ -24,7 +24,7 @@ nums1 中数字 x 的下一个更大元素是指 x 在 nums2 中对应位
 
 提示：
 1 <= nums1.length <= nums2.length <= 1000
-0 <= nums1[i], nums2[i] <= 104
+0 <= nums1[i], nums2[i] <= 10^4
 nums1和nums2中所有整数 互不相同
 nums1 中的所有整数同样出现在 nums2 中
 

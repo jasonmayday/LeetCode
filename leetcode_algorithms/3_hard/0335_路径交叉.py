@@ -35,8 +35,8 @@ https://assets.leetcode.com/uploads/2021/03/14/selfcross3-plane.jpg
 输出：true
 
 提示：
-1 <= distance.length <= 105
-1 <= distance[i] <= 105
+1 <= distance.length <= 10^5
+1 <= distance[i] <= 10^5
 
 '''
 

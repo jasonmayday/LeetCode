@@ -24,7 +24,7 @@ https://leetcode-cn.com/problems/implement-strstr/
     输出：0
 
 提示：
-    0 <= haystack.length, needle.length <= 5 * 104
+    0 <= haystack.length, needle.length <= 5 * 10^4
     haystack 和 needle 仅由小写英文字符组成
 
 '''

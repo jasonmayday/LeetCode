@@ -35,9 +35,9 @@ class Solution:
             return mat      # 不相等则直接返回原数组
         unfold = []
         for row in mat:
-            unfold.extend(row)  # 将数组展开成一行
+            unfold.extend(row)  # 将数组展开成一行，extend() 函数用于在列表末尾一次性追加另一个序列中的多个值
         reshape_mat = []
-        for i in range(0, len(unfold), c):
+        for i in range(0, len(unfold), c):  # 每隔 c 个位置放入新的一行
             row = []
             for j in range(i, i+c):
                 row.append(unfold[j])
@@ -54,8 +54,8 @@ class Solution(object):
 
 if __name__ == "__main__":
     mat = [[1,2],[3,4]]
-    r = 1   # 行数
-    c = 4   # 列数
+    r = 1   # 行数 row
+    c = 4   # 列数 column
     sol = Solution()
     result = sol.matrixReshape(mat,r,c)
     print(result)

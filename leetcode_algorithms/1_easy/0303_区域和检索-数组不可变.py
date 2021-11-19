@@ -22,7 +22,7 @@
     0 <= nums.length <= 10^4
     -10^5 <= nums[i] <= 10^5
     0 <= i <= j < nums.length
-    最多调用 104 次 sumRange 方法
+    最多调用 10^4 次 sumRange 方法
 
 """
 from typing import List
