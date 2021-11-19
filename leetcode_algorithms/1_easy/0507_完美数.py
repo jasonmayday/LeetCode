@@ -1,0 +1,48 @@
+"""
+对于一个 正整数，如果它和除了它自身以外的所有 正因子 之和相等，我们称它为 「完美数」。
+
+给定一个 整数 n， 如果是完美数，返回 true，否则返回 false
+
+示例 1：
+    输入：28
+    输出：True
+    解释：28 = 1 + 2 + 4 + 7 + 14
+    1, 2, 4, 7, 和 14 是 28 的所有正因子。
+
+示例 2：
+    输入：num = 6
+    输出：true
+
+示例 3：
+    输入：num = 496
+    输出：true
+
+示例 4：
+    输入：num = 8128
+    输出：true
+
+示例 5：
+    输入：num = 2
+    输出：false
+ 
+提示：
+    1 <= num <= 10^8
+
+"""
+import math
+
+class Solution:
+    def checkPerfectNumber(self, num: int) -> bool:
+        if num == 1:
+            return False    # 对于数字1:直接返回 False
+        total = 1   # 计数从1开始
+        for i in range(2, int(math.sqrt(num)) + 1): # 我们只需要判断 "2 ~ int(sqrt(num))+1" 的数，全部累加
+            if num % i == 0:
+                total += (i + num // i) # 这里total要加上i和num // i
+        return total == num
+
+if __name__ == "__main__":
+    num = 33550336
+    sol = Solution()
+    result = sol.checkPerfectNumber(num)
+    print(result)
