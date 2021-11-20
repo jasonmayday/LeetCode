@@ -36,6 +36,7 @@ class Solution:
                 low = mid + 1
         return -1
 
-sol = Solution()
-result = sol.search(nums,target)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.search(nums,target)
+    print(result)
