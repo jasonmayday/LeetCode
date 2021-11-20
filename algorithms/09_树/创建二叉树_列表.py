@@ -55,7 +55,7 @@ def list_to_binarytree(nums):
         return root     # 再返回根
     return level(0)
 
-def BFS(root):
+def printBFS(root):
     res = []         
     if root is None:
         return
@@ -73,5 +73,5 @@ def BFS(root):
 if __name__ == "__main__":
     nums = [5,4,8,11,None,13,4,7,2,None,None,None,1]
     root = list_to_binarytree(nums)
-    print (BFS(root))
+    print (printBFS(root))
     
