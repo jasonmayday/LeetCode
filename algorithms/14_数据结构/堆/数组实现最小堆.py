@@ -17,7 +17,7 @@ class MinHeap():
         print(self.array[: self._count], end=', ')
     
     def add(self, value):
-        #增加元素
+        # 增加元素
         if self._count >= self.maxSize:
             raise Exception('The array is Full')
         self.array[self._count] = value
@@ -25,7 +25,7 @@ class MinHeap():
         self._count += 1
     
     def _shift_up(self, index):
-        #比较结点与根节点的大小， 较小的为根结点
+        # 比较结点与根节点的大小， 较小的为根结点
         if index > 0:
             parent = (index - 1) // 2
             if self.array[parent] > self.array[index]:
