@@ -33,7 +33,8 @@ n = 10
 class Solution(object):
     def hasAlternatingBits(self, n: int) -> bool:
         return not ('11' in str(bin(n)) or '00' in str(bin(n)))
-        
-sol = Solution()
-result = sol.hasAlternatingBits(n)
-print(result)
+
+if __name__ == "__main__":      
+    sol = Solution()
+    result = sol.hasAlternatingBits(n)
+    print(result)
