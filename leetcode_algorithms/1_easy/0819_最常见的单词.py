@@ -28,12 +28,11 @@ paragraph 只包含字母、空格和下列标点符号!?',;.
 单词里只包含字母，不会出现省略号或者其他标点符号。
 
 '''
-paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
-banned = ["hit"]
 
 # 统计出每个单词出现的次数，忽略所有的标点符号和大小写，答案即为出现次数最多且不在禁用列表中的那个单词。
 
 import collections
+
 class Solution(object):
     def mostCommonWord(self, paragraph, banned):
         banset = set(banned)                           # banset被定义为集合{'hit'}
@@ -48,6 +47,9 @@ class Solution(object):
 
         return ans
 
-sol = Solution()
-result = sol.mostCommonWord(paragraph, banned)
-print(result)
+if __name__ == "__main__":
+    paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+    banned = ["hit"]
+    sol = Solution()
+    result = sol.mostCommonWord(paragraph, banned)
+    print(result)
