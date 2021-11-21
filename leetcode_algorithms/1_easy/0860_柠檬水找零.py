@@ -34,10 +34,10 @@ https://leetcode-cn.com/problems/lemonade-change/
 
 '''
 
-#  贪心算法：遇到找钱的时候能找10块的优先找10块，因为5块不管是客户用10块还是20都是能找零的。
 from typing import List
+from collections import defaultdict
 
-bills = [5,5,5,10,20]
+"""贪心算法：遇到找钱的时候能找10块的优先找10块，因为5块不管是客户用10块还是20都是能找零的。"""
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
         five, ten, twenty = 0, 0, 0
@@ -59,13 +59,8 @@ class Solution:
                 else:
                     return False
         return True
-
-sol = Solution()
-result = sol.lemonadeChange(bills)
-print(result)
-
-'''
-from collections import defaultdict
+    
+"""解法2"""
 class Solution:
     def lemonadeChange(self, bills):
         dic = defaultdict(int)  #  defaultdict的作用是在于，当字典里的key不存在但被查找时，返回的不是keyError而是一个默认值，int对应0
@@ -82,4 +77,9 @@ class Solution:
                 else:                        # 如果没有要找的钱
                     return False
         return True
-'''
+    
+if __name__ == "__main__":
+    bills = [5,5,5,10,20]
+    sol = Solution()
+    result = sol.lemonadeChange(bills)
+    print(result)
