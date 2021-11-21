@@ -24,6 +24,8 @@ class Solution:
         return count
 
 if __name__ == "__main__":
+    J = "aA"
+    S = "aAAbbbb"
     sol = Solution()
-    result = sol.numJewelsInStones("aA", "aAAbbbb")
+    result = sol.numJewelsInStones(J, S)
     print(result)
