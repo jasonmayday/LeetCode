@@ -29,7 +29,7 @@ arr[i] > arr[i+1] > ... > arr[arr.length - 1]
 '''
 
 # 方法1：二分查找
-arr = [0,10,5,2]
+
 from typing import List
 
 class Solution:
@@ -45,6 +45,8 @@ class Solution:
                 left = mid + 1
         return ans
 
-sol = Solution()
-result = sol.peakIndexInMountainArray(arr)
-print(result)
+if __name__ == "__main__":
+    arr = [0,10,5,2]
+    sol = Solution()
+    result = sol.peakIndexInMountainArray(arr)
+    print(result)
