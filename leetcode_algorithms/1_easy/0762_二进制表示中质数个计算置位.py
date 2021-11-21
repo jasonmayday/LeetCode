@@ -45,6 +45,7 @@ class Solution:
                 ans += 1
         return ans
 
-sol = Solution()
-result = sol.countPrimeSetBits(left, right)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.countPrimeSetBits(left, right)
+    print(result)
