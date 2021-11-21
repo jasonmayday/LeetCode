@@ -23,6 +23,7 @@ class Solution:
                 count += 1
         return count
 
-sol = Solution()
-result = sol.numJewelsInStones("aA", "aAAbbbb")
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.numJewelsInStones("aA", "aAAbbbb")
+    print(result)
