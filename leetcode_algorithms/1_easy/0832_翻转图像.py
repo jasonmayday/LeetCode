@@ -19,7 +19,7 @@ https://leetcode-cn.com/problems/flipping-an-image/
 
 '''
 from typing import List
-A = [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+
 
 class Solution:
     def flipAndInvertImage(self, A):
@@ -35,6 +35,8 @@ class Solution:
                 A[row][col] ^= 1     #  
         return A
         
-sol = Solution()
-result = sol.flipAndInvertImage(A)
-print(result)
+if __name__ == "__main__":
+    A = [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+    sol = Solution()
+    result = sol.flipAndInvertImage(A)
+    print(result)
