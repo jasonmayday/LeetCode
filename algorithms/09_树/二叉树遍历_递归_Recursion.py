@@ -26,6 +26,32 @@ class Solution(object):
        中序遍历
        后序遍历'''
 
+    """
+    先序遍历：
+    def dfs(root):
+        if not root:
+            return
+        执行操作
+        dfs(root.left)
+        dfs(root.right)
+        
+    中序遍历：
+    def dfs(root):
+        if not root:
+            return
+        dfs(root.left)
+        执行操作
+        dfs(root.right)
+        
+    后序遍历：
+    def dfs(root):
+        if not root:
+            return
+        dfs(root.left)
+        dfs(root.right)
+        执行操作
+    """
+
     '''前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树'''
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
