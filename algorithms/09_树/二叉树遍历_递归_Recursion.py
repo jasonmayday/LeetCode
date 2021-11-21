@@ -57,7 +57,7 @@ class Solution(object):
         res = []
         def preorder(root):
             if root:
-                res.append(root.val)
+                res.append(root.val)    # 执行操作
                 preorder(root.left)
                 preorder(root.right)
         preorder(root)
@@ -70,7 +70,7 @@ class Solution(object):
         def inorder(root):
             if root:
                 inorder(root.left)
-                res.append(root.val)
+                res.append(root.val)    # 执行操作
                 inorder(root.right)
         inorder(root)
         return res    
@@ -82,7 +82,7 @@ class Solution(object):
             if root:
                 postorder(root.left)
                 postorder(root.right)
-                res.append(root.val)
+                res.append(root.val)    # 执行操作
         postorder(root)
         return res
 
