@@ -50,29 +50,42 @@ def list_to_binarytree(nums):
         return root
     return level(0)
 
+"""仅用来查看结果"""
+def printBFS(root):
+    res = []         
+    if root is None:
+        return
+    else:
+        queue = [root] # 每次输出一行，所用数据结构为队列
+        while queue:
+            currentNode = queue.pop(0)   # 弹出元素
+            res.append(currentNode.val)  # 打印元素值
+            if currentNode.left:
+                queue.append(currentNode.left)
+            if currentNode.right:
+                queue.append(currentNode.right)
+    return res
+
 class Solution(object):
     def increasingBST(self, root: TreeNode) -> TreeNode:
-        self.res = []
-        self.inOrder(root)
-        if not self.res:
-            return 
-        dummy = TreeNode(-1)
-        cur = dummy
-        for node in self.res:
-            node.left = node.right = None
+        root_list = []
+        def dfs(root):
+            if not root: return
+            dfs(root.left)
+            root_list.append(root)
+            dfs(root.right)
+        dfs(root)   # 获得中序遍历列表
+        # 构建递增顺序搜索树
+        dummy = TreeNode()  # 使用了 dummy （哑节点）
+        cur = dummy         # 指针
+        for node in root_list:
             cur.right = node
-            cur = cur.right
+            cur = node
+            cur.left = None
         return dummy.right
-    
-    def inOrder(self, root):
-        if not root:
-            return
-        self.inOrder(root.left)
-        self.res.append(root)
-        self.inOrder(root.right)
 
 if __name__ == "__main__":
     root = list_to_binarytree([5,3,6,2,4,None,8,1,None,None,None,7,9])
     sol = Solution()
     result = sol.increasingBST(root)
-    print (result)  
+    print (printBFS (result))
