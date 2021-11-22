@@ -81,8 +81,9 @@ class Solution(object):
                 break        
         
         return result
-
-作者：xiao-xue-66
-链接：https://leetcode-cn.com/problems/available-captures-for-rook/solution/pythonti-jie-liang-chong-fang-shi-shi-xian-su-du-j/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    
+if __name__ == "__main__":
+    nums = [[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".","R",".",".",".","p"],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]
+    sol = Solution()
+    result = sol.numRookCaptures(nums)
+    print(result)
