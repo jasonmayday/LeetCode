@@ -30,8 +30,6 @@ https://leetcode-cn.com/problems/fair-candy-swap/comments/
 
 '''
 from typing import List
-aliceSizes = [1,2,5]
-bobSizes = [2,4]
 
 class Solution:
     def fairCandySwap(self, aliceSizes: List[int], bobSizes: List[int]) -> List[int]:
@@ -46,6 +44,9 @@ class Solution:
                 break
         return ans
 
-sol = Solution()
-result = sol.fairCandySwap(aliceSizes, bobSizes)
-print(result)
+if __name__ == "__main__":
+    aliceSizes = [1,2,5]
+    bobSizes = [2,4]
+    sol = Solution()
+    result = sol.fairCandySwap(aliceSizes, bobSizes)
+    print(result)
