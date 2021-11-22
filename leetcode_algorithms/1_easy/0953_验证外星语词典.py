@@ -42,7 +42,8 @@ class Solution:
                 if len(word1) > len(word2):
                     return False
         return True
-
-sol = Solution()
-result = sol.isAlienSorted(words, order)
-print (result)
+    
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.isAlienSorted(words, order)
+    print (result)
