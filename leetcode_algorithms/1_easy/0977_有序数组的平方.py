@@ -15,8 +15,6 @@
 '''
 from typing import List
 
-nums = [-4,-1,0,3,10]
-
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
         result=[]
@@ -26,6 +24,7 @@ class Solution:
         return result
     
 if __name__ == "__main__":
+    nums = [-4,-1,0,3,10]
     sol = Solution()
     result = sol.sortedSquares(nums)
     print(result)
