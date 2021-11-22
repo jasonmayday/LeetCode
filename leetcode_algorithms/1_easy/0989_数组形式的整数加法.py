@@ -36,26 +36,10 @@ from typing import List
 
 class Solution(object):
     def addToArrayForm(self, A: List[int], K: int) -> List[int]:
-        res = []    # 维护一个答案数组
-        i = len(A) - 1
-        carry = 0
-        while i >= 0 or K != 0:
-            x = A[i] if i >= 0 else 0
-            y = K % 10 if K != 0 else 0
-
-            sum = x + y + carry
-            res.append(sum % 10)
-            carry = sum // 10
-
-            i -= 1
-            K //= 10
-        if carry != 0: res.append(carry)
-        return res[::-1]
-
-class Solution(object):
-    def addToArrayForm(self, A: List[int], K: int) -> List[int]:
-        
-
+        str_list = map(str, A)
+        num = int(''.join(list(str_list)))
+        count = num + K
+        return list(map(int,str(count)))
 
 if __name__ == "__main__":
     A = [9,9,9,9,9,9,9,9,9,9]
