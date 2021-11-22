@@ -36,16 +36,19 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-
-root = TreeNode(5)
-root.left = TreeNode(3)
-root.right = TreeNode(6)
-root.left.left = TreeNode(2)
-root.left.right = TreeNode(4)
-root.right.right = TreeNode(8)
-root.left.left.left = TreeNode(1)
-root.right.right.left = TreeNode(7)
-root.right.right.right = TreeNode(9)
+        
+    def __str__(self):
+        return str(self.val)   
+    
+def list_to_binarytree(nums):
+    def level(index):
+        if index >= len(nums) or nums[index] is None:
+            return None
+        root = TreeNode(nums[index])
+        root.left = level(2 * index + 1)
+        root.right = level(2 * index + 2)
+        return root
+    return level(0)
 
 class Solution(object):
     def increasingBST(self, root: TreeNode) -> TreeNode:
@@ -69,6 +72,7 @@ class Solution(object):
         self.inOrder(root.right)
 
 if __name__ == "__main__":
+    root = list_to_binarytree([5,3,6,2,4,None,8,1,None,None,None,7,9])
     sol = Solution()
     result = sol.increasingBST(root)
     print (result)  
