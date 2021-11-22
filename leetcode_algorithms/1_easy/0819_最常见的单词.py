@@ -31,14 +31,14 @@ paragraph 只包含字母、空格和下列标点符号!?',;.
 
 # 统计出每个单词出现的次数，忽略所有的标点符号和大小写，答案即为出现次数最多且不在禁用列表中的那个单词。
 
-import collections
+from collections import Counter
 
 class Solution(object):
     def mostCommonWord(self, paragraph, banned):
         banset = set(banned)                           # banset被定义为集合{'hit'}
         for c in "!?',;.":
             paragraph = paragraph.replace(c, " ")      # 去掉段落中的所有标点符号
-        count = collections.Counter(word for word in paragraph.lower().split())  # 对于每一个单词，放入哈希映射中进行计数
+        count = Counter(word for word in paragraph.lower().split())  # 对于每一个单词，放入哈希映射中进行计数
 
         ans, best = '', 0
         for word in count:
