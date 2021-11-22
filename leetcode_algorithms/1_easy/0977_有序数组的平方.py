@@ -24,7 +24,8 @@ class Solution:
             result.append(i*i)
         result.sort()
         return result
-
-sol = Solution()
-result = sol.sortedSquares(nums)
-print(result)
+    
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.sortedSquares(nums)
+    print(result)
