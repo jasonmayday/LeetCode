@@ -36,6 +36,7 @@ class Solution:
         nums.extend(nums)
         return nums
 
-sol = Solution()
-result = sol.getConcatenation(nums)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.getConcatenation(nums)
+    print(result)
