@@ -46,6 +46,7 @@ class Solution:
                         break
         return ''.join(res[1:-1])  #  生成新的字符串，去掉列表中第一个和最后一个字符。
 
-sol = Solution()
-result = sol.modifyString(s)
-print (result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.modifyString(s)
+    print (result)
