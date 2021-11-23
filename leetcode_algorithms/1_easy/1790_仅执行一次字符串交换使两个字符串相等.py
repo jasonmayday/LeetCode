@@ -45,8 +45,9 @@ class Solution:
                     return False          # 如果不同字母组成的新字符串大于2，返回 False
         return len(s1_str) == 2 and s1_str == s2_str  # 如果不同字母组成的新字符串等于2且相同，返回 True
 
-sol = Solution()
-result = sol.areAlmostEqual(s1, s2)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.areAlmostEqual(s1, s2)
+    print(result)
 
 
