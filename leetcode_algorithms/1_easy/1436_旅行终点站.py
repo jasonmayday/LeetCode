@@ -32,9 +32,10 @@ class Solution:
         citiesA = {path[0] for path in paths}
         return next(path[1] for path in paths if path[1] not in citiesA)
 
-sol = Solution()
-result = sol.destCity(paths)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.destCity(paths)
+    print(result)
 
 # paths[i] = [cityAi, cityBi] 
 # 根据终点站的定义，终点站不会出现在cityAi中，因为存在从cityAi出发的线路，所以终点站只会出现在cityBi中。
