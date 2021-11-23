@@ -33,6 +33,7 @@ class Solution:
                 res += 1
         return res
         
-sol = Solution()
-result = sol.countGoodSubstrings(s)
-print (result)  
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.countGoodSubstrings(s)
+    print (result)  
