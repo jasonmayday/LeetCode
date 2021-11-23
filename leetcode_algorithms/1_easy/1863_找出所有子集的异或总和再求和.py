@@ -65,6 +65,7 @@ class Solution:
         dfs(0, 0)
         return res
 
-sol = Solution()
-result = sol.subsetXORSum(nums)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.subsetXORSum(nums)
+    print(result)
