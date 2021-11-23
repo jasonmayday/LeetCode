@@ -38,6 +38,7 @@ class Solution:
             day = '0' + str(day[0])        #  那么新的day是0加上以之前day的第一个字符
         return '-'.join([year,month,day])
 
-sol = Solution()
-result = sol.reformatDate(date)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.reformatDate(date)
+    print(result)
