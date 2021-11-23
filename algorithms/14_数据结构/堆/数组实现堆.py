@@ -1,4 +1,29 @@
+"""
+堆的特点：
+    1. 内部数据是有序的
+    2. 可以弹出堆顶的元素，大顶堆就是弹出最大值，小顶堆就是弹出最小值
+    3. 每次加入新元素或者弹出堆顶元素后，调整堆使之重新有序仅需要O(logn)的时间
+    4. 支持在线算法
+
+堆的本质：
+    1.  它是一个完全二叉树
+    2.  实现的时候我们不需要建造一个树，改用一个数组即可
+        那么我们是如何把一个完全二叉树和一个数组关联到一起的呢？
+        给树的节点编号，节点的编号就是元素在数组中的下标
+    3.  于是我们发现一个很重要的结论：
+        已知一个节点的编号为index，那么它的父节点的编号为：
+        father_index = (index - 1) / 2
+        左孩子节点的编号为
+        left_index = index ∗ 2 + 1
+        右孩子节点的编号为
+        right_index = index ∗ 2 + 2
+
+
+"""
+
+
 class Heap:
+    """初始化"""
     def __init__(self,desc=False):
         """
         初始化，默认创建一个小顶堆
@@ -8,16 +33,18 @@ class Heap:
     
     @property
     def size(self):
+        """堆的大小"""
         return len(self.heap)
     
+    """返回堆顶元素"""
     def top(self):
         if self.size:
             return self.heap[0]
         return None
     
+    """添加元素"""
     def push(self,item):
         """
-        添加元素
         第一步，把元素加入到数组末尾
         第二步，把末尾元素向上调整
         """
@@ -83,6 +110,7 @@ class Heap:
             self._swap(index,smallest)
             index = smallest
     
+    """交换两个元素"""
     def _swap(self,i,j):
         self.heap[i],self.heap[j] = self.heap[j],self.heap[i]
 
