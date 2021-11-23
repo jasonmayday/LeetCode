@@ -38,6 +38,7 @@ class Solution:
             num.append(nums[i])   # 把每个i位置的数字逐个加入到新数组num
         return num                # 返回新数组
 
-sol = Solution()
-result = sol.buildArray(nums)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.buildArray(nums)
+    print(result)
