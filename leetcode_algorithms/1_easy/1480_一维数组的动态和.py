@@ -35,6 +35,7 @@ class Solution:
             nums[i] = nums[i] + nums[i-1]
         return nums
         
-sol = Solution()
-result = sol.runningSum(nums)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.runningSum(nums)
+    print(result)
