@@ -49,7 +49,8 @@ class Solution:
                 if abs(nums[i] - nums[j]) == k:
                     res += 1
         return res
-        
-sol = Solution()
-result = sol.countKDifference(nums)
-print (result)  
+
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.countKDifference(nums)
+    print (result)  
