@@ -23,8 +23,6 @@ https://leetcode-cn.com/problems/destination-city/
 
 '''
 
-paths = [["B","C"],["D","B"],["C","A"]]
-
 from typing import List
 
 class Solution:
@@ -33,6 +31,7 @@ class Solution:
         return next(path[1] for path in paths if path[1] not in citiesA)
 
 if __name__ == "__main__":
+    paths = [["B","C"],["D","B"],["C","A"]]
     sol = Solution()
     result = sol.destCity(paths)
     print(result)
