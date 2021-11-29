@@ -24,7 +24,6 @@ https://leetcode-cn.com/problems/running-sum-of-1d-array/
 -10^6 <= nums[i] <= 10^6
 
 '''
-nums = [3,1,2,10,1]
 
 from typing import List
 
@@ -36,6 +35,7 @@ class Solution:
         return nums
         
 if __name__ == "__main__":
+    nums = [3,1,2,10,1]
     sol = Solution()
     result = sol.runningSum(nums)
     print(result)
