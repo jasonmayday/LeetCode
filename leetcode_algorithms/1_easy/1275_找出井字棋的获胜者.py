@@ -58,3 +58,28 @@ A 和 B 在一个 3 x 3 的网格上玩井字棋。
 
 """
 
+from itertools import permutations
+''' itertools.permutations()接受一个集合并产生一个元组序列，每个元组由集合中所有元素的一个可能排列组成。
+    也就是说通过打乱集合中元素排列顺序生成一个元组'''
+    
+class Solution(object):
+    def tictactoe(self, moves):
+        A = moves[::2]  # A 的棋子
+        B = moves[1::2] # B 的棋子
+        for a,b,c in permutations(A, 3):    # 所有 A 的棋子选取三个排列：a,b,c
+            if (b[1] - a[1])*(c[0] - a[0]) == (c[1] - a[1])*(b[0] - a[0]):
+                return "A"
+        for a,b,c in permutations(B, 3):
+            if (b[1] - a[1])*(c[0] - a[0]) == (c[1] - a[1])*(b[0] - a[0]):
+                return "B"
+        
+        if len(A) + len(B) == 9:
+            return "Draw"
+        else:
+            return "Pending"
+
+if __name__ == "__main__":
+    points = [[1,1],[3,4],[-1,0]]
+    sol = Solution()
+    result = sol.minTimeToVisitAllPoints(points)
+    print(result)
