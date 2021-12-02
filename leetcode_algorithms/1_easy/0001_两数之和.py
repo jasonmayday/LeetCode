@@ -28,8 +28,7 @@ https://leetcode-cn.com/problems/two-sum/
 
 进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？
 '''
-nums = [2,7,11,15]
-target = 9
+
 
 from typing import List
 
@@ -58,6 +57,8 @@ class Solution:
         return []
 
 if __name__ == "__main__":
+    nums = [2,7,11,15]
+    target = 9
     sol = Solution()
     result = sol.twoSum(nums, target)
     print (result) 
