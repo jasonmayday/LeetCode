@@ -19,6 +19,7 @@ https://leetcode-cn.com/problems/relative-ranks
 
 from typing import List
 
+"""解法1：先添加索引再排序"""
 class Solution:
     def findRelativeRanks(self, nums: List[int]) -> List[str]:
         pairs = []          # 用了一个 pairs 数组，来维护一个 nums -> 索引的映射。
@@ -47,8 +48,18 @@ class Solution:
                 score[tup[1]] = str(idx+1)
         return score
 
+"""解法3：使用字典重新构建"""
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        score_sort = sorted(score, reverse = True)    # 先用sorted排序
+        rank_list = ["Gold Medal", "Silver Medal", "Bronze Medal"] + [str(i+4) for i in range(len(score)-3)]
+        # 构建分数和名次的字典
+        dic = dict(zip(score_sort, rank_list))
+        res = [dic.get(i) for i in score]
+        return res
+
 if __name__ == "__main__":
-    nums = [5, 4, 3, 2, 1]
+    score = [89, 94, 133, 102, 141]
     sol = Solution()
-    result = sol.findRelativeRanks(nums)
+    result = sol.findRelativeRanks(score)
     print(result)
