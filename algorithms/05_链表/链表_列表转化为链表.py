@@ -14,7 +14,7 @@ class ListNode:   # 节点类
         return str(self.val)
 
 '''根据输入的列表创建链表'''
-def create_linked_list(list):
+def listToLinkedList(list):
     head = ListNode(list[0])
     cur = head
     for i in range(1, len(list)):
@@ -23,7 +23,7 @@ def create_linked_list(list):
     return head
 
 # 传入链表头节点，以数组形式返回
-def print_linked_list(head):
+def printLinkedList(head):
     cur = head
     list = []
     while cur:
@@ -42,6 +42,6 @@ def length(node):
 
 
 if __name__ == "__main__":
-    node = create_linked_list([99,1,34,2,6,1,35,657,5,3,8,7])
-    print (print_linked_list(node))
+    node = listToLinkedList([99,1,34,2,6,1,35,657,5,3,8,7])
+    print (printLinkedList(node))
     print (length(node))
