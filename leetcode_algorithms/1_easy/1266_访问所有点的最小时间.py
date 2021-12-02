@@ -32,7 +32,7 @@ https://leetcode-cn.com/problems/minimum-time-visiting-all-points/
 """
 from typing import List
 
-'''每两点最短距离就是max(abs(y2-y1),abs(x2-x1))'''
+'''每两点最短距离就是max(abs(y2-y1), abs(x2-x1))'''
 class Solution:
     def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
         time = 0
