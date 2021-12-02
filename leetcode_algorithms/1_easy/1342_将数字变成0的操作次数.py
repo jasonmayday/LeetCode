@@ -28,3 +28,21 @@ https://leetcode-cn.com/problems/number-of-steps-to-reduce-a-number-to-zero/
     输出：12
 
 """
+import itertools
+
+class Solution:
+    def numberOfSteps (self, num: int) -> int:
+        counts = 0
+        while num > 0:
+            if num % 2 == 0:
+                num = num/2
+            else:
+                num -= 1
+            counts += 1 
+        return counts
+            
+if __name__ == "__main__":
+    num = 123456789
+    sol = Solution()
+    result = sol.numberOfSteps(num)
+    print (result)
