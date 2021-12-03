@@ -35,3 +35,21 @@ https://leetcode-cn.com/problems/reformat-the-string/
     s 仅由小写英文字母和/或数字组成。
 
 """
+class Solution:
+    def reformat(self, s: str) -> str:
+        digit = [c for c in s if c.isdigit()]   # 分别找到数字和字母
+        alpha = [c for c in s if c.isalpha()]
+        if abs(len(digit) - len(alpha)) > 1:    # 如果字母和数字数量差大于1，无法满足重新格式化的条件。
+            return ''
+        ans = ['' for _ in range(len(digit) + len(alpha))]
+        if len(digit) > len(alpha):         # 想构建的字母第一个字符为字母
+            digit, alpha = alpha, digit     # 所以保持digit的长度不大于alpha，以便在总长度为奇数时能够间隔插入
+        # 分别在奇数位和偶数位, 插入不同类型的字符
+        ans[::2], ans[1::2] = alpha, digit  # 第一个字符为字母，隔一个字符插入不同性质的。
+        return ''.join(ans)
+    
+if __name__ == "__main__":
+    s = "covid2019"
+    sol = Solution()
+    result = sol.reformat(s)
+    print(result)
