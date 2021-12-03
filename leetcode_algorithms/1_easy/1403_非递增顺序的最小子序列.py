@@ -1,5 +1,6 @@
 """
 https://leetcode-cn.com/problems/minimum-subsequence-in-non-increasing-order/
+
 给你一个数组 nums，请你从中抽取一个子序列，满足该子序列的元素之和 严格 大于未包含在该子序列中的各元素之和。
 
 如果存在多个解决方案，只需返回 长度最小 的子序列。如果仍然有多个解决方案，则返回 元素之和最大 的子序列。
@@ -27,3 +28,17 @@ https://leetcode-cn.com/problems/minimum-subsequence-in-non-increasing-order/
     1 <= nums[i] <= 100
 
 """
+class Solution:
+    def minSubsequence(self, nums):
+        nums.sort()     # 将nums列表进行排序
+        result = []
+        while len(nums) > 0:
+            result.append(nums.pop())       # 不断从nums末尾pop出加在result列表中
+            if sum(result) > sum(nums):     # 若某一时刻result的和＞sum的和
+                return result               # 则返回result
+
+if __name__ == "__main__":
+    nums = [4,3,10,9,8]
+    sol = Solution()
+    result = sol.minSubsequence(nums)
+    print(result)
