@@ -33,7 +33,7 @@ from typing import List
 class Solution:
     def arrayRankTransform(self, arr: List[int]) -> List[int]:
         hashmap = {}
-        sort_arr = sorted(list(set(arr)))
+        sort_arr = sorted(list(set(arr)))   # 先用集合去重，再转为list，然后调用排序函数
         for i, element in enumerate(sort_arr):
             hashmap[element] = i + 1
         return [hashmap[i] for i in arr]
