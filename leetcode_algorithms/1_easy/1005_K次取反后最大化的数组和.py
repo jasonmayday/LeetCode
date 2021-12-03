@@ -9,7 +9,7 @@ https://leetcode-cn.com/problems/maximize-sum-of-array-after-k-negations/
 示例 1：
     输入：A = [4,2,3], K = 1
     输出：5
-    解释：选择索引 (1,) ，然后 A 变为 [4,-2,3]。
+    解释：选择索引 (1) ，然后 A 变为 [4,-2,3]。
 
 示例 2：
     输入：A = [3,-1,0,2], K = 3
