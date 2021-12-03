@@ -28,17 +28,31 @@ magazine 中的每个字符只能在 ransomNote 中使用一次。
 """
 from collections import Counter
 
+"""方法1：字符统计"""
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        a = Counter(ransomNote)     # # 使用Counter类的交集操作，获得交集
-        b = Counter(magazine)
-        x = a - b
-        # x 只保留值大于 0 的符号，当 a 里面的符号个数小于 b 时，不会被保留
-        # 所以 x 只保留下了 magazine 不能表达的
+        if len(ransomNote) > len(magazine): # 如果 magazine 的长度小于 ransomNote 的长度
+            return False                    # 可以肯定 magazine 无法构成 ransomNote，此时直接返回 false
+        return not Counter(ransomNote) - Counter(magazine)
+        # 如果发现 ransomNote 中存在某个英文字母 c 的统计次数大于 magazine 中该字母统计次数 cnt[c]，返回 false
+
+"""方法2：字符统计"""
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        a = Counter(ransomNote)     # 使用Counter类的交集操作，获得交集
+        b = Counter(magazine)       # x 只保留值大于 0 的符号，当 a 里面的符号个数小于 b 时，不会被保留
+        x = a - b                   # 所以 x 只保留下了 magazine 不能表达的
         if (len(x) == 0):
             return True
         else:
             return False
+        
+"""方法3：字符统计"""
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        a = Counter(ransomNote) 
+        b = Counter(magazine)
+        return (a & b) == a     # 判断交集是否等于最小子集
 
 class Solution(object):
     def canConstruct(self, ransomNote, magazine):
