@@ -25,7 +25,7 @@ DD 表示 2 位的天数。
 输出："1960-05-26"
 
 '''
-date = "20th Oct 1991"
+
 
 class Solution:
     def reformatDate(self, date: str) -> str:
@@ -39,6 +39,7 @@ class Solution:
         return '-'.join([year,month,day])
 
 if __name__ == "__main__":
+    date = "20th Oct 1991"
     sol = Solution()
     result = sol.reformatDate(date)
     print(result)
