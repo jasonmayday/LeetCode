@@ -29,7 +29,7 @@ https://leetcode-cn.com/problems/replace-all-s-to-avoid-consecutive-repeating-ch
 s 仅包含小写英文字母和 '?' 字符
 '''
 
-s = "ubv?w"
+
 # 两层循环+两个哨兵，解决边界问号，每趟判断当前位置的左右两侧是否满足条件，不满足，顺序查找字母替换即可
 import string
 
@@ -47,6 +47,7 @@ class Solution:
         return ''.join(res[1:-1])  #  生成新的字符串，去掉列表中第一个和最后一个字符。
 
 if __name__ == "__main__":
+    s = "ubv?w"
     sol = Solution()
     result = sol.modifyString(s)
     print (result)
