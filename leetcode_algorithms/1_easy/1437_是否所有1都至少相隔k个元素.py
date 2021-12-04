@@ -27,9 +27,24 @@ https://leetcode-cn.com/problems/check-if-all-1s-are-at-least-length-k-places-aw
     nums[i] 的值为 0 或 1
 
 """
+from typing import List
+
+"""方法1：遍历"""
+class Solution:
+    def kLengthApart(self, nums: List[int], k: int) -> bool:
+        n = len(nums)
+        pre = -1       # 从左到右遍历数组，并记录上一个 1 出现的位置。
+        for i in range(n):
+            if nums[i] == 1:    # 如果我们找到了一个新的 1
+                if pre != -1 and (i - pre - 1) < k:     # 就需要判断其与上一个 1 之间是否至少相隔 k 个元素
+                    return False                        # 如果不满足要求，那么直接返回 False 作为答案
+                pre = i
+        return True
+
 class Solution:
     def kLengthApart(self, nums, k: int) -> bool:
-        if len(nums) == 1: return True
+        if len(nums) == 1: 
+            return True
         one_idx = []  # 记录 nums 中 1 出现的位置
         for idx, num in enumerate(nums):
             if num == 1:
