@@ -35,8 +35,7 @@ https://leetcode-cn.com/problems/count-number-of-pairs-with-absolute-difference-
 1 <= k <= 99
 
 '''
-nums = [3,2,1,5,4]
-k = 2
+
 
 from typing import List
 
@@ -51,6 +50,8 @@ class Solution:
         return res
 
 if __name__ == "__main__":
+    nums = [3,2,1,5,4]
+    k = 2
     sol = Solution()
     result = sol.countKDifference(nums)
     print (result)  
