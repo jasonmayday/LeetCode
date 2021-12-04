@@ -44,5 +44,5 @@ class Solution:
 if __name__ == "__main__":
     nums = [3,1,2,10,1]
     sol = Solution()
-    result = sol.runningSum(nums)
+    result = sol.maxProduct(nums)
     print(result)
