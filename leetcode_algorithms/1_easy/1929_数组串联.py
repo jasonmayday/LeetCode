@@ -29,14 +29,16 @@ n == nums.length
 1 <= nums[i] <= 1000
 
 '''
-nums = [1,2,1]
+
 from typing import List
+
 class Solution:
     def getConcatenation(self, nums: List[int]) -> List[int]:
         nums.extend(nums)
         return nums
 
 if __name__ == "__main__":
+    nums = [1,2,1]
     sol = Solution()
     result = sol.getConcatenation(nums)
     print(result)
