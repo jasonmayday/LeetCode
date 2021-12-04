@@ -27,7 +27,7 @@ ans = [nums[nums[0]], nums[nums[1]], nums[nums[2]], nums[nums[3]], nums[nums[4]]
 nums 中的元素 互不相同
 
 '''
-nums = [5,0,1,2,3,4]
+
 
 from typing import List
 
@@ -39,6 +39,7 @@ class Solution:
         return num                # 返回新数组
 
 if __name__ == "__main__":
+    nums = [5,0,1,2,3,4]
     sol = Solution()
     result = sol.buildArray(nums)
     print(result)
