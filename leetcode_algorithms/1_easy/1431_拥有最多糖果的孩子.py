@@ -30,5 +30,26 @@ https://leetcode-cn.com/problems/kids-with-the-greatest-number-of-candies/
     1 <= extraCandies <= 50
 
 """
+from typing import List
 
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        maxCandies = max(candies)
+        res = [candy + extraCandies >= maxCandies for candy in candies]
+        return res
+    
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        maxCandies = max(candies)
+        res = []
+        for i in candies:
+            res.append(i + extraCandies >= maxCandies)
+        return res
+
+if __name__ == "__main__":
+    candies = [2,3,5,1,3]
+    extraCandies = 3
+    sol = Solution()
+    result = sol.kidsWithCandies(candies, extraCandies)
+    print(result)
 
