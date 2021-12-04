@@ -44,7 +44,7 @@ https://leetcode-cn.com/problems/sum-of-all-subset-xor-totals/
 1 <= nums[i] <= 20
 
 '''
-nums = [3,4,5,6,7,8]
+
 
 from typing import List
 
@@ -66,6 +66,7 @@ class Solution:
         return res
 
 if __name__ == "__main__":
+    nums = [3,4,5,6,7,8]
     sol = Solution()
     result = sol.subsetXORSum(nums)
     print(result)
