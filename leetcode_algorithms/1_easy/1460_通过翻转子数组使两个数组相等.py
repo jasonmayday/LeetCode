@@ -50,19 +50,19 @@ class Solution:
     def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
         if len(target) != len(arr):
             return False
-        dict={}
+        dict = {}
         for i in range(len(target)):
             if target[i] not in dict:
-                dict[target[i]]=1
+                dict[target[i]] = 1
             else:
-                dict[target[i]]+=1
+                dict[target[i]] += 1
         for i in range(len(arr)):
             if arr[i] not in dict:
                 return False
             else:
-                dict[arr[i]]-=1
+                dict[arr[i]] -= 1
         value=list(dict.values())
-        return value==[0]*(len(value))
+        return value==[0] * (len(value))
 
 """解法2：排序后数组相同即可"""
 class Solution:
