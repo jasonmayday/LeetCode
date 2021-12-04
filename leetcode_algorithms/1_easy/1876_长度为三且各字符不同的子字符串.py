@@ -22,7 +22,7 @@ https://leetcode-cn.com/problems/substrings-of-size-three-with-distinct-characte
 好子字符串包括 "abc"，"bca"，"cab" 和 "abc" 。
 
 '''
-s = "bcsffssnsjjuttnnssppkenengghhqqlzzllpafjsdahqoihaklfhkhhss"
+
 
 class Solution:
     def countGoodSubstrings(self, s: str) -> int:
@@ -34,6 +34,7 @@ class Solution:
         return res
         
 if __name__ == "__main__":
+    s = "bcsffssnsjjuttnnssppkenengghhqqlzzllpafjsdahqoihaklfhkhhss"
     sol = Solution()
     result = sol.countGoodSubstrings(s)
     print (result)  
