@@ -1,3 +1,4 @@
-nums = [555,901,482,1771]
-str_nums = str(nums)
-print(str_nums)
+
+s = "codeleet"
+arr = [0 for i in range(len(s))]
+print(arr)
