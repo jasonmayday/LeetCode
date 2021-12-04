@@ -26,8 +26,6 @@
 
 # 结束的时候，判断二者的长度是否等于 2 并且相等就行了
 
-s1 = "bank"
-s2 = "kanb"
 
 class Solution:
     def areAlmostEqual(self, s1: str, s2: str) -> bool:
@@ -46,6 +44,8 @@ class Solution:
         return len(s1_str) == 2 and s1_str == s2_str  # 如果不同字母组成的新字符串等于2且相同，返回 True
 
 if __name__ == "__main__":
+    s1 = "bank"
+    s2 = "kanb"
     sol = Solution()
     result = sol.areAlmostEqual(s1, s2)
     print(result)
