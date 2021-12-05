@@ -22,4 +22,24 @@ https://leetcode-cn.com/problems/kth-missing-positive-number/
     对于所有 1 <= i < j <= arr.length 的 i 和 j 满足 arr[i] < arr[j] 
 
 """
+from typing import List
 
+"""使用集合"""
+class Solution:
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        return list(set(range(2001)) - set(arr))[k]
+
+
+class Solution:
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        i = 0
+        while(i < len(arr) and arr[i] - i - 1 < k):
+            i += 1
+        return k + i
+
+if __name__ == "__main__":
+    arr = [2,3,4,7,11]
+    k = 5
+    sol = Solution()
+    result = sol.findKthPositive(arr,k)
+    print (result)
