@@ -22,9 +22,17 @@ class Solution:
     def countOdds(self, low: int, high: int) -> int:
         pre = lambda x: (x + 1) >> 1
         return pre(high) - pre(low - 1)
-
+    
+class Solution:
+    def countOdds(self, low: int, high: int) -> int:
+        if low % 2 == 0 and high % 2 == 0:
+            return (high-low) // 2
+        return (high - low) // 2 + 1 
+        
+        
 if __name__ == "__main__":
-    s = "ubv?w"
+    low = 3
+    high = 7
     sol = Solution()
-    result = sol.modifyString(s)
+    result = sol.countOdds(low,high)
     print (result)
