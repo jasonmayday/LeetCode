@@ -6,3 +6,11 @@
 
 zip
 https://www.runoob.com/python/python-func-zip.html
+统计每列的元素等作用
+rows = [sum(num) for num in zip(*mat)]
+
+# 每列的元素
+mat =  [[1,0,0],
+        [0,1,0],
+        [0,0,1]]
+cols = list(zip(*mat))
