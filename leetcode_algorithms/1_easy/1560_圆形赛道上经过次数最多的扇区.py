@@ -33,3 +33,19 @@ https://leetcode-cn.com/problems/most-visited-sector-in-a-circular-track/
     rounds[i] != rounds[i + 1] ，其中 0 <= i < m
 
 """
+from typing import List
+
+class Solution:
+    def mostVisited(self, n: int, rounds: List[int]) -> List[int]:
+        start, end = rounds[0], rounds[-1]
+        if start <= end:
+            return list(range(start, end + 1))
+        else:
+            return list(range(1, end + 1)) + list(range(start, n + 1))
+    
+if __name__ == "__main__":
+    n = 4
+    rounds = [1,3,1,2]
+    sol = Solution()
+    result = sol.mostVisited(n, rounds)
+    print (result)
