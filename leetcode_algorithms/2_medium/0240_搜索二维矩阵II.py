@@ -27,8 +27,7 @@ https://leetcode-cn.com/problems/search-a-2d-matrix-ii/
 输出：false
 
 '''
-matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]]
-target = 20
+
 
 from typing import List
 
@@ -57,6 +56,9 @@ class Solution:
                 return True
         return False
 
-sol = Solution()
-result = sol.searchMatrix(matrix, target)
-print (result)  
+if __name__ == "__main__":
+    matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]]
+    target = 20
+    sol = Solution()
+    result = sol.searchMatrix(matrix, target)
+    print (result)  

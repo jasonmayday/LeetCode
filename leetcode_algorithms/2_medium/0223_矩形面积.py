@@ -23,6 +23,7 @@ class Solution:
         overlapArea = max(overlapWidth, 0) * max(overlapHeight, 0)
         return area1 + area2 - overlapArea
 
-sol = Solution()
-result = sol.computeArea(-3, 0, 3, 4, 0, -1, 9, 2)
-print(result)
+if __name__ == "__main__":
+    sol = Solution()
+    result = sol.computeArea(-3, 0, 3, 4, 0, -1, 9, 2)
+    print(result)

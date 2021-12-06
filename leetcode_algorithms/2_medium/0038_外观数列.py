@@ -43,7 +43,7 @@ countAndSay(3) = 读 "11" = 二 个 1 = "21"
 countAndSay(4) = 读 "21" = 一 个 2 + 一 个 1 = "12" + "11" = "1211"
 
 '''
-n = 8
+
 
 class Solution:
     def get_next(self, s):
@@ -66,7 +66,9 @@ class Solution:
         for i in range(1,n):
             s = self.get_next(s)
         return s
-
-sol = Solution()
-result = sol.countAndSay(n)
-print(result)
+    
+if __name__ == "__main__":
+    n = 8
+    sol = Solution()
+    result = sol.countAndSay(n)
+    print(result)

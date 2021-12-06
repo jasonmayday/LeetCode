@@ -30,7 +30,7 @@ https://leetcode-cn.com/problems/reordered-power-of-2/
 
 '''
 
-n = 46
+
 
 import collections
 
@@ -41,7 +41,8 @@ class Solution:
             if count == collections.Counter(str(1 << i)):
                 return True
         return False
-
-sol = Solution()
-result = sol.reorderedPowerOf2(n)
-print(result)
+if __name__ == "__main__":
+    n = 46
+    sol = Solution()
+    result = sol.reorderedPowerOf2(n)
+    print(result)

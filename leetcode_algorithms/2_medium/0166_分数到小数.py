@@ -30,8 +30,7 @@ https://leetcode-cn.com/problems/fraction-to-recurring-decimal/
 输出："0.2"
 
 '''
-numerator = 4
-denominator = 333
+
 
 class Solution:
     def fractionToDecimal(self, numerator: int, denominator: int) -> str:
@@ -62,6 +61,8 @@ class Solution:
         return ans
 
 if __name__ == "__main__":
+    numerator = 4
+    denominator = 333
     sol = Solution()
     result = sol.fractionToDecimal(numerator, denominator)
     print(result)

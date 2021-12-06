@@ -44,3 +44,5 @@ class Solution:
             return res
         else:
             return MAX_INT
+
+if __name__ == "__main__":

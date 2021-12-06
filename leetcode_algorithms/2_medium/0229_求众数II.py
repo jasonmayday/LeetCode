@@ -16,7 +16,7 @@
 
 '''
 from typing import List
-nums = [1,1,1,3,3,2,2,2]
+
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
@@ -33,6 +33,8 @@ class Solution:
                 convene[num] = - len(nums) 
         return result
 
-sol = Solution()
-result = sol.majorityElement(nums)
-print(result)
+if __name__ == "__main__":
+    nums = [1,1,1,3,3,2,2,2]
+    sol = Solution()
+    result = sol.majorityElement(nums)
+    print(result)

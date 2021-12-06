@@ -12,7 +12,7 @@ https://leetcode-cn.com/problems/sort-an-array/
 输出：[0,0,1,1,2,5]
 '''
 
-nums = [5,1,1,2,0,0]
+
 from typing import List
 
 # 选择排序 (Selection sort)
@@ -32,7 +32,8 @@ class Solution:
             smallest = self.findSmallest(nums)   # 调用上面的函数，找出当前数组的最小值
             newnums.append(nums.pop(smallest))   # .pop（）函数剔除对应位置的元素并返回元素的值  存到新建数组newnums中
         return newnums
-
-sol = Solution()
-result = sol.sortArray(nums)
-print(result)
+if __name__ == "__main__":
+    nums = [5,1,1,2,0,0]
+    sol = Solution()
+    result = sol.sortArray(nums)
+    print(result)

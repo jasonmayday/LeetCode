@@ -24,7 +24,7 @@ https://leetcode-cn.com/problems/single-number-iii/
 除两个只出现一次的整数外，nums 中的其他数字都出现两次
 
 '''
-nums = [1,2,1,3,2,5]
+
 
 from typing import List
 from collections import Counter
@@ -57,6 +57,8 @@ class Solution:
                 res.append(num)
         return res
 
-sol = Solution()
-result = sol.singleNumber(nums)
-print (result)
+if __name__ == "__main__":
+    nums = [1,2,1,3,2,5]
+    sol = Solution()
+    result = sol.singleNumber(nums)
+    print (result)

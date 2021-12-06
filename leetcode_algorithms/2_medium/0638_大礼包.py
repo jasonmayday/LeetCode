@@ -27,9 +27,7 @@ https://leetcode-cn.com/problems/shopping-offers/
 
 '''
 from typing import List
-price = [2,5]
-special = [[3,0,5],[1,2,10]]
-needs = [3,2]
+
 
 class Solution:
     def shoppingOffers(self, price: List[int], special: List[List[int]], needs: List[int]) -> int:
@@ -55,7 +53,11 @@ class Solution:
             memo[str(needs)] = cost
             return cost
         return shop(price, special, needs)
-
-sol = Solution()
-result = sol.shoppingOffers(price, special, needs)
-print(result)
+    
+if __name__ == "__main__":
+    price = [2,5]
+    special = [[3,0,5],[1,2,10]]
+    needs = [3,2]
+    sol = Solution()
+    result = sol.shoppingOffers(price, special, needs)
+    print(result)
