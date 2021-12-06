@@ -51,7 +51,7 @@ class Solution:
             res = max(res, cur) # 返回遍历过程中出现过的最大cur
         return res 
 
-"""解法：栈，并且维护栈的最大长度"""
+"""解法：栈"""
 class Solution:
     def maxDepth(self, s: str) -> int:
         stack = []
@@ -60,8 +60,8 @@ class Solution:
             if c == '(':
                 stack.append(c)
             if c == ')':
-                res = max(res, len(stack))
                 stack.pop()
+            res = max(res, len(stack))  # 维护栈的最大长度
         return res
 
 if __name__ == "__main__":
