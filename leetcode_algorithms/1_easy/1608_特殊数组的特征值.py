@@ -48,17 +48,19 @@ class Solution:
                     return -1
         return len(nums)
     
-"""排序+左右夹逼"""
+""" 排序 + 左右夹逼 """
 class Solution:
     def specialArray(self, nums: List[int]) -> int:
-        nums.sort(reverse = True)       # 将数组由大到小排列
+        nums.sort(reverse = True)       # 将数组由大到小排列  [4,4,3,0,0]
         res = -1
         for i, num in enumerate(nums):  # 如果索引为i的元素大于等于 i+1
-            if num >= i+1:
-                res = i+1
+            if num >= i + 1:
+                res = i + 1
             else:
                 break
-        return res if sum(num >= res for num in nums) == res else -1
+        if sum(num >= res for num in nums) == res:
+            return res 
+        else: return -1
 
 if __name__ == "__main__":
     nums = [0,4,3,0,4]
