@@ -20,8 +20,6 @@ https://leetcode-cn.com/problems/trapping-rain-water-ii/
 
 '''
 
-heightMap = [[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]
-
 from heapq import *
 from typing import List
 
@@ -68,6 +66,8 @@ class Solution: # https://www.youtube.com/watch?v=cJayBq38VYw
                 heappush(heap, [heightMap[tmp_x][tmp_y], tmp_x, tmp_y])
         return ans
 
-sol = Solution()
-result = sol.trapRainWater(heightMap)
-print(result)
+if __name__ == "__main__":
+    heightMap = [[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]
+    sol = Solution()
+    result = sol.trapRainWater(heightMap)
+    print(result)
