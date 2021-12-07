@@ -25,8 +25,6 @@ https://leetcode-cn.com/problems/expression-add-operators/
 
 '''
 
-num = "105"
-target = 5
 
 from typing import List
 
@@ -59,6 +57,9 @@ class Solution:
         dfs(num, "", 0, 0)                                      # 调用回溯函数
         return ans                                              # 返回结果列表，结果列表在调用时已被更新
 
-sol = Solution()
-result = sol.addOperators(num, target)
-print(result)
+if __name__ == "__main__":
+    num = "105"
+    target = 5
+    sol = Solution()
+    result = sol.addOperators(num, target)
+    print(result)
