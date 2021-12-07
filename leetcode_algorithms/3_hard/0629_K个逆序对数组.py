@@ -51,7 +51,6 @@ class Solution:
 if __name__ == "__main__":
     n = 10000
     k = 5
-
     sol = Solution()
     result = sol.kInversePairs(n, k)
     print(result)
