@@ -24,7 +24,7 @@ s 中至多含 20 个括号
 
 '''
 
-s = "(a)())()"
+
 
 from typing import List
 
@@ -60,6 +60,8 @@ class Solution:
             currSet = nextSet
         return ans
 
-sol = Solution()
-result = sol.removeInvalidParentheses(s)
-print(result)
+if __name__ == "__main__":
+    s = "(a)())()"
+    sol = Solution()
+    result = sol.removeInvalidParentheses(s)
+    print(result)
