@@ -20,15 +20,17 @@ https://leetcode-cn.com/problems/integer-to-english-words/
 输出："One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One"
 
 '''
-num = 1234567891
 
-singles = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
-teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
-tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
-thousands = ["", "Thousand", "Million", "Billion"]
+
+
 
 class Solution:
     def numberToWords(self, num: int) -> str:
+        singles = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+        teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+        tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
+        thousands = ["", "Thousand", "Million", "Billion"]
+        
         if num == 0:
             return "Zero"
 
@@ -55,7 +57,9 @@ class Solution:
                 s += recursion(curNum) + thousands[i] + " "
             unit //= 1000
         return s.strip()
-
-sol = Solution()
-result = sol.numberToWords(num)
-print(result)
+    
+if __name__ == "__main__":
+    num = 1234567891
+    sol = Solution()
+    result = sol.numberToWords(num)
+    print(result)
