@@ -36,9 +36,9 @@ class Solution:
         boxTypes.sort(key = lambda x: -x[1])    # 按照每个箱子可装载的单元数量，降序排列
         res = 0
         for num, size in boxTypes:
-            cnt = min(truckSize, num)           # 当前，还能装几个箱子
-            res += cnt * size   
-            truckSize -= cnt
+            count = min(truckSize, num)         # 当前，还能装几个箱子
+            res += count * size
+            truckSize -= count
             if truckSize == 0:
                 break
         return res
