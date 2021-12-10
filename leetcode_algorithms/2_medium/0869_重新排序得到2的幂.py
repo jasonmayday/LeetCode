@@ -41,6 +41,7 @@ class Solution:
             if count == collections.Counter(str(1 << i)):
                 return True
         return False
+    
 if __name__ == "__main__":
     n = 46
     sol = Solution()
