@@ -26,3 +26,39 @@ https://leetcode-cn.com/problems/number-of-rectangles-that-can-form-the-largest-
     li != wi
 
 """
+from typing import List
+from collections import Counter
+
+class Solution:
+    def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
+        return sorted(Counter(min(rec) for rec in rectangles).items(), key = lambda item: item[0], reverse = True)[0][1]
+    
+class Solution:
+    def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
+        count = 0
+        max_edge = 0
+        for i, j in rectangles:
+            edge = min([i,j])
+            if edge > max_edge:
+                count = 1
+                max_edge = edge
+            elif edge == max_edge:
+                count +=1
+        return count
+    
+class Solution:
+    def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
+        edges = []
+        for x in rectangles:
+            if x[0] < x[1]:
+                edges.append(x[0])
+            else:
+                edges.append(x[1])
+        edges.sort(reverse=True)
+        return edges.count(edges[0])
+
+if __name__ == "__main__":
+    rectangles = [[5,8],[3,9],[5,12],[16,5]]
+    sol = Solution()
+    result = sol.countGoodRectangles(rectangles)
+    print(result)
