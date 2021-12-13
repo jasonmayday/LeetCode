@@ -28,3 +28,40 @@ https://leetcode-cn.com/problems/find-nearest-point-that-has-the-same-x-or-y-coo
     1 <= x, y, ai, bi <= 104
 
 """
+from typing import List
+
+class Solution:
+    def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
+        index = -1
+        minDist = float("inf")
+        for i in range(len(points)):
+            if points[i][0] == x or points[i][1] == y:  # 判断是否为有效点  
+                curDist = abs(x - points[i][0]) + abs(y - points[i][1]) # 计算曼哈顿距离
+                if curDist < minDist:
+                    index = i
+                    minDist = curDist
+        return index
+
+class Solution:
+    def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
+        minDist = float('inf')
+        index = -1
+        for i in range(len(points)):
+            row, col = points[i]
+            if (row == x or col == y):
+                curDist = self.getManhattanDistance(x, y, points[i])
+                if (curDist < minDist):
+                    minDist = curDist
+                    index = i
+        return index
+
+    def getManhattanDistance(self, x: int, y: int, p: List[List[int]]) -> int:
+        return abs(p[0] - x) + abs(p[1] - y)
+
+if __name__ == "__main__":
+    x = 3
+    y = 4
+    points = [[1,2],[3,1],[2,4],[2,3],[4,4]]
+    sol = Solution()
+    result = sol.nearestValidPoint(x,y,points)
+    print(result)
