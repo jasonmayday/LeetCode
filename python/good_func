@@ -15,6 +15,7 @@ mat =  [[1,0,0],
         [0,0,1]]
 cols = list(zip(*mat))
 
+enumerate 返回下标和元素
 
 正则表达式
 
