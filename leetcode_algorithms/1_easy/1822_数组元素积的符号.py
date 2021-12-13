@@ -45,7 +45,6 @@ class Solution:
 
 if __name__ == "__main__":
     s = "What is the solution to this problem"
-    k = 4
     sol = Solution()
     result = sol.truncateSentence(s,k)
     print(result)
