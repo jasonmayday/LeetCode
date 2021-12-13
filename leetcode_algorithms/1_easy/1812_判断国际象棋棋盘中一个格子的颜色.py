@@ -28,3 +28,14 @@ https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/04/03/chessboard.pn
     '1' <= coordinates[1] <= '8'
 
 """
+class Solution:
+    def squareIsWhite(self, coordinates):
+        s,n = coordinates
+        # 这里使用if判断结果不为0，则表示True的方式，简化代码
+        return True if (ord(s)+ int(n)) % 2 else False 
+
+if __name__ == "__main__":
+    coordinates = "h3"
+    sol = Solution()
+    result = sol.squareIsWhite(coordinates)
+    print(result)
