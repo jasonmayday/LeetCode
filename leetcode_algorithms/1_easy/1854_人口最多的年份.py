@@ -28,26 +28,26 @@ from typing import List
 
 """Hash表："""
 class Solution:
-    def maximumPopulation(self, logs):
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
         nums = {}
-        ret = 0
+        res = 0
         start = 0
-        for person in logs:
-            for i in range(person[0], person[1]):
+        for person in logs:                         # logs = [[1950,1961],[1960,1971],[1970,1981]]
+            for i in range(person[0], person[1]):   # person[0] 为出生年份，person[1]为死亡年份，
                 nums[i] = nums.get(i, 0) + 1
         for k in sorted(nums.keys()):
             if nums[k] > start:
                 start = nums[k]
-                ret = k
-        return ret
+                res = k
+        return res
     
 """暴力数组："""
 class Solution:
-    def maximumPopulation(self, logs):
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
         nums = [0] * 2051
         res = 1950
-        for i in logs:
-            for j in range(i[0], i[1]):
+        for person in logs:
+            for j in range(person[0], person[1]):
                 nums[j] += 1
         for x in range(1950, len(nums)):
             if nums[x] > nums[res]:
