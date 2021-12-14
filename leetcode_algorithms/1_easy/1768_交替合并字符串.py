@@ -21,7 +21,7 @@ https://leetcode-cn.com/problems/merge-strings-alternately/
     word2：    p   q   r   s
     合并后：  a p b q   r   s
 
-示例 3：
+示例 3:
     输入：word1 = "abcd", word2 = "pq"
     输出："apbqcd"
     解释：注意，word1 比 word2 长，"cd" 需要追加到合并后字符串的末尾。
@@ -35,3 +35,21 @@ https://leetcode-cn.com/problems/merge-strings-alternately/
 
 """
 
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        len1, len2 = len(word1), len(word2)
+        res = ''
+        for i in range(min(len1, len2)):
+            res += word1[i] + word2[i]
+        if len1 < len2:
+            res += word2[len1:len2]
+        elif len1 > len2:
+            res += word1[len2:len1]
+        return res
+
+if __name__ == "__main__":
+    word1 = "ab"
+    word2 = "pqrs"
+    sol = Solution()
+    result = sol.mergeAlternately(word1, word2)
+    print(result)
