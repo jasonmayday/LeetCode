@@ -31,3 +31,21 @@ https://leetcode-cn.com/problems/minimum-distance-to-the-target-element/
 
 """
 
+from typing import List
+
+"""方法1：模拟"""
+class Solution:
+    def getMinDistance(self, nums: List[int], target: int, start: int) -> int:
+        res = len(nums)
+        for i, num in enumerate(nums):          # 对 nums 进行遍历
+            if num == target:
+                res = min(res, abs(i - start))  # 并在遍历的过程中用 res 来维护满足要求的 ∣i−start∣ 的最小值。
+        return res
+
+if __name__ == "__main__":
+    nums = [1,2,3,4,5]
+    target = 5
+    start = 3
+    sol = Solution()
+    result = sol.getMinDistance(nums, target, start)
+    print(result)
