@@ -27,7 +27,7 @@ https://leetcode-cn.com/problems/reverse-integer/
 -2^31 <= x <= 2^31-1
 
 '''
-x = -210
+
 class Solution:
     def reverse(self, x: int) -> int:
         if -10 < x < 10:
@@ -43,6 +43,7 @@ class Solution:
         return x if -2147483648 < x < 2147483647 else 0
 
 if __name__ == "__main__":
+    x = -210
     sol = Solution()
     result = sol.reverse(x)
     print(result)
