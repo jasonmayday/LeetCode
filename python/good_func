@@ -42,3 +42,6 @@ ord("a") = 65
 for _ in range(4):
 When you are not interested in some values returned by a function we use underscore in place of variable name . 
 Basically it means you are not interested in how many times the loop is run till now just that it should run some specific number of times overall.
+
+list 变字符串：''.join(list)
+字符串变 list：
