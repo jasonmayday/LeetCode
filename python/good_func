@@ -3,6 +3,12 @@
     Counter
     enumerate
     dict
+    defaultdict
+    defaultdict vs dict
+    
+Counter:
+words = "".join(words)      # abcaabcbc
+words = Counter(words)      # {'a': 3, 'b': 3, 'c': 3}
 
 zip
 https://www.runoob.com/python/python-func-zip.html
@@ -22,6 +28,17 @@ enumerate 返回下标和元素
 
 位运算
 
+
 chr()
+返回值是当前整数对应的 ASCII 字符。
+
 
 ord()
+ord() 函数是 chr() 函数（对于 8 位的 ASCII 字符串）的配对函数，它以一个字符串（Unicode 字符）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值。
+ord("a") = 65
+
+
+
+for _ in range(4):
+When you are not interested in some values returned by a function we use underscore in place of variable name . 
+Basically it means you are not interested in how many times the loop is run till now just that it should run some specific number of times overall.
