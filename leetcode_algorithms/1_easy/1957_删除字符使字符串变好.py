@@ -37,15 +37,24 @@ class Solution:
     def makeFancyString(self, s: str) -> str:
         list = []
         count = 0
-        for ch in s:
-            if list and ch == list[-1]:
-                count += 1
-            else:
-                count = 1
+        for ch in s:                    # s = "leeetcode"
+            if list and ch == list[-1]: # 如果遍历到的 s 中的字符串与 list 中的相同
+                count += 1              # 计数加 1
+            else:                       # 如果遍历到的 s 中的字符串与 list 中的不同
+                count = 1               # 计数回归 1
             if count < 3:
-                list.append(ch)
+                list.append(ch)     # 统计连续的相同字符个数，超过2不加入最终字符串
         return ''.join(list)
-
+    
+class Solution:
+    def makeFancyString(self, s: str) -> str:
+        res = []        # 删除后的字符串
+        for ch in s:    # 遍历 s 模拟删除过程
+            if len(res) >= 2 and res[-1] == res[-2] == ch:  # 如果 res 最后两个字符与当前字符均相等，则不添加
+                continue
+            res.append(ch)      # 反之则添加
+        return "".join(res)
+    
 if __name__ == "__main__":
     s = "leeetcode"
     sol = Solution()
