@@ -25,4 +25,21 @@ https://leetcode-cn.com/problems/redistribute-characters-to-make-all-strings-equ
     words[i] 由小写英文字母组成
 
 """
+from typing import List
+from collections import Counter
 
+class Solution:
+    def makeEqual(self, words: List[str]) -> bool:
+        n = len(words)
+        words = "".join(words)      # abcaabcbc
+        words = Counter(words)      # {'a': 3, 'b': 3, 'c': 3}
+        for count in words.values():
+            if count % n != 0:      # 如果任何一个元素出现的次数不能被总数整除
+                return False        # 返回 False
+        return True
+
+if __name__ == "__main__":
+    words = ["abc","aabc","bc"]
+    sol = Solution()
+    result = sol.makeEqual(words)
+    print (result)
