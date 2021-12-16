@@ -37,4 +37,4 @@ if __name__ == "__main__":
     s = "bcsffssnsjjuttnnssppkenengghhqqlzzllpafjsdahqoihaklfhkhhss"
     sol = Solution()
     result = sol.countGoodSubstrings(s)
-    print (result)  
+    print (result)
