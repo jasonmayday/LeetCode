@@ -63,4 +63,4 @@ if __name__ == "__main__":
     k = 3
     sol = Solution()
     result = sol.maxSubsequence(nums, k)
-    print (result)  
+    print (result)
