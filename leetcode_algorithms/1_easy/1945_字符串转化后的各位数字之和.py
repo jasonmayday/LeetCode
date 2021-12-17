@@ -40,23 +40,22 @@ https://leetcode-cn.com/problems/sum-of-digits-of-string-after-convert/
 class Solution:
     def getLucky(self, s: str, k: int) -> int:
         nums = []
-        for c in s:                             # "leetcode"
-            nums.append(ord(c) - ord('a') + 1)  # [12, 5, 5, 20, 3, 15, 4, 5]
-        s = ''.join([str(x) for x in nums])     # "12552031545"
+        for c in s:                             # "zbax"
+            nums.append(ord(c) - ord('a') + 1)  # [26, 2, 1, 24]
+        s = ''.join([str(x) for x in nums])     # "262124"
         
         res = 0
         for _ in range(k):
             res = 0
             for c in s:
-                res += int(c)
-            
-            s = ''.join(list(str(res)))
+                res += int(c)                   # 2 + 6 + 2 + 1 + 2 + 4 = 17
+            s = ''.join(list(str(res)))         # 17 → ['1', '7'] → '17'
                 
         return res
 
 if __name__ == "__main__":
-    s = "leetcode"
-    k = 2
+    s = "zbax"
+    k = 1
     sol = Solution()
     result = sol.getLucky(s, k)
     print(result)
