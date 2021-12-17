@@ -38,7 +38,7 @@ for (int i = 0; i < len; i++) {
 nums 已按升序排列
 
 '''
-nums = [0,0,1,1,1,2,2,3,3,4]
+
 
 # 我们只能在原地修改nums数组，不能创建新的数组空间来存储删除重复出现的元素后的结果。
 # 我们需要一边遍历数组查找相同元素，一边在对比发现不同元素时修改数组元素。
@@ -55,6 +55,8 @@ class Solution:
             fast = fast + 1              # 指针fast继续向后查找
         return slow + 1
 
-sol = Solution()
-result = sol.removeDuplicates(nums)
-print(result)
+if __name__ == "__main__":
+    nums = [0,0,1,1,1,2,2,3,3,4]
+    sol = Solution()
+    result = sol.removeDuplicates(nums)
+    print(result)
