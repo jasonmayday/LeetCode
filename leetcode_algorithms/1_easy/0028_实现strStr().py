@@ -28,8 +28,7 @@ https://leetcode-cn.com/problems/implement-strstr/
     haystack 和 needle 仅由小写英文字符组成
 
 '''
-haystack = "hello"
-needle = "ll"
+
 
 # 解法1：遍历法
 class Solution:
@@ -75,7 +74,10 @@ class Solution:
                 k+=1
             next[i]=k
         return next
-
-sol = Solution()
-result = sol.strStr(haystack, needle)
-print(result)
+    
+if __name__ == "__main__":
+    haystack = "hello"
+    needle = "ll"
+    sol = Solution()
+    result = sol.strStr(haystack, needle)
+    print(result)
