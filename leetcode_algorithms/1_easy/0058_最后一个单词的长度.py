@@ -23,7 +23,7 @@ https://leetcode-cn.com/problems/length-of-last-word/
     s 中至少存在一个单词
 
 '''
-s = " Hello World "
+
 
 # 解法1：字符串操作
 class Solution:
@@ -39,6 +39,8 @@ class Solution:
         while j >= 0 and s[j] != ' ': j -= 1   # 如果不是空格（为字母），指针 j 位置左移一位
         return i - j                           # 指针位置 i - j 即为最后一个单词长度
 
-sol = Solution()
-result = sol.lengthOfLastWord(s)
-print (result) 
+if __name__ == "__main__":
+    s = " Hello World "
+    sol = Solution()
+    result = sol.lengthOfLastWord(s)
+    print (result) 
