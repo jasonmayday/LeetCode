@@ -5,6 +5,7 @@
     dict
     defaultdict
     defaultdict vs dict
+    集合的字典，用于统计不重复的元素 defaultdict(set)
     
 Counter:
 words = "".join(words)      # abcaabcbc
