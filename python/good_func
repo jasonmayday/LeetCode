@@ -36,8 +36,8 @@ chr()
 ord()
 ord() 函数是 chr() 函数（对于 8 位的 ASCII 字符串）的配对函数，它以一个字符串（Unicode 字符）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值。
 ord("a") = 65
-
-
+eg.: 'a' 用 1 替换，'b' 用 2 替换，... 'z' 用 26 替换
+     (ord(c) - ord('a') + 1)
 
 for _ in range(4):
 When you are not interested in some values returned by a function we use underscore in place of variable name . 
