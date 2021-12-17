@@ -53,3 +53,6 @@ list 变字符串：''.join(list)
 整数变字符串：
 int = 17
 s = str(int) # 17 → ['1', '7'] → '17'
+
+排列组合：
+from itertools import permutations
