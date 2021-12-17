@@ -54,4 +54,4 @@ if __name__ == "__main__":
     k = 2
     sol = Solution()
     result = sol.countKDifference(nums)
-    print (result)  
+    print (result)
