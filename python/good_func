@@ -10,6 +10,9 @@ Counter:
 words = "".join(words)      # abcaabcbc
 words = Counter(words)      # {'a': 3, 'b': 3, 'c': 3}
 
+dict
+get函数
+
 zip
 https://www.runoob.com/python/python-func-zip.html
 统计每列的元素等作用
@@ -45,3 +48,7 @@ Basically it means you are not interested in how many times the loop is run till
 
 list 变字符串：''.join(list)
 字符串变 list：
+
+整数变字符串：
+int = 17
+s = str(int) # 17 → ['1', '7'] → '17'
