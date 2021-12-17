@@ -19,15 +19,17 @@ https://leetcode-cn.com/problems/add-binary/
     字符串如果不是 "0" ，就都不含前导零。
 
 '''
-a = "1010"
-b = "1011"
+
 
 class Solution:
     def addBinary(self, a, b) -> str:
         return '{0:b}'.format(int(a, 2) + int(b, 2))
         # {0:b}.format 将整型转换为二进制。b、d、o、x分别是二进制、十进制、八进制、十六进制
         # int(x, base) 函数用于将一个字符串或数字转换为整型。
-
-sol = Solution()
-result = sol.addBinary(a, b)
-print (result)
+        
+if __name__ == "__main__":
+    a = "1010"
+    b = "1011"
+    sol = Solution()
+    result = sol.addBinary(a, b)
+    print (result)
