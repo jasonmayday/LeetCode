@@ -55,6 +55,19 @@ class Solution:
         n = len(colors)
         return max(j - i for i in range(n) for j in range(i + 1, n) if colors[i] != colors[j])
 
+"""方法3：贪心算法"""
+class Solution:
+    def maxDistance(self, colors: List[int]) -> int:
+        if colors[0] != colors[-1]:     # 如果第一栋和最后一栋颜色不同
+            return len(colors) - 1      # 直接返回答案
+        ans = 0
+        for i in range(1, len(colors) - 1):
+            if colors[0] != colors[i]:
+                ans = max(i,ans)
+            if colors[-1] != colors[i]:
+                ans = max(len(colors) - 1 - i,ans)
+        return ans 
+
 if __name__ == "__main__":
     colors = [1,1,1,6,1,1,1]
     sol = Solution()
