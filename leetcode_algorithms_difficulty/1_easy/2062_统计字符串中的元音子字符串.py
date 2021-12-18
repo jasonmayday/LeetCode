@@ -41,3 +41,22 @@ https://leetcode-cn.com/problems/count-vowel-substrings-of-a-string/
     word 仅由小写英文字母组成
 
 """
+
+"""滑动窗口"""
+class Solution:
+    def countVowelSubstrings(self, word: str) -> int: 
+        ans = 0
+        n = len(word)
+        for i in range(n - 4):
+            for j in range(i, n + 1):
+                if set(word[i:j]) == set("aeiou"):
+                    ans += 1
+        return ans
+
+
+if __name__ == "__main__":
+    nums = [3,2,1,5,4]
+    k = 2
+    sol = Solution()
+    result = sol.countKDifference(nums)
+    print (result)
