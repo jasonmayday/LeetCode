@@ -32,10 +32,28 @@ https://leetcode-cn.com/problems/time-needed-to-buy-tickets/
     0 <= k < n
 
 """
+from typing import List
 
+"""计算在这个过程中每个人买票所需要的时间，再对这些时间求和得到答案。"""
+class Solution:
+    def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+        n = len(tickets)
+        res = 0
+        for i in range(n):
+            # 遍历计算每个人所需时间
+            if i <= k:  # 如果这个人初始在第 k 个人的前方，或者这个人恰好为第 k 个人
+                res += min(tickets[i], tickets[k])      # 此时在第 k 个人买完票之前他最多可以购买 tickets[k] 张
+            else:       # 如果这个人初始在第 k 个人的后方
+                res += min(tickets[i], tickets[k] - 1)  # 此时在第 k 个人买完票之前他最多可以购买 tickets[k]−1 张。
+        return res
+
+class Solution:
+    def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+        return sum([min(tickets[k], t) for t in tickets[:k+1]]) + sum([min(tickets[k] - 1, t) for t in tickets[k+1:]])
 
 if __name__ == "__main__":
-    n = 4
+    tickets = [2,3,2]
+    k = 2
     sol = Solution()
-    result = sol.isThree(n)
+    result = sol.timeRequiredToBuy(tickets, k)
     print(result)
