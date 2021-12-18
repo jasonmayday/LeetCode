@@ -38,14 +38,26 @@ https://leetcode-cn.com/problems/find-target-indices-after-sorting-array/
 
 from typing import List
 
+"""方法：遍历"""
 class Solution:
     def targetIndices(self, nums: List[int], target: int) -> List[int]:
         nums.sort()
         return [i for i in range(len(nums)) if nums[i] == target]
+    
+"""方法：排序后遍历"""
+class Solution:
+    def targetIndices(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        nums.sort()
+        res = []
+        for i in range(n):
+            if nums[i] == target:
+                res.append(i)
+        return res
 
 if __name__ == "__main__":
-    nums = [3,2,1,5,4]
-    k = 2
+    nums = [1,2,5,2,3]
+    target = 2
     sol = Solution()
-    result = sol.countKDifference(nums)
+    result = sol.targetIndices(nums, target)
     print (result)
