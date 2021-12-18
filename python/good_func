@@ -10,6 +10,12 @@
 Counter:
 words = "".join(words)      # abcaabcbc
 words = Counter(words)      # {'a': 3, 'b': 3, 'c': 3}
+words['a'] == 3:
+相当于一个dict：
+    keys是元素
+    value是对应元素出现的次数
+
+
 
 dict
 get函数
