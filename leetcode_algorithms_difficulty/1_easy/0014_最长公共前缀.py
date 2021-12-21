@@ -20,7 +20,7 @@ https://leetcode-cn.com/problems/longest-common-prefix/
     strs[i] 仅由小写英文字母组成
 
 '''
-strs = ["flower","flow","flight"]
+
 
 from typing import List
 
@@ -49,9 +49,8 @@ class Solution:
                 res = res[0: len(res) - 1]
         return res
 
-
-
-
-sol = Solution()
-result = sol.longestCommonPrefix(strs)
-print(result)
+if __name__ == "__main__":
+    strs = ["flower","flow","flight"]
+    sol = Solution()
+    result = sol.longestCommonPrefix(strs)
+    print(result)

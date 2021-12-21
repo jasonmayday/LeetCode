@@ -30,7 +30,7 @@ https://leetcode-cn.com/problems/valid-parentheses/
 '''
 # 使用栈，当遇到匹配的最小括号对时，我们将这对括号从栈中删除（即出栈），如果最后栈为空，那么它是有效的括号，反之不是。
 
-s = "()[]{}"
+
 
 class Solution:
     def isValid(self, s: str) -> bool:
@@ -52,6 +52,7 @@ class Solution:
             return False
             
 if __name__ == "__main__":
+    s = "()[]{}"
     sol = Solution()
     result = sol.isValid(s)
     print (result)

@@ -40,8 +40,7 @@ for (int i = 0; i < len; i++) {
 0 <= val <= 100
 
 '''
-nums = [0,1,2,2,3,0,4,2]
-val = 2
+
 
 from typing import List
 class Solution:
@@ -57,6 +56,9 @@ class Solution:
 
         return slow                       # 不重复的数字数就是slow的位置
 
-sol = Solution()
-result = sol.removeElement(nums, val)
-print(result)
+if __name__ == "__main__":
+    nums = [0,1,2,2,3,0,4,2]
+    val = 2
+    sol = Solution()
+    result = sol.removeElement(nums, val)
+    print(result)

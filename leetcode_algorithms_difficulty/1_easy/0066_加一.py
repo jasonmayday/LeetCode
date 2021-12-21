@@ -24,7 +24,7 @@ https://leetcode-cn.com/problems/plus-one/
 
 '''
 from typing import List
-digits = [9, 9]
+
 
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
@@ -34,6 +34,7 @@ class Solution:
         return [int(i) for i in str(int(a) + 1)]
 
 if __name__ == "__main__":
+    digits = [9, 9]
     sol = Solution()
     result = sol.plusOne(digits)
     print (result)  

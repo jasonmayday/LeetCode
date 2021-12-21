@@ -20,7 +20,7 @@ https://leetcode-cn.com/problems/sqrtx/
     0 <= x <= 2^31 - 1
 
 '''
-x = 4
+
 
 # 解法1：梯度下降
 class Solution:
@@ -58,7 +58,8 @@ class Solution:
                 right = mid - 1
         return ans
 
-
-sol = Solution()
-result = sol.mySqrt(x)
-print(result)
+if __name__ == "__main__":
+    x = 4
+    sol = Solution()
+    result = sol.mySqrt(x)
+    print(result)

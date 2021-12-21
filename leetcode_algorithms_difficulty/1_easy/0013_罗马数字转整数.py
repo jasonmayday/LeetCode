@@ -53,7 +53,7 @@ M             1000
     · 关于罗马数字的详尽书写规则，可以参考 罗马数字 - Mathematics 。
 
 '''
-s = "MCMXCIV"
+
 
 class Solution:
     def romanToInt(self, s):
@@ -70,6 +70,8 @@ class Solution:
                 ans += a[s[i]]                        # 答案加上罗马字母对应的数字
         return ans
 
-sol = Solution()
-result = sol.romanToInt(s)
-print (result)  
+if __name__ == "__main__":
+    s = "MCMXCIV"
+    sol = Solution()
+    result = sol.romanToInt(s)
+    print (result)  

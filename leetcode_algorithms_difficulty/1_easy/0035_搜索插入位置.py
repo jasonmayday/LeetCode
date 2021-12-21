@@ -27,8 +27,7 @@ https://leetcode-cn.com/problems/search-insert-position/
 输出: 0
 
 '''
-nums = [1,3,5,6,9,13,18,24,28,32,36,39,41,46,53,57,62,70,78,84]
-target = 10
+
 
 from typing import List
 class Solution:
@@ -47,6 +46,8 @@ class Solution:
         return right + 1
         
 if __name__ == "__main__":
+    nums = [1,3,5,6,9,13,18,24,28,32,36,39,41,46,53,57,62,70,78,84]
+    target = 10
     sol = Solution()
     result = sol.searchInsert(nums,target)
     print(result)
