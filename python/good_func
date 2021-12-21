@@ -62,3 +62,6 @@ s = str(int) # 17 → ['1', '7'] → '17'
 
 排列组合：
 from itertools import permutations
+
+生成一个m行n列的空矩阵：
+res = [[0] * n for _ in range(m)]       # m 行，n 列
