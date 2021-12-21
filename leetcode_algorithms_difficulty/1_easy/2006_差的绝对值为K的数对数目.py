@@ -36,7 +36,6 @@ https://leetcode-cn.com/problems/count-number-of-pairs-with-absolute-difference-
 
 '''
 
-
 from typing import List
 
 class Solution:
