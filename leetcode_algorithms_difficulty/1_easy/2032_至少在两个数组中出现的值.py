@@ -58,7 +58,6 @@ class Solution:
         s1, s2, s3 = set(nums1), set(nums2), set(nums3)
         return list((s1 & s2) | (s1 & s3) | (s2 & s3))
 
-
 if __name__ == "__main__":
     nums1 = [1,1,3,2]
     nums2 = [2,3]
