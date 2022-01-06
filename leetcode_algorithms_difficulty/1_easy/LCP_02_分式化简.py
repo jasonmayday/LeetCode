@@ -24,12 +24,17 @@ https://leetcode-cn.com/problems/deep-dark-fraction/
     答案的n, m的取值都能被32位int整型存下（即不超过2 ^ 31 - 1）。
 
 """
+from typing import List
 
-
+class Solution:
+    def fraction(self, cont: List[int]) -> List[int]:
+        n,m = 0, 1
+        for a in cont[::-1]:
+            n,m = m, (m * a + n)
+        return [m, n]
 
 if __name__ == "__main__":
-    guess = [2,2,3]
-    answer = [3,2,1]
+    cont = [3, 2, 0, 2]
     sol = Solution()
-    result = sol.game(guess, answer)
+    result = sol.fraction(cont)
     print (result)
