@@ -65,3 +65,6 @@ from itertools import permutations
 
 生成一个m行n列的空矩阵：
 res = [[0] * n for _ in range(m)]       # m 行，n 列
+
+
+当题目中出现 “所有组合” 等类似字眼时，我们第一感觉就要想到用回溯。
