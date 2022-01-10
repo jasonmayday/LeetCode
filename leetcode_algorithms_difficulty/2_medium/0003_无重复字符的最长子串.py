@@ -29,24 +29,48 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
 
 """
 
-"""方法一：滑动窗口"""
+"""方法一：滑动窗口"""  
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        left = 0
         occur = set()   # 哈希集合，记录每个字符是否出现过
         n = len(s)
-        rk = -1         # 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
-        ans = 0
-        for i in range(n):
-            if i != 0:
-                # 左指针向右移动一格，移除一个字符
-                occur.remove(s[i - 1])
-            while rk + 1 < n and s[rk + 1] not in occur:
-                # 不断地移动右指针
-                occur.add(s[rk + 1])
-                rk += 1
-            # 第 i 到 rk 个字符是一个极长的无重复字符子串
-            ans = max(ans, rk - i + 1)
-        return ans
+        max_len = 0     # 最长子串的长度初始化为 0
+        cur_len = 0
+        for i in range(n):          # 遍历字符串
+            cur_len += 1            # 遍历一位，当前子串长度加一
+            while s[i] in occur:    # 如果遍历到某字符，但此字符已经出现过，比如 abca，第四位时
+                occur.remove(s[left])   # 把队列的左边的元素移出出现过的集合occur，相当于移动队列
+                left += 1               # 左指针右移
+                cur_len -= 1            # 因为最左边字符被移除，当前的子串长度减一
+            if cur_len > max_len:       # 如果当前子串长度大于之前的最大长度
+                max_len = cur_len       # 则更新最长子串
+            occur.add(s[i])         # 然后刚刚遍历到的字符加入到已出现的字符集合中
+        return max_len
+    
+"""方法一：滑动窗口另一种实现"""  
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        from collections import defaultdict
+        lookup = defaultdict(int)
+        start = 0
+        end = 0
+        max_len = 0
+        counter = 0
+        while end < len(s):
+            if lookup[s[end]] > 0:
+                counter += 1
+            lookup[s[end]] += 1
+            end += 1
+            while counter > 0:
+                if lookup[s[start]] > 1:
+                    counter -= 1
+                lookup[s[start]] -= 1
+                start += 1
+            max_len = max(max_len, end - start)
+        return max_len
 
 if __name__ == "__main__":
     s = "abcabcbb"
