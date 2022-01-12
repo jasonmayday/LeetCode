@@ -39,6 +39,23 @@ class Solution:
                 ans += 1
         return ans
     
+"""正向查找: 贪心"""
+class Solution:  # 贪心算法：找出下一步能到的区间，并从区间中取出下下一步能到达最远位置的点作为下一步到达的点
+    def jump(self, nums: List[int]) -> int:
+        length = len(nums)
+        if length == 1:
+            return 0
+        left, right = 1, nums[0]
+        step = 1
+        while right < length - 1:
+            for i in range(left, right + 1):  # 遍历当前能到达的所有点，取出下一次能到达的最远位置的点，并用left和right记录该点下一次能到达的区间
+                if nums[i] + i > right:
+                    right = nums[i] + i
+                    left = i + 1
+            step += 1
+        return step
+
+
 if __name__ == "__main__":
     n = 8
     sol = Solution()
