@@ -29,14 +29,13 @@ https://leetcode-cn.com/problems/largest-number-at-least-twice-of-others/
     
 class Solution:
     def dominantIndex(self, nums):
-        if len(nums)==1:
+        if len(nums) == 1:
             return 0
-        sortednums = sorted(nums,reverse=True)  # 排序，反向，最大的在最前
-        if sortednums[0] >= sortednums[1] * 2:  # 如果最大的大于第二大的数字：
-            return nums.index(sortednums[0])    # 返回该最大数字在排序前数组的index
+        sorted_nums = sorted(nums, reverse = True)  # 排序，反向，最大的在最前
+        if sorted_nums[0] >= sorted_nums[1] * 2:    # 如果最大的大于第二大的数字：
+            return nums.index(sorted_nums[0])       # 返回该最大数字在排序前数组的index
         else:
             return -1
-
 
 if __name__ == "__main__":
     nums = [3,6,1,0]
