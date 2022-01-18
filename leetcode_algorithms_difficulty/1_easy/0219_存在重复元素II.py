@@ -16,8 +16,6 @@ https://leetcode-cn.com/problems/contains-duplicate-ii/
 输出: false
 
 '''
-nums = [1,2,3,1,2,3]
-k = 2
 
 from typing import List
 
@@ -35,6 +33,8 @@ class Solution:
         return False
 
 if __name__ == "__main__":
+    nums = [1,2,3,1,2,3]
+    k = 2
     sol = Solution()
     result = sol.containsNearbyDuplicate(nums, k)
     print(result)
