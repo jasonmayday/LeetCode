@@ -22,3 +22,22 @@ https://leetcode-cn.com/problems/jump-game/
     0 <= nums[i] <= 10^5
 
 """
+from typing import List
+
+""" 贪心算法 """
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        n = len(nums)
+        rightmost = 0
+        for i in range(n):      # 依次遍历数组中的每一个位置，并实时维护 最远可以到达的位置
+            if i <= rightmost:
+                rightmost = max(rightmost, i + nums[i])     # 对于当前遍历到的位置 xx，如果它在 最远可以到达的位置 的范围内，那么我们就可以从起点通过若干次跳跃到达该位置
+                if rightmost >= n - 1:  # 如果 最远可以到达的位置 大于等于数组中的最后一个位置，那就说明最后一个位置可达
+                    return True
+        return False
+
+if __name__ == "__main__":
+    nums = [3,2,1,0,4]
+    sol = Solution()
+    result = sol.canJump(nums)
+    print(result)
