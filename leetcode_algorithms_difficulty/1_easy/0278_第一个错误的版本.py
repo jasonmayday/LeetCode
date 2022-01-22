@@ -23,8 +23,7 @@
     1 <= bad <= n <= 2^31 - 1
 
 '''
-n = 5
-bad = 4
+
 
 class Solution:
     def firstBadVersion(self, n):
@@ -37,3 +36,9 @@ class Solution:
                 left = mid + 1
         return left
 
+if __name__ == "__main__":
+    n = 5
+    bad = 4
+    sol = Solution()
+    result = sol.missingNumber(nums)
+    print (result) 
