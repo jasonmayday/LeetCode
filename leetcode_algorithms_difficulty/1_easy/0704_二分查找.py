@@ -16,15 +16,13 @@ https://leetcode-cn.com/problems/binary-search/
 
 '''
 
-nums = [-1,0,3,5,9,12]
-target = 9
 from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        low = 0                # 最小数下标
-        high = len(nums) - 1   # 最大数下标
-        while low <= high:
+        low = 0                 # 最小数下标
+        high = len(nums) - 1    # 最大数下标
+        while low <= high:      # 要使用 <= ，因为left == right是有意义的
             mid = (high - low) // 2 + low    # 中间数下标
             # use mid = (high - low) // 2 + low instead of (low + high) // 2 because it avoid overflow
             mid_num = nums[mid]
@@ -37,6 +35,8 @@ class Solution:
         return -1
 
 if __name__ == "__main__":
+    nums = [-1,0,3,5,9,12]
+    target = 9
     sol = Solution()
     result = sol.search(nums,target)
     print(result)
