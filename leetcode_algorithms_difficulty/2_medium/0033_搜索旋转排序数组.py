@@ -41,12 +41,12 @@ class Solution:
             mid = (l + r) // 2
             if nums[mid] == target:
                 return mid
-            if nums[0] <= nums[mid]:                # 如果左半边[l,mid]是有序数组
+            if nums[0] <= nums[mid]:                # 如果第一个数字小于中间数，说明左半边[l,mid]是有序数组
                 if nums[0] <= target < nums[mid]:   # 如果目标在左半边
                     r = mid - 1                     # 在 [l, mid-1] 中寻找
                 else:                               # 如果目标在右半边
                     l = mid + 1                     # 在 [mid+1，r] 中寻找
-            else:                                               # 如果右半边[mid+1,r]是有序数组
+            else:                                               # 如果第一个数字小于中间数，说明右半边[mid+1,r]是有序数组
                 if nums[mid] < target <= nums[len(nums) - 1]:   # 如果目标在右半边
                     l = mid + 1                                 # 在 [mid+1，r] 中寻找
                 else:                                           # 如果目标在左半边
