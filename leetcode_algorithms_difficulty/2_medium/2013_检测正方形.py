@@ -39,3 +39,42 @@ https://leetcode-cn.com/problems/detect-squares/
     调用 add 和 count 的 总次数 最多为 5000
 
 """
+from typing import List
+from collections import Counter
+from collections import defaultdict
+
+class DetectSquares:
+
+    def __init__(self):
+        self.map = defaultdict(Counter)     # 初始化哈希表(字典)
+
+    def add(self, point: List[int]) -> None:
+        x, y = point            # 记输入的 point 的横纵坐标分别为 x 和 y
+        self.map[y][x] += 1     # 更新该点出现的次数，键必须是不可变变量，所以不能直接用point(列表是可变变量)
+
+    def count(self, point: List[int]) -> int:
+        res = 0         # 初始化方案数量
+        x, y = point    # 取出该点的横纵坐标
+
+        if not y in self.map:
+            return 0
+        yCnt = self.map[y]
+
+        for col, colCnt in self.map.items():
+            if col != y:
+                # 根据对称性，这里可以不用取绝对值
+                d = col - y
+                res += colCnt[x] * yCnt[x + d] * colCnt[x + d]
+                res += colCnt[x] * yCnt[x - d] * colCnt[x - d]
+        
+        return res
+    
+if __name__ == "__main__":
+    detectSquares = DetectSquares()
+    detectSquares.add([3, 10])
+    detectSquares.add([11, 2])
+    detectSquares.add([3, 2])
+    print (detectSquares.count([11, 10]))   # 返回 1 。(你可以选择：第一个，第二个，和第三个点)
+    print (detectSquares.count([14, 8]))    # 返回 0 。(查询点无法与数据结构中的这些点构成正方形)
+    detectSquares.add([11, 2]);             # 允许添加重复的点。
+    print (detectSquares.count([11, 10]))   # 返回 2 。(你可以选择：1. 第一个，第二个，和第三个点   2. 第一个，第三个，和第四个点)
