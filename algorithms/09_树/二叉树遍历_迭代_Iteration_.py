@@ -1,12 +1,3 @@
-'''
-       1
-     ↙   ↘
-   2       3
- ↙  ↘    ↙  ↘
-4    5   6    7
-                ↘
-                  8
-'''
 
 from typing import List
 
@@ -17,17 +8,16 @@ class TreeNode:
         self.left = left
         self.right = right
 
-root = TreeNode(1)
-root.left = TreeNode(2)
-root.right = TreeNode(3)
-root.left.left = TreeNode(4)
-root.left.right = TreeNode(5)
-root.right.left = TreeNode(6)
-root.right.right = TreeNode(7)
-root.right.right.right = TreeNode(8)
 
+
+'''深度优先遍历 Depth First Search，DFS，主要有三种子方法:
+       前序遍历
+       中序遍历
+       后序遍历'''
+       
 class Solution(object):
-    '''前序遍历 (Pre-Order Traversal)：根结点 ---> 左子树 ---> 右子树'''
+    ''' 前序遍历 (Pre-Order Traversal)：根结点 ---> 左子树 ---> 右子树
+        从图的最上边先按照一条道深挖到最下面，在挖到底以后就需要再逐个返回到上面的顶点，再去遍历父节点是不是还有别的子节点。后进先出的模式，所以需要用到栈。'''
     # 在节点达到null层时进行判断
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res,stack = [],[]       # 利用栈进行临时存储
@@ -39,7 +29,7 @@ class Solution(object):
             root = stack.pop()
             root = root.right   # 否则进入栈中节点的右子树
         return res
-        
+    
     '''中序遍历 (In-Order Traversal)：左子树 ---> 根结点 ---> 右子树'''
     """二叉搜索树采用中序遍历，就是一个有序数组。"""
     def inorderTraversal(self, root: TreeNode) -> List[int]:
@@ -77,8 +67,9 @@ class Solution(object):
     而如果要再图中使用DFS或者BFS，需要加一个集合searched，里面是已经遍历过的点。
     '''
     
-    ''' 层次遍历（广度优先 Breath First Search）
-        每次都从左到右、从上到下的去遍历一个图，那么就需要把一行中最左边先进来的先输出，最右边后进来的后输出。所以会用到队列。'''
+    ''' 
+    层次遍历（广度优先 Breath First Search）
+    每次都从左到右、从上到下的去遍历一个图，那么就需要把一行中最左边先进来的先输出，最右边后进来的后输出。所以会用到队列。'''
     def BFS(self, root: TreeNode) -> List[int]:
         res = []         
         if root is None:
@@ -93,36 +84,54 @@ class Solution(object):
                 if currentNode.right:
                     queue.append(currentNode.right)
         return res
-
-
-    ''' 深度优先 (Deep First Search)
-        从图的最上边先按照一条道深挖到最下面，在挖到底以后就需要再逐个返回到上面的顶点，再去遍历父节点是不是还有别的子节点。后进先出的模式，所以需要用到栈。'''
-    def DFS(self, root: TreeNode) -> List[int]:
+    
+    def levelOrder(self, root):
+        if not root:
+            return []
         res = []
-        if root is None: 
-            return
-        else:
-            stack = [root] # 每次深挖到底，所用数据结构为栈
-            while stack:
-                currentNode = stack.pop()
-                res.append(currentNode.val)
-                if currentNode.right:
-                    stack.append(currentNode.right)
-                if currentNode.left:
-                    stack.append(currentNode.left)
+        queue = [root]
+        while queue:
+            size = len(queue)   # 获取当前队列的长度，这个长度相当于 当前这一层的节点个数
+            tmp = []
+            for _ in range(size):
+                r = queue.pop(0)    # 将队列中的元素都拿出来(也就是获取这一层的节点)
+                tmp.append(r.val)   # 放到临时 list 中
+                if r.left:                  # 如果节点的左/右子树不为空
+                    queue.append(r.left)    # 也放入队列中
+                if r.right:
+                    queue.append(r.right)
+            res.append(tmp)     # 将临时 list 加入最终返回结果中
         return res
-        
+
 if __name__ == "__main__":
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+    root.right.right.right = TreeNode(8)
+    '''
+           1
+         ↙   ↘
+       2       3
+     ↙  ↘    ↙  ↘
+    4    5   6    7
+                    ↘
+                      8
+    '''
+
     sol = Solution()
     result1 = sol.preorderTraversal(root)
     result2 = sol.inorderTraversal(root)
     result3 = sol.postorderTraversal(root)
     result4 = sol.BFS(root)
-    result5 = sol.DFS(root)
+    result5 = sol.levelOrder(root)
+    
     print ("前序遍历结果: ", result1) 
     print ("中序遍历结果: ", result2) 
     print ("后序遍历结果: ", result3)  
     print ("广度优先结果: ", result4) 
-    print ("深度优先结果: ", result5)
-
+    print ("层序优先结果: ", result5) 
 
