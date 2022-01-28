@@ -33,43 +33,63 @@ https://leetcode-cn.com/problems/restore-ip-addresses/
 
 """
 from typing import List
+""" 暴力枚举 """
+class Solution:
+    def restoreIpAddresses(self, s: str) -> List[str]:
+        n = len(s)
+        res = []
+		
+        # 判读数字是否可做为 IP 中的某段数字
+        def isValid(tmp):
+            if not tmp or (tmp[0] == "0" and len(tmp) > 1) or int(tmp) > 255:
+                return False
+            return True
+        
+		# 三个循环,把数字分成四份
+        for i in range(3):  # 每段最多三位数字
+            for j in range(i + 1, i + 4):
+                for k in range(j + 1, j + 4):
+                    if i < n and j < n and k < n:
+                        tmp1 = s[:i + 1]
+                        tmp2 = s[i + 1:j + 1]
+                        tmp3 = s[j + 1:k + 1]
+                        tmp4 = s[k + 1:]
+                        print(tmp1, tmp2, tmp3, tmp4)   # 列出所有可能的分割组合
+
+                        if all(map(isValid, [tmp1, tmp2, tmp3, tmp4])):
+                            res.append(tmp1 + "." + tmp2 + "." + tmp3 + "." + tmp4)
+        return res
 
 """ 回溯 """
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
-        SEG_COUNT = 4
-        ans = list()
-        segments = [0] * SEG_COUNT
+        res = []
+        path = [] # 存放分割后的字符
         
-        def dfs(segId: int, segStart: int):
-            # 如果找到了 4 段 IP 地址并且遍历完了字符串，那么就是一种答案
-            if segId == SEG_COUNT:
-                if segStart == len(s):
-                    ipAddr = ".".join(str(seg) for seg in segments)
-                    ans.append(ipAddr)
-                return
-            
-            # 如果还没有找到 4 段 IP 地址就已经遍历完了字符串，那么提前回溯
-            if segStart == len(s):
+        # 判读数字是否可做为 IP 中的某段数字
+        def isValid(p):
+            if p == '0': return True # 解决"0000"
+            if p[0] == '0': return False
+            if int(p) > 0 and int(p) <256: return True
+            return False
+
+        def backtrack(s, startIndex):
+            if len(s) > 12: return  # 字符串长度最大为12
+            if len(path) == 4 and startIndex == len(s): # 确保切割完，且切割后的长度为4
+                res.append(".".join(path[:])) # 字符拼接
                 return
 
-            # 由于不能有前导零，如果当前数字为 0，那么这一段 IP 地址只能为 0
-            if s[segStart] == "0":
-                segments[segId] = 0
-                dfs(segId + 1, segStart + 1)
-            
-            # 一般情况，枚举每一种可能性并递归
-            addr = 0
-            for segEnd in range(segStart, len(s)):
-                addr = addr * 10 + (ord(s[segEnd]) - ord("0"))
-                if 0 < addr <= 0xFF:
-                    segments[segId] = addr
-                    dfs(segId + 1, segEnd + 1)
-                else:
-                    break
-        
-        dfs(0, 0)
-        return ans
+            for i in range(startIndex, len(s)):
+                if len(s) - startIndex > 3*(4 - len(path)): continue # 剪枝，剩下的字符串大于允许的最大长度则跳过
+                p = s[startIndex:i+1] # 分割字符
+                if isValid(p): # 判断字符是否有效
+                    path.append(p)
+                else: continue
+                backtrack(s, i + 1) # 寻找i+1为起始位置的子串
+                path.pop()
+        backtrack(s, 0)
+        return res
+
 
 if __name__ == "__main__":
     s = "101023"
