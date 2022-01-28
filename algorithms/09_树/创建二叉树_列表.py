@@ -20,7 +20,7 @@ class TreeNode:
         self.right = None
     
     def __str__(self):
-        #测试基本功能，输出字符串
+        # 测试基本功能，输出字符串
         return str(self.val)   
 
 """递归构建"""
