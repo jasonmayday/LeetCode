@@ -1,12 +1,3 @@
-'''
-       1
-     ↙   ↘
-   2       3
- ↙  ↘    ↙  ↘
-4    5   6    7
-                ↘
-                  8
-'''
 
 from typing import List
 
@@ -18,41 +9,39 @@ class TreeNode:
         self.right = right
 
 class Solution(object):
-    '''广度优先（ Breath First Search）层次遍历'''
-    #  使用队列实现树的层次遍历
-
-    '''深度优先遍历 Depth First Search，DFS，主要有三种子方法:
-       前序遍历
-       中序遍历
-       后序遍历'''
-
-    """
-    先序遍历：
-    def dfs(root):
-        if not root:
-            return
-        执行操作
-        dfs(root.left)
-        dfs(root.right)
+    ''' 广度优先（ Breath First Search）层次遍历
+        递归不好实现广度优先（层序）遍历，如果不是题目要求，使用迭代实现BFS（层序）遍历。
+        使用队列实现树的层次遍历
+        '''
         
-    中序遍历：
-    def dfs(root):
+    def levelOrder(self, root):
         if not root:
-            return
-        dfs(root.left)
-        执行操作
-        dfs(root.right)
+            return []
+        res = []
         
-    后序遍历：
-    def dfs(root):
-        if not root:
-            return
-        dfs(root.left)
-        dfs(root.right)
-        执行操作
-    """
+        def dfs(index, r):
+			# 假设res是[ [1],[2,3] ]， index是3，就再插入一个空list放到res中
+            if len(res) < index:
+                res.append([])  # 将当前节点的值加入到res中，index代表当前层，假设index是3，节点值是99
+			
+            # res是[ [1],[2,3] [4] ]，加入后res就变为 [ [1],[2,3] [4,99] ]
+            res[index-1].append(r.val)
+            # 递归的处理左子树，右子树，同时将层数index+1
+            if r.left:
+                dfs(index+1,r.left)
+            if r.right:
+                dfs(index+1,r.right)
+        dfs(1, root)
+        return res
 
-    '''前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树'''
+
+    ''' DFS
+        深度优先遍历 Depth First Search，主要有三种子方法:
+        前序遍历
+        中序遍历
+        后序遍历'''
+
+    ''' 前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树'''
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
         def preorder(root):
@@ -95,23 +84,54 @@ if __name__ == "__main__":
     root.right.left = TreeNode(6)
     root.right.right = TreeNode(7)
     root.right.right.right = TreeNode(8)
-
+    '''
+           1
+         ↙   ↘
+       2       3
+     ↙  ↘    ↙  ↘
+    4    5   6    7
+                    ↘
+                      8
+    '''
     sol = Solution()
 
     result1 = sol.preorderTraversal(root)
     result2 = sol.inorderTraversal(root)
     result3 = sol.postorderTraversal(root)
+    result4 = sol.levelOrder(root)
 
     print ("前序遍历结果: ", result1) 
     print ("中序遍历结果: ", result2) 
-    print ("后序遍历结果: ", result3) 
- 
+    print ("后序遍历结果: ", result3)
+    print ("层次遍历结果: ", result4) 
 
 
 
-
-
-
+"""
+    先序遍历：
+    def dfs(root):
+        if not root:
+            return
+        执行操作
+        dfs(root.left)
+        dfs(root.right)
+        
+    中序遍历：
+    def dfs(root):
+        if not root:
+            return
+        dfs(root.left)
+        执行操作
+        dfs(root.right)
+        
+    后序遍历：
+    def dfs(root):
+        if not root:
+            return
+        dfs(root.left)
+        dfs(root.right)
+        执行操作
+"""
 
 
 
