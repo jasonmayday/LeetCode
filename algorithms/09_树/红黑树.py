@@ -10,6 +10,7 @@ class RBTree(object):
     def __init__(self):
         self.root = None
         self.size = 0
+    
     def find(self, key, node):
         if not node:
             return None
@@ -19,6 +20,7 @@ class RBTree(object):
             return self.find(key, node.right)
         else:
             return node
+    
     def findMin(self, node):
         """
         找到以 node 节点为根节点的树的最小值节点 并返回
