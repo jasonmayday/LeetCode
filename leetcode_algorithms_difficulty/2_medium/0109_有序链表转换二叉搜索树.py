@@ -87,7 +87,7 @@ class Solution:
             while fast != tail and fast.next!= tail :   # 终止条件：快指针到达边界（即快指针到达右端点或快指针的下一个节点是右端点）
                 fast = fast.next.next   # 将快指针 fast 向右移动两次的同时
                 slow = slow.next        # 将慢指针 slow 向右移动一次
-            return slow
+            return slow     # 快指针到达边界。此时，慢指针对应的元素就是中位数。
         
         def buildTree(head, tail):  # 递归构造二叉搜索树
             if head == tail:    # 递归终止条件
