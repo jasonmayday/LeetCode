@@ -35,6 +35,7 @@ https://leetcode-cn.com/problems/longest-nice-substring/
 
 """
 
+
 """暴力枚举子串 + 检测"""
 class Solution(object):
     def longestNiceSubstring(self, s):
@@ -53,6 +54,73 @@ class Solution(object):
             if ch.swapcase() not in s:
                 return False
         return True
+
+
+"""暴力枚举子串 + 检测"""
+class Solution:
+    def longestNiceSubstring(self, s: str) -> str:
+        n = len(s)
+        maxPos, maxLen = 0, 0
+        for i in range(n):
+            lower, upper = 0, 0
+            for j in range(i, n):
+                if s[j].islower():
+                    lower |= 1 << (ord(s[j]) - ord('a'))
+                else:
+                    upper |= 1 << (ord(s[j]) - ord('A'))
+                if lower == upper and j - i + 1 > maxLen:
+                    maxPos = i
+                    maxLen = j - i + 1
+        return s[maxPos: maxPos + maxLen]
+
+
+"""分治"""
+class Solution:
+    def longestNiceSubstring(self, s: str) -> str:
+        d = set(s)
+        for ch in s:
+            if ch.swapcase() not in d:
+                return max((self.longestNiceSubstring(t) for t in s.split(ch)), key=len)
+        return s
+
+
+"""递归"""
+class Solution:
+    def longestNiceSubstring(self, s: str) -> str:
+        if len(s) < 2:
+            return '' 
+        for i, val in enumerate(s):     # 下标，数字
+            if (val.islower() and val.upper() not in s) or (val.isupper() and val.lower() not in s):
+                return max((self.longestNiceSubstring(s[:i]),self.longestNiceSubstring(s[i+1:])),key = len)
+        return s
+
+
+"""DFS回溯法"""
+class Solution:
+    def longestNiceSubstring(self, s: str) -> str:
+        def DFS(s): # 递归，不断分割，回溯法
+            if len(s)<2:    # 判断长度小于2，则必不可能是美丽字符串
+                return ''
+            for i, val in enumerate(s): # 对字符串遍历
+                if val.islower():               # 如果某字符串是小写
+                    if val.upper() not in s:    # 如果对应的大写不在，
+                        left_str = DFS(s[:i])   # 则应当在此处对字符串进行分割，即最后的美丽字符串一定不包含当前字符
+                        right_str = DFS(s[i+1:])
+                        if len(left_str) >= len(right_str): # 对返回的字符串长度判断，长的保留
+                            return left_str
+                        else:
+                            return right_str
+                else:                           # 如果某字符串是大写
+                    if val.lower() not in s:    #
+                        left_str = DFS(s[:i])
+                        right_str = DFS(s[i+1:])
+                        if len(left_str) >= len(right_str):
+                            return left_str
+                        else:
+                            return right_str
+            return s    # 字符串遍历完，所有的字符都有对应的，则表明当前的字符串就是美丽字符串
+        return DFS(s)
+
 
 if __name__ == "__main__":
     s = "YazaAay"
