@@ -23,3 +23,69 @@ https://leetcode-cn.com/problems/path-sum-ii/
     -1000 <= targetSum <= 1000
 
 """
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+    
+    def __str__(self):
+        return str(self.val)
+    
+def list_to_binarytree(nums):
+    def level(index):
+        if index >= len(nums) or nums[index] is None:
+            return None
+        root = TreeNode(nums[index])
+        root.left = level(2 * index + 1)    # 往左递推  # 从根开始一直到最左，直至为空
+        root.right = level(2 * index + 2)   # 往右回溯  # 再返回上一个根，回溯右
+        return root     # 再返回根
+    return level(0)
+    
+from typing import List
+from collections import deque
+
+""" 深度优先搜索 DFS """
+class Solution:
+    def pathSum(self, root: TreeNode, targetSum: int) -> List[List[int]]:
+        ret = list()
+        path = list()
+        
+        def dfs(root: TreeNode, targetSum: int):
+            if not root:
+                return
+            path.append(root.val)
+            targetSum -= root.val
+            if not root.left and not root.right and targetSum == 0:
+                ret.append(path[:])
+            dfs(root.left, targetSum)
+            dfs(root.right, targetSum)
+            path.pop()
+        
+        dfs(root, targetSum)
+        return ret
+
+""" 广度优先搜索 BFS """
+class Solution:
+    def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
+        res = []
+        que = deque()   # 使用队列，同时保存(将要处理的节点，路径，路径和)
+        que.append((root, [], 0)) # 将要处理的节点，路径，路径和
+        while que:
+            node, path, pathSum = que.popleft()
+            if not node: # 如果是空节点，不处理
+                continue
+            if not node.left and not node.right:    # 如果是叶子节点
+                if node.val + pathSum == sum:       # 加上叶子节点后，路径和等于sum
+                    res.append(path + [node.val])   # 保存路径
+            que.append((node.left, path + [node.val], pathSum + node.val))      # 处理左子树
+            que.append((node.right, path + [node.val], pathSum + node.val))     # 处理右子树
+        return res
+
+
+if __name__ == "__main__":
+    root = list_to_binarytree([5,4,8,11,None,13,4,7,2,None,None,5,1])
+    targetSum = 22
+    sol = Solution()
+    result = sol.pathSum(root, targetSum)
+    print (result)
