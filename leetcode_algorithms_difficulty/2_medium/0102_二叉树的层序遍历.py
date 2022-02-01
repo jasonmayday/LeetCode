@@ -39,8 +39,9 @@ def list_to_binarytree(nums):
         return root     # 再返回根
     return level(0)
 
+from collections import deque
 
-""" 迭代实现 BFS """
+""" 解法1：迭代实现 BFS """
 class Solution(object):
 	def levelOrder(self, root):
 		if not root:
@@ -60,7 +61,24 @@ class Solution(object):
 			res.append(tmp)     # 将临时 list 加入最终返回结果中
 		return res
 
-""" 迭代实现 BFS """
+""" 解法2：递归实现 DFS (深度优先搜索) """
+class Solution(object):
+    def zigzagLevelOrder(self, root):
+        if not root:
+            return []
+        res = []
+        
+        def dfs(root, index):   # index 为层数
+            if not root:        # 遍历的终止条件
+                return
+            if len(res) < index:      # 没有对应的第 index 层数组时：
+                res.append(deque())   # 创建第 index 层数组
+            res[index - 1].append(root.val) # 答案中第 index 层加入答案
+            dfs(root.left, index + 1)   # 递归左子树
+            dfs(root.right, index + 1)  # 递归右子树
+            
+        dfs(root, 1)
+        return [list(q) for q in res]
 
 if __name__ == "__main__":
     root = list_to_binarytree([3,9,20,None,None,15,7])
