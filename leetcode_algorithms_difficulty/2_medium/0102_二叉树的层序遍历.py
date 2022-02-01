@@ -40,10 +40,11 @@ def list_to_binarytree(nums):
     return level(0)
 
 from collections import deque
+from typing import List
 
 """ 解法1：迭代实现 BFS """
 class Solution(object):
-	def levelOrder(self, root):
+	def levelOrder(self, root: TreeNode) -> List[List[int]]:
 		if not root:
 			return []
 		res = []
@@ -63,7 +64,7 @@ class Solution(object):
 
 """ 解法2：递归实现 DFS (深度优先搜索) """
 class Solution(object):
-    def zigzagLevelOrder(self, root):
+    def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
         if not root:
             return []
         res = []
