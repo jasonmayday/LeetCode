@@ -49,6 +49,7 @@ def printBFS(root):
 
 ''' 前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树
     中序遍历 (In -Order Traversal) ：左子树 ---> 根结点 ---> 右子树
+    《前序遍历的第一个元素一定是根结点》
     https://pic.leetcode-cn.com/beff309937462b352940c1925de8ff50c22b65bada872cf286b0228a45054ea2-2.jpg
     '''
 
