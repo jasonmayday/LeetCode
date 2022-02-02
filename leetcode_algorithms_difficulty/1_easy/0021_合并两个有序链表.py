@@ -49,7 +49,7 @@ def print_linked_list(head):
         cur = cur.next
     return res
 
-# 解法1：递归
+"""解法1：递归"""
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         if l1 is None:     # 如果 l1 或者 l2 一开始就是空链表，那么没有任何操作需要合并，所以我们只需要返回非空链表。
@@ -63,7 +63,7 @@ class Solution:
             l2.next = self.mergeTwoLists(l1, l2.next)
             return l2
 
-# 解法2：迭代
+"""解法2：迭代"""
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         prehead = ListNode(-1)    # 设定一个哨兵节点 prehead ，这可以在最后让我们比较容易地返回合并后的链表。
