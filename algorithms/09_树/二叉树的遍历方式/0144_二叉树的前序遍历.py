@@ -46,7 +46,7 @@ root.right.right.right = TreeNode(8)
 
 '''前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树'''
 
-# 递归
+""" 递归 """
 class Solution(object):
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
@@ -58,7 +58,7 @@ class Solution(object):
         preorder(root)
         return res
 
-# 迭代
+""" 迭代 """
 class Solution(object):
     # 在节点达到null层时进行判断
     def preorderTraversal(self, root: TreeNode) -> List[int]:
