@@ -43,6 +43,13 @@ class Solution:
         else:
             return word
 
+"""解法2"""
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        for i, char in enumerate(word):
+            if char == ch:return word[i::-1] + word[i+1:]
+        return word
+
 if __name__ == "__main__":
     nums = [3,2,1,5,4]
     k = 2
