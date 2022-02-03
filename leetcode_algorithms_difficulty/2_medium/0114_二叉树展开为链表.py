@@ -29,7 +29,10 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
-        
+    
+    def __str__(self):
+        return str(self.val) 
+
 def list_to_binarytree(nums):
     def level(index):
         if index >= len(nums) or nums[index] is None:
@@ -67,6 +70,8 @@ class Solution:
             curr = preorderList[i]
             prev.left = None
             prev.right = curr
+        
+        return preorderList
 
 
 """ 迭代 + 前序遍历 """
@@ -78,7 +83,7 @@ class Solution:
 
         while node or stack:    # stack为空且node为null时，说明遍历结束
             while node:         # 可以进入左子树时，先访问，再进入
-                preorderList.append(node)   # 首先访问该节点（先序），之后顺序入栈左子树
+                preorderList.append(node)   # 首先访问该节点（先序），之后顺序入栈右子树，左子树
                 stack.append(node)
                 node = node.left
             node = stack.pop()
@@ -90,6 +95,8 @@ class Solution:
             curr = preorderList[i]
             prev.left = None
             prev.right = curr
+        
+        return preorderList
 
 
 if __name__ == "__main__":
