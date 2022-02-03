@@ -10,47 +10,77 @@ class TreeNode:
 
 
 
-'''深度优先遍历 Depth First Search，DFS，主要有三种子方法:
+''' 深度优先遍历 Depth First Search，DFS，主要有三种子方法:
        前序遍历
        中序遍历
-       后序遍历'''
+       后序遍历
+    从图的最上边先按照一条道深挖到最下面，在挖到底以后就需要再逐个返回到上面的顶点，再去遍历父节点是不是还有别的子节点。后进先出的模式，所以需要用到栈。
+'''
        
 class Solution(object):
     ''' 前序遍历 (Pre-Order Traversal)：根结点 ---> 左子树 ---> 右子树
-        从图的最上边先按照一条道深挖到最下面，在挖到底以后就需要再逐个返回到上面的顶点，再去遍历父节点是不是还有别的子节点。后进先出的模式，所以需要用到栈。'''
-    # 在节点达到null层时进行判断
+    https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/er-cha-shu-de-qian-xu-bian-li-by-leetcode-solution/'''
     def preorderTraversal(self, root: TreeNode) -> List[int]:
-        res,stack = [],[]       # 利用栈进行临时存储
-        while stack or root:    # stack为空且node为null时，说明遍历结束
-            while root:         # 可以进入左子树时，先访问，再进入
-                res.append(root.val)    # 首先访问该节点（先序），之后顺序入栈左子树
-                stack.append(root)
-                root = root.left
-            root = stack.pop()
-            root = root.right   # 否则进入栈中节点的右子树
+        res = []
+        stack = []          # 利用栈进行临时存储
+        while stack or root:    # 结束条件：stack 为空且 node 为 null时，说明遍历结束
+            while root:         # 有节点时：
+                res.append(root.val)    # 把该节点元素加入结果中
+                stack.append(root)      # 同时把元素放入栈中
+                root = root.left        # 然后进入该元素的左子树
+            root = stack.pop()  # 左子树没有元素时：弹出栈顶元素
+            root = root.right   # 进入栈中节点的右子树
         return res
     
-    '''中序遍历 (In-Order Traversal)：左子树 ---> 根结点 ---> 右子树'''
-    """二叉搜索树采用中序遍历，就是一个有序数组。"""
+    
+    ''' 中序遍历 (In-Order Traversal)：左子树 ---> 根结点 ---> 右子树
+        二叉搜索树采用中序遍历，就是一个有序数组。
+        https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode-solutio/'''
     def inorderTraversal(self, root: TreeNode) -> List[int]:
-        res,stack = [],[]       # 利用栈进行临时存储
-        while stack or root:    # stack为空且root为null时，说明已经遍历结束
-            while root:         # 可以深入左子树
-                stack.append(root)
-                root = root.left
-            root = stack.pop()     # 否则访问栈中节点，并深入右子树
-            res.append(root.val)   
-            root = root.right
+        res = []
+        stack = []          # 利用栈进行临时存储
+        while stack or root:    # 结束条件：stack 为空且 node 为 null时，说明遍历结束
+            while root:         # 有节点时：
+                stack.append(root)      # 把元素放入栈中
+                root = root.left        # 然后进入该元素的左子树（直到抵达一个没有左子树的节点）
+            root = stack.pop()          # 左子树没有元素时：弹出栈顶元素
+            res.append(root.val)        # 同时把该（刚刚从栈顶弹出的）元素加入结果中
+            root = root.right           # 访问右子树
         return res
-        
-    '''后序遍历 (Post-Order Traversal)：左子树 ---> 右子树 ---> 根结点'''
-    # 后序遍历：左 → 右 → 根，前序遍历：根 → 左 → 右。
-    # 后序遍历翻转后为根 → 右 → 左，与前序遍历相比仅仅左右顺序调换。
-    # 在前序遍历中，把left 和 right的顺序调换，然后输出反转的树即可。
+    
+    
+    ''' 后序遍历 (Post-Order Traversal)：左子树 ---> 右子树 ---> 根结点
+        https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/er-cha-shu-de-hou-xu-bian-li-by-leetcode-solution/'''
     def postorderTraversal(self, root: TreeNode) -> List[int]:
-        res,stack = [],[]
-        while stack or root: 
-            while root:
+        res = []
+        stack = []      # 利用栈进行临时存储
+        prev = None     # 该 prev 用于标记右子树是否访问完毕
+
+        while root or stack:    # 结束条件：stack 为空且 node 为 null时，说明遍历结束
+            while root:             # 有节点时：
+                stack.append(root)      # 把元素放入栈中
+                root = root.left        # 然后进入该元素的左子树（直到抵达一个没有左子树的节点）
+            root = stack.pop()          # 左子树没有元素时：弹出栈顶元素
+            if not root.right or root.right == prev:    # 右子树也没有元素时
+                res.append(root.val)                    # 把该（刚刚从栈顶弹出的）元素加入结果中
+                prev = root                             # 
+                root = None
+            else:                       # 右子树有元素时
+                stack.append(root)      # 再次入栈
+                root = root.right       # 访问右子树
+        
+        return res
+
+    ''' 后序遍历：解法2
+        后序遍历：左 → 右 → 根
+        前序遍历：根 → 左 → 右
+        后序遍历 翻转后为：根 → 右 → 左，与 前序遍历 相比仅仅左右顺序调换。
+        在前序遍历中，把 left 和 right 的顺序调换，然后输出反转的树即可。'''
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        res = []
+        stack = []          # 利用栈进行临时存储
+        while stack or root:    # 结束条件：stack 为空且 node 为 null时，说明遍历结束
+            while root:         # 左子树有元素时：先访问，再进入
                 res.append(root.val)
                 stack.append(root)
                 root = root.right
