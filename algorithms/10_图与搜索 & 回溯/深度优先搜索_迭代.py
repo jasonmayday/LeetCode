@@ -7,7 +7,7 @@ DFS：每次深挖到底，所用数据结构为栈
 def DFS(graph, s):
     stack = []
     stack.append(s)
-    seen = []   # 一个顶点的相邻点可能包含着已经搜索过的点，需要加一个集合seen，里面是已经遍历过的点。
+    seen = []       # 一个顶点的相邻点可能包含着已经搜索过的点，需要加一个集合seen，里面是已经遍历过的点。
     seen.append(s)
     while stack:
         vertex = stack.pop()  # 栈，取出最后一个并删掉 先进后出
