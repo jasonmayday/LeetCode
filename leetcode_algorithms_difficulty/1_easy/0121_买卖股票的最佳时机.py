@@ -26,7 +26,7 @@ https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
 '''
 from typing import List
 
-"""遍历一遍数组，计算每次 到当天为止 的最小股票价格和最大利润。"""
+""" 遍历一遍数组，计算每次 到当天为止 的最小股票价格和最大利润。"""
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         minprice = float('inf')
@@ -36,9 +36,9 @@ class Solution:
             maxprofit = max(maxprofit, price - minprice)
         return maxprofit
 
-"""动态规划
-   dp[i] 表示前 i 天的最大利润，因为我们始终要使利润最大化，则：
-   dp[i] = max(dp[i-1], prices[i]-minprice)
+""" dp 动态规划
+    dp[i] 表示前 i 天的最大利润，因为我们始终要使利润最大化，则：
+    dp[i] = max(dp[i-1], prices[i] - minprice)
 """
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
