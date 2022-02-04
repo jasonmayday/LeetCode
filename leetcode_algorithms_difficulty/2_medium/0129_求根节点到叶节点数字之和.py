@@ -32,3 +32,99 @@ https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/
     树的深度不超过 10
 
 """
+from collections import deque
+
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+    
+    def __str__(self):
+        return str(self.val)   
+
+def list_to_binarytree(nums):
+    def level(index):
+        if index >= len(nums) or nums[index] is None:
+            return None
+        root = TreeNode(nums[index])
+        root.left = level(2 * index + 1)    # 往左递推  # 从根开始一直到最左，直至为空
+        root.right = level(2 * index + 2)   # 往右回溯  # 再返回上一个根，回溯右
+        return root     # 再返回根
+    return level(0)
+
+"""递归 + 回溯"""
+class Solution:
+    def sumNumbers(self, root: TreeNode) -> int:
+        res = 0
+        path = []   # 使用数组方便进行回溯
+        
+        def backtrace(root):
+            nonlocal res
+            if not root: return # 节点空则返回
+            path.append(root.val)
+            if not root.left and not root.right: # 遇到了叶子节点
+                res += get_sum(path)
+            if root.left: # 左子树不空
+                backtrace(root.left)
+            if root.right: # 右子树不空
+                backtrace(root.right)
+            path.pop()
+
+        def get_sum(arr):
+            s = 0
+            for i in range(len(arr)):
+                s = s * 10 + arr[i]
+            return s
+
+        backtrace(root)
+        return res
+
+""" 深度优先搜索 """
+class Solution:
+    def sumNumbers(self, root: TreeNode) -> int:
+        
+        def dfs(root: TreeNode, prevTotal: int) -> int:
+            if not root:
+                return 0
+            total = prevTotal * 10 + root.val
+            if not root.left and not root.right:    # 如果遇到叶子节点
+                return total                        # 则将叶子节点对应的数字加到数字之和
+            else:                                                       # 如果当前节点不是叶子节点
+                return dfs(root.left, total) + dfs(root.right, total)   # 则计算其子节点对应的数字，然后对子节点递归遍历。
+
+        return dfs(root, 0)
+
+""" 广度优先搜索 """
+class Solution:
+    def sumNumbers(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+
+        total = 0                       # 需要维护两个队列
+        nodeQueue = deque([root])       # 存储节点
+        numQueue = deque([root.val])    # 存储节点对应的数字
+        
+        while nodeQueue:                # 每次从两个队列分别取出一个节点和一个数字
+            node = nodeQueue.popleft()  # 将根节点加入队列
+            num = numQueue.popleft()    # 将根节点的值加入队列
+            left = node.left
+            right = node.right
+            if not left and not right:  # 如果当前节点是叶子节点，
+                total += num            # 则将该节点对应的数字加到数字之和
+            else:                           # 如果当前节点不是叶子节点
+                if left:    
+                    nodeQueue.append(left)                  # 将子节点和子节点对应的数字分别加入两个队列
+                    numQueue.append(num * 10 + left.val)    # 根据当前节点对应的数字和子节点的值计算子节点对应的数字
+                if right:
+                    nodeQueue.append(right)
+                    numQueue.append(num * 10 + right.val)
+
+        return total
+
+
+if __name__ == "__main__":
+    root = list_to_binarytree([4,9,0,5,1])
+    sol = Solution()
+    result = sol.sumNumbers(root)
+    print (result)
