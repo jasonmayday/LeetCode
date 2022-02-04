@@ -29,10 +29,19 @@ https://leetcode-cn.com/problems/number-of-rectangles-that-can-form-the-largest-
 from typing import List
 from collections import Counter
 
+""" [[5,8],[3,9],[5,12],[16,5]] """
+
+class Solution:
+    def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
+        rec = [min(i) for i in rectangles]    # 先把所有正方形都找到
+        return rec.count(max(rec))            # 然后计算最大值的个数即可
+
+    
 class Solution:
     def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
         return sorted(Counter(min(rec) for rec in rectangles).items(), key = lambda item: item[0], reverse = True)[0][1]
-    
+
+
 class Solution:
     def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
         count = 0
@@ -45,7 +54,8 @@ class Solution:
             elif edge == max_edge:
                 count +=1
         return count
-    
+
+
 class Solution:
     def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
         edges = []
@@ -54,8 +64,9 @@ class Solution:
                 edges.append(x[0])
             else:
                 edges.append(x[1])
-        edges.sort(reverse=True)
-        return edges.count(edges[0])
+        edges.sort(reverse = True)      # 从大到小排列
+        return edges.count(edges[0])    # 返回最大值的个数
+
 
 if __name__ == "__main__":
     rectangles = [[5,8],[3,9],[5,12],[16,5]]
