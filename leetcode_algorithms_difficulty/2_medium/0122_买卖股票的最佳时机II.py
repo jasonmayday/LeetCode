@@ -28,3 +28,39 @@ https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/
     0 <= prices[i] <= 10^4
 
 """
+from typing import List
+
+
+""" 贪心算法：把可能跨越多天的买卖都化解成相邻两天的买卖 """
+class Solution(object):
+    def maxProfit(self, prices):
+        profit = 0
+        for day in range(1, len(prices)):
+            differ = prices[day] - prices[day-1]
+            if differ > 0:
+                profit += differ
+        return profit
+
+
+""" dp 动态规划 """
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if not prices:
+            return 0
+        n = len(prices)
+        dp = [[0]*2 for _ in range(n)]  # dp[i][0]表示第i天不持有股票, dp[i][1]表示第i天持有股票
+        
+        dp[0][0] = 0            # 初始化第i天不持有股票
+        dp[0][1] = -prices[0]   # 初始化第i天持有股票
+        
+        for i in range(1, n):
+            dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])  # 第 i 天不持有股票的钱 = max(什么都不干，当天价格卖掉之前的股票)
+            dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i])  # 第 i 天持有股票的钱   = max(什么都不干，当天价格买入新的股票)
+        return dp[n-1][0]   # 返回最后一天不持有股票的钱
+
+
+if __name__ == "__main__":
+    prices = [7,1,5,3,6,4]
+    sol = Solution()
+    result = sol.maxProfit(prices)
+    print (result)
