@@ -26,21 +26,21 @@ class Solution:
         res = float("-inf")     # 初始化结果
         
         for num in nums:
-            cur_pro *= num
-            # 考虑三种情况
-            # 大于0
+            cur_pro *= num  # 遍历数字，不断乘积
+            # 考虑三种情况：
+            # 累乘的乘积大于0
             if cur_pro > 0:
                 res = max(res, cur_pro // min_pos)
                 min_pos = min(min_pos, cur_pro)
-            # 小于0
+            # 累乘的乘积小于0
             elif cur_pro < 0:
                 if max_neg != float("-inf"):
                     res = max(res, cur_pro // max_neg)
                 else:
                     res = max(res, num)
                 max_neg = max(max_neg, cur_pro)
-            # 等于0 
-            else:
+            # 累乘的乘积等于 0
+            elif cur_pro == 0:
                 cur_pro = 1
                 min_pos = 1
                 max_neg = float("-inf")
@@ -48,14 +48,36 @@ class Solution:
         return res 
 
 
-""" 动态规划 """
+""" 动态规划
+    根据正负性，同时维护最大值和最小值，因为对于负数来说，前面连续子序列的值越小越好 """
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        if not nums: return
+        n = len(nums)
+        
+        dp_max = [0] * n    # [0,0,0,0]
+        dp_max[0] = nums[0] # 0
+
+        dp_min = [0] * n
+        dp_min[0] = nums[0]
+        
+        res = nums[0]
+        
+        for i in range(1, n):
+            dp_max[i] = max(nums[i], dp_max[i-1] * nums[i], dp_min[i-1] * nums[i])  
+            dp_min[i] = min(nums[i], dp_max[i-1] * nums[i], dp_min[i-1] * nums[i])            
+            res = max(res, dp_max[i])
+        
+        return res
+
+
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         if not nums: return 
         res = nums[0]
-        pre_max = nums[0]
-        pre_min = nums[0]
-        for num in nums[1:]:
+        pre_max = nums[0]   # 记录前i的最大值
+        pre_min = nums[0]   # 记录前i的最小值
+        for num in nums[1:]:    # 从第二个数字开始
             cur_max = max(pre_max * num, pre_min * num, num)
             cur_min = min(pre_max * num, pre_min * num, num)
             res = max(res, cur_max)
@@ -63,7 +85,16 @@ class Solution:
             pre_min = cur_min
         return res
 
-
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        if not nums: return 
+        maxi = mini = res = nums[0]
+        for num in nums[1:]:
+            maxi = max(maxi * num, mini * num, num)
+            mini = min(maxi * num, mini * num, num)
+            res = max(maxi, res)
+        return res
+    
 """ 根据符号的个数
     当负数个数为偶数时候，全部相乘一定最大
     当负数个数为奇数时候，它的左右两边的负数个数一定为偶数，只需求两边最大值
