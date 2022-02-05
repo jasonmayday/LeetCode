@@ -39,6 +39,8 @@ https://leetcode-cn.com/problems/simplify-path/
     path 是一个有效的 Unix 风格绝对路径。
 
 """
+
+""" 栈 """
 class Solution:
     def simplifyPath(self, path):
         stack = []
