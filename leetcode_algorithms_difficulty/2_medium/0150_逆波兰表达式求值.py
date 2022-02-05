@@ -48,29 +48,45 @@ https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/
 """
 from typing import List
 
+""" 栈 """
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        res_stack = []
-        operations = {'+': lambda a,b:a+b,
-                      '-': lambda a,b:b-a,
-                      '*': lambda a,b:a*b,
-                      '/': lambda a,b:int(b/a) }
-        for i in tokens:
-            if i in operations.keys():
-                res_stack.append = operations[i](int(res_stack.pop()),int(res_stack.pop()))
-        return res_stack[0]
+        stack = []  # ["2","1","+","3","*"] ((2 + 1) * 3) = 9
+        for t in tokens:    
+            if t in {"+", "-", "/", "*"}: # 遇到操作符,弹出栈顶两个元素操作
+                num1 = stack.pop()  # 弹出数字 1
+                num2 = stack.pop()  # 弹出数字 2
+                stack.append(str(int(eval(num2 + t + num1))))   # eval() 函数用来执行一个字符串表达式，并返回表达式的值。
+            else:               # 如果遇到数字
+                stack.append(t) # 压入栈
+        return stack.pop()     
 
+""" 栈 """ 
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack = []  # ["2","1","+","3","*"] ((2 + 1) * 3) = 9
+        operations = {  "+": lambda a, b: b + a,
+                        "-": lambda a, b: b - a,
+                        "*": lambda a, b: b * a,
+                        "/": lambda a, b: int(b / a)}
+        for t in tokens:
+            if t in operations:
+                stack.append(operations[t](stack.pop(), stack.pop()))
+            else:
+                stack.append(int(t))
+        return stack.pop()
 
+""" 栈 """
 class Solution:
     def evalRPN(self, tokens):
-        numStack = []
+        stack = []
         for token in tokens:
-            if   token == "+": numStack[-1] = numStack[-2] + numStack.pop()
-            elif token == "-": numStack[-1] = numStack[-2] - numStack.pop()
-            elif token == "*": numStack[-1] = numStack[-2] * numStack.pop()
-            elif token == "/": numStack[-1] = int(numStack[-2] / numStack.pop())
-            else: numStack.append(int(token))
-        return numStack[0]
+            if   token == "+": stack[-1] = stack[-2] + stack.pop()
+            elif token == "-": stack[-1] = stack[-2] - stack.pop()
+            elif token == "*": stack[-1] = stack[-2] * stack.pop()
+            elif token == "/": stack[-1] = int(stack[-2] / stack.pop())
+            else: stack.append(int(token))
+        return stack[0]
 
 
 if __name__ == "__main__":
