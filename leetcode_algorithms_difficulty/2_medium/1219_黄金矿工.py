@@ -14,20 +14,20 @@ https://leetcode-cn.com/problems/path-with-maximum-gold/
     输入：grid = [[0,6,0],[5,8,7],[0,9,0]]
     输出：24
     解释：
-    [[0,6,0],
-    [5,8,7],
-    [0,9,0]]
+       [[0,6,0],
+        [5,8,7],
+        [0,9,0]]
     一种收集最多黄金的路线是：9 -> 8 -> 7。
 
 示例 2：
     输入：grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]
     输出：28
     解释：
-    [[1,0,7],
-    [2,0,6],
-    [3,4,5],
-    [0,3,0],
-    [9,0,20]]
+       [[1,0,7],
+        [2,0,6],
+        [3,4,5],
+        [0,3,0],
+        [9,0,20]]
     一种收集最多黄金的路线是：1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7。
 
 提示：
@@ -36,11 +36,41 @@ https://leetcode-cn.com/problems/path-with-maximum-gold/
     最多 25 个单元格中有黄金。
 
 """
+from typing import List
 
+""" 回溯算法 """
+class Solution:
+    def getMaximumGold(self, grid: List[List[int]]) -> int:
+        m = len(grid)       # 行数
+        n = len(grid[0])    # 列数
+        res = 0
+        
+        def dfs(x, y, gold):
+            record = grid[x][y]
+            grid[x][y] = 0
+            maxGold = gold + record
+            for nx, ny in [[x, y-1], [x-1, y], [x, y+1], [x+1, y]]:     # 上下左右四个方向
+                if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] != 0:   # 如果往某一个方向不会走出网格，并且走到的位置的值不为 0
+                    maxGold = max(maxGold, dfs(nx, ny, gold + record))  # 就可以进行递归搜索
+            grid[x][y] = record
+            return maxGold
+        
+        def isCorner(x, y): # 只有角落的矿值得作为起点尝试，寻找角落的矿
+            cnt = 0
+            for nx, ny in [[x, y-1], [x-1, y], [x, y+1], [x+1, y]]:
+                if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] != 0:
+                    cnt += 1
+            return cnt <= 2
+        
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] and isCorner(i, j):
+                    res = max(res, dfs(i, j, 0))
+        return res
 
 if __name__ == "__main__":
-    arr = [1,2,4,3,5,8,7,5,1]
+    grid = [[0,6,0],[5,8,7],[0,9,0]]
     difference = 2
     sol = Solution()
-    result = sol.longestSubsequence(arr, difference)
+    result = sol.getMaximumGold(grid)
     print(result)  
