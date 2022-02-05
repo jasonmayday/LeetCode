@@ -35,21 +35,22 @@ https://leetcode-cn.com/problems/linked-list-cycle-ii/
 
 """
 
-""" 快慢双指针 """
+""" 快慢双指针
+    https://leetcode-cn.com/problems/linked-list-cycle-ii/solution/linked-list-cycle-ii-kuai-man-zhi-zhen-shuang-zhi-/ """
 class Solution(object):
     def detectCycle(self, head):
         fast = head
-        slow = head
+        slow = head     # 若有环，两指针一定会相遇。因为每走 1 轮，fast 与 slow 的间距 +1，fast 终会追上 slow；
         while True:
-            if not (fast and fast.next):
+            if not (fast and fast.next):    # fast 指针走过链表末端，说明链表无环
                 return
-            fast = fast.next.next
-            slow = slow.next
-            if fast == slow:
+            fast = fast.next.next   # fast 每轮走 2 步
+            slow = slow.next        # slow 每轮走 1 步
+            if fast == slow:    # 当 fast == slow 时，两指针在环中 第一次相遇
                 break
-        fast = head
-        while fast != slow:
-            fast = fast.next
+        fast = head             # 第一次相遇后，将fast指针重新 指向链表头部节点，slow指针 位置不变
+        while fast != slow:     
+            fast = fast.next    # slow 和 fast 同时每轮向前走 1 步；
             slow = slow.next
-        return fast
+        return fast     # 两指针第二次重合后，此时 同时指向链表环入口 。返回 slow 或 fast 指针指向的节点。
 
