@@ -26,6 +26,7 @@
 from typing import List
 from collections import Counter
 
+""" 使用哈希表统计次数""" 
 class Solution:
     def sumOfUnique(self, nums: List[int]) -> int:
         dict = {}
@@ -40,9 +41,10 @@ class Solution:
                 res += j
         return res
     
+""" 使用Counter功能记录每个元素的出现次数""" 
 class Solution:
     def sumOfUnique(self, nums: List[int]) -> int:
-        return sum(num for num, time in Counter(nums).items() if time == 1)
+        return sum(num for (num, time) in Counter(nums).items() if time == 1)
 
 if __name__ == "__main__":
     nums = [1,2,3,2]

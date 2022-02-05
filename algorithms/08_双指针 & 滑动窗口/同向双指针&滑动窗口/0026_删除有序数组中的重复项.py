@@ -15,10 +15,10 @@
 解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
 
 '''
-nums = [0,0,1,1,1,2,2,3,3,4]
 
 from typing import List
 
+""" 双指针 """
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if not nums:
@@ -33,7 +33,9 @@ class Solution:
             fast += 1
         
         return slow    # 从nums[0]到nums[slow−1]的每个元素都不相同
-
-sol = Solution()
-result = sol.removeDuplicates(nums)
-print(result)
+    
+if __name__ == "__main__":
+    nums = [0,0,1,1,1,2,2,3,3,4]
+    sol = Solution()
+    result = sol.removeDuplicates(nums)
+    print(result)
