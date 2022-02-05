@@ -40,4 +40,4 @@ if __name__ == "__main__":
     difference = 2
     sol = Solution()
     result = sol.longestSubsequence(arr, difference)
-    print(result)  
+    print(result)
