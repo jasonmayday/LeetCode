@@ -46,16 +46,16 @@ def printLinkedList(head):
         cur = cur.next
     return list
 
-""" 寻找链表中点 + 链表逆序 + 合并链表
+""" 方法1: 寻找链表中点 + 链表逆序 + 合并链表
     目标链表即为将原链表的左半端和反转后的右半端合并后的结果 """
 class Solution:
     def reorderList(self, head: ListNode) -> None:
         if not head:
             return
         mid = self.middleNode(head)
-        l1 = head
-        l2 = mid.next
-        mid.next = None
+        l1 = head       # 左半边
+        l2 = mid.next   # 右半边
+        mid.next = None # 最后一个节点的next不指向None的话，它的next就保留了原来的值，这样链表就形成环了
         l2 = self.reverseList(l2)
         self.mergeList(l1, l2)
         return l1
@@ -78,9 +78,10 @@ class Solution:
             prev = curr
             curr = nextTemp
         return prev
-
+    
+    ''' 将原链表的两端合并(交叉合并)''' 
     def mergeList(self, l1: ListNode, l2: ListNode):
-        while l1 and l2:
+        while l1 and l2:        # l1 = [1,2], l2 = [4,3]
             l1_tmp = l1.next
             l2_tmp = l2.next
 
@@ -89,6 +90,31 @@ class Solution:
 
             l2.next = l1
             l2 = l2_tmp
+
+
+""" 方法2: 栈 """
+class Solution(object):
+    def reorderList(self, head: ListNode) -> None:
+        if not head:
+            return None
+        p = head
+        stack = []
+        while p:
+            stack.append(p) # 把所有节点压入栈中
+            p = p.next
+        n = len(stack)
+        count = (n - 1) // 2    # 找到中点前一个位置 
+        p = head
+        while count:
+            tmp = stack.pop()   # 弹出栈顶
+            tmp.next = p.next   # 与链头拼接
+            p.next  = tmp
+            p = tmp.next        # 移动一个位置
+            count -= 1
+        stack.pop().next = None
+        
+        return head
+
 
 if __name__ == "__main__":
     head = listToLinkedList([1,2,3,4])
