@@ -40,7 +40,7 @@ class TrieNode:
             if not node.children[ch]:
                 node.children[ch] = TrieNode()  # 放在 chidren 对应的位置里面。
             node = node.children[ch]            # 下一个字符是当前字符的子节点。
-        node.isWord = True
+        node.isWord = True  # 一个输入字符串构建「前缀树」结束的时候，需要把该节点的 isWord 标记为 true，说明从根节点到当前节点的路径，构成了一个关键词。
 
 
 class WordDictionary:
@@ -48,7 +48,7 @@ class WordDictionary:
         self.trieRoot = TrieNode()      # 根节点不保存任何信息；
 
     def addWord(self, word: str) -> None:
-        self.trieRoot.insert(word)  # 将单词添加到字典树中即可。
+        self.trieRoot.insert(word)      # 将单词添加到字典树中即可。
 
     def search(self, word: str) -> bool:
         def dfs(index: int, node: TrieNode) -> bool:
@@ -56,7 +56,7 @@ class WordDictionary:
                 return node.isWord
             ch = word[index]
             if ch != '.':           # 待搜索的单词可能包含点号，因此在搜索过程中需要考虑点号的处理
-                child = node.children[ord(ch) - ord('a')]
+                child = node.children[ord(ch) - ord('a')]   # 如果遇到了 '.' ，则需要对当前节点的所有子树都进行遍历，只要有任何一个子树能最终匹配完成，那么就代表能匹配完成。
                 if child is not None and dfs(index + 1, child):
                     return True
             else:                   # 如果当前字符是字母
