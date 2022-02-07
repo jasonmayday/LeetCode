@@ -10,24 +10,24 @@ https://leetcode-cn.com/problems/fraction-to-recurring-decimal/
 对于所有给定的输入，保证 答案字符串的长度小于 104 。
 
 示例 1：
-输入：numerator = 1, denominator = 2
-输出："0.5"
+    输入：numerator = 1, denominator = 2
+    输出："0.5"
 
 示例 2：
-输入：numerator = 2, denominator = 1
-输出："2"
+    输入：numerator = 2, denominator = 1
+    输出："2"
 
 示例 3：
-输入：numerator = 2, denominator = 3
-输出："0.(6)"
+    输入：numerator = 2, denominator = 3
+    输出："0.(6)"
 
 示例 4：
-输入：numerator = 4, denominator = 333
-输出："0.(012)"
+    输入：numerator = 4, denominator = 333
+    输出："0.(012)"
 
 示例 5：
-输入：numerator = 1, denominator = 5
-输出："0.2"
+    输入：numerator = 1, denominator = 5
+    输出："0.2"
 
 '''
 
