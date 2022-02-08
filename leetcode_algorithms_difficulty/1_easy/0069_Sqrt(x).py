@@ -21,8 +21,7 @@ https://leetcode-cn.com/problems/sqrtx/
 
 '''
 
-
-# 解法1：梯度下降
+""" 解法1：梯度下降"""
 class Solution:
     def mySqrt(self, x: int) -> int:
         t = 1
@@ -44,7 +43,7 @@ class Solution:
             return int(t)           # 比如: 8 通过梯度下降之后是 2.8，(int(t)+1) = 3， 3^2 > 8，我们要返回 2
 
 
-# 解法2：二分查找
+""" 解法2：二分查找"""
 class Solution:
     def mySqrt(self, x: int) -> int:
         left, right = 0, x   # 二分查找的下界为 0，上界可以粗略地设定为 x
