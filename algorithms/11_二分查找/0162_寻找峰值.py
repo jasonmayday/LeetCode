@@ -1,0 +1,70 @@
+"""
+https://leetcode-cn.com/problems/find-peak-element/
+
+峰值元素是指其值严格大于左右相邻值的元素。
+
+给你一个整数数组 nums，找到峰值元素并返回其索引。数组可能包含多个峰值，在这种情况下，返回 任何一个峰值 所在位置即可。
+
+你可以假设 nums[-1] = nums[n] = -∞ 。
+
+你必须实现时间复杂度为 O(log n) 的算法来解决此问题。
+
+示例 1：
+    输入：nums = [1,2,3,1]
+    输出：2
+    解释：3 是峰值元素，你的函数应该返回其索引 2。
+
+示例 2：
+    输入：nums = [1,2,1,3,5,6,4]
+    输出：1 或 5 
+    解释：你的函数可以返回索引 1，其峰值元素为 2；
+         或者返回索引 5， 其峰值元素为 6。
+
+提示：
+    1 <= nums.length <= 1000
+    -2^31 <= nums[i] <= 2^31 - 1
+    对于所有有效的 i 都有 nums[i] != nums[i + 1]
+
+"""
+from typing import List
+
+""" 顺序搜索"""
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        # 简单顺序搜索
+        nums.append(-float("inf"))
+        for i in range(len(nums)):
+            if nums[i - 1] < nums[i] > nums[i + 1]:
+                return i
+
+""" 寻找最大值 
+    数组 nums 中最大值两侧的元素一定严格小于最大值本身"""
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        idx = 0
+        for i in range(1, len(nums)):
+            if nums[i] > nums[idx]:
+                idx = i
+        return idx
+    
+    
+""" 二分查找 """
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        nums.append(-float("inf"))
+        lo = 0
+        hi = len(nums)-1
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nums[mid] < nums[mid + 1]:   # 若中点递增，则中点与右端点都小于中点的下一个数，可以得出右半段必然存在峰值
+                lo = mid + 1                # 收缩左边界，在右边查找 
+            else:                           # 若中点递减，则左端点与中点都小于中点的前一个数，可以得出左半段必然存在峰值
+                hi = mid                    # 收缩右边界，在左边查找 
+        return lo
+
+
+if __name__ == "__main__":
+    nums = [1,2,3,1]
+    sol = Solution()
+    result = sol.findPeakElement(nums)
+    print(result)
