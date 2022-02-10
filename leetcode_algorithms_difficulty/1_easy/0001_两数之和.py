@@ -32,9 +32,9 @@ https://leetcode-cn.com/problems/two-sum/
 
 from typing import List
 
-# 暴力枚举
-# 时间复杂度：O(N^2)
-# 空间复杂度：O(1)
+""" 暴力枚举
+    时间复杂度：O(N^2)
+    空间复杂度：O(1)"""
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         n = len(nums)
@@ -44,9 +44,9 @@ class Solution:
                     return [i, j]
         return []
 
-# 哈希表
-# 时间复杂度：O(N)
-# 空间复杂度：O(N)
+""" 哈希表
+    时间复杂度：O(N)
+    空间复杂度：O(N)"""
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         hashtable = dict()
@@ -54,6 +54,15 @@ class Solution:
             if target - num in hashtable:             # 查询哈希表中是否存在 target-x
                 return [hashtable[target - num], i]   # 若存在 target-x，返回
             hashtable[nums[i]] = i                    # 若不存在 target-x, 将当前数和索引放入哈希表
+        return []
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        dic = {}
+        for i in range(len(nums)):
+            if target - nums[i] in dic:
+                return dic[target - nums[i]], i
+            dic[nums[i]] = i
         return []
 
 if __name__ == "__main__":
