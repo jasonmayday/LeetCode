@@ -39,7 +39,8 @@ from typing import List
 class Solution:
     def minimumDifference(self, nums: List[int], k: int) -> int:
         nums.sort()
-        return min((j - i) for i, j in zip(nums, nums[k-1:]))
+        print(list(zip(nums, nums[k-1:])))  # [(1, 4), (4, 7), (7, 9)]
+        return min((j - i) for i, j in zip(nums, nums[k-1:]))   # nums = [1,4,7,9]; nums[k-1:] = [4,7,9]
 
 """ 排序 + 滑动窗口 """
 class Solution:
@@ -47,8 +48,8 @@ class Solution:
         n = len(nums)
         nums.sort()                 # [9,4,1,7] → [1,4,7,9]
         res = float('inf')
-        for right in range(k - 1, n):   # 1 - 4
-            left = right - k + 1        # 0
+        for right in range(k - 1, n):   # 1 ~ 4
+            left = right - k + 1        # 0 ~ 3
             cur = nums[right] - nums[left]
             res = min(res, cur)
         return res
