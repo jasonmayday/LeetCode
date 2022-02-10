@@ -38,3 +38,78 @@ https://leetcode-cn.com/problems/binary-search-tree-iterator/
     你可以设计一个满足下述条件的解决方案吗？next() 和 hasNext() 操作均摊时间复杂度为 O(1) ，并使用 O(h) 内存。其中 h 是树的高度。
 
 """
+from collections import deque
+
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        
+    def __str__(self):
+        return str(self.val)
+    
+def list_to_binarytree(nums):
+    def level(index):
+        if index >= len(nums) or nums[index] is None:
+            return None
+        root = TreeNode(nums[index])
+        root.left = level(2 * index + 1)    # 往左递推  # 从根开始一直到最左，直至为空
+        root.right = level(2 * index + 2)   # 往右回溯  # 再返回上一个根，回溯右
+        return root     # 再返回根
+    return level(0)
+
+
+""" 方法一：提前保存全部节点"""
+class BSTIterator(object):
+
+    def __init__(self, root):
+        self.queue = deque()
+        self.inOrder(root)
+    
+    def inOrder(self, root):    # 中序遍历（递归）
+        if not root:
+            return
+        self.inOrder(root.left)
+        self.queue.append(root.val) # 把节点保存到双端列表中
+        self.inOrder(root.right)
+
+    def next(self):
+        return self.queue.popleft()
+
+    def hasNext(self):
+        return len(self.queue) > 0  # 双端列表不为空，说明还有节点
+
+
+""" 方法二：迭代时计算 next 节点"""
+class BSTIterator(object):
+
+    def __init__(self, root):
+        self.stack = []     # 把递归转成迭代，基本想法就是用栈
+        while root:                     # 构造方法：一路到底，
+            self.stack.append(root)     # 把根节点和它的所有左节点放到栈中；
+            root = root.left
+
+    def next(self):
+        cur = self.stack.pop()          # 调用 next() 方法：弹出栈顶的节点
+        node = cur.right                # 如果它有右子树，
+        while node:                     # 则对右子树一路到底，
+            self.stack.append(node)     # 把它和它的所有左节点放到栈中。
+            node = node.left
+        return cur.val
+
+    def hasNext(self):
+        return len(self.stack) > 0
+
+
+if __name__ == "__main__":
+    bSTIterator = BSTIterator(list_to_binarytree([7, 3, 15, None, None, 9, 20]))
+    print (bSTIterator.next())      # 返回 3
+    print (bSTIterator.next())      # 返回 7
+    print (bSTIterator.hasNext())   # 返回 True
+    print (bSTIterator.next())      # 返回 9
+    print (bSTIterator.hasNext())   # 返回 True
+    print (bSTIterator.next())      # 返回 15
+    print (bSTIterator.hasNext())   # 返回 True
+    print (bSTIterator.next())      # 返回 20
+    print (bSTIterator.hasNext())   # 返回 False
