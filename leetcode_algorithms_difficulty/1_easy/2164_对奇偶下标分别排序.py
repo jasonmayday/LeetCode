@@ -33,16 +33,17 @@ https://leetcode-cn.com/problems/sort-even-and-odd-indices-independently/
 """
 from typing import List
 
+""" 奇偶分开排序 + 重新组合 """
 class Solution:
     def sortEvenOdd(self, nums: List[int]) -> List[int]:
-        even = sorted(nums[::2])
-        odd = sorted(nums[1::2])[::-1]
-        nums[::2] = even
-        nums[1::2] = odd
+        even = sorted(nums[::2])                  # 偶数下标的数组
+        odd = sorted(nums[1::2], reverse = True)  # 奇数下标的数组
+        nums[::2] = even    # 偶数从下标 0 开始
+        nums[1::2] = odd    # 奇数从下标 1 开始
         return nums
 
 if __name__ == "__main__":
     nums = [4,1,2,3]
     sol = Solution()
-    result = sol.checkValid(matrix)
+    result = sol.sortEvenOdd(nums)
     print (result)
