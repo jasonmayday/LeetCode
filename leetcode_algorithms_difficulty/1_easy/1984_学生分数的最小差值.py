@@ -39,7 +39,7 @@ from typing import List
 class Solution:
     def minimumDifference(self, nums: List[int], k: int) -> int:
         nums.sort()
-        return min(j - i for i, j in zip(nums, nums[k-1:]))
+        return min((j - i) for i, j in zip(nums, nums[k-1:]))
 
 """ 排序 + 滑动窗口 """
 class Solution:
