@@ -21,3 +21,20 @@ SQL 的范围包括数据插入、查询、更新和删除，数据库模式创�
     虽然 SQL 是一门 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言，但是仍然存在着多种不同版本的 SQL 语言。
 
     然而，为了与 ANSI 标准相兼容，它们必须以相似的方式共同地来支持一些主要的命令（比如 SELECT、UPDATE、DELETE、INSERT、WHERE 等等）。
+
+## 在网站中使用 SQL
+    要创建一个显示数据库中数据的网站，需要：
+        RDBMS 数据库程序（比如 MS Access、SQL Server、MySQL）
+        使用服务器端脚本语言，比如 PHP 或 ASP
+        使用 SQL 来获取您想要的数据
+        使用 HTML / CSS
+
+## RDBMS
+
+    RDBMS 指关系型数据库管理系统，全称 Relational Database Management System。
+
+    RDBMS 是 SQL 的基础，同样也是所有现代数据库系统的基础，比如 MS SQL Server、IBM DB2、Oracle、MySQL 以及 Microsoft Access。
+
+    RDBMS 中的数据存储在被称为表的数据库对象中。
+
+    表是相关的数据项的集合，它由列和行组成。
