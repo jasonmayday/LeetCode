@@ -1,0 +1,23 @@
+# SQL 简介
+SQL (Structured Query Language:结构化查询语言) 是用于管理关系数据库管理系统（RDBMS）。 
+
+SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。
+
+使用 SQL 访问和处理数据系统中的数据，这类数据库包括：MySQL、SQL Server、Access、Oracle、Sybase、DB2 等等。
+
+## SQL 能做什么？
+    SQL 面向数据库执行查询
+    SQL 可从数据库取回数据
+    SQL 可在数据库中插入新的记录
+    SQL 可更新数据库中的数据
+    SQL 可从数据库删除记录
+    SQL 可创建新数据库
+    SQL 可在数据库中创建新表
+    SQL 可在数据库中创建存储过程
+    SQL 可在数据库中创建视图
+    SQL 可以设置表、存储过程和视图的权限
+
+## SQL 是一种标准 - 但是...
+    虽然 SQL 是一门 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言，但是仍然存在着多种不同版本的 SQL 语言。
+
+    然而，为了与 ANSI 标准相兼容，它们必须以相似的方式共同地来支持一些主要的命令（比如 SELECT、UPDATE、DELETE、INSERT、WHERE 等等）。
