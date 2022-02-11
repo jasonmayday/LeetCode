@@ -42,12 +42,12 @@ def print_linked_list(head):
 class Solution(object):
 	def reverseList(self, head):
 		pre = None      # 申请两个节点，pre 和 cur
-		cur = head      # pre 指向 None，cur 指向头节点
+		cur = head      # pre 指向 None(链表末尾)，cur 指向头节点
 		while cur:      # 遍历链表
 			tmp = cur.next  # 记录当前节点的下一个节点
 			cur.next = pre  # 然后将当前节点指向pre
 			pre = cur   # pre和cur节点都前进一位
-			cur = tmp
+			cur = tmp   # 访问下一节点
 		return pre
 
 """ 递归 """
@@ -59,6 +59,22 @@ class Solution(object):
 		head.next.next = head               # 如果链表是 1→2→3→4→5，那么此时的cur就是5，而head是4，head的下一个是5，下下一个是空，所以head.next.next 就是5→4
 		head.next = None                    # 防止链表循环，需要将head.next设置为空
 		return cur                          # 每层递归函数都返回cur，也就是最后一个节点
+
+""" 递归 
+    使用递归法遍历链表，当越过尾节点后终止递归，在回溯时修改各节点的 next 引用指向。"""
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        def recur(cur, pre):
+            ''' 递归过程 '''
+            if not cur:         # 终止条件：当 cur 为空 (递归到链表末尾)
+                return pre      # 则返回尾节点 pre （即反转链表的头节点）；
+            res = recur(cur.next, cur) # 递归后继节点，记录返回值（即反转链表的头节点）为 res ；
+            ''' 回溯过程 '''
+            cur.next = pre             # 修改当前节点 cur 引用指向前驱节点 pre ；
+            return res                 # 返回反转链表的头节点 res
+        
+        return recur(head, None)       # 调用递归并返回
+
 
 if __name__ == "__main__":
     head = create_linked_list([1,2,3,4,5,6,7])
