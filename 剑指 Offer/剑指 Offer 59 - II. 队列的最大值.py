@@ -29,20 +29,23 @@ class MaxQueue:
         self.deque = queue.deque()
 
     def max_value(self) -> int:
-        return self.deque[0] if self.deque else -1
+        if self.deque:
+            return self.deque[0]    # 返回 deque 首元素；
+        else:           # 当双向队列 deque 为空，则返回 -1 ；
+            return -1
 
     def push_back(self, value: int) -> None:
         self.queue.put(value)
-        while self.deque and self.deque[-1] < value:    # 若入队一个比队列某些元素更大的数字 x
+        while self.deque and self.deque[-1] < value:    # 若入队一个比 deque中队尾（最小值）元素更大的数字 x
             self.deque.pop()                            # 则为了保持此列表递减，需要将双向队列 尾部所有小于 x 的元素 弹出。
-        self.deque.append(value)
+        self.deque.append(value)                        # 并将元素 value 入队 deque ；
 
     def pop_front(self) -> int:
-        if self.queue.empty():
-            return -1
-        val = self.queue.get()
-        if val == self.deque[0]:
-            self.deque.popleft()
+        if self.queue.empty():      # 若队列 queue 为空，
+            return -1               # 则直接返回 -1
+        val = self.queue.get()      # 否则，将 queue 首元素出队；
+        if val == self.deque[0]:    # 若出队的元素是最大元素
+            self.deque.popleft()    # 则 deque 需要同时 将首元素出队，以保持队列和双向队列的元素一致性。
         return val
     
 if __name__ == "__main__":
