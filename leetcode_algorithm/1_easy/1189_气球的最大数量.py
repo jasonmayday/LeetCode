@@ -22,12 +22,23 @@ https://leetcode-cn.com/problems/maximum-number-of-balloons/
     text 全部由小写英文字母组成
 
 """
-import collections
+from collections import Counter
 
 class Solution:
     def maxNumberOfBalloons(self, text: str) -> int:
-        d = collections.Counter(text)
-        return min(d['b'], d['a'], d['l'] // 2, d['o'] // 2, d['n'])
+        c = Counter(text)   # {'l': 4, 'o': 4, 'n': 2, 'b': 2, 'a': 2, 'x': 1, 'p': 1}
+        return min(c['b'], c['a'], c['l'] // 2, c['o'] // 2, c['n'])
+    
+    
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        cnt = Counter(ch for ch in text if ch in "balon")   # 只统计需要的字母
+        cnt['l'] //= 2  # "balloon" 中有两个'l'和'o'
+        cnt['o'] //= 2
+        if len(cnt) == 5:
+            return min(cnt.values()) 
+        else: return 0
+
 
 if __name__ == "__main__":
     text = "loonbalxballpoon"
