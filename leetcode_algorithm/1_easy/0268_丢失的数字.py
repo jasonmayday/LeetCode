@@ -33,7 +33,7 @@ https://leetcode-cn.com/problems/missing-number/
 from typing import List
 
 class Solution:
-    # 解法1：排序
+    """ 解法：排序"""
     def missingNumber(self, nums: List[int]) -> int:
         nums.sort()                       # 将数组排序
         for i, num in enumerate(nums):    # enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。
@@ -41,23 +41,32 @@ class Solution:
                 return i
         return num
 
-    # 解法2：哈希集合
+    """ 解法：哈希集合"""
     def missingNumber(self, nums: List[int]) -> int:
         s = set(nums)                     # 遍历数组 nums，将数组中的每个元素加入哈希集合
         for i in range(len(nums) + 1):    # 依次检查从 0 到 n 的每个整数是否在哈希集合中
             if i not in s:                # 不在哈希集合中的数字即为丢失的数字
                 return i
 
-    # 解法3：数学
+    """ 解法：数学"""
     def missingNumber(self, nums: List[int]) -> int:
         n = len(nums)
         total = n * (n + 1) // 2          # 将从 0 到 n 的全部整数之和记为 total，根据高斯求和公式，有 total = n*(n+1)/2
         arrSum = sum(nums)                # 将数组 nums 的元素之和记为 arrSum，则 arrSum 比 total 少了丢失的一个数字
         return total - arrSum             # 因此丢失的数字即为 total 与 arrSum 之差
+    
+    """ 解法：位运算(异或)
+        x ^ x = 0 和 x ^ 0 = x """
+    def missingNumber(self, nums: List[int]) -> int:
+        xor = 0
+        print (list(enumerate(nums)))
+        for i, num in enumerate(nums):  # (0, 3), (1, 0), (2, 1)
+            xor = xor ^ i ^ num         # 利用 a ^ b ^ b = a
+        return xor ^ len(nums)
 
 
 if __name__ == "__main__":
-    nums = [9,6,4,2,3,5,7,0,1]
+    nums = [3,0,1]
     sol = Solution()
     result = sol.missingNumber(nums)
     print (result) 
