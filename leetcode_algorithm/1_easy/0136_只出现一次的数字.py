@@ -19,12 +19,19 @@ https://leetcode-cn.com/problems/single-number/
 from typing import List
 from functools import reduce
 
-nums = [2,2,1]
+""" 异或运算
+    异或交换律：a ^ b ^ c <=> a ^ c ^ b
+    任何数于0异或为任何数 0 ^ n => n
+    相同的数异或为0: n ^ n => 0
+    a = [2,3,2,4,4]
+    2 ^ 3 ^ 2 ^ 4 ^ 4 = 2 ^ 2 ^ 4 ^ 4 ^ 3 => 0 ^ 0 ^ 3 => 3
+"""
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         return reduce(lambda x, y: x ^ y, nums)
 
 if __name__ == "__main__":
+    nums = [2,2,1]
     sol = Solution()
     result = sol.singleNumber(nums)
     print(result)
