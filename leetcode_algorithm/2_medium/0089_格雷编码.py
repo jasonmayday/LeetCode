@@ -34,7 +34,7 @@ n 位格雷码序列 是一个由 2n 个整数组成的序列，其中：
 """
 from typing import List
 
-"""镜像反射法"""
+""" 方法一：镜像反射法 """
 class Solution:
     def grayCode(self, n: int) -> List[int]:
         res = [0]
@@ -45,8 +45,18 @@ class Solution:
             head <<= 1
         return res
 
+
+""" 方法二：二进制数转格雷码"""
+class Solution:
+    def grayCode(self, n: int) -> List[int]:
+        ans = [0] * (1 << n)
+        for i in range(1 << n):
+            ans[i] = (i >> 1) ^ i
+        return ans
+
+
 if __name__ == "__main__":
-    n = 8
+    n = 4
     sol = Solution()
     result = sol.grayCode(n)
     print(result)
