@@ -26,7 +26,7 @@ https://leetcode-cn.com/problems/reverse-bits/
 
 '''
 
-"""每次把 res 左移，把 n 的二进制末尾数字，拼接到结果 res 的末尾。然后把 n 右移。"""
+""" 每次把 res 左移，把 n 的二进制末尾数字，拼接到结果 res 的末尾。然后把 n 右移。"""
 class Solution:
     def reverseBits(self, n):
         res = 0
