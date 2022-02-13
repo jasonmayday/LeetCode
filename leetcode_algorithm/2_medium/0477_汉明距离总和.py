@@ -22,3 +22,40 @@ https://leetcode-cn.com/problems/total-hamming-distance/
     给定输入的对应答案符合 32-bit 整数范围
 
 """
+from typing import List
+from collections import Counter
+
+"""统计每一位有多少个0，有多少个1"""
+class Solution:
+    def totalHammingDistance(self, nums: List[int]) -> int:
+        trie = Counter()
+        max_bit = len(bin(max(nums))) - 2   
+        ans = 0
+        for i, num in enumerate(nums):
+            for j in range(max_bit):
+                bit = (num >> j) & 1
+                if bit:
+                    ans += i - trie[j]
+                    trie[j] += 1
+                else:
+                    ans += trie[j]
+        return ans
+
+""" 需要找出单个bit位上，有0和1不同的，才可以算汉明距离；
+    假设单个bit位上，1的数量为num1，则0的数量为n - num1，总汉明距离为num1 * (n - num1);
+"""
+class Solution:
+    def totalHammingDistance(self, nums):
+        res = 0
+        n = len(nums)
+        for i in range(30):
+            num1 = sum((val >> i) & 1 for val in nums)
+            res += num1 * (n - num1)
+        return res
+
+    
+if __name__ == "__main__":
+    nums = [4,14,2]     # 0100, 1110, 0010
+    sol = Solution()
+    result = sol.totalHammingDistance(nums)
+    print (result) 
