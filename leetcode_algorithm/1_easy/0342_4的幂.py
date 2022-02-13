@@ -18,7 +18,7 @@ https://leetcode-cn.com/problems/power-of-four/
     输出：true
 
 提示：
--2^31 <= n <= 2^31 - 1
+    -2^31 <= n <= 2^31 - 1
 
 进阶：
     你能不使用循环或者递归来完成本题吗？
@@ -28,10 +28,10 @@ https://leetcode-cn.com/problems/power-of-four/
 '''基础循环'''
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
-        if n==2 or n==3:
+        if n == 2 or n == 3:
             return False
-        while(n>=4):
-            if n%4 != 0:
+        while(n >= 4):
+            if n % 4 != 0:
                 return False
             else:
                 n /= 4
