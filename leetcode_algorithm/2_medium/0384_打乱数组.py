@@ -42,13 +42,15 @@ class Solution:
         return str(self.nums)
     
     def reset(self) -> List[int]:
-        self.nums = self.original.copy()
+        self.nums = self.original.copy()    # 返回初始化时的数组
         return self.nums
 
     def shuffle(self) -> List[int]:
-        for i in range(len(self.nums)):
-            j = random.randrange(i, len(self.nums))
-            self.nums[i], self.nums[j] = self.nums[j], self.nums[i]
+        for i in range(len(self.nums)): # 循环 n 次，在第 i 次循环中（0 ≤ i < n）
+            j = random.randrange(i, len(self.nums))                 # 在 [i,n) 中随机抽取一个下标 j
+            self.nums[i], self.nums[j] = self.nums[j], self.nums[i] # 将第 i 个元素与第 j 个元素交换
+        # nums[0 .. i−1] 的部分为乱序后的数组，其长度为 i
+        # nums[i .. n−1] 的部分为待乱序的数组，其长度为 n-i
         return self.nums
 
 if __name__ == "__main__":
