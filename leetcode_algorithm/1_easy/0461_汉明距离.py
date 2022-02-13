@@ -26,7 +26,7 @@ https://leetcode-cn.com/problems/hamming-distance/
 '''解法1：异或运算'''
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
-        return bin(x^y).count('1') # 异或运算：0^0=0; 0^1=1; 1^0=1; 1^1=0
+        return bin(x ^ y).count('1') # 异或运算：0^0=0; 0^1=1; 1^0=1; 1^1=0
 
 if __name__ == "__main__":
     x = 1
