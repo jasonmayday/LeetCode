@@ -31,14 +31,26 @@ https://leetcode-cn.com/problems/lucky-numbers-in-a-matrix/
 """
 from typing import List
 
-"""解法1：用zip来获取矩阵的每一列"""
+
+""" 解法1：模拟"""
+class Solution:
+    def luckyNumbers(self, matrix: List[List[int]]) -> List[int]:
+        ans = []
+        for row in matrix:
+            for j, x in enumerate(row):     # 判断 matrix[i][j] 是否是它所在行的最小值和所在列的最大值
+                if max(r[j] for r in matrix) <= x <= min(row):
+                    ans.append(x)
+        return ans
+
+
+""" 解法2：用zip来获取矩阵的每一列"""
 class Solution:
     def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
-        rowmin = [min(i) for i in matrix]
-        colmax = [max(i) for i in zip(*matrix)]
+        rowmin = [min(i) for i in matrix]           # 返回每一行的最小值
+        colmax = [max(i) for i in zip(*matrix)]     # 返回每一列的最大值
         return [i for i in rowmin if i in colmax]
     
-"""解法2"""
+""" 解法3 """
 class Solution:
     def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
         m = len(matrix)         # 行数
