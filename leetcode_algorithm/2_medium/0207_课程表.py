@@ -44,9 +44,9 @@ class Solution(object):
         adj = [set() for _ in range(numCourses)]        # 邻接表。注意：邻接表存放的是后继 cur 结点的集合
 
         for cur, pre in prerequisites:  # [ai, bi] 表示如果要学习课程 ai 则 必须 先学习课程  bi 。
-            indegrees[cur] += 1         # indegrees = [0, 1]
             adj[pre].add(cur)
-
+            indegrees[cur] += 1
+        
         queue = []                      # 借助一个队列 queue，将所有入度为 0 的节点入队
         for i in range(numCourses):     # 首先遍历一遍课程，
             if indegrees[i] == 0:       # 把所有入度为 0 的结点加入队列
@@ -54,11 +54,11 @@ class Solution(object):
         
         counter = 0             # 拓扑排序出队次数
         while queue:            # 当 queue 非空时
-            pre = queue.pop(0)  # 依次将队首节点出队，在课程安排图中删除此节点 pre
+            top = queue.pop(0)  # 依次将队首节点出队，在课程安排图中删除此节点 pre
             counter += 1        # 在每次 pre 出队时，执行 counter +1
 
-            for cur in adj[pre]:            # 并不是真正从邻接表中删除此节点 pre
-                indegrees[cur] -= 1         # 而是将此节点对应所有邻接节点 cur 的入度 -1
+            for cur in adj[top]:            # 遍历邻接表
+                indegrees[cur] -= 1         # 将节点对应所有邻接节点 cur 的入度 -1（并不是真正从邻接表中删除此节点 pre）
                 if indegrees[cur] == 0:     # 当入度 −1后邻接节点 cur 的入度为 0
                     queue.append(cur)       # 说明 cur 所有的前驱节点已经被 “删除”，此时将 cur 入队。
 
