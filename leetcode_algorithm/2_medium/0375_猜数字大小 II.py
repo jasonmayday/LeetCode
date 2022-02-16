@@ -24,7 +24,7 @@ https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/
 
 """
 
-# 动态规划
+""" 动态规划 """
 class Solution:
     def getMoneyAmount(self, n: int) -> int:
         f = [[0] * (n + 1) for _ in range(n + 1)]

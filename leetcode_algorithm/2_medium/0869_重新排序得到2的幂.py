@@ -6,31 +6,29 @@ https://leetcode-cn.com/problems/reordered-power-of-2/
 如果我们可以通过上述方式得到 2 的幂，返回 true；否则，返回 false。
 
 示例 1：
-输入：1
-输出：true
+    输入：1
+    输出：true
 
 示例 2：
-输入：10
-输出：false
+    输入：10
+    输出：false
 
 示例 3：
-输入：16
-输出：true
+    输入：16
+    输出：true
 
 示例 4：
-输入：24
-输出：false
+    输入：24
+    输出：false
 
 示例 5：
-输入：46
-输出：true
+    输入：46
+    输出：true
 
 提示：
-1 <= N <= 10 ^ 9
+    1 <= N <= 10 ^ 9
 
 '''
-
-
 
 import collections
 
