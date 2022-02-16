@@ -13,25 +13,40 @@ class Solution(object):
         递归不好实现广度优先（层序）遍历，如果不是题目要求，使用迭代实现BFS（层序）遍历。
         使用队列实现树的层次遍历
         '''
-        
-    def levelOrder(self, root):
+    
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        res = []
+        def helper(root, depth):
+            if not root:
+                return []
+            if len(res) == depth:
+                res.append([]) # start the current depth
+            res[depth].append(root.val) # fulfil the current depth
+            if  root.left:
+                helper(root.left, depth + 1) # process child nodes for the next depth
+            if  root.right:
+                helper(root.right, depth + 1)
+        helper(root, 0)
+        return res
+
+ 
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        res = []
         if not root:
             return []
-        res = []
         
-        def dfs(index, r):
-			# 假设res是[ [1],[2,3] ]， index是3，就再插入一个空list放到res中
-            if len(res) < index:
-                res.append([])  # 将当前节点的值加入到res中，index代表当前层，假设index是3，节点值是99
+        def bfs(index, r):
+            if len(res) < index:    # 假设res是[ [1],[2,3] ]， index是3，就再插入一个空list放到res中
+                res.append([])      # 将当前节点的值加入到res中，index代表当前层，假设index是3，节点值是99
 			
             # res是[ [1],[2,3] [4] ]，加入后res就变为 [ [1],[2,3] [4,99] ]
             res[index-1].append(r.val)
             # 递归的处理左子树，右子树，同时将层数index+1
             if r.left:
-                dfs(index+1,r.left)
+                bfs(index+1,r.left)
             if r.right:
-                dfs(index+1,r.right)
-        dfs(1, root)
+                bfs(index+1,r.right)
+        bfs(1, root)
         return res
 
 

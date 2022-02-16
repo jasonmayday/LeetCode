@@ -100,7 +100,7 @@ class Solution(object):
     ''' 
     层次遍历（广度优先 Breath First Search）
     每次都从左到右、从上到下的去遍历一个图，那么就需要把一行中最左边先进来的先输出，最右边后进来的后输出。所以会用到队列。'''
-    def BFS(self, root: TreeNode) -> List[int]:
+    def bfs(self, root: TreeNode) -> List[int]:
         res = []         
         if root is None:
             return
@@ -115,7 +115,7 @@ class Solution(object):
                     queue.append(currentNode.right)
         return res
     
-    def levelOrder(self, root):
+    def levelOrder(self, root: TreeNode) -> List[int]:
         if not root:
             return []
         res = []
@@ -156,7 +156,7 @@ if __name__ == "__main__":
     result1 = sol.preorderTraversal(root)
     result2 = sol.inorderTraversal(root)
     result3 = sol.postorderTraversal(root)
-    result4 = sol.BFS(root)
+    result4 = sol.bfs(root)
     result5 = sol.levelOrder(root)
     
     print ("前序遍历结果: ", result1) 
