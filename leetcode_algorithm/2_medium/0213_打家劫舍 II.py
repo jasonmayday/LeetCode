@@ -26,30 +26,55 @@
 
 from typing import List
 
-""" 动态规划 """
+""" 动态规划 (使用辅助函数)"""
 class Solution(object):
     def rob(self, nums: List[int]) -> int:
         nums1 = nums[1:]    # 不偷第一个房子
         nums2 = nums[:-1]   # 不偷最后一个房子
 
-        size = len(nums)
-        if size == 0:   # 没有房子，dp[0]=0
-            return 0
-        if size == 1:   # 有一间房子，偷即可
+        def helper(nums):
+            if not nums:
+                return 0
+            if len(nums) == 1:
+                return nums[0]
+            dp = [0] * len(nums)
+            dp[0] = nums[0]
+            dp[1] = max(nums[0], nums[1])
+            for i in range(2, len(nums)):
+                dp[i] = max(dp[i-2]+nums[i], dp[i-1])
+            return dp[-1] 
+        
+        res1 = helper(nums1)
+        res2 = helper(nums2)
+        
+        if len(nums) == 1:
+            return nums[0]
+        
+        return max(res1, res2)
+    
+
+""" 动态规划 (不使用辅助函数)"""
+class Solution(object):
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 1:
             return nums[0]
 
-        def handle(size, nums):
-            dp1 = 0
-            dp2 = nums[0]   # dp[i] 代表当前最大子序和
-            for i in range(2, size + 1):
-                dp1 = max(dp2, nums[i-1] + dp1)   # 状态转移方程
-                dp1, dp2 = dp2, dp1
-            return dp2
-
-        res1 = handle(size-1, nums1)
-        res2 = handle(size-1, nums2)
-
-        return max(res1, res2)
+        # 第一间「必然不选」的情况
+        f = [[0] * 2 for _ in range(n)]
+        for i in range(1, n-1):
+            f[i][0] = max(f[i - 1][0], f[i - 1][1])
+            f[i][1] = f[i - 1][0] + nums[i]
+        a = max(f[n - 2][1], f[n - 2][0] + nums[n - 1])
+        
+        # 第一间「允许选」的情况
+        f[0][0], f[0][1] = 0, nums[0]
+        for i in range(1,n-1):
+            f[i][0] = max(f[i - 1][0], f[i - 1][1])
+            f[i][1] = f[i - 1][0] + nums[i]
+        b = max(f[n - 2][0], f[n - 2][1])
+        
+        return max(a, b)
 
 
 """ 动态规划 """
