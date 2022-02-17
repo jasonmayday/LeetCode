@@ -56,7 +56,7 @@ class Solution:
         return num
 
 
-""" 状态压缩 + 动态规划 (记忆化递归)
+""" 状态压缩 + 动态规划 (记忆化递归)"""
 class Solution:
     def countArrangement(self, n: int) -> int:
         canFill = defaultdict(list)
@@ -87,7 +87,7 @@ class Solution:
             return ans
         
         return dfs(0)
-"""
+
 if __name__ == "__main__":
     n = 3
     sol = Solution()
