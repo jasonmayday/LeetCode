@@ -15,7 +15,7 @@ https://leetcode-cn.com/problems/find-center-of-star-graph/
     输出：1
 
 提示：
-    3 <= n <= 105
+    3 <= n <= 10^5
     edges.length == n - 1
     edges[i].length == 2
     1 <= ui, vi <= n
@@ -25,10 +25,25 @@ https://leetcode-cn.com/problems/find-center-of-star-graph/
 """
 
 from typing import List
+from collections import defaultdict
 
+"""求每个节点的入度"""
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
-        if edges[0][0] in edges[1]:
+        indegrees = defaultdict(int)
+        for u, v in edges:
+            indegrees[u] += 1
+            indegrees[v] += 1
+
+        for node in indegrees:
+            if indegrees[node] == len(edges):
+                return node
+
+
+""" 解法2：寻找出现在两条边中的节点 """
+class Solution:
+    def findCenter(self, edges: List[List[int]]) -> int:
+        if edges[0][0] in edges[1]: # 只需要观察前两条边，找到一个前两条边的公共点即可。
             return edges[0][0]
         else:
             return edges[0][1]
