@@ -8,38 +8,37 @@ https://leetcode-cn.com/problems/self-crossing/
 判断你所经过的路径是否相交。如果相交，返回 true ；否则，返回 false 。
 
 示例 1：
-https://assets.leetcode.com/uploads/2021/03/14/selfcross1-plane.jpg
-┌───┐
-│   │
-└───┼──>
-    │
-输入：distance = [2,1,1,2]
-输出：true
+    https://assets.leetcode.com/uploads/2021/03/14/selfcross1-plane.jpg
+    ┌───┐
+    │   │
+    └───┼──>
+        │
+    输入：distance = [2,1,1,2]
+    输出：true
 
 示例 2：
-https://assets.leetcode.com/uploads/2021/03/14/selfcross2-plane.jpg
-┌──────┐
-│      │
-│
-│
-└────────────>
-输入：distance = [1,2,3,4]
-输出：false
+    https://assets.leetcode.com/uploads/2021/03/14/selfcross2-plane.jpg
+    ┌──────┐
+    │      │
+    │
+    │
+    └────────────>
+    输入：distance = [1,2,3,4]
+    输出：false
 
 示例 3：
-https://assets.leetcode.com/uploads/2021/03/14/selfcross3-plane.jpg
-┌───┐
-│   │
-└───┼>
-输入：distance = [1,1,1,1]
-输出：true
+    https://assets.leetcode.com/uploads/2021/03/14/selfcross3-plane.jpg
+    ┌───┐
+    │   │
+    └───┼>
+    输入：distance = [1,1,1,1]
+    输出：true
 
 提示：
-1 <= distance.length <= 10^5
-1 <= distance[i] <= 10^5
+    1 <= distance.length <= 10^5
+    1 <= distance[i] <= 10^5
 
 '''
-
 
 
 from typing import List
