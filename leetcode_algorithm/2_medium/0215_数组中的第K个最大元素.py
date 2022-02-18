@@ -27,10 +27,10 @@ class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         heap = []
         for num in nums:
-            heapq.heappush(heap, num)
-            if len(heap) > k:
+            heapq.heappush(heap, num)   # 把所有数字加入最小堆
+            if len(heap) > k:           # 如果堆大小大于 k，则弹出堆顶元素（最小的元素）
                 heapq.heappop(heap)
-        return heap[0]
+        return heap[0]                  # 剩下的堆顶就是第 k 个最大的元素
 
 if __name__ == "__main__":
     nums = [3,2,3,1,2,4,5,5,6]
