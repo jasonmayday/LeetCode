@@ -26,6 +26,27 @@ https://leetcode-cn.com/problems/1-bit-and-2-bit-characters/
 """
 from typing import List
 
+
+""" 方法一：正序遍历
+    第一种字符一定以 0 开头，第二种字符一定以 1 开头"""
+class Solution:
+    def isOneBitCharacter(self, bits: List[int]) -> bool:
+        i, n = 0, len(bits)
+        while i < n - 1:
+            i += bits[i] + 1
+        return i == n - 1
+
+
+""" 方法二：倒序遍历 """
+class Solution:
+    def isOneBitCharacter(self, bits: List[int]) -> bool:
+        n = len(bits)
+        i = n - 2
+        while i >= 0 and bits[i]:
+            i -= 1
+        return (n - i) % 2 == 0
+
+
 '''只与最后一个元素0的前面的连续1的个数有关系。'''
 class Solution:
     def isOneBitCharacter(self, bits: List[int]) -> bool:
@@ -39,7 +60,7 @@ class Solution:
         if i > n:               # 下标超出范围
             return False
         else:                   # 刚好遍历到最后一个元素
-            if bits[i]==0:
+            if bits[i] == 0:
                 return True
             else:
                 return False
