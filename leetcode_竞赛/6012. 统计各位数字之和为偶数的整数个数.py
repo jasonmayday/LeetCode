@@ -23,12 +23,12 @@ class Solution:
     def countEven(self, num: int) -> int:
         res = 0
         if num < 10:
-            for n in range(1, num+1):
+            for n in range(1, num + 1):
                 if n % 2 == 0:
                     res += 1
         if num >= 10:
             res = 4
-            for n in range (10, num+1):
+            for n in range (10, num + 1):
                 if eval("+".join(str(n))) % 2 == 0:
                     res += 1
         return res
