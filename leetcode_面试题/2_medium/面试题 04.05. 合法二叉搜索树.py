@@ -1,0 +1,1 @@
+https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/
