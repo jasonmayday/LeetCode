@@ -34,6 +34,8 @@ https://leetcode-cn.com/problems/construct-string-with-repeat-limit/
     s 由小写英文字母组成
 
 """
+from collections import Counter
+
 class Solution:
     def repeatLimitedString(self, s: str, repeatLimit: int) -> str:
         freq = Counter(s)
@@ -66,7 +68,8 @@ class Solution:
         return "".join(ans)
 
 if __name__ == "__main__":
-    head = listToLinkedList ([0,3,1,0,4,5,2,0])
+    s = "cczazcc"
+    repeatLimit = 3
     sol = Solution()
-    result = sol.mergeNodes(head)
-    print (printLinkedList(result))
+    result = sol.repeatLimitedString(s, repeatLimit)
+    print (result)
