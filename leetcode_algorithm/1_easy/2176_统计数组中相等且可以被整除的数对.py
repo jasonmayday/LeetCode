@@ -23,4 +23,23 @@ https://leetcode-cn.com/problems/count-equal-and-divisible-pairs-in-an-array/
     1 <= nums[i], k <= 100
 
 """
+from typing import List
 
+""" 暴力法 """
+class Solution:
+    def countPairs(self, nums: List[int], k: int) -> int:
+        ans = 0
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if (nums[i] == nums[j] and (i*j) % k == 0):
+                    ans += 1
+        return ans
+
+if __name__ == "__main__":
+    num1 = 2
+    num2 = 3
+    sol = Solution()
+    result = sol.countOperations(num1, num2)
+    print (result)
+       
+        
