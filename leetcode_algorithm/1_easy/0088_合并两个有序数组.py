@@ -38,12 +38,35 @@ https://leetcode-cn.com/problems/merge-sorted-array/
 '''
 from typing import List
 
-# 方法1：合并后排序
+""" 方法1：合并后排序"""
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         nums1[m:] = nums2   # [m:] 从第m个元素开始截取列表。
         nums1.sort()        # nums1 = [1, 2, 3, 2, 5, 6]
         return nums1
+    
+    
+""" 方法二：双指针"""
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        sorted = []
+        p1, p2 = 0, 0
+        while p1 < m or p2 < n:
+            if p1 == m:
+                sorted.append(nums2[p2])
+                p2 += 1
+            elif p2 == n:
+                sorted.append(nums1[p1])
+                p1 += 1
+            elif nums1[p1] < nums2[p2]:
+                sorted.append(nums1[p1])
+                p1 += 1
+            else:
+                sorted.append(nums2[p2])
+                p2 += 1
+        nums1[:] = sorted
+        return nums1
+
 
 if __name__ == "__main__":
     nums1 = [1,2,3,0,0,0]
