@@ -42,7 +42,7 @@ class Solution:
         print (dict)            # {'a': 1, 'b': 1, 'c': 6}
         n = sum(dict.values())  # 最终结果字串的总长度
         print (n)               # 8
-        
+
         res = []
         for i in range(n):  # 依次把字母填到结果里, 每次只填一个字母.
             cand = set(['a','b','c'])   # 候选的字母
@@ -59,4 +59,4 @@ if __name__ == "__main__":
     c = 7
     sol = Solution()
     result = sol.longestDiverseString(a, b, c)
-    print(result)  
+    print(result)

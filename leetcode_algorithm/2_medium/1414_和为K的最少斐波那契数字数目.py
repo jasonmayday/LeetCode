@@ -12,18 +12,18 @@ https://leetcode-cn.com/problems/find-the-minimum-number-of-fibonacci-numbers-wh
 
 示例 1：
     输入：k = 7
-    输出：2 
+    输出：2
     解释：斐波那契数字为：1，1，2，3，5，8，13，……
     对于 k = 7 ，我们可以得到 2 + 5 = 7 。
 
 示例 2：
     输入：k = 10
-    输出：2 
+    输出：2
     解释：对于 k = 10 ，我们可以得到 2 + 8 = 10 。
 
 示例 3：
     输入：k = 19
-    输出：3 
+    输出：3
     解释：对于 k = 19 ，我们可以得到 1 + 5 + 13 = 19 。
 
 提示：
@@ -51,4 +51,4 @@ if __name__ == "__main__":
     k = 19
     sol = Solution()
     result = sol.findMinFibonacciNumbers(k)
-    print(result)  
+    print(result)

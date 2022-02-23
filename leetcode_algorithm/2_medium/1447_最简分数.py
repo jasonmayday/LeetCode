@@ -54,7 +54,7 @@ class Solution:
 class Solution:
     def simplifiedFractions(self, n: int) -> List[str]:
         res = []
-        values = set()   
+        values = set()
         for fenmu in range(2, n + 1):
             for fenzi in range(1, fenmu):
                 value = fenzi / fenmu
@@ -67,4 +67,4 @@ if __name__ == "__main__":
     n = 4
     sol = Solution()
     result = sol.simplifiedFractions(n)
-    print(result) 
+    print(result)
