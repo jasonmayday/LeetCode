@@ -54,7 +54,7 @@ class Solution:
         total = n * (n + 1) // 2          # 将从 0 到 n 的全部整数之和记为 total，根据高斯求和公式，有 total = n*(n+1)/2
         arrSum = sum(nums)                # 将数组 nums 的元素之和记为 arrSum，则 arrSum 比 total 少了丢失的一个数字
         return total - arrSum             # 因此丢失的数字即为 total 与 arrSum 之差
-    
+
     """ 解法：位运算(异或)
         x ^ x = 0 和 x ^ 0 = x """
     def missingNumber(self, nums: List[int]) -> int:
@@ -69,4 +69,4 @@ if __name__ == "__main__":
     nums = [3,0,1]
     sol = Solution()
     result = sol.missingNumber(nums)
-    print (result) 
+    print (result)
