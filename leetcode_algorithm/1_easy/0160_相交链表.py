@@ -5,11 +5,11 @@ https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
 
 图示两个链表在节点 c1 开始相交：
 
-A:        |a1| → |a2|  
+A:        |a1| → |a2|
                      ↘
                       |c1| → |c2| → |c3|
                      ↗
-B: |b1| → |b2| → |b3| 
+B: |b1| → |b2| → |b3|
 
 题目数据 保证 整个链式结构中不存在环。
 
@@ -83,7 +83,7 @@ class Solution:
                 cur1 = cur1.next   # cur1 指向 headA, 一步一步往 next 走, 走到结尾 null 时, 跳到 headB 继续往后遍历
             else:
                 cur1 = headB       # 当 curr1 到达链表的尾部时，将它重定位到链表 B 的头结点
-            
+
             if cur2:
                 cur2 = cur2.next   # cur2 指向 headB, 一步一步往 next 走, 走到结尾 null 时, 跳到 headA 继续往后遍历
             else:
