@@ -24,9 +24,9 @@ https://leetcode-cn.com/problems/concatenation-of-array/
     - ans = [1,3,2,1,1,3,2,1]
 
 提示：
-n == nums.length
-1 <= n <= 1000
-1 <= nums[i] <= 1000
+    n == nums.length
+    1 <= n <= 1000
+    1 <= nums[i] <= 1000
 
 '''
 
