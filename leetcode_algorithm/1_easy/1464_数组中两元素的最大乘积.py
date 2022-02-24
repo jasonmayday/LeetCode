@@ -35,12 +35,12 @@ class Solution:
             else:
                 small = max(small, n)
         return (small-1) * (big-1)
-    
+
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         nums.sort()
-        return (nums[-1] - 1) * (nums[-2] - 1) 
-    
+        return (nums[-1] - 1) * (nums[-2] - 1)
+
 if __name__ == "__main__":
     nums = [3,1,2,10,1]
     sol = Solution()
