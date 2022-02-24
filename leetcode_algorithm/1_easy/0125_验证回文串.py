@@ -33,7 +33,7 @@ class Solution:
         sgood = "".join(ch.lower() for ch in s if ch.isalnum()) # sgood: amanaplanacanalpanama
         n = len(sgood)
         left, right = 0, n - 1      # 初始时，左右指针分别指向 sgood 的两侧
-        
+
         while left < right:
             if sgood[left] != sgood[right]:
                 return False
@@ -41,7 +41,7 @@ class Solution:
         return True                                 # 当这两个指针相遇时，就说明 sgood 是回文串。
 
 if __name__ == "__main__":
-    s = "A man, a plan, a canal: Panama"    
+    s = "A man, a plan, a canal: Panama"
     sol = Solution()
     result = sol.isPalindrome(s)
     print(result)
