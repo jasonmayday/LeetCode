@@ -70,19 +70,36 @@ class Solution:
         a = b = head
         keep = m
         remo = n
-        while m - 1 and a.next:     # 条件：
+        while (keep-1) and a.next:     # 条件：
             a, b = a.next, b.next
-            m -= 1
-        while n and b.next:
+            keep -= 1
+        while remo and b.next:
             b = b.next
-            n -= 1
-        a.next = self.deleteNodes(b.next, keep, remo)
-
+            remo -= 1
+        a.next = self.deleteNodes(b.next, m, n)
         return head
+
+""" 迭代 """
+class Solution:
+    def deleteNodes(self, head: ListNode, m: int, n: int) -> ListNode:
+        dummy = ListNode(0)
+        dummy.next = head
+        cur = dummy
+        while cur.next:
+            p = m
+            q = n
+            while p > 0 and cur.next:
+                p -= 1
+                cur = cur.next
+            while q > 0 and cur.next:
+                q -= 1
+                cur.next = cur.next.next   # 直接改变cur的后继结点。
+        return dummy.next
+
 
 if __name__ == "__main__":
     head = listToLinkedList([1,2,3,4,5,6,7,8,9,10,11,12,13])
-    m = 2
+    m = 2                 # [1,2,      6,7,       11,12]
     n = 3
     sol = Solution()
     result = sol.deleteNodes(head, m, n)
