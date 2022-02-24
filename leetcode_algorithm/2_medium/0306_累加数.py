@@ -11,12 +11,12 @@ https://leetcode-cn.com/problems/additive-number/
 
 示例 1：
     输入："112358"
-    输出：true 
+    输出：true
     解释：累加序列为: 1, 1, 2, 3, 5, 8 。1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
 
 示例 2：
     输入："199100199"
-    输出：true 
+    输出：true
     解释：累加序列为: 1, 99, 100, 199。1 + 99 = 100, 99 + 100 = 199
 
 提示：
@@ -49,9 +49,9 @@ class Solution:
                     return True
 
         return False
-    
+
 if __name__ == "__main__":
     num = "112358"
     sol = Solution()
     result = sol.isAdditiveNumber(num)
-    print (result) 
+    print (result)

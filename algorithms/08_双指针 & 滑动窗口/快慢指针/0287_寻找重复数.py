@@ -62,6 +62,7 @@ class Solution:
             fast = nums[fast]
         return slow
 
+
 if __name__ == "__main__":
     nums = [6,2,3,4,2,5,1]
     sol = Solution()

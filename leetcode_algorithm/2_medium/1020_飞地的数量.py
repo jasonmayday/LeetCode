@@ -32,31 +32,31 @@ from collections import deque
     0从四周临边的1开始把所有相连的1都变为，最后统计grid中1的数量"""
 class Solution:
     def numEnclaves(self, grid: List[List[int]]) -> int:
-        
+
         def dfs(i, j):  # 从某点开始搜索
             grid[i][j] = 0
             for x, y in [(i-1,j),(i+1,j),(i,j-1),(i,j+1)]:      # 向四个方向搜索
                 if 0 <= x < m and 0 <= y < n and grid[x][y]:    # 定义边界：不越界且有数值
-                    dfs(x, y)                    
+                    dfs(x, y)
 
         m, n = len(grid), len(grid[0])
-        
+
         for i in range(m):                      # 从四周临边的1开始把所有相连的 1 都变为 0
             if grid[i][0] == 1:    dfs(i, 0)    # 第一列
             if grid[i][n-1] == 1:  dfs(i, n-1)  # 最后一列
-        
+
         for j in range(n):
             if grid[0][j] == 1:    dfs(0, j)    # 第一行
             if grid[m-1][j] == 1:  dfs(m-1, j)  # 最后一行
-                
+
         ans = 0
         for i in range(m):
             for j in range(n):
                 if grid[i][j]: ans += 1     # 统计grid中1的数量
         return ans
 
-    
-    
+
+
 """ 方法二：广度优先搜索
     通过广度优先搜索判断每个陆地单元格是否和网格边界相连。"""
 class Solution:
@@ -69,7 +69,7 @@ class Solution:
                 for x, y in [(i-1,j),(i+1,j),(i,j-1),(i,j+1)]:
                     if 0 <= x < m and 0 <= y < n and grid[x][y]:
                         grid[x][y] = 0
-                        Q.append([x, y])                  
+                        Q.append([x, y])
 
         m, n = len(grid), len(grid[0])
         for i in range(m):
