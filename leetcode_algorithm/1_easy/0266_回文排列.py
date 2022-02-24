@@ -16,4 +16,24 @@ https://leetcode-cn.com/problems/palindrome-permutation/
     输出: true
 
 """
+from collections import Counter
 
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        return sum(x % 2 for x in Counter(s).values()) <= 1
+
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        seen = set()
+        for char in s:
+            if char in seen:
+                seen.remove(char)
+            else:
+                seen.add(char)
+        return len(seen) <= 1
+
+if __name__ == "__main__":
+    s = "carerac"
+    sol = Solution()
+    result = sol.canPermutePalindrome(s)
+    print (result)
