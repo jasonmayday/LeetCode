@@ -44,7 +44,7 @@ class Solution:
         return res
 
 if __name__ == "__main__":
-    s = "What is the solution to this problem"
+    nums = [-1,-2,-3,-4,3,2,1]
     sol = Solution()
-    result = sol.truncateSentence(s,k)
+    result = sol.arraySign(nums)
     print(result)
