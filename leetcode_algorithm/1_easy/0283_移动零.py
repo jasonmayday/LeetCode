@@ -29,4 +29,4 @@ if __name__ == "__main__":
     nums = [0,1,0,3,12]
     sol = Solution()
     result = sol.moveZeroes(nums)
-    print (result) 
+    print (result)
