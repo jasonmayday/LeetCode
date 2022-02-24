@@ -5,7 +5,7 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
 
 示例 1:
     输入: s = "abcabcbb"
-    输出: 3 
+    输出: 3
     解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
 
 示例 2:
@@ -29,7 +29,7 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
 
 """
 
-"""方法一：滑动窗口"""  
+"""方法一：滑动窗口"""
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if not s:
