@@ -43,12 +43,12 @@ class Solution:
         k = len(sensor1)
         for i in range(len(sensor1)):
             if sensor1[i] != sensor2[i]:
-                k = i
+                k = i   # 在第一个不相同的数字停止
                 break
-        if k >= len(sensor1) - 1:
+        if k >= len(sensor1) - 1:   # 如果只是最后一位不同，无法判断
             return -1
-        if sensor1[k:-1] == sensor2[k + 1:]:
-            if sensor2[k:-1] == sensor1[k + 1:]:
+        if sensor1[k:-1] == sensor2[k+1:]:
+            if sensor2[k:-1] == sensor1[k+1:]:
                 return -1
             return 1
         return 2
