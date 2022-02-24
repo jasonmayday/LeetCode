@@ -60,41 +60,29 @@ class TwoSum(object):
 
 """ 解法2:哈希表 """
 class TwoSum(object):
-
     def __init__(self):
-        self.num_counts = {}
+        self.num_counts = {}    # 首先初始化一个哈希表
 
-    def add(self, number):
-        """
-        Add the number to an internal data structure..
-        :type number: int
-        :rtype: None
-        """
-        if number in self.num_counts:
-            self.num_counts[number] += 1
-        else:
-            self.num_counts[number] = 1
+    def add(self, number):      # 在哈希表中添加 number 到 number 频数之间的映射关系。
+        if number in self.num_counts:       # 出现过：
+            self.num_counts[number] += 1    # 次数加一
+        else:                               # 没出现过：
+            self.num_counts[number] = 1     # 次数为一
 
     def find(self, value):
-        """
-        Find if there exists any pair of numbers which sum is equal to the value.
-        :type value: int
-        :rtype: bool
-        """
-        for num in self.num_counts.keys():
-            comple = value - num
+        for num in self.num_counts.keys():  # 遍历哈希表
+            comple = value - num            # 对于每个键值（number），我们检查哈希表中是否存在 value - number
             if num != comple:
                 if comple in self.num_counts:
                     return True
-            elif self.num_counts[num] > 1:
+            elif self.num_counts[num] > 1:  # 当 number = value - number 时，在哈希表中 number 对应的值应大于等于 2。
                 return True
-
         return False
 
 if __name__ == "__main__":
     twoSum = TwoSum()
-    twoSum.add(1)   # [] --> [1]
-    twoSum.add(3)   # [1] --> [1,3]
-    twoSum.add(5)   # [1,3] --> [1,3,5]
-    twoSum.find(4)  # 1 + 3 = 4，返回 true
-    twoSum.find(7)  # 没有两个整数加起来等于 7 ，返回 false
+    twoSum.add(1)           # [] --> [1]
+    twoSum.add(3)           # [1] --> [1,3]
+    twoSum.add(5)           # [1,3] --> [1,3,5]
+    print(twoSum.find(4))   # 1 + 3 = 4，返回 true
+    print(twoSum.find(7))   # 没有两个整数加起来等于 7 ，返回 false
