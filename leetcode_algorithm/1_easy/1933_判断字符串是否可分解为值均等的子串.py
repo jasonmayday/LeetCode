@@ -31,3 +31,29 @@ https://leetcode-cn.com/problems/check-if-string-is-decomposable-into-value-equa
     s 仅包含数字。
 
 """
+
+class Solution:
+    def isDecomposable(self, s: str) -> bool:
+        have_len2 = False   # 初始化：字符串中是否有长度为2的等值子字符串
+        n = len(s)
+        i = 0
+        while i < n:
+            cur_len = 1
+            while i + 1 < n and s[i] == s[i+1]:
+                i += 1
+                cur_len += 1
+            if cur_len % 3 == 2:        # 某段连续相同的字符串长度模3为2。比如2，5，8...
+                if have_len2 == True:   # 如果 之前已经有长度为2的等值子字符串
+                    return False        # 返回False，因为长度为2的只能有一个
+                have_len2 = True    # 如果还没有，标记 have_len2 为 True
+            else:
+                if cur_len % 3 != 0:    # 某段连续相同的字符串长度模3为0。比如3，6，9...
+                    return False        # 如果不是三的倍数，返回 False
+            i += 1      # 指向下一段的第一个位置
+        return have_len2
+
+if __name__ == "__main__":
+    s = "00011111222"
+    sol = Solution()
+    result = sol.isDecomposable(s)
+    print(result)
