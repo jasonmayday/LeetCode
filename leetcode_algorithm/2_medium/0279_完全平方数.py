@@ -7,7 +7,7 @@ https://leetcode-cn.com/problems/perfect-squares/
 
 示例 1：
     输入：n = 12
-    输出：3 
+    输出：3
     解释：12 = 4 + 4 + 4
 
 示例 2：
@@ -23,7 +23,7 @@ https://leetcode-cn.com/problems/perfect-squares/
 class Solution:
     '''版本一，先遍历背包, 再遍历物品'''
     def numSquares(self, n: int) -> int:
-        dp = [n] * (n + 1)  
+        dp = [n] * (n + 1)
         dp[0] = 0           # dp[i]：和为 i 的完全平方数的最少数量为 dp[i]
         # 遍历背包
         for j in range(1, n+1):
