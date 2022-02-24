@@ -18,9 +18,9 @@ class Solution:
         nums.append(upper + 1)  # 添加终止边界
         for num in nums:
             dif = num - low
-            if dif == 2:
+            if dif == 2:                    # 非区间
                 res.append(str(low + 1))
-            elif dif > 2:
+            elif dif > 2:                   # 区间
                 res.append(str(low + 1) + "->" + str(num - 1))
             low = num
         return res
