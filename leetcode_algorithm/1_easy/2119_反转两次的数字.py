@@ -35,4 +35,4 @@ if __name__ == "__main__":
     num = 1800
     sol = Solution()
     result = sol.isSameAfterReversals(num)
-    print (result)  
+    print (result)
