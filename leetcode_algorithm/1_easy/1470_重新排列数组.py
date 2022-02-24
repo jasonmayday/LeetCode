@@ -33,7 +33,7 @@ class Solution:
             res.append(nums[i])
             res.append(nums[i + n])
         return res
-    
+
 class Solution:
     def shuffle(self, nums: List[int], n: int) -> List[int]:
         return sum(zip(nums[:n], nums[n:]), ())
