@@ -6,7 +6,7 @@ https://leetcode-cn.com/problems/check-if-every-row-and-column-contains-all-numb
 给你一个大小为 n x n 的整数矩阵 matrix ，请你判断矩阵是否为一个有效矩阵：如果是，返回 true ；否则，返回 false 。
 
 示例 1：
-    输入：matrix = 
+    输入：matrix =
     [[1,2,3],
      [3,1,2],
      [2,3,1]]
@@ -15,7 +15,7 @@ https://leetcode-cn.com/problems/check-if-every-row-and-column-contains-all-numb
     因此，返回 true 。
 
 示例 2：
-    输入：matrix = 
+    输入：matrix =
     [[1,1,1],
      [1,2,3],
      [1,2,3]]
@@ -36,7 +36,7 @@ class Solution:
     def checkValid(self, matrix: List[List[int]]) -> bool:
         n = len(matrix)
         occur = set()   # 用哈希集合统计每一行/列出现过的整数
-        
+
         '''判断每一行是否符合要求，如 matrix[1][1], matrix[1][2], matrix[1][3]'''
         for i in range(n):
             occur.clear()   # 确保统计前哈希表为空
@@ -44,7 +44,7 @@ class Solution:
                 if matrix[i][j] in occur:   # 出现重复整数，该行不符合要求
                     return False
                 occur.add(matrix[i][j])
-        
+
         '''判断每一列是否符合要求，如 matrix[1][1], matrix[2][1], matrix[3][1]'''
         for i in range(n):
             occur.clear()   # 确保统计前哈希表为空

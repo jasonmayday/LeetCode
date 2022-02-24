@@ -35,7 +35,7 @@ https://leetcode-cn.com/problems/minimum-cost-of-buying-candies-with-discount/
 提示：
     1 <= cost.length <= 100
     1 <= cost[i] <= 100
-    
+
 """
 from typing import List
 

@@ -26,7 +26,7 @@ class Solution:
         inter = set(nums1) & set(nums2)
         list = []
         for i in inter:
-            list += [i] * min(nums1.count(i), nums2.count(i))  
+            list += [i] * min(nums1.count(i), nums2.count(i))
         return list
 
 '''排序双指针'''
@@ -42,7 +42,7 @@ class Solution:
             elif nums1[left] == nums2[right]:
                 r.append(nums1[left])
                 left += 1
-                right += 1    
+                right += 1
             else:
                 right += 1
         return r

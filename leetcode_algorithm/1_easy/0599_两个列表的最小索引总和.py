@@ -45,7 +45,7 @@ class Solution:
                     min_index = value[0] + value[1]
                     result.append(key)
                 elif value[0] + value[1] == min_index:
-                    result.append(key)  
+                    result.append(key)
         return result
 
 class Solution:
