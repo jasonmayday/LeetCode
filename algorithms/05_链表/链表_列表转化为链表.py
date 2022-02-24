@@ -8,7 +8,7 @@ class ListNode:   # 节点类
         self.val = val     # val存放数据元素
         self.next = next   # 保存当前节点中下一个节点的引用
         # 每个节点包含两个部分，一部分存放数据变量的val，另一部分存放下一个节点的位置信息next。
-    
+
     def __str__(self):
         #测试基本功能，输出字符串
         return str(self.val)
@@ -33,12 +33,12 @@ def printLinkedList(head):
 
 # 计算链表长度
 def length(node):
-    cur = node              
+    cur = node
     len = 0                 # 计数
     while cur != None:      # 遍历所有节点
         len += 1            # 计数
         cur = cur.next      # cur指向下一个节点
-    return len   
+    return len
 
 
 if __name__ == "__main__":
