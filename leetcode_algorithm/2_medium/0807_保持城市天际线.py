@@ -10,9 +10,9 @@ https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline/
 例子：
     输入： grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
     输出： 35
-    解释： 
+    解释：
     The grid is:
-    [ [3, 0, 8, 4], 
+    [ [3, 0, 8, 4],
     [2, 4, 5, 7],
     [9, 2, 6, 3],
     [0, 3, 1, 0] ]
@@ -26,7 +26,7 @@ https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline/
                 [7, 4, 7, 7],
                 [9, 4, 8, 7],
                 [3, 3, 3, 3] ]
-                
+
 说明:
     1 < grid.length = grid[0].length <= 50。
      grid[i][j] 的高度范围是： [0, 100]。
