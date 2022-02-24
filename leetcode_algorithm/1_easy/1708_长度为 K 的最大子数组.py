@@ -34,3 +34,30 @@ https://leetcode-cn.com/problems/largest-subarray-length-k/
     nums 中的所有整数都是不同的。
 
 """
+from typing import List
+
+class Solution:
+    def largestSubarray(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        max_num = nums[n-k]
+        max_idx = n - k
+        for i in range(n-k-1, -1, -1):
+            if nums[i] > max_num:
+                max_num = nums[i]
+                max_idx = i
+        return nums[max_idx : max_idx + k]
+
+class Solution:
+    def largestSubarray(self, nums: List[int], k: int) -> List[int]:
+        if k > 1:
+            start = max(nums[:(-k+1)])  # 在倒数第 k 个数字前寻找最大值
+        else:
+            start = max(nums)       # 如果只需要长度为 1 的子数组，直接取最大值
+        return nums[nums.index(start):nums.index(start) + k]    # 从 start 数字开始长度为k的数组
+
+if __name__ == "__main__":
+    nums = [1,4,2,5,3]
+    k = 3
+    sol = Solution()
+    result = sol.largestSubarray(nums, k)
+    print(result)
