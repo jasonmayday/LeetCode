@@ -30,3 +30,23 @@ https://leetcode-cn.com/problems/counting-elements/
     0 <= arr[i] <= 1000
 
 """
+from typing import List
+
+class Solution:
+    def countElements(self, arr: List[int]) -> int:
+        return sum(k + 1 in set(arr) for k in arr)
+
+class Solution:
+    def countElements(self, arr: List[int]) -> int:
+        cnts = 0
+        s = set(arr)
+        for _, x in enumerate(arr):
+            if x + 1 in s:
+                cnts += 1
+        return cnts
+
+if __name__ == "__main__":
+    arr = [1,2,3]
+    sol = Solution()
+    result = sol.countElements(arr)
+    print(result)
