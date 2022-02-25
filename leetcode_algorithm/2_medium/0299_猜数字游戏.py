@@ -74,4 +74,4 @@ if __name__ == "__main__":
     guess = "7810"
     sol = Solution()
     result = sol.getHint(secret, guess)
-    print (result) 
+    print (result)
