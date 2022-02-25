@@ -42,7 +42,7 @@ class Solution:
             op[1] %= n      # 移动步数对字符串长度取模
             if op[0] == 0:  # 向左移动
                 s = s[op[1]:] + s[:op[1]]
-            else:           # 向右边移动
+            else:           # 向右移动
                 s = s[n - op[1]:] + s[:n - op[1]]
         return s
 
