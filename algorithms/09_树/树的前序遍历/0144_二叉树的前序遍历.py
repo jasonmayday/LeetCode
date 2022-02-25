@@ -26,24 +26,6 @@ class TreeNode:
         self.left = left
         self.right = right
 
-root = TreeNode(1)
-root.left = TreeNode(2)
-root.right = TreeNode(3)
-root.left.left = TreeNode(4)
-root.left.right = TreeNode(5)
-root.right.left = TreeNode(6)
-root.right.right = TreeNode(7)
-root.right.right.right = TreeNode(8)
-'''
-       1
-     ↙   ↘
-   2       3
- ↙  ↘    ↙  ↘
-4    5   6    7
-                ↘
-                  8
-'''
-
 '''前序遍历 (Pre-Order Traversal) ：根结点 ---> 左子树 ---> 右子树'''
 
 """ 递归 """
@@ -73,6 +55,25 @@ class Solution(object):
         return res
 
 if __name__ == "__main__":
+    '''
+           1
+         ↙   ↘
+       2       3
+     ↙  ↘    ↙  ↘
+    4    5   6    7
+                    ↘
+                      8
+    '''
+
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+    root.right.right.right = TreeNode(8)
+
     sol = Solution()
     result = sol.preorderTraversal(root)
-    print (result)  
+    print (result)

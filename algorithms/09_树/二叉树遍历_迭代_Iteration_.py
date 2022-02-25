@@ -16,7 +16,7 @@ class TreeNode:
        后序遍历
     从图的最上边先按照一条道深挖到最下面，在挖到底以后就需要再逐个返回到上面的顶点，再去遍历父节点是不是还有别的子节点。后进先出的模式，所以需要用到栈。
 '''
-       
+
 class Solution(object):
     ''' 前序遍历 (Pre-Order Traversal)：根结点 ---> 左子树 ---> 右子树
     https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/er-cha-shu-de-qian-xu-bian-li-by-leetcode-solution/'''
@@ -31,8 +31,8 @@ class Solution(object):
             root = stack.pop()  # 左子树没有元素时：弹出栈顶元素
             root = root.right   # 进入栈中节点的右子树
         return res
-    
-    
+
+
     ''' 中序遍历 (In-Order Traversal)：左子树 ---> 根结点 ---> 右子树
         二叉搜索树采用中序遍历，就是一个有序数组。
         https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode-solutio/'''

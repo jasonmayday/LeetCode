@@ -42,7 +42,7 @@ def list_to_binarytree(nums):
 
 """ 解法：递归
     树为二叉搜索树，左树比当前节点小，右树比当前节点大。可以想到，我们可以容易的判断p,q在当前节点的哪一侧。"""
-class Solution:    
+class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':   # 从root开始遍历
         if p.val < root.val and q.val < root.val:               # 如果p、q都比当前节点值小（都在当前节点的左侧）
             return self.lowestCommonAncestor(root.left, p ,q)   # 再从root.left往下层递归
