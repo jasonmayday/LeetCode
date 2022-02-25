@@ -31,7 +31,7 @@ https://leetcode-cn.com/problems/maximum-score-after-splitting-a-string/
 
 """
 
-"""解法1"""
+""" 解法1"""
 class Solution:
     def maxScore(self, s: str) -> int:
         max = 0
@@ -42,7 +42,7 @@ class Solution:
                 max = left + right
         return max
 
-"""解法2"""
+""" 解法2"""
 class Solution:
     def maxScore(self, s: str) -> int:
         sum = s.count('1')  # 先行遍历，得到整个字符串的1的个数
@@ -54,13 +54,13 @@ class Solution:
                 sum = sum + 1
             ans = max(ans, sum)
         return ans
-    
-"""解法3：直接分隔"""
+
+""" 解法3：直接分隔"""
 class Solution:
     def maxScore(self, s: str) -> int:
         return max(s[:i].count("0") + s[i:].count("1") for i in range(1, len(s)))
-    
-"""解法4：动态维护左边的 0 的总数和右侧 1 的总数"""
+
+""" 解法4：动态维护左边的 0 的总数和右侧 1 的总数"""
 class Solution:
     def maxScore(self, s: str) -> int:
         right = s.count('1')  # 代表右侧的 1 的个数
