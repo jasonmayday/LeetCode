@@ -41,10 +41,11 @@ class Solution:
                     dp[right] = max(dp[right], dp[left] + 1)   # 其中 0 ≤ j < i 且 num[j] < num[i]
         return max(dp)
 
-""" 动态规划 + 二分查找 """
+""" 动态规划 + 二分查找
+    重新设计状态定义，使整个 dp 为一个排序列表"""
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        tails = [0] * len(nums)
+        tails = [0] * len(nums)     # 每个元素 tails[k] 的值代表 长度为 k+1 的子序列尾部元素的值
         res = 0
         for num in nums:
             i, j = 0, res
