@@ -36,19 +36,19 @@ class Solution:
         low, high = 0, len(nums) - 1
         while low < high:
             mid = (low + high) // 2         # 每次取左右边界的平均值 mid 作为待判断的下标
-            
+
             if (mid % 2) == 0:              # 如果 mid 是偶数
                 if nums[mid] == nums[mid + 1]:  # 则比较 nums[mid] 和 nums[mid+1] 是否相等
                     low = mid + 1               # 如果相等，则 mid < x，调整左边界
-                else: 
+                else:
                     high = mid                  # 否则 mid ≥ x，调整右边界
-            
-            if (mid % 2) != 0:              # 如果 mid 是奇数        
+
+            if (mid % 2) != 0:              # 如果 mid 是奇数
                 if nums[mid - 1] == nums[mid]:  # 则比较 nums[mid-1] 和 nums[mid] 是否相等
                     low = mid + 1               # 如果相等，则 mid < x，调整左边界
-                else: 
+                else:
                     high = mid                  # 否则 mid ≥ x，调整右边界
-        
+
         return nums[low]
 
 
@@ -68,18 +68,18 @@ class Solution:
                     low = mid + 2               # 如果相等，调整左边界，查找下一个偶数下标
                 else:                           # 如果不相等
                     high = mid                  # 调整右边界
-            
+
             if (mid % 2) != 0:                  # 如果 mid 是奇数
                 mid -= 1                        # 则将 mid 减 1，确保 mid 是偶数
                 if nums[mid] == nums[mid + 1]:  # 然后执行相同操作
                     low = mid + 2
                 else:
                     high = mid
-        
+
         return nums[low]
 
 if __name__ == "__main__":
     nums = [1,1,2,3,3,4,4,8,8]
     sol = Solution()
     result = sol.singleNonDuplicate(nums)
-    print (result) 
+    print (result)
