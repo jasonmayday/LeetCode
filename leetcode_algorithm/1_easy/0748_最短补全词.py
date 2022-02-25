@@ -59,12 +59,11 @@ class Solution:
         words.sort(key = len)   # 给 words 排序
         for word in words:
             for j in c:
-                if word.count(j) < c[j]:    # word 中的字母不够时，中断    
+                if word.count(j) < c[j]:    # word 中的字母不够时，中断
                     break
             else:                           # 每个字母的数量都大于等于licensePlate中的，则返回答案
                 return word
 
-            
 if __name__ == "__main__":
     licensePlate = "iMSlpe4"    # c ({'i': 1, 'm': 1, 's': 1, 'l': 1, 'p': 1, 'e': 1})
     words = ["claim","consumer","student","camera","public","never","wonder","simple","thought","use"]

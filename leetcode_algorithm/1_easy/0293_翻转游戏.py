@@ -20,3 +20,18 @@ https://leetcode-cn.com/problems/flip-game/
     currentState[i] 不是 '+' 就是 '-'
 
 """
+from typing import List
+
+class Solution:
+    def generatePossibleNextMoves(self, s: str) -> List[str]:
+        ans = []
+        for i in range(len(s)-1):
+            if s[i] == s[i+1] == '+':
+                ans.append(s[:i] + '--' + s[i+2:])
+        return ans
+
+if __name__ == "__main__":
+    currentState = "++++"
+    sol = Solution()
+    result = sol.generatePossibleNextMoves(currentState)
+    print (result)

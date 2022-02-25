@@ -11,7 +11,7 @@ https://leetcode-cn.com/problems/nim-game/
 
 示例 1：
     输入：n = 4
-    输出：false 
+    输出：false
     解释：如果堆中有 4 块石头，那么你永远不会赢得比赛；
          因为无论你拿走 1 块、2 块 还是 3 块石头，最后一块石头总是会被你的朋友拿走。
 
