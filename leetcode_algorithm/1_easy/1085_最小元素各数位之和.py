@@ -24,3 +24,20 @@ https://leetcode-cn.com/problems/sum-of-digits-in-the-minimum-number/
     1 <= A[i] <= 100
 
 """
+
+from typing import List
+
+class Solution:
+    def sumOfDigits(self, A: List[int]) -> int:
+        x = min(A)
+        res = 0
+        while x:
+            res += (x % 10)
+            x //= 10
+        return 0 if res % 2 == 1 else 1
+
+if __name__ == "__main__":
+    A = [34,23,1,24,75,33,54,8]
+    sol = Solution()
+    result = sol.sumOfDigits(A)
+    print(result)
