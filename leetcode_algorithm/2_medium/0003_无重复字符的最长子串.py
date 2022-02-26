@@ -29,7 +29,7 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
 
 """
 
-"""方法一：滑动窗口"""
+""" 方法一：滑动窗口 """
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if not s:

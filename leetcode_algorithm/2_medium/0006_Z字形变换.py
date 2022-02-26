@@ -41,7 +41,7 @@ string convert(string s, int numRows);
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        if numRows == 1: 
+        if numRows == 1:
             return s
         rows = [""] * numRows   # ['', '', '', '']
         n = 2 * numRows - 2     # n = 6，V 字型为一个循环, 循环周期为 n

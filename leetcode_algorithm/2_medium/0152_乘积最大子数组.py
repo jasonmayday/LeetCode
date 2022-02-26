@@ -64,16 +64,16 @@ class Solution:
         res = nums[0]
         
         for i in range(1, n):
-            dp_max[i] = max(nums[i], dp_max[i-1] * nums[i], dp_min[i-1] * nums[i])  
-            dp_min[i] = min(nums[i], dp_max[i-1] * nums[i], dp_min[i-1] * nums[i])            
+            dp_max[i] = max(nums[i], dp_max[i-1] * nums[i], dp_min[i-1] * nums[i])
+            dp_min[i] = min(nums[i], dp_max[i-1] * nums[i], dp_min[i-1] * nums[i])
             res = max(res, dp_max[i])
-        
+
         return res
 
 
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        if not nums: return 
+        if not nums: return
         res = nums[0]
         pre_max = nums[0]   # 记录前i的最大值
         pre_min = nums[0]   # 记录前i的最小值
@@ -87,14 +87,14 @@ class Solution:
 
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        if not nums: return 
+        if not nums: return
         maxi = mini = res = nums[0]
         for num in nums[1:]:
             maxi = max(maxi * num, mini * num, num)
             mini = min(maxi * num, mini * num, num)
             res = max(maxi, res)
         return res
-    
+
 """ 根据符号的个数
     当负数个数为偶数时候，全部相乘一定最大
     当负数个数为奇数时候，它的左右两边的负数个数一定为偶数，只需求两边最大值
