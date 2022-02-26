@@ -34,11 +34,10 @@ class Solution(object):
                 i += 2              # 指针后移两位
             else:
                 i += 1
+        return arr
 
 if __name__ == "__main__":
-    text = "alice is a good girl she is a good student"
-    first = "a"
-    second = "good"
+    arr = [1,0,2,3,0,4,5,0]
     sol = Solution()
-    result = sol.findOcurrences(text,first,second)
+    result = sol.duplicateZeros(arr)
     print(result)
