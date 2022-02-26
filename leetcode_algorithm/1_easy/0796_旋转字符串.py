@@ -38,7 +38,7 @@ class Solution:
             return True                         # 因此我们只需要判断 B 是否为 A + A 的子串即可。
         else:
             return False
-    
+
 if __name__ == "__main__":
     A = 'abcde'
     B = 'cdeab'
