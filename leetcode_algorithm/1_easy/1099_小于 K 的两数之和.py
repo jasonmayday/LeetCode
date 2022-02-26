@@ -21,3 +21,28 @@ https://leetcode-cn.com/problems/two-sum-less-than-k/
     1 <= k <= 2000
 
 """
+from typing import List
+
+""" 双指针 """
+class Solution:
+    def twoSumLessThanK(self, nums: List[int], k: int) -> int:
+        nums.sort()     # [1, 8, 23, 24, 33, 34, 54, 75]
+        res = -float('inf')
+        left = 0
+        right = len(nums) - 1
+        while left < right:
+            temp = nums[left] + nums[right]
+            if temp < k:
+                res = max(res, temp)
+                left += 1
+            else:
+                right -= 1
+
+        return res if res != -float('inf') else -1
+
+if __name__ == "__main__":
+    nums = [34,23,1,24,75,33,54,8]
+    k = 60
+    sol = Solution()
+    result = sol.twoSumLessThanK(nums, k)
+    print(result)
