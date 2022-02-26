@@ -37,7 +37,7 @@ class Solution:
         ans = 0
         for word in words:
             word_cnt = Counter(word)
-            for c in word_cnt:      
+            for c in word_cnt:
                 if chars_cnt[c] < word_cnt[c]:
                     break
             else:                   # 对于一个单词 word，只要其中的每个字母的数量都不大于 chars 中对应的字母的数量
