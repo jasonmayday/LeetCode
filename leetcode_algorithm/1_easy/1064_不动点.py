@@ -23,3 +23,23 @@ https://leetcode-cn.com/problems/fixed-point/
     -10^9 <= arr[i] <= 10^9
 
 """
+from typing import List
+
+""" 二分法 """
+class Solution:
+    def fixedPoint(self, arr: List[int]) -> int:
+        left = 0
+        right = len(arr) - 1
+        while left < right:
+            mid = (left + right) // 2
+            if arr[mid] >= mid:
+                right = mid
+            else:
+                left = mid + 1
+        return left if arr[left] == left else -1
+
+if __name__ == "__main__":
+    arr = [-10,-5,0,3,7]
+    sol = Solution()
+    result = sol.fixedPoint(arr)
+    print(result)
