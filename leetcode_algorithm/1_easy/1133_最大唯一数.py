@@ -22,3 +22,27 @@ https://leetcode-cn.com/problems/largest-unique-number/
     0 <= A[i] <= 1000
 
 """
+from typing import List
+
+class Solution:
+    def largestUniqueNumber(self, A: List[int]) -> int:
+        from collections import Counter
+        ans = -1
+        for key, count in Counter(A).items():
+            if count == 1:
+                ans = max(ans, key)     # 更新答案
+        return ans
+
+class Solution(object):
+    def largestUniqueNumber(self, A: List[int]) -> int:
+        hash = {}
+        for num in A:
+            if num not in hash:
+                hash[num] = 1
+            else:
+                hash[num] += 1
+        max_value = -1
+        for num in hash:
+            if hash[num] == 1:
+                max_value = max(num, max_value)
+        return max_value
