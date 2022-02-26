@@ -8,7 +8,7 @@ https://leetcode-cn.com/problems/defanging-an-ip-address/
 示例 1：
     输入：address = "1.1.1.1"
     输出："1[.]1[.]1[.]1"
-    
+
 示例 2：
     输入：address = "255.100.50.0"
     输出："255[.]100[.]50[.]0"
@@ -21,11 +21,11 @@ https://leetcode-cn.com/problems/defanging-an-ip-address/
 class Solution:
     def defangIPaddr(self, address: str) -> str:
         return address.replace('.','[.]')
-    
+
 class Solution(object):
     def defangIPaddr(self, address):
         return "[.]".join(address.split('.'))
-  
+
 if __name__ == "__main__":
     address = "255.100.50.0"
     sol = Solution()
