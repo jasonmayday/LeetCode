@@ -47,7 +47,7 @@ class Solution:
             res += num[val]
             num[val] += 1
         return res
-    
+
 if __name__ == "__main__":
     dominoes = [[1,2],[2,1],[3,4],[5,6]]
     sol = Solution()
