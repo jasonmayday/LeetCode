@@ -25,21 +25,21 @@ class Solution:
     def numPrimeArrangements(self, n: int) -> int:
         cnt_prime = 0 # 质数的个数
         sum_prime = 1 # 质数的个数全排列和
-        
+
         cnt_np = 1 # 非质数的个数
         sum_np = 1 # 非质数的个数全排列的和
-         
-        for i in range(2, n + 1): 
+
+        for i in range(2, n + 1):
             if self.isPrime(i):
                 cnt_prime += 1
                 sum_prime *= cnt_prime
             else:
                 cnt_np += 1
                 sum_np *= cnt_np
-        
+
         #质数个数的全排列 * 非质数个数的全排列
         return (sum_prime * sum_np) % (10**9 + 7)
-        
+
     def isPrime(self, num: int) -> bool:
         i = 2
         while i * i <= num:
@@ -47,7 +47,7 @@ class Solution:
                 return False
             i += 1
         return True
-    
+
 if __name__ == "__main__":
     n = 100
     sol = Solution()

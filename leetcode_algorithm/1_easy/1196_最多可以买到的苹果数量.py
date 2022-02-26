@@ -20,3 +20,21 @@ https://leetcode-cn.com/problems/how-many-apples-can-you-put-into-the-basket/
     1 <= weight[i] <= 10^3
 
 """
+from typing import List
+
+class Solution:
+    def maxNumberOfApples(self, arr: List[int]) -> int:
+        sum = 0
+        count = 0
+        for i in sorted(arr):
+            sum += i
+            if sum > 5000:
+                break
+            count = count + 1
+        return count
+
+if __name__ == "__main__":
+    weight = [900,950,800,1000,700,800]
+    sol = Solution()
+    result = sol.maxNumberOfApples(weight)
+    print(result)
