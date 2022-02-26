@@ -21,7 +21,7 @@ T0 = 0, T1 = 1, T2 = 1, 且在 n >= 0 的条件下 Tn+3 = Tn + Tn+1 + Tn+2
 提示：
     0 <= n <= 37
     答案保证是一个 32 位整数，即 answer <= 2^31 - 1。
-    
+
 """
 import functools
 
@@ -41,7 +41,6 @@ class Solution:
             return 0
         if n <= 2:
             return 1
-        
         a, b, c = 0, 1, 1
         for i in range(3, n + 1):
             d = a + b + c
