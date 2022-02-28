@@ -5,11 +5,11 @@ https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
 
 图示两个链表在节点 c1 开始相交：
 
-A:        |a1| → |a2|  
+A:        |a1| → |a2|
                      ↘
                       |c1| → |c2| → |c3|
                      ↗
-B: |b1| → |b2| → |b3| 
+B: |b1| → |b2| → |b3|
 
 题目数据 保证 整个链式结构中不存在环。
 
