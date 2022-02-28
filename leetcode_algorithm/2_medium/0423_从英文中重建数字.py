@@ -57,15 +57,15 @@ class Solution:
         cnt[3] = c["h"] - cnt[8]    # h 只在 3, 8 中出现。由于我们已经知道了 8 出现的次数，因此可以计算出 3 出现的次数。
         cnt[5] = c["f"] - cnt[4]    # f 只在 4, 5 中出现。由于我们已经知道了 4 出现的次数，因此可以计算出 5 出现的次数。
         cnt[7] = c["s"] - cnt[6]    # s 只在 6, 7 中出现。由于我们已经知道了 6 出现的次数，因此可以计算出 7 出现的次数。
-        
+
         cnt[1] = c["o"] - cnt[0] - cnt[2] - cnt[4]  # o 只在 0,1,2,4 中出现，由于我们已经知道了 0,2,4 出现的次数，因此可以计算出 1 出现的次数。
 
         cnt[9] = c["i"] - cnt[5] - cnt[6] - cnt[8]  # 最后的 9 就可以通过 n, i, e 中的任一字符计算得到了
 
         return "".join(str(x) * cnt[x] for x in range(10))  # 按照升序将它们进行拼接
-    
+
 if __name__ == "__main__":
     s = "owoztneoer"
     sol = Solution()
     result = sol.originalDigits(s)
-    print (result) 
+    print (result)
