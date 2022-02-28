@@ -46,13 +46,14 @@ from typing import List
     我们需要一边遍历数组查找相同元素，一边在对比发现不同元素时修改数组元素。"""
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        slow, fast = 0, 1  # 初始化时指针slow指向数组的起始位置 nums[0]，指针fast指向指针slow的后一个位置 nums[1]
-        while fast < len(nums):
-            if nums[fast] != nums[slow]: 
-                slow = slow + 1
-                nums[slow] = nums[fast]  # 如果 nums[fast] = nums[slow]
+        slow = 0    # 初始化时指针slow指向数组的起始位置 nums[0]，
+        fast = 1    # 指针fast指向指针slow的后一个位置 nums[1]
+        while fast < len(nums):             # 遍历范围
+            if nums[fast] != nums[slow]:    # 如果快慢指针数字不同
+                slow = slow + 1             # slow 前进一位
+                nums[slow] = nums[fast]     # 并且把slow的数字修改为fast的数字
             fast = fast + 1              # 指针fast继续向后查找
-        return slow + 1
+        return slow + 1     # 最后长度即为 slow 的下标+1，slow和slow之前的数字已经被修改为不重复的
 
 """ 快慢指针 """
 class Solution:
