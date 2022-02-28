@@ -38,7 +38,7 @@ class Solution(object):
         new_color = color
         n, m = len(grid), len(grid[0])
         seen = set()
-        
+
         def dfs(i,j):
             if (i,j) in seen: return True
             if not (0 <= i < n and 0 <= j < m and grid[i][j] == old_color):
@@ -47,10 +47,10 @@ class Solution(object):
             if  dfs(i+1, j) + dfs(i-1, j) + dfs(i, j+1) + dfs(i, j-1) < 4:
                 grid[i][j] = new_color
             return True
-        
+
         dfs(row, col)
         return grid
-    
+
 if __name__ == "__main__":
     grid = [[1,1,1],[1,1,1],[1,1,1]]; row = 1; col = 1; color = 2
     sol = Solution()
