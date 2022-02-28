@@ -27,8 +27,40 @@ https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/
 """
 from typing import List
 
-'''方法一：滑动窗口'''
+''' 滑动窗口 '''
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        # Step 1:
+        # 定义需要维护的变量
+        # 本文需要对比两组字符串是否为异位词，所以用哈希表 (abc和bac是异位词是因为他们对应的哈希表相等)
+        # 同时我们需要找到所有合法解，所以还需要一个res数组
+        res, hashmap = [], {}
 
+        # Step 1.1： 同时把p的哈希表也建立了 (这个哈希表不需要维护，为定值)
+        hashmap_p = {}
+        for char in p:
+            hashmap_p[char] = hashmap_p.get(char, 0) + 1
+
+        # Step 2: 定义窗口的首尾端 (start, end)， 然后滑动窗口
+        start = 0
+        for end in range(len(s)):
+            # Step 3: 更新需要维护的变量 (hashmap)， 如果hashmap == hashmap_p，代表找到了一个解，加入到res
+            hashmap[s[end]] = hashmap.get(s[end], 0) + 1
+            if hashmap == hashmap_p:
+                res.append(start)
+
+            # Step 4
+            # 根据题意可知窗口长度固定，所以用if
+            # 窗口左指针前移一个单位保证窗口长度固定, 同时提前更新需要维护的变量 (hashmap)
+            if end >= len(p) - 1:
+                hashmap[s[start]] -= 1
+                if hashmap[s[start]] == 0:
+                    del hashmap[s[start]]
+                start += 1
+        # Step 5: 返回答案
+        return res
+
+''' 滑动窗口 '''
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         s_len, p_len = len(s), len(p)
@@ -48,7 +80,7 @@ class Solution:
         for i in range(s_len - p_len):
             s_count[ord(s[i]) - 97] -= 1
             s_count[ord(s[i + p_len]) - 97] += 1
-            
+
             if s_count == p_count:
                 ans.append(i + 1)
 
