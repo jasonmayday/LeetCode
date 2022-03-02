@@ -45,13 +45,11 @@ class Solution:
                 nonlocal num
                 num += 1
                 return
-            
             for x in match[index]:
                 if x not in vis:            # 回溯过程中，每次我们选中一个数 x
                     vis.add(x)              # 我们就将 vis[x] 标记为 true
                     backtrack(index + 1)    # 回溯完成后，
                     vis.discard(x)          # 我们再将其置为 false。
-                   
         backtrack(1)
         return num
 
@@ -85,11 +83,10 @@ class Solution:
                 if not ((1 << i) & state):
                     ans += dfs(state ^ (1 << i))
             return ans
-        
         return dfs(0)
 
 if __name__ == "__main__":
     n = 3
     sol = Solution()
     result = sol.countArrangement(n)
-    print (result) 
+    print (result)
