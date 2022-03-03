@@ -5,7 +5,7 @@ https://leetcode-cn.com/problems/add-digits/
 
 示例:
     输入: 38
-    输出: 2 
+    输出: 2
     解释: 各位相加的过程为：3 + 8 = 11, 1 + 1 = 2。 由于 2 是一位数，所以返回 2。
 
 进阶:
@@ -13,16 +13,16 @@ https://leetcode-cn.com/problems/add-digits/
 
 """
 
-"""递归"""
+""" 递归 """
 class Solution:
     def addDigits(self, num: int) -> int:
-        if (len(str(num))==1):
+        if (len(str(num)) == 1):
             return num
         else:
             num = sum([int(i) for i in list(str(num))])
             return self.addDigits(num)
 
-"""任意num为9的倍数时，其位数最终和必为0"""
+""" 任意num为9的倍数时，其位数最终和必为0 """
 class Solution:
     def addDigits(self, num: int) -> int:
         if num == 0:
