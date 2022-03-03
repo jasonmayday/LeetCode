@@ -32,3 +32,31 @@ https://leetcode-cn.com/problems/get-equal-substrings-within-budget/
     s 和 t 都只含小写英文字母。
 
 """
+
+""" 滑动窗口 """
+class Solution(object):
+    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
+        n = len(s)
+        record = []
+        for i in range(n):
+            record.append(abs(ord(t[i]) - ord(s[i])))   # [1, 1, 1, 2]
+        """ 自此问题转化为：在一个数组中，在连续子数组的和小于等于 maxCost 的情况下，找到最长的连续子数组长度。"""
+        start, end = 0, 0
+        windowsum = 0
+        res = 0
+        for end in range(n):            # 移动右边界
+            windowsum += record[end]
+            while windowsum > maxCost:  # 移动左边界
+                res = max(res, end - start)
+                windowsum -= record[start]
+                start += 1
+        res = max(res, end - start + 1)
+        return res
+
+if __name__ == "__main__":
+    s = "abcd"
+    t = "bcdf"
+    maxCost = 3
+    sol = Solution()
+    result = sol.equalSubstring(s, t, maxCost)
+    print(result)
