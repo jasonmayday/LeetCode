@@ -39,3 +39,39 @@ https://leetcode-cn.com/problems/maximum-points-you-can-obtain-from-cards/
     1 <= k <= cardPoints.length
 
 """
+from typing import List
+
+""" preSum """
+class Solution(object):
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        N = len(cardPoints)
+        preSum = [0] * (N + 1)
+        for i in range(N):
+            preSum[i + 1] = preSum[i] + cardPoints[i]
+        res = float("inf")
+        windowSize = N - k
+        for i in range(k + 1):
+            res = min(res, preSum[windowSize + i] - preSum[i])
+        return preSum[N] - res
+
+""" 滑动窗口 """
+class Solution(object):
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        N = len(cardPoints)
+        windowSize = N - k      # 滑动窗口的大小
+        sums = 0
+        res = float("inf")
+        for i in range(N):      # 右移右边界
+            sums += cardPoints[i]
+            if i >= windowSize:                     # 当 i >= windowSize 时，
+                sums -= cardPoints[i - windowSize]  # 为了固定窗口的元素是 k 个，每次移动时需要将 i - windowSize 位置的元素移除。
+            if i >= windowSize - 1:     # 当 i >= windowSize - 1 时，
+                res = min(res, sums)    # 滑动窗口内的元素刚好是 k 个，开始计算滑动窗口的最小和。
+        return sum(cardPoints) - res
+
+if __name__ == "__main__":
+    cardPoints = [1,2,3,4,5,6,1]
+    k = 3
+    sol = Solution()
+    result = sol.maxScore(cardPoints, k)
+    print(result)
