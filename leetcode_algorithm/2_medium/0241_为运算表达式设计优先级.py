@@ -7,17 +7,17 @@ https://leetcode-cn.com/problems/different-ways-to-add-parentheses/
     输入：expression = "2-1-1"
     输出：[0,2]
     解释：
-        ((2-1)-1) = 0 
+        ((2-1)-1) = 0
         (2-(1-1)) = 2
 
 示例 2：
     输入：expression = "2*3-4*5"
     输出：[-34,-14,-10,-10,10]
     解释：
-        (2*(3-(4*5))) = -34 
-        ((2*3)-(4*5)) = -14 
-        ((2*(3-4))*5) = -10 
-        (2*((3-4)*5)) = -10 
+        (2*(3-(4*5))) = -34
+        ((2*3)-(4*5)) = -14
+        ((2*(3-4))*5) = -10
+        (2*((3-4)*5)) = -10
         (((2*3)-4)*5) = 10
 
 提示：
@@ -68,4 +68,4 @@ if __name__ == "__main__":
     expression = "2*3-4*5"
     sol = Solution()
     result = sol.diffWaysToCompute(expression)
-    print (result)  
+    print (result)
