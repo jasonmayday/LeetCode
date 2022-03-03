@@ -69,7 +69,7 @@ class Solution:
         while cur:
             if cur.val == 0:    # 如果遍历到的节点为 0
                 end = last      # end 为遍历到的 0 之前的位置
-                last = cur      # 
+                last = cur
             if cur.val != 0:            # 如果遍历到的节点不为 0
                 last.val += cur.val     # 把下一个数字加到上一个节点(0)上
                 last.next = cur.next    # 寻找下一个元素（如果还不为0，继续加）
