@@ -1,4 +1,4 @@
-import time 
+import time
 import numpy as np
 
 a = np.random.uniform (size = (500, 500))
