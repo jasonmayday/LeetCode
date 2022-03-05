@@ -19,3 +19,24 @@ https://leetcode-cn.com/problems/remove-duplicate-letters/
     该题与 1081 https://leetcode-cn.com/problems/smallest-subsequence-of-distinct-characters 相同
 
 """
+from collections import Counter
+
+""" 方法一：贪心 + 单调栈 """
+class Solution:
+    def removeDuplicateLetters(self, s) -> int:
+        stack = []
+        remain_counter = Counter(s)
+
+        for c in s:
+            if c not in stack:
+                while stack and c < stack[-1] and  remain_counter[stack[-1]] > 0:
+                    stack.pop()
+                stack.append(c)
+            remain_counter[c] -= 1
+        return ''.join(stack)
+
+if __name__ == "__main__":
+    s = "bcabc"
+    sol = Solution()
+    result = sol.removeDuplicateLetters(s)
+    print (result)
