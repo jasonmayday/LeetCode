@@ -54,4 +54,4 @@ if __name__ == "__main__":
     words = ["abcw","baz","foo","bar","xtfn","abcdef"]
     sol = Solution()
     result = sol.maxProduct(words)
-    print (result) 
+    print (result)
