@@ -24,12 +24,26 @@ https://leetcode-cn.com/problems/wiggle-sort-ii/
 """
 class Solution:
     def wiggleSort(self, nums):
-        nums.sort()
-        half = len(nums[::2])
+        nums.sort()                 # nums:  [1, 2, 3, 4, 5, 6]
+        s = len(nums)-len(nums)//2  # s = 3
+        a = nums[:s][::-1]  # a:  [3, 2, 1]
+        b = nums[s:][::-1]  # b:  [6, 5, 4]
+        nums.clear()
+        for i in range(s):      # 前半部分
+            nums.append(a[i])
+            if i < len(b):      # 后半部分
+                nums.append(b[i])
+        return nums # [3, 6, 2, 5, 1, 4]
+
+class Solution:
+    def wiggleSort(self, nums):
+        nums.sort()             # nums:  [1, 1, 1, 4, 5, 6]
+        half = len(nums[::2])   # half:  3
         nums[::2], nums[1::2] = nums[:half][::-1], nums[half:][::-1]
+        return nums
 
 if __name__ == "__main__":
-    nums = [1,5,1,1,6,4]
+    nums = [1,5,3,2,6,4]
     sol = Solution()
     result = sol.wiggleSort(nums)
     print (result)
