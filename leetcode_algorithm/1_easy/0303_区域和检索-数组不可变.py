@@ -15,7 +15,7 @@
     解释：
         NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
         numArray.sumRange(0, 2); // return 1 ((-2) + 0 + 3)
-        numArray.sumRange(2, 5); // return -1 (3 + (-5) + 2 + (-1)) 
+        numArray.sumRange(2, 5); // return -1 (3 + (-5) + 2 + (-1))
         numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
 
 提示：
@@ -30,18 +30,18 @@ from typing import List
 class NumArray:
     def __init__(self, nums: List[int]):
         self.sums = [0]
-        _sums = self.sums
+        rangeSum = self.sums
 
         for num in nums:
-            _sums.append(_sums[-1] + num)
+            rangeSum.append(rangeSum[-1] + num)
 
     def sumRange(self, i: int, j: int) -> int:
-        _sums = self.sums
-        return _sums[j + 1] - _sums[i]
+        rangeSum = self.sums
+        return rangeSum[j+1] - rangeSum[i]
 
 if __name__ == "__main__":
     numArray = NumArray([-2, 0, 3, -5, 2, -1])
-    numArray.sumRange(0, 2)     # return 1 ((-2) + 0 + 3)
-    numArray.sumRange(2, 5)     # return -1 (3 + (-5) + 2 + (-1))
-    numArray.sumRange(0, 5)     # return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
+    print (numArray.sumRange(0, 2))     # return 1 ((-2) + 0 + 3)
+    print (numArray.sumRange(2, 5))     # return -1 (3 + (-5) + 2 + (-1))
+    print (numArray.sumRange(0, 5))     # return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
 
