@@ -45,5 +45,25 @@ https://leetcode-cn.com/problems/find-good-days-to-rob-the-bank/
     0 <= security[i], time <= 10^5
 
 """
+from typing import List
 
+""" 方法一：动态规划"""
+class Solution:
+    def goodDaysToRobBank(self, security: List[int], time: int) -> List[int]:
+        n = len(security)
+        left = [0] * n  # 第 i 天前警卫数目连续非递增的天数为 left i
+        right = [0] * n # 第 i 天后警卫数目连续非递减的天数为 right i
+        for i in range(1, n):
+            if security[i] <= security[i - 1]:          # 某数比前一位数字小
+                left[i] = left[i - 1] + 1               # 第 i 天前连续非递增的天数为 left i 加一
+            if security[n - i - 1] <= security[n - i]:  # 从右向左：某数比后一位数字小
+                right[n - i - 1] = right[n - i] + 1     # 第 i 天后连续非递减的天数为 right i 加一
+        return [i for i in range(time, n - time) if left[i] >= time and right[i] >= time]
+        # 当第 i 天同时满足 left i ≥ time, right i ≥ time 时，即可认定第 i 天适合打劫
 
+if __name__ == "__main__":
+    security = [5,3,3,3,5,6,2]
+    time = 2
+    sol = Solution()
+    result = sol.goodDaysToRobBank(security, time)
+    print(result)
