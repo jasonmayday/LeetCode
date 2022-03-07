@@ -59,4 +59,4 @@ if __name__ == "__main__":
     properties = [[1,5],[1,6],[9,4],[4,3]]
     sol = Solution()
     result = sol.numberOfWeakCharacters(properties)
-    print(result)  
+    print(result)
