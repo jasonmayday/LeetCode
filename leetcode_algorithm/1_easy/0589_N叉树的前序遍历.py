@@ -23,9 +23,14 @@ N 叉树 在输入中按层序遍历进行序列化表示，每组子节点由�
 """
 from typing import List
 
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
 
+""" 递归 """
 class Solution:
-    def preorder(self, root: 'Node') -> List[int]:
+    def preorder(self, root: Node) -> List[int]:
         result = []             # 保存节点值
         def pre_order(root):    # 前序遍历
             if root:            # 跟节点非空入队列递归遍历
@@ -35,3 +40,22 @@ class Solution:
         pre_order(root)
         return result
 
+if __name__ == "__main__":
+    '''
+           1
+         ↙ ↓ ↘
+       3   2   4
+     ↙  ↘
+    5    6
+    '''
+
+    root = Node(1)
+    root.children = Node(3)
+    root.children = Node(2)
+    root.children = Node(4)
+    root.children.children = Node(5)
+    root.children.children = Node(6)
+    
+    sol = Solution()
+    result = sol.preorder(root)
+    print (result)
