@@ -12,11 +12,11 @@ def init_distance(graph,s):
 
 # dijkstra算法
 def dijkstra(graph,s):
-    queue=[]   #初始化队列
+    queue=[]    # 初始化队列
     heapq.heappush(queue,(0,s))  #放入第一个元素
-    seen=[]     #已经取出来的
+    seen=[]     # 已经取出来的
     parent={
-    s:None}    #父节点
+    s:None}     # 父节点
     distance=init_distance(graph,s)   #初始化距离
 
     while queue:
