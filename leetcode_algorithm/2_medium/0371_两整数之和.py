@@ -39,4 +39,4 @@ if __name__ == "__main__":
     b = 2
     sol = Solution()
     result = sol.getSum(a, b)
-    print (result) 
+    print (result)
