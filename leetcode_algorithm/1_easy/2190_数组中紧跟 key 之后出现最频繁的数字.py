@@ -29,4 +29,38 @@ https://leetcode-cn.com/problems/most-frequent-number-following-key-in-an-array/
     测试数据保证答案是唯一的。
 
 """
+from collections import Counter
+from typing import List
 
+""" 哈希表 """
+class Solution:
+    def mostFrequent(self, nums: List[int], key: int) -> int:
+        dic = {}
+        for i in range(len(nums)-1):
+            if nums[i] == key:
+                target = nums[i+1]
+                dic[target] = dic.get(target, 0) + 1
+        num = 0
+        res = 0
+        # print(dic) {100: 1, 200: 2}
+        for count in dic:
+            if dic[count] > num:
+                num = dic[count]
+                res = count
+        return res
+
+""" Counter """
+class Solution:
+    def mostFrequent(self, nums: List[int], key: int) -> int:
+        count = Counter()
+        for i in range(0, len(nums) - 1):
+            if nums[i] == key:
+                count[nums[i + 1]] += 1     # {200: 2, 100: 1}
+        return count.most_common(1)[0][0]
+
+if __name__ == "__main__":
+    nums = [1,100,200,1,200,1,200]  # 1后面的200出现次数最多
+    key = 1
+    sol = Solution()
+    result = sol.mostFrequent(nums, key)
+    print (result)
