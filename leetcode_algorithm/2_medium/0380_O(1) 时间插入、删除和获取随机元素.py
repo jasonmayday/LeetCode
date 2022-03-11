@@ -33,7 +33,7 @@ https://leetcode-cn.com/problems/insert-delete-getrandom-o1/
 
 """
 
-from random import choice
+import random
 class RandomizedSet():
     def __init__(self):
         self.dict = {}
@@ -49,16 +49,17 @@ class RandomizedSet():
     def remove(self, val: int) -> bool: # 当元素 val 存在时，从集合中移除该项，并返回 true ；否则，当元素 val 不存在时返回 false
         if val in self.dict:
             # move the last element to the place idx of the element to delete
-            last_element, idx = self.list[-1], self.dict[val]
+            last_element = self.list[-1]
+            idx = self.dict[val]
             self.list[idx], self.dict[last_element] = last_element, idx
-            # delete the last element
-            self.list.pop()
-            del self.dict[val]
+
+            self.list.pop()     # List 删除last_element
+            del self.dict[val]  # dict 删除val
             return True
         return False
 
     def getRandom(self) -> int:     # 随机返回现有集合中的一项
-        return choice(self.list)
+        return random.choice(self.list)
 
 if __name__ == "__main__":
     randomizedSet = RandomizedSet()
