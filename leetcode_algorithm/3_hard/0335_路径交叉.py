@@ -67,4 +67,4 @@ if __name__ == "__main__":
     distance = [2,1,1,2]
     sol = Solution()
     result = sol.isSelfCrossing(distance)
-    print (result) 
+    print (result)
