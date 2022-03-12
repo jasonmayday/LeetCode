@@ -35,4 +35,4 @@ if __name__ == "__main__":
     n = 2**30
     sol = Solution()
     result = sol.findNthDigit(n)
-    print (result) 
+    print (result)
