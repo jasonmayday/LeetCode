@@ -38,4 +38,4 @@ if __name__ == "__main__":
     n = 100
     sol = Solution()
     result = sol.integerReplacement(n)
-    print (result) 
+    print (result)

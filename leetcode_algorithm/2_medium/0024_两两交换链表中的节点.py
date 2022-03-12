@@ -79,14 +79,12 @@ class Solution(object):
 			p.next = stack.pop()
 			p.next.next = stack.pop()
 			p = p.next.next
-		# 注意边界条件，当链表长度是奇数时，cur就不为空	
+		# 注意边界条件，当链表长度是奇数时，cur就不为空
 		if cur:
 			p.next = cur
 		else:
 			p.next = None
 		return head.next
-
-
 
 if __name__ == "__main__":
     head = listToLinkedList([1,2,3,4])
