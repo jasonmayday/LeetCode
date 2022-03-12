@@ -26,3 +26,26 @@ https://leetcode-cn.com/problems/elimination-game/
 
 """
 
+""" 方法一：等差数列模拟 """
+class Solution:
+    def lastRemaining(self, n: int) -> int:
+        head = 1
+        step = 1
+        left = True
+        
+        while n > 1:
+            # 从左边开始移除 or（从右边开始移除，数列总数为奇数）
+            if left or n % 2 != 0:
+                head += step
+            
+            step <<= 1 # 步长 * 2
+            n >>= 1 # 总数 / 2
+            left = not left #取反移除方向
+
+        return head
+
+if __name__ == "__main__":
+    n = 1000000000
+    sol = Solution()
+    result = sol.lastRemaining(n)
+    print (result)
