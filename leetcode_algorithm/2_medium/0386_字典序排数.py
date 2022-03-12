@@ -17,4 +17,39 @@ https://leetcode-cn.com/problems/lexicographical-numbers/
     1 <= n <= 5 * 10^4
 
 """
+from typing import List
 
+""" 方法一：深度优先搜索
+    [1,n] 范围内的所有整数的字典序实际上就是字典树的先序遍历顺序。"""
+class Solution:
+    def lexicalOrder(self, n: int) -> List[int]:
+        def dfs(num):
+            if num > n: # 递归终点
+                return
+            ans.append(num)
+            for i in range(10):
+                dfs(num * 10 + i)
+        ans = []
+        for num in range(1, 10):
+            dfs(num)
+        return ans
+    
+""" 方法二：迭代 """
+class Solution:
+    def lexicalOrder(self, n: int) -> List[int]:
+        ans = []
+        num = 1
+        while len(ans) < n:
+            while num <= n:     # 不断进入下一层
+                ans.append(num)
+                num *= 10
+            while num % 10 == 9 or num > n:  # 不断返回上一层
+                num //= 10
+            num += 1            # 遍历该层下一个数
+        return ans
+
+if __name__ == "__main__":
+    n = 13
+    sol = Solution()
+    result = sol.lexicalOrder(n)
+    print (result)
