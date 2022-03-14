@@ -31,15 +31,16 @@ from collections import defaultdict
 
 class Solution:
     def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
-        dict = defaultdict(list)        # value为列表的字典
+        dict = defaultdict(list)        # key为字符串，value为出现的下标
         for i in range(len(list1)):     # 把 list1 每个字符串对应的索引入字典
             dict[list1[i]].append(i)
         for i in range(len(list2)):     # 把 list2 每个字符串对应的索引入字典
             dict[list2[i]].append(i)
+        # print(dict) {'Shogun': [0, 1], 'Tapioca Express': [1], 'Burger King': [2, 2], 'KFC': [3, 0]})
         min_index = float("inf")
         result = []
-        for key, value in dict.items():    # 遍历求两个value[0] + value[1]的和最小的str
-            if len(value) == 2:
+        for key, value in dict.items():     # 遍历求两个value[0] + value[1]的和最小的str
+            if len(value) == 2:             # 出现超过一次，说明两个人都喜欢
                 if value[0] + value[1] < min_index:
                     result = []
                     min_index = value[0] + value[1]
@@ -47,16 +48,39 @@ class Solution:
                 elif value[0] + value[1] == min_index:
                     result.append(key)
         return result
+    
+class Solution:
+    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
+        index = {index: i for i, index in enumerate(list1)}
+        # index: {'Shogun': 0, 'Tapioca Express': 1, 'Burger King': 2, 'KFC': 3}
+        ans = []
+        indexSum = float("inf")
+        for i, s in enumerate(list2):
+            if s in index:
+                j = index[s]
+                if i + j < indexSum:
+                    indexSum = i + j
+                    ans = [s]
+                elif i + j == indexSum:
+                    ans.append(s)
+        return ans
+
+class Solution:
+    def findRestaurant(self, list1, list2):
+        index1 = {list1[i]: i for i in range(len(list1))}
+        index2 = {list2[i]: i for i in range(len(list2))}
+        agreements = set(list1) & set(list2)
+        sum_index = {r: index1[r]+index2[r] for r in agreements}
+        return [r for r in agreements if sum_index[r] == min(sum_index.values())]
 
 class Solution:
     def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
         dict = {x: list1.index(x) + list2.index(x) for x in set(list1) & set(list2)}
         return [x for x in dict if dict[x] == min(dict.values())]
 
-
 if __name__ == "__main__":
     list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
-    list2 = ["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
+    list2 = ["KFC", "Shogun", "Burger King"]
     sol = Solution()
     result = sol.findRestaurant(list1, list2)
     print(result)
