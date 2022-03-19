@@ -52,22 +52,36 @@ def list_to_binarytree(nums):
         return root
     return level(0)
 
-'''解法1'''
+
+''' 递归 '''
+class Solution:
+    def tree2str(self, root: TreeNode) -> str:
+        if root is None:
+            return ""
+        elif root.left is None and root.right is None:
+            return str(root.val)
+        elif root.right is None:
+            return str(root.val) + '(' + self.tree2str(root.left) + ')'
+        else:
+            return str(root.val) + '(' + self.tree2str(root.left) + ')(' + self.tree2str(root.right) + ')'
+
+''' 递归 '''
 class Solution:
     def tree2str(self, t: TreeNode) -> str:
         def preorder(root):
             if not root:
                 return ''
-            if not root.left and root.right:        # 左边为空，右边不为空时，需要加一个空括号保证映射关系
-                return str(root.val)+'()'+'('+preorder(root.right)+')'
-            if root.left and not root.right:        # 左边不为空，右边为空时，需要加一个空括号保证映射关系
-                return str(root.val)+'('+preorder(root.left)+')'
+            if not root.left and root.right:        # 只有右子树: 则需要先加上（）在对右孩子递归并加上（）
+                return str(root.val) + '()' + '(' + preorder(root.right) + ')'
+            if root.left and not root.right:        # 只有左子树: 则直接对左孩子递归并加上（）
+                return str(root.val) + '(' + preorder(root.left) + ')'
             if not root.left and not root.right:    # 左右都为空时
-                return str(root.val)
+                return str(root.val)                # 则直接返回值
+            # 有两个子树则需要在两个子树都加上（）
             return str(root.val) + '('+preorder(root.left)+')'+'('+preorder(root.right)+')'
         return preorder(t)
 
-'''解法2'''
+''' 递归 '''
 class Solution:
     def tree2str(self, t: TreeNode) -> str:
         if not t:
