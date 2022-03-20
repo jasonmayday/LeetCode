@@ -66,10 +66,10 @@ class Solution:
     def findTarget(self, root: TreeNode, k: int) -> bool:
         if root is None:                # 如果遍历完整棵树都不存在对应的元素，
             return False                # 那么该树上不存在两个和为 k 的节点。
-        if k - root.val in self.hash:   # 对于一个值为 x 的节点，我们检查哈希表中是否存在 k−x 即可
+        if k-root.val in self.hash:     # 对于一个值为 x 的节点，我们检查哈希表中是否存在 k−x 即可
             return True                 # 如果存在对应的元素，那么我们就可以在该树上找到两个节点的和为 k
         self.hash.add(root.val)         # 否则，我们将 x 放入到哈希表中。
-        return self.findTarget(root.left, k) or self.findTarget(root.right, k)
+        return self.findTarget(root.left, k) or self.findTarget(root.right, k)  # 递归
 
 """ 方法二：BFS + 哈希表 """
 class Solution:
