@@ -31,4 +31,97 @@ https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/
     0 <= nums[i] <= 2^31 - 1
 
 """
+from typing import List
 
+""" 方法一：哈希表"""
+class Solution:
+    def findMaximumXOR(self, nums: List[int]) -> int:
+        HIGH_BIT = 30   # 最高位的二进制位编号为 30
+        x = 0
+        for k in range(HIGH_BIT, -1, -1):
+            seen = set()
+            # 将所有的 pre^k(a_j) 放入哈希表中
+            for num in nums:
+                # 如果只想保留从最高位开始到第 k 个二进制位为止的部分
+                # 只需将其右移 k 位
+                seen.add(num >> k)
+
+            # 目前 x 包含从最高位开始到第 k+1 个二进制位为止的部分
+            # 我们将 x 的第 k 个二进制位置为 1，即为 x = x*2+1
+            x_next = x * 2 + 1
+            found = False
+            
+            # 枚举 i
+            for num in nums:
+                if x_next ^ (num >> k) in seen:
+                    found = True
+                    break
+
+            if found:
+                x = x_next
+            else:
+                # 如果没有找到满足等式的 a_i 和 a_j，那么 x 的第 k 个二进制位只能为 0
+                # 即为 x = x*2
+                x = x_next - 1
+        
+        return x
+
+""" 方法二：字典树 """
+class Trie:
+    def __init__(self):
+        self.left = None    # 左子树指向表示 0 的子节点
+        self.right = None   # 右子树指向表示 1 的子节点
+
+class Solution:
+    def findMaximumXOR(self, nums: List[int]) -> int:
+        root = Trie()   # 字典树的根节点
+        HIGH_BIT = 30   # 最高位的二进制位编号为 30
+
+        def add(num: int):
+            cur = root
+            for k in range(HIGH_BIT, -1, -1):
+                bit = (num >> k) & 1
+                if bit == 0:
+                    if not cur.left:
+                        cur.left = Trie()
+                    cur = cur.left
+                else:
+                    if not cur.right:
+                        cur.right = Trie()
+                    cur = cur.right
+
+        def check(num: int) -> int:
+            cur = root
+            x = 0
+            for k in range(HIGH_BIT, -1, -1):
+                bit = (num >> k) & 1
+                if bit == 0:
+                    # a_i 的第 k 个二进制位为 0，应当往表示 1 的子节点 right 走
+                    if cur.right:
+                        cur = cur.right
+                        x = x * 2 + 1
+                    else:
+                        cur = cur.left
+                        x = x * 2
+                else:
+                    # a_i 的第 k 个二进制位为 1，应当往表示 0 的子节点 left 走
+                    if cur.left:
+                        cur = cur.left
+                        x = x * 2 + 1
+                    else:
+                        cur = cur.right
+                        x = x * 2
+            return x
+
+        n = len(nums)
+        x = 0
+        for i in range(1, n):
+            add(nums[i - 1])            # 将 nums[i-1] 放入字典树，此时 nums[0 .. i-1] 都在字典树中
+            x = max(x, check(nums[i]))  # 将 nums[i] 看作 ai，找出最大的 x 更新答案
+        return x
+
+if __name__ == "__main__":
+    nums = [3,10,5,25,2,8]
+    sol = Solution()
+    result = sol.findMaximumXOR(nums)
+    print (result)  # 最大运算结果是 5 XOR 25 = 28.
