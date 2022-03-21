@@ -54,7 +54,7 @@ class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         for i in range(1, len(nums)):
             nums[i] = nums[i] + max(nums[i-1], 0)   # nums[i-1]是到前一项为止的最大子序和。和0比较是因为只要大于0，就可以相加构造最大子序和。如果小于0则 nums[i] = nums[i]
-        return max(nums)          
+        return max(nums)
     # 如果 nums[i-1]大于0的话，新的nums[i]就是和前一项的和，否则就是自身。
 
 
