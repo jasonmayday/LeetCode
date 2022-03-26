@@ -40,4 +40,4 @@ if __name__ == "__main__":
     n = 11111111111111111111111111111101
     sol = Solution()
     result = sol.hammingWeight(n)
-    print (result)  
+    print (result)
