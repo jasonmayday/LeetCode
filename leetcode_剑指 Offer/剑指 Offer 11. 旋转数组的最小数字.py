@@ -24,4 +24,30 @@ https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
 注意：本题与主站 154 题相同：https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/
 
 """
+from typing import List
 
+""" 方法一：二分查找
+    数组中的最后一个元素 x：
+    在最小值右侧的元素，它们的值一定都小于等于 x；
+    而在最小值左侧的元素，它们的值一定都大于等于 x。
+    因此，我们可以根据这一条性质，通过二分查找的方法找出最小值。
+"""
+class Solution:
+    def minArray(self, numbers: List[int]) -> int:
+        left = 0
+        right = len(numbers) - 1
+        while left < right:
+            mid = left + (right - left) // 2     # mid 为区间的中点
+            if numbers[mid] < numbers[right]:
+                right = mid                      # 说明 numbers[mid] 是最小值右侧的元素，因此我们可以忽略二分查找区间的右半部分。
+            elif numbers[mid] > numbers[right]:
+                left = mid + 1                   # 说明 numbers[mid] 是最小值左侧的元素，因此我们可以忽略二分查找区间的左半部分。
+            else:               # 第三种情况是 numbers[mid] == numbers[high]
+                right -= 1      # 由于重复元素的存在，我们并不能确定 numbers[mid] 究竟在最小值的左侧还是右侧，可以忽略二分查找区间的右端点
+        return numbers[left]
+
+if __name__ == "__main__":
+    numbers = [3,4,5,1,2]
+    sol = Solution()
+    result = sol.minArray(numbers)
+    print(result)
