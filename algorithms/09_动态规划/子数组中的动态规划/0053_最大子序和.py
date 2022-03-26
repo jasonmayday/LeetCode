@@ -57,22 +57,6 @@ class Solution:
         return max(nums)          
     # 如果 nums[i-1]大于0的话，新的nums[i]就是和前一项的和，否则就是自身。
 
-
-""" 解法2：贪心
-    局部最优：当前“连续和”为负数的时候立刻放弃，从下一个元素重新计算“连续和”，因为负数加上下一个元素 “连续和”只会越来越小。
-    全局最优：选取最大“连续和” """
-class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        result = -float('inf')
-        count = 0   # 计算起点的时候，一定是从大于 0 的数字开始计算，因为负数只会拉低总和
-        for i in range(len(nums)):
-            count += nums[i]
-            if count > result:  # 区间的终止位置，
-                result = count  # 其实就是如果count取到最大值了
-            if count <= 0:  # 如果count一旦加上nums[i]变为负数，那么就应该从nums[i+1]开始从0累积count了
-                count = 0   # 因为已经变为负数的count，只会拖累总和。
-        return result
-
 if __name__ == "__main__":
     nums = [-2,1,-3,4,-1,2,1,-5,4]
     sol = Solution()
