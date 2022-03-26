@@ -47,20 +47,40 @@ https://leetcode-cn.com/problems/baseball-game/
     对于 "C" 和 "D" 操作，题目数据保证记录此操作时前面总是存在一个有效的分数
 
 """
+from typing import List
 
-'''栈'''
+""" 模拟栈 """
+class Solution:
+    def calPoints(self, ops: List[str]) -> int:
+        ans = 0
+        points = []
+        for op in ops:
+            if op == '+':
+                pt = points[-1] + points[-2]    # 本回合新获得的得分是前两次得分的总和
+            elif op == 'D':
+                pt = points[-1] * 2             # 本回合新获得的得分是前一次得分的两倍
+            elif op == 'C':
+                ans -= points.pop()             # 前一次得分无效，将其从记录中移除
+                continue
+            else:
+                pt = int(op)                    # 整数 x - 表示本回合新获得分数 x
+            ans += pt
+            points.append(pt)   # 把最后一个得分加上
+        return ans
+
+""" 栈 """
 class Solution(object):
     def calPoints(self, ops):
         stack = []
         for op in ops:
             if op == '+':
-                stack.append(stack[-1] + stack[-2])     # 表示本回合新获得的得分是前两次得分的总和
+                stack.append(stack[-1] + stack[-2]) # 表示本回合新获得的得分是前两次得分的总和
             elif op == 'C':
-                stack.pop()                             # 表示前一次得分无效，将其从记录中移除
+                stack.pop()                         # 表示前一次得分无效，将其从记录中移除
             elif op == 'D':
-                stack.append(2 * stack[-1])             # 表示本回合新获得的得分是前一次得分的两倍
+                stack.append(2 * stack[-1])         # 表示本回合新获得的得分是前一次得分的两倍
             else:
-                stack.append(int(op))
+                stack.append(int(op))               # 整数 x - 表示本回合新获得分数 x
         return sum(stack)
     
 if __name__ == "__main__":
