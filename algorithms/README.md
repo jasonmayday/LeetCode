@@ -68,7 +68,7 @@
 # 算法
     动态规划、回溯算法、查找算法、搜索算法、贪心算法、分治算法、位运算、双指针、排序、模拟、数学、……
 
-<div align="center"> <img src="img/Data Structure and Algorithms.jpg" alt="Editor" width="1000"> </div>
+<div align="center"> <img src="img/Data Structure and Algorithms.jpg" alt="Editor" width="1200"> </div>
 
 <div align="center"> <img src="img/data_structure.png" alt="Editor" width="500"> </div>
 
