@@ -25,7 +25,7 @@ https://leetcode-cn.com/problems/min-cost-climbing-stairs/
 from typing import List
 # https://leetcode-cn.com/problems/min-cost-climbing-stairs/solution/yi-bu-yi-bu-tui-dao-dong-tai-gui-hua-de-duo-chong-/
 
-"""解法1"""
+""" 动态规划 """
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         n = len(cost)
@@ -37,7 +37,15 @@ class Solution:
             # 第1级台阶： minCost[1] = min(cost[0], cost[1])
         return minCost[-1]
 
-"""解法2"""
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        n = len(cost)
+        dp = [0] * (n + 1)  # dp[i]表示达到第i级（停止在第i级）台阶上，最小的cost
+        for i in range(2, n + 1):
+            dp[i] = min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2])
+        return dp[n]
+
+""" 动态规划 """
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         n = len(cost)
@@ -51,6 +59,16 @@ class Solution:
             dp[i] = min(dp[i - 2], dp[i - 1]) + cost[i]
         return min(dp[-2], dp[-1])
 
+""" 动态规划
+    当 i≥2 时，dp[i] 只和 dp[i−1] 与 dp[i−2] 有关，因此可以使用滚动数组的思想，将空间复杂度优化到 O(1)"""
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        n = len(cost)
+        prev = curr = 0
+        for i in range(2, n + 1):
+            nxt = min(curr + cost[i - 1], prev + cost[i - 2])
+            prev, curr = curr, nxt
+        return curr
 
 if __name__ == "__main__":
     cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
