@@ -1,30 +1,18 @@
-'''
-https://leetcode-cn.com/problems/merge-two-sorted-lists/
+"""
+https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/
 
-将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
 
-示例 1：
-    输入：l1 = [1,2,4], l2 = [1,3,4]
-    https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg
-    1 → 2 → 4
-    1 → 3 → 4
-    1 → 1 → 2 → 3 → 4 → 4
-    输出：[1,1,2,3,4,4]
+示例1：
+    输入：1->2->4, 1->3->4
+    输出：1->1->2->3->4->4
 
-示例 2：
-    输入：l1 = [], l2 = []
-    输出：[]
+限制：
+    0 <= 链表长度 <= 1000
 
-示例 3：
-    输入：l1 = [], l2 = [0]
-    输出：[0]
+注意：本题与主站 21 题相同：https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
-提示：
-    两个链表的节点数目范围是 [0, 50]
-    -100 <= Node.val <= 100
-    l1 和 l2 均按 非递减顺序 排列
-
-'''
+"""
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -49,7 +37,7 @@ def print_linked_list(head):
         cur = cur.next
     return res
 
-"""解法1：递归"""
+""" 解法1：递归 """
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         if l1 is None:     # 如果 l1 或者 l2 一开始就是空链表，那么没有任何操作需要合并，所以我们只需要返回非空链表。
@@ -63,7 +51,7 @@ class Solution:
             l2.next = self.mergeTwoLists(l1, l2.next)
             return l2
 
-"""解法2：迭代"""
+""" 解法2：迭代 """
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         prehead = ListNode(-1)    # 设定一个哨兵节点 prehead ，这可以在最后让我们比较容易地返回合并后的链表。
@@ -91,4 +79,3 @@ if __name__ == "__main__":
     sol = Solution()
     sorted_lists = sol.mergeTwoLists(l1, l2)
     print(print_linked_list(sorted_lists))
-
