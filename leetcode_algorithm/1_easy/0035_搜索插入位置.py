@@ -29,6 +29,7 @@ https://leetcode-cn.com/problems/search-insert-position/
 
 from typing import List
 
+""" 二分查找 """
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
         left = 0
@@ -39,9 +40,9 @@ class Solution:
                 left = middle + 1
             elif nums[middle] > target:
                 right = middle - 1
-            else:
+            else:               # 最终找到
                 return middle
-        return right + 1
+        return right + 1    # 如果找不到该数字，返回它将会被按顺序插入的位置。
 
 if __name__ == "__main__":
     nums = [1,3,5,6,9,13,18,24,28,32,36,39,41,46,53,57,62,70,78,84]
