@@ -32,21 +32,28 @@ https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/
     题目数据保证，在查找第 k 大元素时，数组中至少有 k 个元素
 
 """
+from typing import List
+import heapq
 
 class KthLargest:
-
     def __init__(self, k: int, nums: List[int]):
         self.heap = []
         self.k = k
         for num in nums:
-            heapq.heappush(self.heap,num)
+            heapq.heappush(self.heap, num)
             if len(self.heap) > k:
-                heapq.heappop(self.heap)
-
+                heapq.heappop(self.heap)    # 非前 k 大的数据可以不存。
 
     def add(self, val: int) -> int:
-        heapq.heappush(self.heap,val)
+        heapq.heappush(self.heap, val)
         if len(self.heap) > self.k:
             heapq.heappop(self.heap)
         return self.heap[0]
 
+if __name__ == "__main__":
+    kthLargest = KthLargest(3, [4, 5, 8, 2])
+    print(kthLargest.add(3))   # return 4
+    print(kthLargest.add(5))   # return 5
+    print(kthLargest.add(10))  # return 5
+    print(kthLargest.add(9))   # return 8
+    print(kthLargest.add(4))   # return 8
