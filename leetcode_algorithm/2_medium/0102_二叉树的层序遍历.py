@@ -27,7 +27,7 @@ class TreeNode:
         self.right = None
     
     def __str__(self):
-        return str(self.val)   
+        return str(self.val)
 
 def list_to_binarytree(nums):
     def level(index):
@@ -42,7 +42,8 @@ def list_to_binarytree(nums):
 from collections import deque
 from typing import List
 
-""" 解法1：迭代实现 BFS """
+""" 解法1：迭代实现 BFS
+    广度优先需要用队列作为辅助结构"""
 class Solution(object):
 	def levelOrder(self, root: TreeNode) -> List[List[int]]:
 		if not root:
@@ -59,27 +60,45 @@ class Solution(object):
 					queue.append(r.left)    # 也放入队列中
 				if r.right:
 					queue.append(r.right)
-			res.append(tmp)     # 将临时 list 加入最终返回结果中
+			res.append(tmp)     # 把每层遍历到的节点都放入到一个结果集中
 		return res
 
 """ 解法2：递归实现 DFS (深度优先搜索) """
 class Solution(object):
-    def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
         if not root:
             return []
         res = []
-        
+
         def dfs(root, index):   # index 为层数
             if not root:        # 遍历的终止条件
                 return
-            if len(res) < index:      # 没有对应的第 index 层数组时：
-                res.append(deque())   # 创建第 index 层数组
+            if len(res) < index:      # 没有对应的第 index 层数组时：创建第 index 层数组
+                res.append(deque())   # 假设res是[ [1],[2,3] ]， index是3，就再插入一个空list放到res中
             res[index - 1].append(root.val) # 答案中第 index 层加入答案
-            dfs(root.left, index + 1)   # 递归左子树
-            dfs(root.right, index + 1)  # 递归右子树
+            dfs(root.left, index + 1)   # 递归左子树，同时将层数index+1
+            dfs(root.right, index + 1)  # 递归右子树，同时将层数index+1
             
         dfs(root, 1)
         return [list(q) for q in res]
+
+class Solution(object):
+	def levelOrder(self, root: TreeNode) -> List[List[int]]:
+		if not root:
+			return []
+		res = []
+		def dfs(index,r):
+			if len(res)<index:  # 没有对应的第 index 层数组时：创建第 index 层数组
+				res.append([])  # 假设res是[ [1],[2,3] ]， index是3，就再插入一个空list放到res中
+			# 将当前节点的值加入到res中，index代表当前层，假设index是3，节点值是99
+			# res是[ [1],[2,3] [4] ]，加入后res就变为 [ [1],[2,3] [4,99] ]
+			res[index-1].append(r.val)  # 答案中第 index 层加入答案
+			if r.left:
+				dfs(index+1,r.left)     # 递归左子树，同时将层数index+1
+			if r.right:
+				dfs(index+1,r.right)    # 递归右子树，同时将层数index+1
+		dfs(1,root)
+		return res
 
 if __name__ == "__main__":
     root = list_to_binarytree([3,9,20,None,None,15,7])
