@@ -1,25 +1,38 @@
 """
 https://leetcode-cn.com/problems/invert-binary-tree/
 
-翻转一棵二叉树。
+给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。
 
-示例：
+示例 1：
 
-输入：
+    输入：root = [4,2,7,1,3,6,9]
+    输出：[4,7,2,9,6,3,1]
 
-     4
-   /   \
-  2     7
- / \   / \
-1   3 6   9
+         4
+       /   \
+      2     7
+     / \   / \
+    1   3 6   9
 
-输出：
+    输出：
 
-     4
-   /   \
-  7     2
- / \   / \
-9   6 3   1
+         4
+       /   \
+      7     2
+     / \   / \
+    9   6 3   1
+    
+示例 2：
+    输入：root = [2,1,3]
+    输出：[2,3,1]
+
+示例 3：
+    输入：root = []
+    输出：[]
+
+提示：
+    树中节点数目范围在 [0, 100] 内
+    -100 <= Node.val <= 100
 
 """
 class TreeNode:
@@ -29,8 +42,8 @@ class TreeNode:
         self.right = None
     
     def __str__(self):
-        #测试基本功能，输出字符串
-        return str(self.val)   
+        # 测试基本功能，输出字符串
+        return str(self.val)
 
 def list_to_binarytree(nums):
     def level(index):
@@ -43,7 +56,7 @@ def list_to_binarytree(nums):
     return level(0)
 
 def printBFS(root):
-    res = []         
+    res = []
     if root is None:
         return
     else:
@@ -57,30 +70,38 @@ def printBFS(root):
                 queue.append(currentNode.right)
     return res
 
-"""递归，深度优先遍历"""
+""" 方法一：递归，深度优先遍历，从叶子节点先开始翻转。"""
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         if not root:        # 递归函数的终止条件，节点为空时返回
             return None
+        root.left, root.right = right, left # 将当前节点的左右子树交换
         left = self.invertTree(root.left)   # 递归交换当前节点的 左子树
         right = self.invertTree(root.right) # 递归交换当前节点的 右子树
-        root.left, root.right = right, left # 将当前节点的左右子树交换
         return root
 
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        if not root:        # 递归函数的终止条件，节点为空时返回
+            return None
+        root.left, root.right = root.right, root.left   # 将当前节点的左右子树交换
+        self.invertTree(root.left)                      # 递归交换当前节点的 左子树
+        self.invertTree(root.right)                     # 递归交换当前节点的 右子树
+        return root
 
-"""迭代"""
+""" 迭代 """
 class Solution(object):
 	def invertTree(self, root):
 		if not root:
 			return None
 		queue = [root]  # 先将根节点放入到队列中，然后将二叉树中的节点逐层放入队列中，再迭代处理队列中的元素
 		while queue:
-			tmp = queue.pop(0)  
+			tmp = queue.pop(0)
 			tmp.left,tmp.right = tmp.right,tmp.left     # 每次都从队列中拿一个节点，并交换这个节点的左右子树
 			if tmp.left:
 				queue.append(tmp.left)      # 如果当前节点的左子树不为空，则放入队列等待后续处理
 			if tmp.right:
-				queue.append(tmp.right)     # 如果当前节点的右子树不为空，则放入队列等待后续处理	
+				queue.append(tmp.right)     # 如果当前节点的右子树不为空，则放入队列等待后续处理
 		return root     # 返回处理完的根节点
 
 
