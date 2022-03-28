@@ -20,7 +20,7 @@ def partition(arr: List[int], low: int, high: int):
             j += 1
             arr[j], arr[i] = arr[i], arr[j]
     arr[low], arr[j] = arr[j], arr[low]
-    return j 
+    return j
 
 def quick_sort_between(arr: List[int], low: int, high: int):
     if high - low <= 1: # 递归结束条件
@@ -40,7 +40,7 @@ def quick_sort(arr:List[int]):
 
 
 # 解法2：
-def quick_sort(arr):      
+def quick_sort(arr):
     if len(arr) <= 1:    # 边界条件
         return arr
     else:
@@ -65,7 +65,7 @@ def quick_sort_3(arr:List[int], start, end):
     mid = arr[start]    # 设定起始元素为要寻找位置的基准元素
     low = start         # low为序列左边的由左向右移动的游标
     high = end          # high为序列右边的由右向左移动的游标
-    while low < high:   
+    while low < high:
         while low < high and arr[high] >= mid:  # 如果low与high未重合，high指向的元素不比基准元素小，则high向左移动
             high -= 1
         arr[low] = arr[high]                   # 将high指向的元素放到low的位置上
@@ -78,6 +78,19 @@ def quick_sort_3(arr:List[int], start, end):
     quick_sort_3(arr, start, low-1)   # 对基准元素左边的子序列进行快速排序
     quick_sort_3(arr, low+1, end)     # 对基准元素右边的子序列进行快速排序
 
+def quick_sort(arr, l, r):
+            if l >= r: return   # 子数组长度为 1 时终止递归
+            i, j = l, r     # 初始化哨兵索引位置（以 arr[l] 作为基准数）
+            while i < j:    # 循环交换，两哨兵相遇时跳出
+                while i < j and arr[j] >= arr[l]:   # 从右向左，查抄首个小于基准数的元素
+                    j -= 1
+                while i < j and arr[i] <= arr[l]:   # 从左向右，查抄首个大于基准数的元素
+                    i += 1
+                arr[i], arr[j] = arr[j], arr[i]     # 交换arr[i] 和 arr[j]
+            arr[l], arr[i] = arr[i], arr[l]     # 交换基准数 arr[l] 和 arr[i]
+            # 哨兵划分操作完成后，左子数组所有数字 ≤ 基准数，右子数组所有数字 ≥ 基准数
+            quick_sort(arr, l, i - 1)   # 递归左（右）子数组执行哨兵划分
+            quick_sort(arr, i + 1, r)
 
 if __name__ == '__main__':
     import random
