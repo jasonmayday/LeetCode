@@ -29,49 +29,45 @@ class TreeNode:
         self.left = left
         self.right = right
 
-"""递归"""
+""" 递归实现 """
 class Solution(object):
 	def isSymmetric(self, root: TreeNode) -> bool:
 		if not root:
 			return True
-		def dfs(left, right):
-			# 递归的终止条件是两个节点都为空
-			# 或者两个节点中有一个为空
-			# 或者两个节点的值不相等
-			if not (left or right):     # if left is None and right is None:
+		def dfs(left, right):	# 调用递归函数，比较左节点，右节点
+			# 递归的终止条件:
+			if not (left or right):     # 两个节点有一个为空
 				return True
-			if not (left and right):    # elif (left is None and right is not None) or (left is not None and right is None):
+			if not (left and right):    # 两个节点都为空
 				return False
-			if left.val != right.val:
+			if left.val != right.val:	# 两个节点的值不相等
 				return False
-			return dfs(left.left,right.right) and dfs(left.right,right.left)    # 如果相当，比较 left 的左节点和 right 的右节点，再比较 left 的右节点和 right 的左节点
-		# 用递归函数，比较左节点，右节点
-		return dfs(root.left,root.right)
+			return dfs(left.left, right.right) and dfs(left.right, right.left)	# 如果相当，比较 left 的左节点和 right 的右节点，再比较 left 的右节点和 right 的左节点
+		return dfs(root.left, root.right)	# 调用递归函数，从比较根节点的左节点，右节点开始
 
-"""队列"""
+""" 队列实现 """
 class Solution(object):
 	def isSymmetric(self, root: TreeNode) -> bool:
 		if not root or not (root.left or root.right):
 			return True
-		# 用队列保存节点	
+		# 用队列保存节点
 		queue = [root.left,root.right]
 		while queue:
-			# 从队列中取出两个节点，再比较这两个节点
+			# 从队列中取出两个节点(left 和 right)，再比较这两个节点
 			left = queue.pop(0)
 			right = queue.pop(0)
-			# 如果两个节点都为空就继续循环，两者有一个为空就返回false
-			if not (left or right):
+			
+			if not (left or right):		# 如果两个节点都为空就继续循环
 				continue
-			if not (left and right):
+			if not (left and right):	# 如果两个节点有一个为空就返回false
 				return False
-			if left.val!=right.val:
+			if left.val != right.val:	# 如果左右节点不相等就返回false
 				return False
-			# 将左节点的左孩子， 右节点的右孩子放入队列
-			queue.append(left.left)
-			queue.append(right.right)
-			# 将左节点的右孩子，右节点的左孩子放入队列
-			queue.append(left.right)
-			queue.append(right.left)
+			
+			queue.append(left.left)		# 将左节点的左子树放入队列
+			queue.append(right.right)	# 将右节点的右子树放入队列
+			queue.append(left.right)	# 将左节点的右子树放入队列
+			queue.append(right.left)	# 将右节点的左子树放入队列
 		return True
 
 if __name__ == "__main__":
