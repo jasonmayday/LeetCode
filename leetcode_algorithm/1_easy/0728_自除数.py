@@ -10,7 +10,7 @@ https://leetcode-cn.com/problems/self-dividing-numbers
 给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。
 
 示例 1：
-    输入： 
+    输入：
     上边界left = 1, 下边界right = 22
     输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
 
