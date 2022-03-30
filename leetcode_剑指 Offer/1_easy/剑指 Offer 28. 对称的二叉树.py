@@ -91,12 +91,12 @@ if __name__ == "__main__":
 
     sol = Solution()
     result = sol.isSymmetric(root)
-    print (result)  
+    print (result)
     '''
         1
        / \
       2   2
      / \ / \
     3  4 4  3
-    ''' 
+    '''
     
