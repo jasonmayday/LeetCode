@@ -26,8 +26,28 @@ class Solution:
                 return ch
         return ' '
 
+class Solution:
+    def firstUniqChar(self, s: str) -> str:
+        dic = {}
+        for c in s:
+            dic[c] = not c in dic   # 若 dic 中 不包含 键(key) c ：则向 dic 中添加键值对 (c, True) ，代表字符 c 的数量为 11 ；
+        for c in s:
+            if dic[c]:      # 若 dic 中 包含 键(key) c ：
+                return c    # 则修改键 c 的键值对为 (c, False) ，代表字符 c 的数量 > 1>1 。
+        return ' '
+
+""" 方法二：有序哈希表"""
+class Solution:
+    def firstUniqChar(self, s: str) -> str:
+        dic = {}    # Python 3.6 后，默认字典就是有序的，因此无需使用 OrderedDict()
+        for c in s:
+            dic[c] = not c in dic
+        for k, v in dic.items():   # 遍历有序哈希表，实现搜索首个 “数量为 1 的字符”。
+            if v: return k
+        return ' '
+
 if __name__ == "__main__":
-    arr = [3,2,1]
+    s = "abaccdeff"
     sol = Solution()
-    result = sol.getLeastNumbers(arr)
+    result = sol.firstUniqChar(s)
     print(result)
