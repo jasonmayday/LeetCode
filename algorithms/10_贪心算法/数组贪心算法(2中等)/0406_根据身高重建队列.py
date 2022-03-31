@@ -23,7 +23,7 @@ https://leetcode-cn.com/problems/queue-reconstruction-by-height/
 
 提示：
     1 <= people.length <= 2000
-    0 <= hi <= 106
+    0 <= hi <= 10^6
     0 <= ki < people.length
     题目数据确保队列可以被重建
 

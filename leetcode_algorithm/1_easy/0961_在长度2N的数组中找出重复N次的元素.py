@@ -23,7 +23,7 @@ https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/
 提示：
     2 <= n <= 5000
     nums.length == 2 * n
-    0 <= nums[i] <= 104
+    0 <= nums[i] <= 10^4
     nums 由 n + 1 个 不同的 元素组成，且其中一个元素恰好重复 n 次
 
 """

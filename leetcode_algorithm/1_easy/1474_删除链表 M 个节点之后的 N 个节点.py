@@ -32,8 +32,8 @@ https://leetcode-cn.com/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/
     输出: [9,7,8]
 
 提示:
-    链表中节点数目在范围 [1, 104] 内
-    1 <= Node.val <= 106
+    链表中节点数目在范围 [1, 10^4] 内
+    1 <= Node.val <= 10^6
     1 <= m, n <= 1000
 
 进阶: 你能通过 就地 修改链表的方式解决这个问题吗?

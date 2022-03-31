@@ -26,7 +26,7 @@ https://leetcode-cn.com/problems/maximum-units-on-a-truck/
 提示：
     1 <= boxTypes.length <= 1000
     1 <= numberOfBoxesi, numberOfUnitsPerBoxi <= 1000
-    1 <= truckSize <= 106
+    1 <= truckSize <= 10^6
 
 """
 from typing import List

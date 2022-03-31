@@ -21,7 +21,7 @@ https://leetcode-cn.com/problems/non-overlapping-intervals/
 提示:
     1 <= intervals.length <= 10^5
     intervals[i].length == 2
-    -5 * 104 <= starti < endi <= 5 * 10^4
+    -5 * 10^4 <= starti < endi <= 5 * 10^4
 
 """
 from typing import List

@@ -32,7 +32,7 @@ https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/
     = 22
 
 提示：
-    1 <= tokens.length <= 104
+    1 <= tokens.length <= 10^4
     tokens[i] 是一个算符（"+"、"-"、"*" 或 "/"），或是在范围 [-200, 200] 内的一个整数
 
 逆波兰表达式：

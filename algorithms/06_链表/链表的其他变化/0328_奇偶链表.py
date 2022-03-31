@@ -19,7 +19,7 @@ https://leetcode-cn.com/problems/odd-even-linked-list/
 
 提示:
     n ==  链表中的节点数
-    0 <= n <= 104
+    0 <= n <= 10^4
     -10^6 <= Node.val <= 10^6
 
 """

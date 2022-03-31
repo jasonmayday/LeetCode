@@ -23,8 +23,8 @@ https://leetcode-cn.com/problems/rank-transform-of-an-array/
     输出：[5,3,4,2,8,6,7,1,3]
 
 提示：
-    0 <= arr.length <= 105
-    -109 <= arr[i] <= 109
+    0 <= arr.length <= 10^5
+    -10^9 <= arr[i] <= 10^9
 
 """
 from typing import List

@@ -29,7 +29,7 @@ https://leetcode-cn.com/problems/mean-of-array-after-removing-some-elements/
 提示：
     20 <= arr.length <= 1000
     arr.length 是 20 的 倍数 
-    0 <= arr[i] <= 105
+    0 <= arr[i] <= 10^5
 
 """
 from typing import List

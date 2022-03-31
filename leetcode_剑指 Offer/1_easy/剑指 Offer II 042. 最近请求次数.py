@@ -24,9 +24,9 @@ https://leetcode-cn.com/problems/H8086Q/
         recentCounter.ping(3002);  // requests = [1, 100, 3001, 3002]，范围是 [2,3002]，返回 3
 
 提示：
-    1 <= t <= 109
+    1 <= t <= 10^9
     保证每次对 ping 调用所使用的 t 值都 严格递增
-    至多调用 ping 方法 104 次
+    至多调用 ping 方法 10^4 次
 
 注意：本题与主站 933 题相同： https://leetcode-cn.com/problems/number-of-recent-calls/
 

@@ -28,7 +28,7 @@ https://leetcode-cn.com/problems/buddy-strings/
  
 
 提示：
-    1 <= s.length, goal.length <= 2 * 104
+    1 <= s.length, goal.length <= 2 * 10^4
     s 和 goal 由小写英文字母组成
 
 """

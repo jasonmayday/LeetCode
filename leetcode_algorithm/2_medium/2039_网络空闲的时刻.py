@@ -58,7 +58,7 @@ https://leetcode-cn.com/problems/the-time-when-the-network-becomes-idle/comments
     2 <= n <= 10^5
     patience[0] == 0
     对于 1 <= i < n ，满足 1 <= patience[i] <= 10^5
-    1 <= edges.length <= min(105, n * (n - 1) / 2)
+    1 <= edges.length <= min(10^5, n * (n - 1) / 2)
     edges[i].length == 2
     0 <= ui, vi < n
     ui != vi

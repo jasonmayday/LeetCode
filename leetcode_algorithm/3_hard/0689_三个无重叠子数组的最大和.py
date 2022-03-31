@@ -16,7 +16,7 @@ https://leetcode-cn.com/problems/maximum-sum-of-3-non-overlapping-subarrays/
     输出：[0,2,4]
 
 提示：
-    1 <= nums.length <= 2 * 104
+    1 <= nums.length <= 2 * 10^4
     1 <= nums[i] < 216
     1 <= k <= floor(nums.length / 3)
 

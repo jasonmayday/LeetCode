@@ -18,7 +18,7 @@ https://leetcode-cn.com/problems/longest-valid-parentheses/
     输出：0
 
 提示：
-    0 <= s.length <= 3 * 104
+    0 <= s.length <= 3 * 10^4
     s[i] 为 '(' 或 ')'
 
 """

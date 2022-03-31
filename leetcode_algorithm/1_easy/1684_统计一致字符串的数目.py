@@ -21,7 +21,7 @@ https://leetcode-cn.com/problems/count-the-number-of-consistent-strings/
     解释：字符串 "cc"，"acd"，"ac" 和 "d" 是一致字符串。
 
 提示：
-    1 <= words.length <= 104
+    1 <= words.length <= 10^4
     1 <= allowed.length <= 26
     1 <= words[i].length <= 10
     allowed 中的字符 互不相同 。

@@ -37,7 +37,7 @@ LeetCode 设计了一款新式键盘，正在测试其可用性。测试人员�
     releaseTimes.length == n
     keysPressed.length == n
     2 <= n <= 1000
-    1 <= releaseTimes[i] <= 109
+    1 <= releaseTimes[i] <= 10^9
     releaseTimes[i] < releaseTimes[i+1]
     keysPressed 仅由小写英文字母组成
 

@@ -20,13 +20,13 @@ https://leetcode-cn.com/problems/find-k-pairs-with-smallest-sums/
          [1,1],[1,1],[1,2],[2,1],[1,2],[2,2],[1,3],[1,3],[2,3]
 
 示例 3:
-    输入: nums1 = [1,2], nums2 = [3], k = 3 
+    输入: nums1 = [1,2], nums2 = [3], k = 3
     输出: [1,3],[2,3]
     解释: 也可能序列中所有的数对都被返回:[1,3],[2,3]
  
 提示:
     1 <= nums1.length, nums2.length <= 10^4
-    -109 <= nums1[i], nums2[i] <= 109
+    -10^9 <= nums1[i], nums2[i] <= 10^9
     nums1, nums2 均为升序排列
     1 <= k <= 1000
 

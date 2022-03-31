@@ -22,7 +22,7 @@ https://leetcode-cn.com/problems/number-of-rectangles-that-can-form-the-largest-
 提示：
     1 <= rectangles.length <= 1000
     rectangles[i].length == 2
-    1 <= li, wi <= 109
+    1 <= li, wi <= 10^9
     li != wi
 
 """

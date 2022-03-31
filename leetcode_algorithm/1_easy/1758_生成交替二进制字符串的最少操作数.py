@@ -23,7 +23,7 @@ https://leetcode-cn.com/problems/minimum-changes-to-make-alternating-binary-stri
     解释：需要 2 步操作得到 "0101" 或 "1010" 。
 
 提示：
-    1 <= s.length <= 104
+    1 <= s.length <= 10^4
     s[i] 是 '0' 或 '1'
 
 """

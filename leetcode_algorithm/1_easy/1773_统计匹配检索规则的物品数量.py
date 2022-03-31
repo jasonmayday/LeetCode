@@ -23,7 +23,7 @@ https://leetcode-cn.com/problems/count-items-matching-a-rule/
     解释：只有两件物品匹配检索规则，这两件物品分别是 ["phone","blue","pixel"] 和 ["phone","gold","iphone"] 。注意，["computer","silver","phone"] 未匹配检索规则。
 
 提示：
-    1 <= items.length <= 104
+    1 <= items.length <= 10^4
     1 <= typei.length, colori.length, namei.length, ruleValue.length <= 10
     ruleKey 等于 "type"、"color" 或 "name"
     所有字符串仅由小写字母组成

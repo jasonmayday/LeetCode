@@ -23,9 +23,9 @@ https://leetcode-cn.com/problems/find-nearest-point-that-has-the-same-x-or-y-coo
     解释：没有有效点。
 
 提示：
-    1 <= points.length <= 104
+    1 <= points.length <= 10^4
     points[i].length == 2
-    1 <= x, y, ai, bi <= 104
+    1 <= x, y, ai, bi <= 10^4
 
 """
 from typing import List
@@ -35,7 +35,7 @@ class Solution:
         index = -1
         minDist = float("inf")
         for i in range(len(points)):
-            if points[i][0] == x or points[i][1] == y:  # 判断是否为有效点  
+            if points[i][0] == x or points[i][1] == y:  # 判断是否为有效点
                 curDist = abs(x - points[i][0]) + abs(y - points[i][1]) # 计算曼哈顿距离
                 if curDist < minDist:
                     index = i

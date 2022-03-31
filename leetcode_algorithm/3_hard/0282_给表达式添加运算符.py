@@ -5,7 +5,7 @@ https://leetcode-cn.com/problems/expression-add-operators/
 
 示例 1:
 输入: num = "123", target = 6
-输出: ["1+2+3", "1*2*3"] 
+输出: ["1+2+3", "1*2*3"]
 
 示例 2:
 输入: num = "232", target = 8

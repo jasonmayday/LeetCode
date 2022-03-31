@@ -32,7 +32,7 @@ https://leetcode-cn.com/problems/maximize-the-confusion-of-an-exam/
 
 提示：
     n == answerKey.length
-    1 <= n <= 5 * 104
+    1 <= n <= 5 * 10^4
     answerKey[i] 要么是 'T' ，要么是 'F'
     1 <= k <= n
 

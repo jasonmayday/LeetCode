@@ -9,7 +9,7 @@ https://leetcode-cn.com/problems/path-crossing/
 
 示例 1：
     输入：path = "NES"
-    输出：false 
+    输出：false
     解释：该路径没有在任何位置相交。
 
 示例 2：
@@ -18,7 +18,7 @@ https://leetcode-cn.com/problems/path-crossing/
     解释：该路径经过原点两次。
  
 提示：
-    1 <= path.length <= 104
+    1 <= path.length <= 10^4
     path[i] 为 'N'、'S'、'E' 或 'W'
 
 """
