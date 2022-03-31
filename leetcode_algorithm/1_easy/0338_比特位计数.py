@@ -34,7 +34,7 @@ https://leetcode-cn.com/problems/counting-bits/
 
 from typing import List
 
-'''方法1：遍历 与 统计'''
+''' 方法1：遍历 与 统计'''
 class Solution:
     def countBits(self, num: int) -> List[int]:
         res = []
@@ -42,8 +42,7 @@ class Solution:
             res.append(bin(i).count("1"))
         return res
 
-
-'''方法2：递归'''
+''' 方法2：递归'''
 class Solution(object):
     def countBits(self, num):
         res = []
@@ -58,14 +57,21 @@ class Solution(object):
             return self.count(num - 1) + 1
         return self.count(num // 2)
 
-'''方法3：动态规划'''
+""" 方法3：动态规划——最低有效位"""
 class Solution:
-    def countBits(self, num):
-        res = [0] * (num + 1)
-        for i in range(1, num + 1):
-            res[i] = res[i >> 1] + (i & 1)
-        return res
+    def countBits(self, n: int) -> List[int]:
+        bits = [0]
+        for i in range(1, n + 1):
+            bits.append(bits[i >> 1] + (i & 1))
+        return bits
 
+""" 方法4：动态规划——最低设置位"""
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        bits = [0]
+        for i in range(1, n + 1):
+            bits.append(bits[i & (i - 1)] + 1)
+        return bits
 
 if __name__ == "__main__":
     n = 10000
