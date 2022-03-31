@@ -16,7 +16,7 @@ sorted()函数是Python的内置函数，具体形式为sorted(iterable, cmp=Non
 from functools import cmp_to_key
 
 # 名字，成绩，年龄
-students = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)] 
+students = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
 # 根据 年龄 升序
 print ("根据年龄升序:", sorted (students, key = lambda x: x[2]))
 # 根据 年龄 降序
