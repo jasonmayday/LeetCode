@@ -21,13 +21,13 @@ https://leetcode-cn.com/problems/valid-palindrome
 
 '''
 
-"""方法1：筛选判断"""
+""" 方法1：筛选判断 """
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         sgood = "".join(ch.lower() for ch in s if ch.isalnum()) # sgood: amanaplanacanalpanama
         return sgood == sgood[::-1]
 
-"""方法2：双指针"""
+""" 方法2：双指针 """
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         sgood = "".join(ch.lower() for ch in s if ch.isalnum()) # sgood: amanaplanacanalpanama
