@@ -15,4 +15,23 @@ https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof/
     1 <= 数组长度 <= 10000
 
 """
+from typing import List
 
+""" 二分查找 """
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        i = 0
+        j = len(nums) -1
+        while i <= j:
+            mid = (i + j) // 2
+            if nums[mid] == mid:    # 中点的下标和值相同，说明缺失的数字在中点右边：
+                i = mid + 1         # 收缩左边界
+            else:                   # 中点的下标和值不同，说明缺失的数字在中点左边：
+                j = mid - 1         # 收缩右边界
+        return i
+
+if __name__ == "__main__":
+    nums = [0,1,2,3,4,5,6,7,9]
+    sol = Solution()
+    result = sol.missingNumber(nums)
+    print (result)
