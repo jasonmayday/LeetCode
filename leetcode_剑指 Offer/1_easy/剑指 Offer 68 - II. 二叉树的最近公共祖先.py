@@ -49,18 +49,17 @@ def list_to_binarytree(nums):
 """ 递归 + DFS """
 class Solution:
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
-        if not root or root == p or root == q:  # 终止条件：找到了节点p或者q，或者遇到空节点：
+        if not root or root == p or root == q:      # 递归终止条件：找到了节点p或者q，或者遇到空节点：
             return root                             # 则直接返回 root
         left = self.lowestCommonAncestor(root.left, p, q)       # 开启递归左子节点，返回值记为 left
         right = self.lowestCommonAncestor(root.right, p, q)     # 开启递归右子节点，返回值记为 right
         if not left and not right:  # 当 left 和 right 同时为空（遍历到树底）：
-            return                      # 说明 root 的左 / 右子树中都不包含 p,q ，(终止递归，向上返回)
+            return                  # 说明 root 的左 / 右子树中都不包含 p,q ，(终止递归，向上返回)
         if not left:                # 当 left 为空 ，right 不为空 ：
-            return right                # p,q 都不在 root 的左子树中，直接返回 right 
+            return right            # p,q 都不在 root 的左子树中，直接返回 right
         if not right:               # 当 left 不为空 ，right 为空 ：
-            return left                 # p,q 都不在 root 的右子树中，直接返回 left
-        return root             # 当 left 和 right 同时不为空 ：说明 p,q 分列在 root 的 异侧 （分别在 左 / 右子树），因此 root 为最近公共祖先，返回 （或者更新）root
-
+            return left             # p,q 都不在 root 的右子树中，直接返回 left
+        return root                 # 当 left 和 right 同时不为空 ：说明 p,q 分列在 root 的 异侧 （分别在 左 / 右子树），因此 root 为最近公共祖先，返回 （或者更新）root
 
 
 if __name__ == "__main__":
