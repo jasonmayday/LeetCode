@@ -76,11 +76,11 @@ if __name__ == "__main__":
 
     sol = Solution()
     result = sol.minDepth(root)
-    print (result)  
+    print (result)
     '''
         3
        / \
       9   20
          / \
         15  7
-    ''' 
+    '''
