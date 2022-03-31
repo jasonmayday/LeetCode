@@ -30,7 +30,7 @@ https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/
 '''
 from typing import List
 
-"""二分查找"""
+""" 二分查找 """
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         for i in range(len(numbers)):
@@ -46,7 +46,7 @@ class Solution:
                     low = mid + 1
         return [-1, -1]
 
-"""双指针"""
+""" 双指针 """
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         low, high = 0, len(numbers) - 1             # 初始时两个指针分别指向第一个元素位置和最后一个元素的位置
