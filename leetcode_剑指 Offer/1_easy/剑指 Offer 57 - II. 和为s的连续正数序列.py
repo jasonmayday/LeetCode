@@ -39,13 +39,13 @@ class Solution:
         res = []
         while i < j:    # 当 i≥j 时跳出
             if s == target:                         # 当元素和等于目标时
-                res.append(list(range(i-1, j)))   # 记录连续整数序列
+                res.append(list(range(i, j + 1)))   # 记录连续整数序列
             if s > target:  # 当元素和大于目标时
-                s -= i      # 更新元素和 s
-                i += 1      # 向右移动左边界 i=i+1
+                s -= i      # 更新元素和 s，向右移动左边界 i=i+1
+                i += 1      # i 向右移，代表元素 i 被移除了窗口，因此要先 减去值，再右移左指针
             else:           # 当元素和小于目标时
-                s += j      # 更新元素和 s
-                j += 1      # 向右移动右边界 j=j+1
+                j += 1      # 向右移动右边界 j=j+1，更新元素和 s
+                s += j      # 右边情况不一样，先右移才能把元素包含进来
         return res
 
 if __name__ == "__main__":
