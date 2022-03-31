@@ -23,21 +23,21 @@ https://leetcode-cn.com/problems/verifying-an-alien-dictionary/
 '''
 from typing import List
 
-""" 方法一： 检查相邻单词 """
+""" 方法一：检查相邻单词 """
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
-        order_index = {c:i for i,c in enumerate(order)}
+        order_index = {ch:index for index, ch in enumerate(order)}
 
-        for i in range(len(words) -1):
-            word1 = words[i]
-            word2 = words[i+1]
+        for i in range(len(words) -1):  # 逐个检查每对相邻单词 a 和 b 是否满足 a <= b
+            word1 = words[i]    # 前一个单词
+            word2 = words[i+1]  # 后一个单词
 
             for j in range(min(len(word1), len(word2))):  # 寻找不同单词中第一个不同的字母
                 if word1[j] != word2[j]:   # 一旦出现不同的字母，开始比较
                     if order_index[word1[j]] > order_index[word2[j]]:
                         return False
                     break   # break了，else就不执行
-            else:   # 前面一直一样，长的应当排在后面
+            else:           # 前面一直一样，长的应当排在后面
                 if len(word1) > len(word2):
                     return False
         return True
