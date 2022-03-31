@@ -32,7 +32,7 @@ def create_linked_list(list):
         cur = cur.next
     return head
 
-"""解法1：将值复制到数组中后用双指针法"""
+""" 解法1：将值复制到数组中后用双指针法"""
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
         vals = []   # 新建一个数组列表
@@ -41,6 +41,21 @@ class Solution:
             vals.append(current_node.val)       # 每次迭代向数组添加 currentNode.val
             current_node = current_node.next    # 并更新 currentNode
         return vals == vals[::-1]       # 列表与反转的列表相等时，返回 True
+
+""" 解法2：递归"""
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        self.front_pointer = head                   # 递归函数外的指针
+        def recursively_check(current_node = head):
+            if current_node is not None:
+                if not recursively_check(current_node.next):
+                    return False
+                if self.front_pointer.val != current_node.val:
+                    return False
+                self.front_pointer = self.front_pointer.next
+            return True
+
+        return recursively_check()
 
 if __name__ == "__main__":
     head = create_linked_list([1,2,2,1])
