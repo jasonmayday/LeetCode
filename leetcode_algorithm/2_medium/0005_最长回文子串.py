@@ -46,7 +46,7 @@ class Solution:
                     break       # 就可以退出当前循环
                     
                 if s[i] != s[j]:
-                    dp[i][j] = False 
+                    dp[i][j] = False
                 else:
                     if j - i < 3:
                         dp[i][j] = True
