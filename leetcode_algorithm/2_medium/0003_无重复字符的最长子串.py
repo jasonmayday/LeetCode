@@ -50,7 +50,7 @@ class Solution:
             occur.add(s[i])         # 然后刚刚遍历到的字符加入到已出现的字符集合中
         return max_len
     
-"""方法一：滑动窗口另一种实现"""  
+"""方法一：滑动窗口另一种实现"""
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         from collections import defaultdict
