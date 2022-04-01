@@ -20,7 +20,6 @@
 
 '''
 from typing import List
-nums = [3, 5, 8, 91, 76, 2, 6, 2, 52, 7, 2, 1]
 
 class Solution:
     def thirdMax(self, nums: List[int]) -> int:
@@ -34,6 +33,7 @@ class Solution:
         return nums[0]
 
 if __name__ == "__main__":
+    nums = [3, 5, 8, 91, 76, 2, 6, 2, 52, 7, 2, 1]
     sol = Solution()
     result = sol.thirdMax(nums)
-    print (result)  
+    print (result)
