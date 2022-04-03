@@ -45,28 +45,45 @@ https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target/
 """
 from typing import List
 
-"""二分查找"""
+""" 线性查找 """
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        return next((letter for letter in letters if letter > target), letters[0])
+
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        l = [x > target for x in letters]
+        return letters[l.index(max(l))]
+
+from bisect import bisect_right
+
+""" 二分查找"""
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
         length = len(letters)
         left = 0
         right = length - 1
         while(left <= right):           # 如果left > right, 跳出循环
-            mid = (left + right)//2
-            if letters[mid] > target:   # 当中间值mid>target时
+            mid = (left + right) // 2
+            if letters[mid] > target:   # 当中间值mid > target时
                 right = mid - 1         # 右边界 = mid - 1
             else:
                 left = mid + 1          # 否则左边界 = mid + 1
-        if left == length:              # 特殊情况:即如果目标字母 target = 'z'
-            return letters[0]
-        else:                       # 跳出循环, 此时left为大于target的最小字母的下标,right为小于等于target的最大字母的下标,
+                
+        if left == length:              # 特殊情况，二分后左指针到了最右，说明，目标字母 target = 'z'
+            return letters[0]           # 返回 第一个字母
+        else:                       # 否则。跳出循环, 此时left为大于target的最小字母的下标,right为小于等于target的最大字母的下标,
             return letters[left]    # 所以return letters[left]
 
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
-        l = [x > target for x in letters]
-        return letters[l.index(max(l))]
-    
+        pos = bisect_right(letters, target)
+        return letters[0] if pos == len(letters) else letters[pos]
+
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        return letters[bisect_right(letters, target)] if target < letters[-1] else letters[0]
+
 if __name__ == "__main__":
     letters = ["c", "f", "j"]
     target = "d"    # 输出: "f"
