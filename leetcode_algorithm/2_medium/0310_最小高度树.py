@@ -3,7 +3,8 @@ https://leetcode-cn.com/problems/minimum-height-trees/
 
 树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。
 
-给你一棵包含 n 个节点的树，标记为 0 到 n - 1 。给定数字 n 和一个有 n - 1 条无向边的 edges 列表（每一个边都是一对标签），其中 edges[i] = [ai, bi] 表示树中节点 ai 和 bi 之间存在一条无向边。
+给你一棵包含 n 个节点的树，标记为 0 到 n - 1 。
+给定数字 n 和一个有 n - 1 条无向边的 edges 列表（每一个边都是一对标签），其中 edges[i] = [ai, bi] 表示树中节点 ai 和 bi 之间存在一条无向边。
 
 可选择树中任何一个节点作为根。当选择节点 x 作为根节点时，设结果树的高度为 h 。在所有可能的树中，具有最小高度的树（即，min(h)）被称为 最小高度树 。
 
@@ -32,6 +33,46 @@ https://leetcode-cn.com/problems/minimum-height-trees/
 """
 from typing import List
 from collections import defaultdict, deque
+
+""" 方法一：广度优先搜索 BFS """
+class Solution:
+    def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
+        if n == 1:
+            return [0]
+
+        g = [[] for _ in range(n)]
+        for x, y in edges:  # [[1,0],[1,2],[1,3]]
+            g[x].append(y)
+            g[y].append(x)
+        print(g)            # [[1], [0, 2, 3], [1], [1]]
+        parents = [0] * n
+        ''' 0
+            |
+            1
+           / \
+          2   3 '''
+        def bfs(start: int):
+            vis = [False] * n   # 是否访问过
+            vis[start] = True
+            q = deque([start])
+            while q:
+                x = q.popleft()
+                for y in g[x]:
+                    if not vis[y]:
+                        vis[y] = True
+                        parents[y] = x
+                        q.append(y)
+            return x
+        x = bfs(0)  # 找到与节点 0 最远的节点 x
+        y = bfs(x)  # 找到与节点 x 最远的节点 y
+
+        path = []
+        parents[x] = -1
+        while y != -1:
+            path.append(y)
+            y = parents[y]
+        m = len(path)
+        return [path[m // 2]] if m % 2 else [path[m // 2 - 1], path[m // 2]]
 
 class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
@@ -76,6 +117,66 @@ class Solution:
                 return [queue.popleft()]
             if n == 2:
                 return [queue.popleft(), queue.popleft()]
+
+""" DFS 深度优先搜索 """
+class Solution:
+    def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
+        if n == 1:
+            return [0]
+
+        g = [[] for _ in range(n)]
+        for x, y in edges:
+            g[x].append(y)
+            g[y].append(x)
+        parents = [0] * n
+        maxDepth, node = 0, -1
+
+        def dfs(x: int, pa: int, depth: int):
+            nonlocal maxDepth, node
+            if depth > maxDepth:
+                maxDepth, node = depth, x
+            parents[x] = pa
+            for y in g[x]:
+                if y != pa:
+                    dfs(y, x, depth + 1)
+        dfs(0, -1, 1)
+        maxDepth = 0
+        dfs(node, -1, 1)
+
+        path = []
+        while node != -1:
+            path.append(node)
+            node = parents[node]
+        m = len(path)
+        return [path[m // 2]] if m % 2 else [path[m // 2 - 1], path[m // 2]]
+
+""" 方法三：拓扑排序 """
+class Solution:
+    def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
+        if n == 1:
+            return [0]
+
+        g = [[] for _ in range(n)]
+        deg = [0] * n
+        for x, y in edges:
+            g[x].append(y)
+            g[y].append(x)
+            deg[x] += 1
+            deg[y] += 1
+
+        q = [i for i, d in enumerate(deg) if d == 1]
+        remainNodes = n
+        while remainNodes > 2:
+            remainNodes -= len(q)
+            tmp = q
+            q = []
+            for x in tmp:
+                for y in g[x]:
+                    deg[y] -= 1
+                    if deg[y] == 1:
+                        q.append(y)
+        return q
+
 
 if __name__ == "__main__":
     n = 4
