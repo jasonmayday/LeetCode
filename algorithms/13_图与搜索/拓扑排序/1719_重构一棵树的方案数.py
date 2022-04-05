@@ -62,7 +62,7 @@ class Solution:
         if len(adj[nodes[0]]) != (n - 1):                           # 出度最大的点，出度不是 n-1
             return 0                                                # 没有符合条件的
         res = 1                                                     # 否则，res先置1
-        start = 1           
+        start = 1
         while start < n and len(adj[nodes[start]]) == n-1:
             res = 2                                                 # 若多个点的出度为n-1  结果为0或2
             start += 1                                              # 找到最后一个出度为n-1的idx
