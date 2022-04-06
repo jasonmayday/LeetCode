@@ -32,7 +32,15 @@ class Solution:
             F.append(F[i-1] + F[i-2])
         return F[n]
     
-    
+class Solution:
+    def fib(self, n: int) -> int:
+        res = [0, 1]
+        if n < 2:
+            return res[n]
+        for i in range(2, n+1):
+            res.append(res[i-2]+res[i-1])
+        return res[-1]
+
 """ 动态规划 """
 class Solution:
     def fib(self, n: int) -> int:
@@ -40,7 +48,7 @@ class Solution:
         dp = [0] * (n + 1)          # 初始化 dp 列表
         dp[0] = 0
         dp[1] = 1                   # 初始化 f(0), f(1)
-        for i in range(2, n + 1):   # 状态转移求取 f(2), f(3), ..., f(n) 
+        for i in range(2, n + 1):   # 状态转移求取 f(2), f(3), ..., f(n)
             dp[i] = dp[i - 1] + dp[i - 2]
         return dp[n]                # 返回 f(n)
 
@@ -48,13 +56,14 @@ class Solution:
     def fib(self, n: int) -> int:
         if n == 0: return 0       # 若求 f(0) 则直接返回 0
         a, b = 0, 1               # 初始化 f(0), f(1)
-        for i in range(2, n + 1): # 状态转移求取 f(2), f(3), ..., f(n) 
+        for _ in range(2, n + 1): # 状态转移求取 f(2), f(3), ..., f(n)
+            res = a + b
             a = b
-            b = a + b
-        return b                  # 返回 f(n)
+            b = res
+        return res                # 返回 f(n)
 
 if __name__ == "__main__":
-    n = 100
+    n = 9
     sol = Solution()
     result = sol.fib(n)
     print(result)
