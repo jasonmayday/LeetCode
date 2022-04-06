@@ -46,7 +46,7 @@ class Solution:
     def fib(self, n: int) -> int:
         if n == 0: return 0       # 若求 f(0) 则直接返回 0
         a, b = 0, 1               # 初始化 f(0), f(1)
-        for i in range(2, n + 1): # 状态转移求取 f(2), f(3), ..., f(n)
+        for _ in range(2, n + 1): # 状态转移求取 f(2), f(3), ..., f(n)
             a = b
             b = a + b
         return b                  # 返回 f(n)
