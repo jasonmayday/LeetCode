@@ -1,15 +1,75 @@
 
 | 名称      | 描述                                           | 使用                                                                           |
 |-----------|------------------------------------------------|--------------------------------------------------------------------------------|
-| break     | 用来终止循环语句，                             | 用在while和for循环中，跳出所在的当前整个循环，到外层代码继续执行。             |
 | return    | 结束函数，返回参数                             | 程序运行到所遇到的第一个return即返回（退出def块），不会再运行第二个return。    |
+| break     | 用来终止循环语句，                             | 用在while和for循环中，跳出所在的当前整个循环，到外层代码继续执行。             |
 | continue  | 跳过当前循环的剩余语句，然后继续进行下一轮循环 | continue语句用在while和for循环中，内层循环执行完毕，外层代码继续运行。         |
 | exit(num) | 退出整个循环                                   | 可省略的参数。通常情况下0表示程序正常退出，1表示程序遇到了某个错误而导致退出。 |
 | pass      | 为了保持程序结构的完整性,不做什么事            | 一般做占位语句                                                                 |
 
-# **1. break**
+# **1. return**
 
-用来终止循环语句，即循环条件没有False条件或者序列还没被完全递归完，也会停止执行循环语句。
+1. 在函数体中遇到return语句，则结束函数执行（函数体未执行完部分不再执行），
+2. 将表达式的值返回到函数调用处。
+3. 使用return最多只能返回一个值。
+
+## return后无语句
+``` python
+def func3():
+    for i in range(1,11):
+        if i % 2 == 0:
+            return i
+    # 符合第一个条件的语句，输出并停止。
+t = func3()
+print(t)
+# 输出结果：2
+```
+
+## return后有语句，会执行吗？
+``` python
+def test():
+    a = 2
+    return a
+    s = 3
+    print(s)
+
+print(test())
+# 输出结果：2
+```
+
+程序运行到所遇到的第一个return即返回（退出def块），不会再运行return后的语句。
+
+## return 和finally一起使用，结果会怎样呢？
+``` python
+def test(s):
+    try:
+        if s == '0':
+            print('111')
+        return True
+    except:
+        print("222")
+        return False
+    finally:
+        print("333")
+
+print(test("0"))
+
+""" 输出结果：
+    111
+    333
+    True
+"""
+```
+这里因为没有发生异常， 所以会执行到try块中的return 语句，但是finally又必须执行，所以执行try中return 之前去执行了finally语句
+
+
+# **2. break**
+
+<div align="center"> <img src="img/break.jpg" alt="Editor" width="400"> </div>
+
+1. break主要用在循环语句或者switch语句中，用来退出整个语句块。
+2. break跳出最里层的循环，并且继续执行该循环下面的语句。
+3. break当用于循环结构时，表示退出其所在的整个循环结构，当前次循环未完成任务及未完成循环次数将不再执行！
 
 ## for 循环中的break
 ``` python
@@ -63,57 +123,15 @@ for i in range(2):
 for循环中，如果您使用嵌套循环，break语句将停止执行最深层的循环，并开始执行下一行代码。
 
 
-# **2. return**
-## return后无语句
-``` python
-def func3():
-    for i in range(1,11):
-        if i % 2 == 0:
-            return i
-    # 符合第一个条件的语句，输出并停止。
-t = func3()
-print(t)
-# 输出结果：2
-```
-
-## return后有语句，会执行吗？
-``` python
-def test():
-    a = 2
-    return a
-    s = 3
-    print(s)
-
-print(test())
-# 输出结果：2
-```
-
-程序运行到所遇到的第一个return即返回（退出def块），不会再运行return后的语句。
-
-## return 和finally一起使用，结果会怎样呢？
-``` python
-def test(s):
-    try:
-        if s == '0':
-            print('111')
-        return True
-    except:
-        print("222")
-        return False
-    finally:
-        print("333")
-
-print(test("0"))
-
-""" 输出结果：
-    111
-    333
-    True
-"""
-```
-这里因为没有发生异常， 所以会执行到try块中的return 语句，但是finally又必须执行，所以执行try中return 之前去执行了finally语句
-
 # **3. continue**
+
+<div align="center"> <img src="img/continue.jpg" alt="Editor" width="400"> </div>
+
+1. continue 用于用在while和for循环中。作用是让程序立即跳转到下一次循环的迭代。
+2. 在for循环中，continue语句使程序立即跳转到更新语句。
+3. 在while或者do。。。while循环中，程序立即跳转到布尔表达式的判断语句。
+4. continue只能用于循环结构，表示结束当前次循环，还会判断条件进行下一次循环。
+
 ## 单循环
 ``` python
 def func():
