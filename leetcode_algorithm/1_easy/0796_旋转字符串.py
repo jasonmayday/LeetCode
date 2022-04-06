@@ -19,7 +19,20 @@ A 的旋转操作就是将 A 最左边的字符移动到最右边。 
 
 """
 
-"""方法一：穷举法"""
+""" 方法一：模拟 """
+class Solution:
+    def rotateString(self, s: str, goal: str) -> bool:
+        m, n = len(s), len(goal)
+        if m != n:
+            return False
+        for i in range(n):
+            for j in range(n):
+                if s[(i + j) % n] != goal[j]:
+                    break
+            else:
+                return True
+        return False
+
 class Solution(object):
     def rotateString(self, A, B):
         if len(A) != len(B):
@@ -27,11 +40,11 @@ class Solution(object):
         if len(A) == 0:
             return True
         for s in range(len(A)):
-            if all(A[(s+i) % len(A)] == B[i] for i in range(len(A))):
+            if all(A[(s + i) % len(A)] == B[i] for i in range(len(A))):
                 return True
         return False
 
-"""方法二：判断子串"""
+""" 方法二：判断子串"""
 class Solution:
     def rotateString(self, A: str, B: str) -> bool:
         if len(A) == len(B) and B in A + A:     # 由于 A + A 包含了所有可以通过旋转操作从 A 得到的字符串
