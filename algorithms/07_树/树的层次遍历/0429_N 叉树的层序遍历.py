@@ -43,7 +43,7 @@ class Solution:
             for i in range(lenQue):   # 遍历每层
                 node = queue.pop(0)   # 获取队列首元素
                 sub.append(node.val)  # 把该层的元素添加进去
-                if node.children:     # 
+                if node.children:     #
                     queue.extend(node.children)   # 扩展队列下一层级元素，注意用extend
             res.append(sub)
         return res
@@ -55,22 +55,23 @@ class Solution:
       5   6
     输出：[[1],[3,2,4],[5,6]]
 """
+
 """ 递归法 """
 class Solution:
-    def level(self,root: 'Node', depth, res):
+    def levelOrder(self, root: 'Node') -> List[List[int]]:
+        res = []
+        self.level(root, 1, res)    # 从深度1开始
+        return res
+    
+    def level(self,root: 'Node', depth, res):   # 为了让递归的过程中的同一层的节点放在同一个列表中，需要记录深度depth
         if root == None:
             return []
         if len(res) < depth:    # 若当前行对应的列表不存在，
             res.append([])      # 加一个空列表
         res[depth - 1].append(root.val) # 将当前节点的值加入当前行的 res 中
         for child in root.children:     # 递归处理子树
-            self.level(child, depth+1, res)
+            self.level(child, depth + 1, res)   # 层数加一，记录下一层
 
-    def levelOrder(self, root: 'Node') -> List[List[int]]:
-        res = []
-        self.level(root, 1, res)
-        return res
-    
 """ BFS """
 class Solution:
     def levelOrder(self, root: 'Node') -> List[List[int]]:
