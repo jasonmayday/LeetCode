@@ -1,4 +1,6 @@
 '''
+https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/
+
 给你一个整数数组 nums ，其中元素已经按 升序 排列，请你将其转换为一棵 高度平衡 二叉搜索树。
 
 高度平衡 二叉树是一棵满足「每个节点的左右两个子树的高度差的绝对值不超过 1 」的二叉树。
@@ -27,11 +29,24 @@ class TreeNode:
         self.left = left
         self.right = right
 
+""" 递归 """
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
+        if not nums:
+            return
+        mid = len(nums) // 2
+        root = TreeNode(nums[mid])
+        root.left = self.sortedArrayToBST(nums[: mid])
+        root.right = self.sortedArrayToBST(nums[mid + 1: ])
+        
+        return root
+
+""" 递归 """
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
 
         def make_tree(left, right):     # 只和长度有关
-            # 首先判定我们的区间是否合理，即left_index要<=right_index
+            # 首先判定我们的区间是否合理，即left_index要 <= right_index
             # 当相等时，只有root会产生，不会产生左右小树
             if left > right:
                 return None
