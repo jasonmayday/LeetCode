@@ -29,30 +29,57 @@ dequeue*方法返回一个列表[动物编号, 动物种类]，若没有可以�
 from typing import List
 from collections import deque
 
-"""用两个队列放到一个列表中，列表0存放猫，列表1存放狗"""
+""" 用两个队列放到一个列表中，列表0存放猫，列表1存放狗"""
 class AnimalShelf:
-
     def __init__(self):
-        self.a = [deque(),deque()]
-
-    def __str__(self):
-        return str(self.a)
+        self.deque = [deque(), deque()]         # 两个队列放到一个列表中，[猫，狗]
     
     def enqueue(self, animal: List[int]) -> None:
-        self.a[animal[1]].append(animal)
+        self.deque[animal[1]].append(animal)    # animal[0]代表动物编号，animal[1]代表动物种类
 
     def dequeueAny(self) -> List[int]:
-        if self.a[0] and self.a[1]:
-            return self.a[0][0][0] <self.a[1][0][0]  and self.a[0].popleft() or self.a[1].popleft()
-        return self.a[0] and self.dequeueCat() or self.dequeueDog()
+        if self.deque[0] and self.deque[1]:
+            return self.deque[0][0][0] <self.deque[1][0][0]  and self.deque[0].popleft() or self.deque[1].popleft()
+        return self.deque[0] and self.dequeueCat() or self.dequeueDog()
 
     def dequeueDog(self) -> List[int]:
-        return self.a[1] and self.a[1].popleft() or [-1,-1]
+        return self.deque[1] and self.deque[1].popleft() or [-1,-1]
 
     def dequeueCat(self) -> List[int]:
-        return self.a[0] and self.a[0].popleft() or [-1,-1]
+        return self.deque[0] and self.deque[0].popleft() or [-1,-1]
 
-""" 三队列 
+""" 双队列 """
+class AnimalShelf:
+    def __init__(self):
+        self.cat = deque()  # 保存猫
+        self.dog = deque()  # 保存狗
+        self.cnt = 0        # 记录当前动物是第几个添加的
+
+    def enqueue(self, animal: List[int]) -> None:
+        self.cnt += 1 # 有动物来了，计数器+1
+        if animal[1] == 1:  # 是狗
+            self.dog.append([self.cnt] + animal) # [第几个进来的, 动物编号, 动物种类]
+        else:               # 是猫
+            self.cat.append([self.cnt] + animal)
+
+    def dequeueAny(self) -> List[int]:
+        cat_size = len(self.cat)
+        dog_size = len(self.dog)
+        if cat_size == 0 and dog_size == 0: # 两个队列都空,没动物了
+            return [-1, -1]
+        elif dog_size == 0 or cat_size and self.cat[0][0] < self.dog[0][0]:
+            # 狗没了，或者老猫比老狗更老
+            return self.dequeueCat()
+        else:
+            return self.dequeueDog()
+
+    def dequeueDog(self) -> List[int]:
+        return self.dog.popleft()[1:] if len(self.dog) else [-1, -1]
+
+    def dequeueCat(self) -> List[int]:
+        return self.cat.popleft()[1:] if len(self.cat) else [-1, -1]
+
+""" 三队列 """
 class AnimalShelf:
 
     def __init__(self):
@@ -91,7 +118,7 @@ class AnimalShelf:
             if self.all_deque[0][1] == 0:
                 return self.all_deque.popleft()
             self.dog_deque.append(self.all_deque.popleft())
-        return [-1, -1]"""
+        return [-1, -1]
 
 if __name__ == "__main__":
     shelf = AnimalShelf()
