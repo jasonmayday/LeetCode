@@ -14,7 +14,7 @@ https://leetcode-cn.com/problems/minimum-height-tree-lcci/
        /   /
      -10  5
 
-本题与主站 108 题相同：：https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/
+本题与主站 108 题相同：https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/
 
 """
 
