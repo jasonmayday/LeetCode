@@ -94,6 +94,14 @@ class Solution:
 
         return cur1
 
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        A, B = headA, headB
+        while A != B:
+            A = A.next if A else headB
+            B = B.next if B else headA
+        return A
+    
 if __name__ == "__main__":
     a = [4,1,8,4,5]
     b = [5,0,1,8,4,5]
