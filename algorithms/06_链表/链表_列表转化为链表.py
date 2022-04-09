@@ -2,7 +2,7 @@
 单链表的结点是一个二元组，元素域value保存着作为表元素的数据项，链接域next里保存同一个表里的下一个节点的标识
 """
 
-'''单链表的结点'''
+""" 单链表的结点类 """
 class ListNode:   # 节点类
     def __init__(self, val = 0, next = None):  # 初始化节点
         self.val = val     # val存放数据元素
@@ -13,7 +13,7 @@ class ListNode:   # 节点类
         #测试基本功能，输出字符串
         return str(self.val)
 
-'''根据输入的列表创建链表'''
+""" 根据输入的列表创建链表 """
 def listToLinkedList(list):
     head = ListNode(list[0])
     cur = head
@@ -22,7 +22,7 @@ def listToLinkedList(list):
         cur = cur.next
     return head
 
-# 传入链表头节点，以数组形式返回
+""" 传入链表头节点，以数组形式返回 """
 def printLinkedList(head):
     cur = head
     list = []
@@ -31,7 +31,7 @@ def printLinkedList(head):
         cur = cur.next
     return list
 
-# 计算链表长度
+""" 计算链表长度 """
 def length(node):
     cur = node
     len = 0                 # 计数
