@@ -72,7 +72,10 @@ def print_linked_list(head):
         cur = cur.next
     return res
 
-# 解法1：双指针
+""" 解法1：双指针
+    A和B两个链表长度可能不同，但是A+B和B+A的长度是相同的，所以遍历A+B和遍历B+A一定是同时结束。 
+    如果A,B相交的话A和B有一段尾巴是相同的，所以两个遍历的指针一定会同时到达交点 如果A,B不相交的话两个指针就会同时到达A+B（B+A）的尾节点
+"""
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
         cur1 = headA  # cur1指向链表A的头结点
@@ -90,10 +93,14 @@ class Solution:
                 cur2 = headA       # 当 curr2 到达链表的尾部时，将它重定位到链表 A 的头结点。
 
         return cur1
-"""
-A和B两个链表长度可能不同，但是A+B和B+A的长度是相同的，所以遍历A+B和遍历B+A一定是同时结束。 
-如果A,B相交的话A和B有一段尾巴是相同的，所以两个遍历的指针一定会同时到达交点 如果A,B不相交的话两个指针就会同时到达A+B（B+A）的尾节点
-"""
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        A, B = headA, headB
+        while A != B:
+            A = A.next if A else headB
+            B = B.next if B else headA
+        return A
 
 if __name__ == "__main__":
     a = [4,1,8,4,5]
