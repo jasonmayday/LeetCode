@@ -22,17 +22,7 @@ class ListNode:   # 节点类
     def __str__(self):
         return str(self.val)
 
-''' 根据输入的列表创建链表 '''
-def listToLinkedList(list):
-    head = ListNode(list[0])
-    cur = head
-    for i in range(1, len(list)):
-        cur.next = ListNode(list[i])
-        cur = cur.next
-    return head
-
-if __name__ == "__main__":
-    
-    sol = Solution()
-    result = sol.()
-    print(result)
+class Solution:
+    def deleteNode(self, node):
+        node.val = node.next.val
+        node.next = node.next.next
