@@ -34,23 +34,22 @@ def listToLinkedList(list):
         cur = cur.next
     return head
 
-"""方法一：将值复制到数组中后用双指针法"""
+
+""" 方法一：将值复制到数组中 """
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
         vals = []
-        current_node = head
-        while current_node is not None:
-            vals.append(current_node.val)
-            current_node = current_node.next
+        node = head
+        while node is not None:
+            vals.append(node.val)
+            node = node.next
         return vals == vals[::-1]
 
-"""方法二：递归"""
+""" 方法二：递归 """
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
-
         self.front_pointer = head
-
-        def recursively_check(current_node=head):
+        def recursively_check(current_node = head):
             if current_node is not None:
                 if not recursively_check(current_node.next):
                     return False
@@ -61,7 +60,7 @@ class Solution:
 
         return recursively_check()
 
-"""方法三：快慢指针"""
+""" 方法三：快慢指针"""
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
         if head is None:
