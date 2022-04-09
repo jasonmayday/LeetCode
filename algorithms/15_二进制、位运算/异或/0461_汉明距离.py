@@ -23,7 +23,16 @@ https://leetcode-cn.com/problems/hamming-distance/
 
 """
 
-'''解法1：异或运算'''
+''' 解法1：异或运算'''
+class Solution:
+    def convertInteger(self, A: int, B: int) -> int:
+        x = A ^ B
+        count = 0
+        while x != 0:
+            x &= x - 1
+            count += 1
+        return count
+
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
         return bin(x ^ y).count('1') # 异或运算：0^0=0; 0^1=1; 1^0=1; 1^1=0
