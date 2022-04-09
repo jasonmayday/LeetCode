@@ -17,7 +17,7 @@ https://leetcode-cn.com/problems/unique-morse-code-words/
 示例 1：
     输入: words = ["gin", "zen", "gig", "msg"]
     输出: 2
-    解释: 
+    解释:
         各单词翻译如下:
         "gin" -> "--...-."
         "zen" -> "--...-."
@@ -36,17 +36,26 @@ https://leetcode-cn.com/problems/unique-morse-code-words/
     words[i] 由小写英文字母组成
 
 """
+from typing import List
+
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        morse_map = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        trans_set = set()
+        for word in words:
+            cur_trans = ''
+            for char in word:
+                cur_trans += morse_map[ord(char)-ord('a')]
+            trans_set.add(cur_trans)
+        return len(trans_set)
 
 class Solution(object):
-    def uniqueMorseRepresentations(self, words):
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
         MORSE = [".-","-...","-.-.","-..",".","..-.","--.",
                  "....","..",".---","-.-",".-..","--","-.",
                  "---",".--.","--.-",".-.","...","-","..-",
                  "...-",".--","-..-","-.--","--.."]
-
-        seen = {"".join(MORSE[ord(c) - ord('a')] for c in word)
-                for word in words}
-
+        seen = {"".join(MORSE[ord(c) - ord('a')] for c in word) for word in words}
         return len(seen)
     
 if __name__ == "__main__":
