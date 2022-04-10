@@ -10,6 +10,20 @@ https://leetcode-cn.com/problems/count-numbers-with-unique-digits/
 
 """
 
+""" 方法一：排列组合 """
+class Solution:
+    def countNumbersWithUniqueDigits(self, n: int) -> int:
+        if n == 0:
+            return 1
+        if n == 1:      # 当 n = 1 的时候，也就是只有一位数，自然是有 0 - 9 一共10种选择， return 10
+            return 10
+        res = 10        # n = 1时，res = 10
+        cur = 9
+        for i in range(n - 1):
+            cur *= 9 - i
+            res += cur
+        return res
+
 class Solution:
     def countNumbersWithUniqueDigits(self, n: int) -> int:
         nums = [0 for _ in range(n + 1)]    # [0, 0, 0] 每一位数字的选择数
@@ -21,20 +35,8 @@ class Solution:
             nums[i] = new + nums[i-1]   # 把具有n位数的不同数字的个数计算完后，需要加上n-1位数字的个数，那就是nums[i-1]了
         return nums[n]
 
-class Solution:
-    def countNumbersWithUniqueDigits(self, n: int) -> int:
-        if n == 0: return 1
-        res = 10    # 当 n = 1 的时候，也就是只有一位数，自然是有 0 - 9 一共10种选择， return 10
-        k = 9
-        temp = 9
-        for _ in range(2, min(n + 1, 11)):
-            temp *= k
-            k -= 1
-            res += temp
-        return res
-
 if __name__ == "__main__":
-    n = 2
+    n = 3
     sol = Solution()
     result = sol.countNumbersWithUniqueDigits(n)
     print (result)
