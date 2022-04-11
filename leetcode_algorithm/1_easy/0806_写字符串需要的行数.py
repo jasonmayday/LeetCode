@@ -5,22 +5,22 @@
 现在回答两个问题：至少多少行能放下S，以及最后一行使用的宽度是多少个单位？将你的答案作为长度为2的整数列表返回。
 
 示例 1:
-    输入: 
+    输入:
         widths = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
         S = "abcdefghijklmnopqrstuvwxyz"
-    输出: 
+    输出:
         [3, 60]
-    解释: 
+    解释:
         所有的字符拥有相同的占用单位10。所以书写所有的26个字母，
         我们需要2个整行和占用60个单位的一行。
 
 示例 2:
-    输入: 
+    输入:
         widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
         S = "bbbcccdddaaa"
-    输出: 
+    输出:
         [2, 4]
-    解释: 
+    解释:
         除去字母'a'所有的字符都是相同的单位10，并且字符串 "bbbcccdddaa" 将会覆盖 9 * 10 + 2 * 4 = 98 个单位.
         最后一个字母 'a' 将会被写到第二行，因为第一行只剩下2个单位了。
         所以，这个答案是2行，第二行有4个单位宽度。
@@ -35,13 +35,14 @@
 
 class Solution(object):
     def numberOfLines(self, widths, S):
-        lines, width = 1, 0
+        lines = 1   # 当前书写所需的行数
+        width = 0   # 当前行已经使用的宽度
         for c in S:
-            w = widths[ord(c) - ord('a')]
-            width += w
-            if width > 100:
-                lines += 1
-                width = w
+            need = widths[ord(c) - ord('a')]   # 当前字符需要的宽度
+            width += need                      # width = width + widths[c]
+            if width > 100:     # 每一行的最大宽度为100个单位
+                lines += 1      # 另起新的一行
+                width = need
 
         return lines, width
 
