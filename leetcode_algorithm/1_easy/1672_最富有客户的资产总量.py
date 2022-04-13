@@ -18,7 +18,7 @@ https://leetcode-cn.com/problems/richest-customer-wealth/
     输出：10
     解释：
     第 1 位客户的资产总量 = 6
-    第 2 位客户的资产总量 = 10 
+    第 2 位客户的资产总量 = 10
     第 3 位客户的资产总量 = 8
     第 2 位客户是最富有的，资产总量是 10
 
@@ -43,13 +43,13 @@ class Solution(object):
     
 class Solution(object):
     def maximumWealth(self, accounts):
-        return max(sum(accounts[i])  for i in range(len(accounts)))   
+        return max(sum(accounts[i])  for i in range(len(accounts)))
     
 class Solution:
     def maximumWealth(self, accounts):
         list1 = []
         for i in accounts:
-            list1.append(sum(i))
+            list1.append(sum(i))    # [6,6]
         return max(list1)
 
   
