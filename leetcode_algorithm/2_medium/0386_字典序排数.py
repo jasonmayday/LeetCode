@@ -29,6 +29,7 @@ class Solution:
             ans.append(num)
             for i in range(10):
                 dfs(num * 10 + i)
+        
         ans = []
         for num in range(1, 10):
             dfs(num)
