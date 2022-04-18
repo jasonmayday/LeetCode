@@ -30,46 +30,35 @@ from typing import List
 
 class Solution:
     def shortestToChar(self, s: str, c: str) -> List[int]:
-        ret = []    # 创建 ret 数组，长度为len(s)
-        arr = [i for i in range(len(s)) if s[i] == c]   # 遍历一次字符串，并将等于目标字符的下标添加至动态数组arr中。
+        res = []    # 创建 res 数组，长度为len(s)
+        c_pos = [i for i in range(len(s)) if s[i] == c]   # 遍历一次字符串，并将等于 c 的下标添加至动态数组 c_pos 中。
         cur = 0     # 初始化指针cur，指向arr的 0 位置
         
-        for i, j in enumerate(s):
-            if cur < len(arr) - 1 and abs(arr[cur] - i) > abs(arr[cur + 1] - i):
+        for i, x in enumerate(s):
+            if cur < len(c_pos) - 1 and abs(c_pos[cur] - i) > abs(c_pos[cur + 1] - i):
                 cur += 1        # 满足以上两点条件时，指针 cur 右移一位
-            ret.append(abs(arr[cur] - i))
-        return ret
+            res.append(abs(c_pos[cur] - i))
+        return res
 
-"""解法2"""
+""" 两次遍历：
+    分别求每个字符到其左侧最近的字符 c 的距离，和每个字符到其左侧最近的字符 c 的距离"""
 class Solution(object):
     def shortestToChar(self, S, C):
         ans = []
         prev = float('-inf')        # 初始化指针
         for i, x in enumerate(S):   # 从左向右遍历
             if x == C: prev = i     # 记录上一个字符 C 出现的位置 prev
-            ans.append(i - prev)    # 那么答案就是 i - prev
+            ans.append(i - prev)    # s[i] 到其左侧最近的字符 c 的距离就是 i - prev
         prev = float('inf')                     # 初始化指针
         for i in range(len(S) - 1, -1, -1):     # 从右向左遍历
-            if S[i] == C: prev = i              # 记录上一个字符 C 出现的位置 prev，那么答案就是 prev - i
+            if S[i] == C: prev = i              # 记录上一个字符 C 出现的位置 prev，那么s[i] 到其右侧最近的字符 c 的距离就是 prev - i
             ans[i] = min(ans[i], prev - i)      # 这两个值取最小就是答案
         return ans
-    
-"""解法3"""
-class Solution:
-    def shortestToChar(self, S: str, C: str) -> List[int]:
-        ili = []
-        res = []
-        for i in range(len(S)):
-            if S[i] == C:
-                ili.append(i)
 
-        for i in range(len(S)):
-            resc = []
-            for l in ili:
-                resc.append(abs(i-l))
-            res.append(min(resc))
-        print(res)
-        return res
+class Solution:
+    def shortestToChar(self, s: str, c: str) -> List[int]:
+        c_pos = [i for i in range(len(s)) if c == s[i]]     # 所有字符c出现的位置
+        return([min(abs(x-i) for i in c_pos) for x in range(len(s))])
 
 if __name__ == "__main__":
     s = "loveleetcode"
