@@ -28,18 +28,18 @@ from typing import List
 class Solution:
     def maxRotateFunction(self, nums: List[int]) -> int:
         f = 0
-        length = len(nums)
-        for i in range(length):
+        n = len(nums)
+        for i in range(n):
             f += i * nums[i]    # 不旋转的 F(0)
-        maxf = f
-        ss = sum(nums)
-        for i in range(length-1,-1,-1):                 # 用前一个F 减去最后一项与权重的积:(n-1) * nums[n-1]
-            f = f - (length-1)*nums[i] + ss - nums[i]   # 再加上剩下每一项乘1: sum(nums) - num[n-1] 得到新的F
-            maxf = max(f,maxf)
-        return maxf
+        res = f
+        numSum = sum(nums)
+        for i in range(n - 1, -1, -1):                      # 用前一个F 减去最后一项与权重的积:(n-1) * nums[n-1]
+            f = f + numSum - (n - 1) * nums[i] - nums[i]    # 再加上剩下每一项乘1: sum(nums) - num[n-1] 得到新的F
+            res = max(f, res)
+        return res
 
 if __name__ == "__main__":
     A = [4, 3, 2, 6]
     sol = Solution()
     result = sol.maxRotateFunction(A)
-    print (result) 
+    print (result)
