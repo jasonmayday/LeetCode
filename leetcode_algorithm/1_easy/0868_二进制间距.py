@@ -43,17 +43,32 @@ https://leetcode-cn.com/problems/binary-gap/
 
 """
 
+""" 模拟 """
 class Solution:
     def binaryGap(self, N: int) -> int:
-        bin_str = str(bin(N))[2:]
+        bin_str = str(bin(N))[2:]   # 转为二进制字符串： 0b10110 ➡️ 10110
         res = []
-        for idx,num in enumerate(bin_str):
+        for i, num in enumerate(bin_str):
             if num == '1':
-                res.append(idx)
-                
-        return max(res[i] - res[i-1]  for i in range(1,len(res))) if len(res) >=2 else 0
+                res.append(i)
+        if len(res) >= 2:
+            return max(res[i] - res[i-1] for i in range(1, len(res)))
+        else:
+            return 0
 
-    
+""" 位运算 """
+class Solution:
+    def binaryGap(self, n: int) -> int:
+        last, ans, i = -1, 0, 0
+        while n:
+            if n & 1:
+                if last != -1:
+                    ans = max(ans, i - last)
+                last = i
+            n >>= 1
+            i += 1
+        return ans
+
 if __name__ == "__main__":
     n = 22
     sol = Solution()
