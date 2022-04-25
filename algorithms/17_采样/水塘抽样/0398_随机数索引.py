@@ -33,6 +33,15 @@ class Solution:
                     res = idx
                 i += 1
         return res
+    
+    def pick(self, target: int) -> int:
+        ans = cnt = 0
+        for i, num in enumerate(self.nums):
+            if num == target:
+                cnt += 1  # 第 cnt 次遇到 target
+                if random.randrange(cnt) == 0:
+                    ans = i
+        return ans
 
 if __name__ == "__main__":
     nums = [1,2,3,3,3]
