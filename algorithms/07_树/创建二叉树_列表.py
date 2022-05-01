@@ -21,7 +21,7 @@ class TreeNode:
     
     def __str__(self):
         # 测试基本功能，输出字符串
-        return str(self.val)   
+        return str(self.val)
 
 """递归构建"""
 def list_to_binarytree(nums):
@@ -34,10 +34,10 @@ def list_to_binarytree(nums):
         return root     # 再返回根
     return level(0)
 
-"""迭代构建"""        
+"""迭代构建"""
 def list_to_binarytree(nums):
     if not nums:
-        return 
+        return
     root=TreeNode(nums[0])
     seq=[root]
     i=1
@@ -56,7 +56,7 @@ def list_to_binarytree(nums):
     return root
 
 def printBFS(root):
-    res = []         
+    res = []
     if root is None:
         return
     else:
