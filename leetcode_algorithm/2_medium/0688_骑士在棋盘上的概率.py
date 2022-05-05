@@ -73,4 +73,4 @@ if __name__ == "__main__":
     column = 0
     sol = Solution()
     result = sol.knightProbability(n, k, row, column)
-    print (result) 
+    print (result)
