@@ -6,7 +6,7 @@ https://leetcode-cn.com/problems/largest-triangle-area/
 示例:
     输入: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]
     输出: 2
-    解释: 
+    解释:
     这五个点如下图所示。组成的橙色三角形是最大的，面积为2。
 
 注意:
@@ -22,7 +22,7 @@ from typing import List
 
 class Solution:
     def largestTriangleArea(self, points: List[List[int]]) -> float:
-        res=0
+        res = 0
         for i in points:
             for j in points:
                 for k in points:
