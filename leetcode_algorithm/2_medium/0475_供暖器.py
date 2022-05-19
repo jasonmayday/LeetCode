@@ -80,4 +80,4 @@ if __name__ == "__main__":
     heaters = [1,4]
     sol = Solution()
     result = sol.findRadius(houses, heaters)
-    print (result) 
+    print (result)
