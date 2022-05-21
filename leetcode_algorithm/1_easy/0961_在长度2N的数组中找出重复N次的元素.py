@@ -53,7 +53,7 @@ class Solution:
         for i in A:
             if i in dicts:
                 return i
-            dicts[i]=1
+            dicts[i] = 1
 
 if __name__ == '__main__':
     nums = [5,1,5,2,5,3,5,4]
