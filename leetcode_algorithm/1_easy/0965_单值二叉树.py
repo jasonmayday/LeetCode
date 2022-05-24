@@ -51,9 +51,12 @@ class Solution(object):
 """递归"""
 class Solution:
     def isUnivalTree(self, root: TreeNode) -> bool:
-        if not root: return True
-        if root.left and root.left.val != root.val: return False
-        if root.right and root.right.val != root.val: return False
+        if not root:
+            return True
+        if root.left and root.left.val != root.val:
+            return False
+        if root.right and root.right.val != root.val:
+            return False
         return self.isUnivalTree(root.left) and self.isUnivalTree(root.right)
 
 if __name__ == "__main__":
