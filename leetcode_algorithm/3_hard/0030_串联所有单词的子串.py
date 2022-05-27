@@ -49,7 +49,7 @@ class Solution:
         
         for i in range(0, one_word):    # 只讨论从0，1，...， one_word-1 开始的子串情况，
             cur_cnt = 0                 # 每次进行匹配的窗口大小为 one_word，每次后移一个单词长度，由左右窗口维持当前窗口位置
-            left = i    
+            left = i
             right = i                   # 左右窗口
             cur_Counter = Counter()     # 统计每个符合要求的 word
             while right + one_word <= n:        # 右窗口不能超出主串长度
