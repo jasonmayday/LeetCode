@@ -38,7 +38,7 @@ https://leetcode-cn.com/problems/remove-outermost-parentheses
 
 """
 
-''' 方法1：双指针       
+''' 方法1：双指针
     1. 原语化
     2. 拆除各原语最外层括号。
     双指针查找各原语下标
@@ -59,7 +59,7 @@ class Solution:
         return "".join( S[m+1:n] for m, n in primitive_indices )
 
 
-''' 方法2：单指针计数   
+''' 方法2：单指针计数
     不保存下标。
     一次遍历过程中，直接把非最外层的括号放进答案里'''
 class Solution:
@@ -77,18 +77,19 @@ class Solution:
     如果栈为空，那么刚刚碰到的 “)” 就是最外层右括号；如果入栈前栈为空，则即将入栈的 “(” 就是最外层左括号。'''
 class Solution:
     def removeOuterParentheses(self, S: str) -> str:
-        res, stack = "", []
+        res = ""
+        stack = []
         for c in S:     # 非外层括号加入结果中
-            if c == "(":            # 怎么判断是非外层括号？ 
+            if c == "(":            # 怎么判断是非外层括号？
                 if stack: res += c  # 1. 左括号加入前，栈不为空。
-                stack.append("(")  
-            if c == ")": 
+                stack.append("(")
+            if c == ")":
                 stack.pop()
                 if stack: res += c  # 2. 右括号加入并消括号后，栈不为空
         return res
 
     
-if __name__ == "__main__":      
+if __name__ == "__main__":
     s = "(()())(())"
     sol = Solution()
     result = sol.removeOuterParentheses(s)
