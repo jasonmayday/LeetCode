@@ -40,7 +40,7 @@ def list_to_binarytree(nums):
         return
     root=TreeNode(nums[0])
     seq=[root]
-    i=1
+    i = 1
     while i<len(nums):
         node=seq.pop(0)
         node.left=TreeNode(nums[i])
