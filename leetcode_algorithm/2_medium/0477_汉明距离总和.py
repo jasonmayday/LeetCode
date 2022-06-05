@@ -29,7 +29,7 @@ from collections import Counter
 class Solution:
     def totalHammingDistance(self, nums: List[int]) -> int:
         trie = Counter()
-        max_bit = len(bin(max(nums))) - 2   
+        max_bit = len(bin(max(nums))) - 2
         ans = 0
         for i, num in enumerate(nums):
             for j in range(max_bit):
@@ -58,4 +58,4 @@ if __name__ == "__main__":
     nums = [4,14,2]     # 0100, 1110, 0010
     sol = Solution()
     result = sol.totalHammingDistance(nums)
-    print (result) 
+    print (result)
