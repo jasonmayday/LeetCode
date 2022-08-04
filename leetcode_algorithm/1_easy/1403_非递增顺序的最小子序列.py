@@ -28,14 +28,29 @@ https://leetcode-cn.com/problems/minimum-subsequence-in-non-increasing-order/
     1 <= nums[i] <= 100
 
 """
+from typing import List
+
+""" 贪心 """
 class Solution:
-    def minSubsequence(self, nums):
-        nums.sort()     # 将nums列表进行排序
+    def minSubsequence(self, nums: List[int]) -> List[int]:
+        nums.sort()     # 将nums列表进行排序, 从小到大
         result = []
         while len(nums) > 0:
-            result.append(nums.pop())       # 不断从nums末尾pop出加在result列表中
+            result.append(nums.pop())       # 不断从nums末尾pop,，然后加在result列表中
             if sum(result) > sum(nums):     # 若某一时刻result的和＞sum的和
                 return result               # 则返回result
+
+""" 贪心 """
+class Solution:
+    def minSubsequence(self, nums: List[int]) -> List[int]:
+        nums.sort(reverse = True)   # 将nums列表进行排序, 从大到小
+        total = sum(nums)           # 列表 nums 总和
+        s =  0
+        for i, num in enumerate(nums):
+            s += num                    # 从头开始加入列表中的数字
+            if s > total - s:           # 直到大于列表总和的一半
+                return nums[:i + 1]
+
 
 if __name__ == "__main__":
     nums = [4,3,10,9,8]
