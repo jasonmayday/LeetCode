@@ -2,7 +2,7 @@
 import turtle
 
 turtle.title('PythonBingdundun')
-turtle.speed(100)
+turtle.speed(50)
 
 turtle.penup()
 turtle.goto(177, 112)
