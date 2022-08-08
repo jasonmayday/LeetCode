@@ -36,22 +36,7 @@ https://leetcode-cn.com/problems/minimum-value-to-get-positive-step-by-step-sum/
 from typing import List
 from itertools import accumulate
 
-class Solution:
-    def minStartValue(self, nums: List[int]) -> int:
-        return max(-min(accumulate(nums)), 0) + 1
-
-"""动态规划"""
-class Solution:
-    def minStartValue(self, nums: List[int]) -> int:
-        for i in range(len(nums)):  # 逐步求和的过程中一定存在一个最小值，利用DP求出最小值；
-            if i:
-                nums[i] += nums[i-1]
-        if min(nums) >= 0:          # 若最小值大于等于0，则返回 1
-            return 1
-        else:
-            return abs(min(nums)) + 1   # 否则返回（相反数+1）
-
-"""一次遍历"""
+""" 一次遍历 """
 class Solution:
     def minStartValue(self, nums: List[int]) -> int:
         startvalue = 1          # 设初始值为startvalue = 1
@@ -62,6 +47,33 @@ class Solution:
                 startvalue += (1 - sum_nums)  # 则将初始值startvalue提高 1-sum_nums
                 sum_nums = 1
         return startvalue       # 此时的累加和便为1
+
+""" 动态规划 """
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        for i in range(len(nums)):  # 逐步求和的过程中一定存在一个最小值，利用DP求出最小值；
+            if i:
+                nums[i] += nums[i-1]
+        if min(nums) >= 0:          # 若最小值大于等于0，则返回 1
+            return 1
+        else:
+            return abs(min(nums)) + 1   # 否则返回（相反数+1）
+
+""" 贪心 """
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        accSum = 0      # 累加和
+        accSumMin = 0   # 累加和的最小值：需满足 accSumMin + startValue >= 1
+        for num in nums:
+            accSum += num
+            accSumMin = min(accSumMin, accSum)
+        return -accSumMin + 1
+
+""" 累加函数accumulate """
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        print (list(accumulate(nums)))  # [-3, -1, -4, 0, 2]
+        return max(-min(accumulate(nums)), 0) + 1
 
 if __name__ == "__main__":
     nums = [-3,2,-3,4,2]
