@@ -28,7 +28,7 @@ class TreeNode:
         self.right = None
     
     def __str__(self):
-        return str(self.val)   
+        return str(self.val)
 
 """递归构建"""
 def list_to_binarytree(nums):
