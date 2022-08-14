@@ -31,36 +31,43 @@ https://leetcode-cn.com/problems/maximum-score-after-splitting-a-string/
 
 """
 
-""" 解法1"""
+""" 解法1：枚举每个分割点 """
 class Solution:
     def maxScore(self, s: str) -> int:
         max = 0
-        for i in range(1, len(s)):
-            left = s[:i].count('0')
-            right = s[i:].count('1')
+        for i in range(1, len(s)):      # 下标 i 为分割点
+            left = s[:i].count('0')     # 计算左子字符串中的 0 的个数
+            right = s[i:].count('1')    # 计算右子字符串中的 1 的个数
             if ((left + right) > max):
                 max = left + right
         return max
 
-""" 解法2"""
-class Solution:
-    def maxScore(self, s: str) -> int:
-        sum = s.count('1')  # 先行遍历，得到整个字符串的1的个数
-        ans = 0
-        for i in s[:-1]:        # 字符串遍历，记录每种划分的和，取最大值。[:-1]指除去最后一个元素，否则与题意【分割成两个非空子字符串】矛盾
-            if i == '1':        # 对于每种划分，左边
-                sum = sum - 1
-            if i == '0':
-                sum = sum + 1
-            ans = max(ans, sum)
-        return ans
-
-""" 解法3：直接分隔"""
 class Solution:
     def maxScore(self, s: str) -> int:
         return max(s[:i].count("0") + s[i:].count("1") for i in range(1, len(s)))
 
-""" 解法4：动态维护左边的 0 的总数和右侧 1 的总数"""
+""" 解法2：两次遍历 """
+class Solution:
+    def maxScore(self, s: str) -> int:
+        sum = s.count('1')      # 先行遍历，得到整个字符串的1的个数
+        ans = 0
+        for i in s[:-1]:        # 字符串遍历，记录每种划分的和，取最大值。[:-1]指除去最后一个元素，否则与题意【分割成两个非空子字符串】矛盾
+            if i == '1':        # 如果 s[i]=1，则左子字符串的得分不变，右子字符串的得分减 1
+                sum = sum - 1   # 因此分割字符串的得分减 1
+            if i == '0':        # 如果 s[i]=0，则左子字符串的得分加 1，右子字符串的得分不变
+                sum = sum + 1   # 因此分割字符串的得分加 1
+            ans = max(ans, sum)
+        return ans
+
+class Solution:
+    def maxScore(self, s: str) -> int:
+        ans = score = (s[0] == '0') + s[1:].count('1')
+        for c in s[1:-1]:
+            score += 1 if c == '0' else -1
+            ans = max(ans, score)
+        return ans
+
+""" 解法3：动态维护左边的 0 的总数和右侧 1 的总数"""
 class Solution:
     def maxScore(self, s: str) -> int:
         right = s.count('1')  # 代表右侧的 1 的个数
