@@ -35,19 +35,38 @@ https://leetcode-cn.com/problems/reformat-the-string/
     s 仅由小写英文字母和/或数字组成。
 
 """
+
+""" 方法一：双指针 """
 class Solution:
     def reformat(self, s: str) -> str:
-        digit = [c for c in s if c.isdigit()]   # 分别找到数字和字母
-        alpha = [c for c in s if c.isalpha()]
+        digit = [c for c in s if c.isdigit()]   # 分别找到数字和字母    ['2', '0', '1', '9']
+        alpha = [c for c in s if c.isalpha()]   # ['c', 'o', 'v', 'i', 'd']
         if abs(len(digit) - len(alpha)) > 1:    # 如果字母和数字数量差大于1，无法满足重新格式化的条件。
             return ''
-        ans = ['' for _ in range(len(digit) + len(alpha))]
-        if len(digit) > len(alpha):         # 想构建的字母第一个字符为字母
+        ans = ['' for _ in range(len(digit) + len(alpha))]  # 初始化答案ans:  ['', '', '', '', '', '', '', '', '']
+        if len(digit) > len(alpha):         # 因为后面想构建的字母第一个字符为字母，所以假如数字更多，交换
             digit, alpha = alpha, digit     # 所以保持digit的长度不大于alpha，以便在总长度为奇数时能够间隔插入
         # 分别在奇数位和偶数位, 插入不同类型的字符
         ans[::2], ans[1::2] = alpha, digit  # 第一个字符为字母，隔一个字符插入不同性质的。
         return ''.join(ans)
-    
+
+class Solution:
+    def reformat(self, s: str) -> str:
+        sumDigit = sum(c.isdigit() for c in s)
+        sumAlpha = len(s) - sumDigit
+        if abs(sumDigit - sumAlpha) > 1:        # 如果字母和数字数量差大于1，无法满足重新格式化的条件。
+            return ""
+        moreDigit = sumDigit > sumAlpha  # 数字更多，moreDigit 为True
+        ans = list(s)         # ['c', 'o', 'v', 'i', 'd', '2', '0', '1', '9']
+        j = 1
+        for i in range(0, len(ans), 2):
+            if ans[i].isdigit() != moreDigit:
+                while ans[j].isdigit() != moreDigit:
+                    j += 2
+                ans[i], ans[j] = ans[j], ans[i]
+        return ''.join(ans)
+
+
 if __name__ == "__main__":
     s = "covid2019"
     sol = Solution()
