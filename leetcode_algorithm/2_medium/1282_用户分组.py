@@ -36,12 +36,12 @@ from collections import defaultdict
 class Solution:
     def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
         groups = defaultdict(list)
-        for i, size in enumerate(groupSizes):
+        for i, size in enumerate(groupSizes):   # 字典，key为组的大小，val为用户下标
             groups[size].append(i)  # {3: [0, 1, 2, 3, 4, 6], 1: [5]})
         ans = []
         for size, people in groups.items():
             ans.extend(people[i: i + size] for i in range(0, len(people), size))
-        return ans
+        return ans  # [[0, 1, 2], [3, 4, 6], [5]]
 
 if __name__ == "__main__":
     groupSizes = [3,3,3,3,3,1,3]
