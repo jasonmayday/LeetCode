@@ -33,8 +33,6 @@ from collections import Counter
 class Solution:
     def maxChunksToSorted(self, arr: List[int]) -> int:
         cnt = Counter()
-        print('cnt: ', cnt)
-        
         res = 0
         for x, y in zip(arr, sorted(arr)):
             cnt[x] += 1
@@ -46,6 +44,20 @@ class Solution:
             if len(cnt) == 0:
                 res += 1
         return res
+
+"""方法二：单调栈"""
+class Solution:
+    def maxChunksToSorted(self, arr: List[int]) -> int:
+        stack = []
+        for a in arr:
+            if len(stack) == 0 or a >= stack[-1]:
+                stack.append(a)
+            else:
+                mx = stack.pop()
+                while stack and stack[-1] > a:
+                    stack.pop()
+                stack.append(mx)
+        return len(stack)
 
 if __name__ == "__main__":
     arr = [2,1,3,4,4]
