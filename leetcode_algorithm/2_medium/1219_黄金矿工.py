@@ -73,4 +73,4 @@ if __name__ == "__main__":
     difference = 2
     sol = Solution()
     result = sol.getMaximumGold(grid)
-    print(result)  
+    print(result)
