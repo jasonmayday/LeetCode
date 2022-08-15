@@ -70,4 +70,4 @@ if __name__ == "__main__":
     target = 9
     sol = Solution()
     result = sol.twoSum(nums, target)
-    print (result) 
+    print (result)
