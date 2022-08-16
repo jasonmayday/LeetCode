@@ -52,3 +52,10 @@ class OrderedStream:
             self.id += 1
         return res
 
+if __name__ == "__main__":
+    os = OrderedStream(5)
+    print(os.insert(3, "ccccc"))   # 插入 (3, "ccccc")，返回 []
+    print(os.insert(1, "aaaaa"))   # 插入 (1, "aaaaa")，返回 ["aaaaa"]
+    print(os.insert(2, "bbbbb"))   # 插入 (2, "bbbbb")，返回 ["bbbbb", "ccccc"]
+    print(os.insert(5, "eeeee"))   # 插入 (5, "eeeee")，返回 []
+    print(os.insert(4, "ddddd"))   # 插入 (4, "ddddd")，返回 ["ddddd", "eeeee"]
