@@ -41,7 +41,7 @@ class TreeNode:
         self.right = None
     
     def __str__(self):
-        return str(self.val)   
+        return str(self.val)
 
 def list_to_binarytree(nums):
     def level(index):
