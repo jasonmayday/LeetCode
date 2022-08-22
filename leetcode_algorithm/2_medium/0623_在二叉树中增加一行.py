@@ -6,7 +6,6 @@ https://leetcode.cn/problems/add-one-row-to-tree/
 注意，根节点 root 位于深度 1 。
 
 加法规则如下:
-
     给定整数 depth，对于深度为 depth - 1 的每个非空树节点 cur ，创建两个值为 val 的树节点作为 cur 的左子树根和右子树根。
     cur 原来的左子树应该是新的左子树根的左子树。
     cur 原来的右子树应该是新的右子树根的右子树。
@@ -28,11 +27,13 @@ https://leetcode.cn/problems/add-one-row-to-tree/
     1 <= depth <= the depth of tree + 1
 
 """
+from typing import List
+
 class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+    def __init__(self, val = 0, left = None, right = None):
+        self.val = val
+        self.left = left
+        self.right = right
         
 def list_to_binarytree(nums):
     def level(index):
@@ -43,13 +44,30 @@ def list_to_binarytree(nums):
         root.right = level(2 * index + 2)   # 往右回溯  # 再返回上一个根，回溯右
         return root     # 再返回根
     return level(0)
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 
+# 层序遍历把结果展示出来
+def levelOrder(root: TreeNode) -> List[List[int]]:
+    res = []
+    if not root:
+        return []
+    
+    def bfs(index, r):
+        if len(res) < index:    # 假设res是[ [1],[2,3] ]， index是3，就再插入一个空list放到res中
+            res.append([])      # 将当前节点的值加入到res中，index代表当前层，假设index是3，节点值是99
+        
+        # res是[ [1],[2,3] [4] ]，加入后res就变为 [ [1],[2,3] [4,99] ]
+        res[index-1].append(r.val)
+        # 递归的处理左子树，右子树，同时将层数index+1
+        if r.left:
+            bfs(index+1,r.left)
+        if r.right:
+            bfs(index+1,r.right)
+    bfs(1, root)
+    return res
+
+
+
+""" 方法一：深度优先搜索"""
 class Solution:
     def addOneRow(self, root: TreeNode, val: int, depth: int) -> TreeNode:
         if root == None:
@@ -64,4 +82,29 @@ class Solution:
             root.right = self.addOneRow(root.right, val, depth - 1)
         return root
 
+""" 方法二：广度优先搜索"""
+class Solution:
+    def addOneRow(self, root: TreeNode, val: int, depth: int) -> TreeNode:
+        if depth == 1:
+            return TreeNode(val, root, None)
+        curLevel = [root]
+        for _ in range(1, depth - 1):
+            tmpt = []
+            for node in curLevel:
+                if node.left:
+                    tmpt.append(node.left)
+                if node.right:
+                    tmpt.append(node.right)
+            curLevel = tmpt
+        for node in curLevel:
+            node.left = TreeNode(val, node.left, None)
+            node.right = TreeNode(val, None, node.right)
+        return root
 
+if __name__ == "__main__":
+    root = list_to_binarytree([4,2,6,3,1,5])
+    val = 1
+    depth = 2
+    sol = Solution()
+    result = sol.addOneRow(root, val, depth)
+    print(levelOrder(result))   # [[4], [1, 1], [2, 6], [3, 1, 5]]
