@@ -28,7 +28,21 @@ https://leetcode.cn/problems/add-one-row-to-tree/
     1 <= depth <= the depth of tree + 1
 
 """
-
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+        
+def list_to_binarytree(nums):
+    def level(index):
+        if index >= len(nums) or nums[index] is None:
+            return None
+        root = TreeNode(nums[index])
+        root.left = level(2 * index + 1)    # 往左递推  # 从根开始一直到最左，直至为空
+        root.right = level(2 * index + 2)   # 往右回溯  # 再返回上一个根，回溯右
+        return root     # 再返回根
+    return level(0)
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -49,3 +63,5 @@ class Solution:
             root.left = self.addOneRow(root.left, val, depth - 1)
             root.right = self.addOneRow(root.right, val, depth - 1)
         return root
+
+
