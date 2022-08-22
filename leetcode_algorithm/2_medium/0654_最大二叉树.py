@@ -41,24 +41,44 @@ class TreeNode:
         self.left = left
         self.right = right
 
+# 层序遍历把结果展示出来
+def levelOrder(root: TreeNode) -> List[List[int]]:
+    res = []
+    if not root:
+        return []
+    
+    def bfs(index, r):
+        if len(res) < index:    # 假设res是[ [1],[2,3] ]， index是3，就再插入一个空list放到res中
+            res.append([])      # 将当前节点的值加入到res中，index代表当前层，假设index是3，节点值是99
+        
+        # res是[ [1],[2,3] [4] ]，加入后res就变为 [ [1],[2,3] [4,99] ]
+        res[index-1].append(r.val)
+        # 递归的处理左子树，右子树，同时将层数index+1
+        if r.left:
+            bfs(index+1,r.left)
+        if r.right:
+            bfs(index+1,r.right)
+    bfs(1, root)
+    return res
+
 """ 方法一：递归"""
 class Solution:
     def constructMaximumBinaryTree(self, nums: List[int]) -> TreeNode:
-        def construct(left: int, right: int) -> TreeNode:
+        def construct(left: int, right: int) -> TreeNode:   # 用递归函数表示对数组 nums 中从 left 到 right 的元素构建一棵树。
             if left > right:
                 return None
             
-            best = left
-            for i in range(left + 1, right + 1):
-                if nums[i] > nums[best]:
-                    best = i
+            max = left  # 先假定最左为最大值，
+            for i in range(left + 1, right + 1):    # 再找到最大值的下标
+                if nums[i] > nums[max]:
+                    max = i
         
-            node = TreeNode(nums[best])
-            node.left = construct(left, best - 1)
-            node.right = construct(best + 1, right)
+            node = TreeNode(nums[max])      # 确定了根节点的值，为nums中的最大值。
+            node.left = construct(left, max - 1)    # 递归左子树
+            node.right = construct(max + 1, right)  # 递归右子树
             return node
         
-        return construct(0, len(nums) - 1)
+        return construct(0, len(nums) - 1)  # 从第一个数找到最后一个数
 
 """ 方法二：单调栈"""
 class Solution:
@@ -104,26 +124,6 @@ class Solution:
             stk.append(i)
         
         return tree[stk[0]]
-
-# 层序遍历把结果展示出来
-def levelOrder(root: TreeNode) -> List[List[int]]:
-    res = []
-    if not root:
-        return []
-    
-    def bfs(index, r):
-        if len(res) < index:    # 假设res是[ [1],[2,3] ]， index是3，就再插入一个空list放到res中
-            res.append([])      # 将当前节点的值加入到res中，index代表当前层，假设index是3，节点值是99
-        
-        # res是[ [1],[2,3] [4] ]，加入后res就变为 [ [1],[2,3] [4,99] ]
-        res[index-1].append(r.val)
-        # 递归的处理左子树，右子树，同时将层数index+1
-        if r.left:
-            bfs(index+1,r.left)
-        if r.right:
-            bfs(index+1,r.right)
-    bfs(1, root)
-    return res
 
 if __name__ == "__main__":
     nums = [3,2,1,6,0,5]
