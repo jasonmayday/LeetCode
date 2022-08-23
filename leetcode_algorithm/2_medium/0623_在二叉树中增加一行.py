@@ -72,12 +72,12 @@ class Solution:
     def addOneRow(self, root: TreeNode, val: int, depth: int) -> TreeNode:
         if root == None:
             return
-        if depth == 1:
+        if depth == 1:  # 当 depth 为 1 时，需要创建一个新的 root，并将原 root 作为新 root 的左子节点。
             return TreeNode(val, root, None)
-        if depth == 2:
-            root.left = TreeNode(val, root.left, None)
-            root.right = TreeNode(val, None, root.right)
-        else:
+        if depth == 2:  # 当 depth 为 2 时，需要在 root 下新增两个节点 left 和 right 作为 root 的新子节点，
+            root.left = TreeNode(val, root.left, None)      # 并把原左子节点作为 left 的左子节点
+            root.right = TreeNode(val, None, root.right)    # 把原右子节点作为 right 的右子节点。
+        else:           # 当 depth 大于 2 时，需要继续递归往下层搜索，并将 depth 减去 1，直到搜索到 depth 为 2。
             root.left = self.addOneRow(root.left, val, depth - 1)
             root.right = self.addOneRow(root.right, val, depth - 1)
         return root
