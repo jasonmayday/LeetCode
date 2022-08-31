@@ -33,7 +33,7 @@ https://leetcode-cn.com/problems/final-prices-with-a-special-discount-in-a-shop/
 
 from typing import List
 
-"""解法1：暴力"""
+""" 方法1：直接遍历"""
 class Solution:
     def finalPrices(self, prices: List[int]) -> List[int]:
         n = len(prices)
@@ -44,7 +44,21 @@ class Solution:
                     res[i] -= prices[j]
                     break
         return res
-    
+
+class Solution:
+    def finalPrices(self, prices: List[int]) -> List[int]:
+        n = len(prices)
+        ans = [0] * n
+        for i, p in enumerate(prices):
+            discount = 0
+            for j in range(i + 1, n):
+                if prices[j] <= p:
+                    discount = prices[j]
+                    break
+            ans[i] = p - discount
+        return ans
+
+
 """解法2：单调栈"""
 class Solution:
     def finalPrices(self, prices: List[int]) -> List[int]:
